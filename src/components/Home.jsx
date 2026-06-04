@@ -227,47 +227,51 @@ export default function Home() {
 
       {/* THE EXPERIENCE */}
       <section className="py-28 px-6 bg-[#F7F2EF]">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
-          <FadeIn direction="left">
-            <div className="aspect-3/4 overflow-hidden">
-            <img
+        <div className="max-w-7xl mx-auto grid items-stretch lg:grid-cols-2 gap-8 gap-x-20 lg:gap-y-10">
+          {/* Title + subtitle — mobile 1st · desktop right column, top */}
+          <FadeIn direction="right" className="lg:col-start-2 lg:row-start-1 lg:self-end">
+            <p className="text-[#B48A8E] text-xs tracking-[0.4em] uppercase mb-5">
+              The Experience
+            </p>
+            <h2 className="font-serif text-5xl text-[#1a1a1a] leading-tight">
+              Personalized Care,
+              <br />
+              <span className="italic text-[#B48A8E]">
+                Real Results.
+              </span>
+            </h2>
+          </FadeIn>
+
+          {/* Image — mobile 2nd · desktop left column, spans both rows */}
+          <FadeIn direction="left" className="lg:col-start-1 lg:row-start-1 lg:row-span-2">
+            <div className="relative aspect-3/4 lg:aspect-auto lg:h-full overflow-hidden">
+              <img
                 src="/treatment-1.jpg"
                 alt="Relaxed wellness experience"
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
           </FadeIn>
 
-          <FadeIn direction="right">
-            <div>
-              <p className="text-[#B48A8E] text-xs tracking-[0.4em] uppercase mb-5">
-                The Experience
-              </p>
-              <h2 className="font-serif text-5xl text-[#1a1a1a] mb-8 leading-tight">
-                Personalized Care,
-                <br />
-                <span className="italic text-[#B48A8E]">
-                  Real Results.
-                </span>
-              </h2>
-              <p className="text-[#3D2B1F]/70 leading-relaxed mb-6">
-                Every visit begins with a medical consultation and ends with a plan
-                built around your goals. From hydration and recovery to hormones and
-                weight management, each protocol is guided by a licensed provider.
-              </p>
-              <p className="text-[#3D2B1F]/70 leading-relaxed mb-12">
-                No rushed appointments, no surprise fees — just modern, evidence-based
-                wellness delivered in a calm, private setting designed to help you feel
-                your best.
-              </p>
-              <Link
-                to="/services"
-                className="inline-flex items-center gap-3 border-b-2 border-[#1a1a1a] pb-2 text-xs tracking-[0.3em] uppercase hover:border-[#B48A8E] hover:text-[#B48A8E] transition-colors"
-              >
-                Explore Treatments
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
+          {/* Body — mobile 3rd · desktop right column, below subtitle */}
+          <FadeIn direction="right" className="lg:col-start-2 lg:row-start-2 lg:self-start">
+            <p className="text-[#3D2B1F]/70 leading-relaxed mb-6">
+              Every visit begins with a medical consultation and ends with a plan
+              built around your goals. From hydration and recovery to hormones and
+              weight management, each protocol is guided by a licensed provider.
+            </p>
+            <p className="text-[#3D2B1F]/70 leading-relaxed mb-10">
+              No rushed appointments, no surprise fees — just modern, evidence-based
+              wellness delivered in a calm, private setting designed to help you feel
+              your best.
+            </p>
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-3 border-b-2 border-[#1a1a1a] pb-2 text-xs tracking-[0.3em] uppercase hover:border-[#B48A8E] hover:text-[#B48A8E] transition-colors"
+            >
+              Explore Treatments
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </FadeIn>
         </div>
       </section>
