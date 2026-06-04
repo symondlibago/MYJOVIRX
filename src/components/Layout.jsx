@@ -10,7 +10,16 @@ export default function Layout({ children, currentPageName }) {
     { name: "Treatments", path: "/services" },
     { name: "Gallery", path: "/gallery" },
     { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
     { name: "Book", path: "/booking" },
+  ];
+
+  const legalLinks = [
+    { name: "Privacy Policy", path: "/privacy" },
+    { name: "HIPAA Notice", path: "/hipaa" },
+    { name: "Terms of Service", path: "/terms" },
+    { name: "Telehealth Consent", path: "/telehealth-consent" },
+    { name: "Medical Disclaimer", path: "/disclaimer" },
   ];
 
   const services = [
@@ -218,17 +227,18 @@ export default function Layout({ children, currentPageName }) {
           </div>
         </div>
 
-        {/* Press Strip */}
+        {/* Legal / Compliance Links */}
         <div className="border-y border-white/[0.07]">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 py-8">
-            <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-14">
-              <span className="text-[10px] tracking-[0.35em] uppercase text-white/20 mr-4">
-                As seen in
-              </span>
-              {["IRVINE WEEKLY", "LA GUESTLIST", "THE CALI POST", "OC WEEKLY", "WELL+GOOD"].map((pub) => (
-                <span key={pub} className="font-serif text-xl text-white/20 hover:text-white/50 transition-colors duration-300 cursor-default">
-                  {pub}
-                </span>
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6">
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
+              {legalLinks.map((l) => (
+                <Link
+                  key={l.path}
+                  to={l.path}
+                  className="footer-link text-[11px] tracking-wide text-white/40"
+                >
+                  {l.name}
+                </Link>
               ))}
             </div>
           </div>
@@ -238,9 +248,6 @@ export default function Layout({ children, currentPageName }) {
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-white/25">
             <p>© 2026 MyJoviRX. All rights reserved.</p>
-            <p className="flex items-center gap-1.5">
-              Made with <Heart className="w-3 h-3 text-[#D4A5A5] fill-[#D4A5A5]" /> in Orange County
-            </p>
             <p className="text-[#D4A5A5]/60 tracking-widest uppercase">
               Telehealth &amp; In-Clinic
             </p>

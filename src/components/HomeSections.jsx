@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   Stethoscope,
+  CalendarCheck,
+  HeartPulse,
   ShieldCheck,
   BadgeDollarSign,
   CalendarClock,
@@ -25,6 +27,27 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+
+const steps = [
+  {
+    num: "01",
+    icon: CalendarCheck,
+    title: "Book Online",
+    desc: "Choose your treatment and reserve a time through our partner booking portal — quick, secure, and available 24/7.",
+  },
+  {
+    num: "02",
+    icon: Stethoscope,
+    title: "Meet Your Provider",
+    desc: "Complete a short medical intake and connect with a licensed provider in-clinic or by secure telehealth visit.",
+  },
+  {
+    num: "03",
+    icon: HeartPulse,
+    title: "Replenish & Thrive",
+    desc: "Receive your personalized treatment in our lounge — or get your plan and prescriptions delivered to your door.",
+  },
+];
 
 const reasons = [
   {
@@ -156,6 +179,57 @@ export default function HomeSections() {
 
   return (
     <>
+      {/* HOW IT WORKS */}
+      <section className="py-28 px-6 bg-[#F7F2EF]">
+        <div className="max-w-7xl mx-auto">
+          <FadeIn>
+            <div className="text-center max-w-2xl mx-auto mb-20">
+              <p className="text-[#B48A8E] text-xs tracking-[0.4em] uppercase mb-4">
+                Getting Started
+              </p>
+              <h2 className="font-serif text-5xl md:text-6xl text-[#1a1a1a] leading-tight">
+                How It <span className="italic text-[#B48A8E]">Works</span>
+              </h2>
+              <p className="text-[#3D2B1F]/60 leading-relaxed mt-6">
+                Modern wellness without the hassle — from first booking to feeling
+                your best, in three simple steps.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid md:grid-cols-3 gap-14 md:gap-8">
+            {steps.map((step, index) => (
+              <FadeIn key={step.num} delay={index * 0.12}>
+                <div className="text-center">
+                  <p className="text-[#B48A8E] text-[10px] tracking-[0.4em] uppercase mb-6">
+                    Step {step.num}
+                  </p>
+                  <div className="w-16 h-16 rounded-full bg-white border border-[#1a1a1a]/10 flex items-center justify-center mx-auto mb-6 shadow-sm">
+                    <step.icon className="w-7 h-7 text-[#B48A8E] stroke-[1.25px]" />
+                  </div>
+                  <h3 className="font-serif text-2xl text-[#1a1a1a] mb-3">{step.title}</h3>
+                  <p className="text-[#3D2B1F]/60 text-sm leading-relaxed max-w-xs mx-auto">
+                    {step.desc}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          <FadeIn delay={0.2}>
+            <div className="text-center mt-20">
+              <Link
+                to="/booking"
+                className="inline-flex items-center gap-4 bg-[#1a1a1a] text-white px-12 py-5 text-[10px] tracking-[0.4em] uppercase hover:bg-[#B48A8E] transition-all group"
+              >
+                Book a Consultation
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+              </Link>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* ───── WHY PATIENTS CHOOSE US ───── */}
       <section className="py-28 px-6 bg-[#F9F7F5]">
         <div className="max-w-7xl mx-auto">

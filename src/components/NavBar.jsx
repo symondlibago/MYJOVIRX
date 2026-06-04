@@ -19,6 +19,7 @@ export default function NavBar() {
     { name: "Treatments", path: "/services" },
     { name: "Gallery", path: "/gallery" },
     { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
     { name: "Book", path: "/booking" },
   ];
 
