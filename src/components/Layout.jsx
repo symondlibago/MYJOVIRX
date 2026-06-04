@@ -1,10 +1,12 @@
 import React from "react";
 import NavBar from "./NavBar";
 import ScrollToTop from "../components/ui/ScrollToTop";
-import { Link } from "react-router-dom";
-import { Instagram, Mail, Phone, MapPin, Clock, ArrowUpRight, Heart } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { Instagram, Facebook, Mail, Phone, MapPin, Clock, ArrowUpRight } from "lucide-react";
 
-export default function Layout({ children, currentPageName }) {
+export default function Layout({ children }) {
+  const { pathname } = useLocation();
+
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Treatments", path: "/services" },
@@ -77,7 +79,7 @@ export default function Layout({ children, currentPageName }) {
         }
       `}</style>
       <ScrollToTop />
-      <NavBar currentPage={currentPageName} />
+      <NavBar />
       <main>{children}</main>
 
       {/* ───── FOOTER ───── */}
@@ -91,10 +93,10 @@ export default function Layout({ children, currentPageName }) {
             </p>
             <Link
               to="/booking"
-              className="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-[#D4A5A5] border border-[#D4A5A5]/40 px-5 py-2.5 hover:bg-[#D4A5A5]/10 transition-colors duration-300"
+              className="group inline-flex items-center gap-2 text-xs tracking-widest uppercase text-[#D4A5A5] border border-[#D4A5A5]/40 px-6 py-3 hover:bg-[#D4A5A5] hover:text-[#111111] transition-all duration-300"
             >
               Book a Consultation
-              <ArrowUpRight className="w-3 h-3" />
+              <ArrowUpRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </div>
         </div>
@@ -117,18 +119,29 @@ export default function Layout({ children, currentPageName }) {
                 Replenish, recover, and thrive. Physician-guided IV therapy, peptides, hormone optimization, and telehealth — delivered in a calm, modern setting designed around you.
               </p>
               {/* Social */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3">
                 <a
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 flex items-center justify-center border border-white/20 hover:border-[#D4A5A5] hover:text-[#D4A5A5] transition-all duration-300 group"
+                  aria-label="Instagram"
+                  className="w-9 h-9 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-[#D4A5A5] hover:text-[#D4A5A5] hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
                 <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="w-9 h-9 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-[#D4A5A5] hover:text-[#D4A5A5] hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <Facebook className="w-4 h-4" />
+                </a>
+                <a
                   href="mailto:hello@myjovirx.com"
-                  className="w-9 h-9 flex items-center justify-center border border-white/20 hover:border-[#D4A5A5] hover:text-[#D4A5A5] transition-all duration-300"
+                  aria-label="Email"
+                  className="w-9 h-9 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-[#D4A5A5] hover:text-[#D4A5A5] hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <Mail className="w-4 h-4" />
                 </a>
@@ -146,7 +159,7 @@ export default function Layout({ children, currentPageName }) {
                     <Link
                       to={link.path}
                       className={`footer-link text-sm ${
-                        currentPageName === link.name
+                        pathname === link.path
                           ? "text-[#D4A5A5]"
                           : "text-white/70"
                       }`}
@@ -246,7 +259,7 @@ export default function Layout({ children, currentPageName }) {
 
         {/* Bottom Bar */}
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-white/25">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/25">
             <p>© 2026 MyJoviRX. All rights reserved.</p>
             <p className="text-[#D4A5A5]/60 tracking-widest uppercase">
               Telehealth &amp; In-Clinic
