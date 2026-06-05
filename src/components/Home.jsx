@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
 import HomeSections from "./HomeSections";
+import { BOOKING_URL, handleBookingClick } from "@/config";
 
 const heroSlides = [
   {
@@ -135,13 +136,14 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/booking"
+            <a
+              href={BOOKING_URL}
+              onClick={handleBookingClick}
               className="inline-flex items-center gap-3 bg-white/10 border border-white/30 text-white px-9 py-4 text-xs tracking-[0.25em] uppercase hover:bg-white hover:text-black transition-all"
             >
               Book a Consultation
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
 
             <Link
               to="/services"

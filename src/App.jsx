@@ -5,7 +5,6 @@ import Home from "./components/Home";
 import Services from "./components/Services";
 import Gallery from "./components/Gallery";
 import About from "./components/About";
-import Booking from "./components/Booking";
 import Contact from "./components/Contact";
 import LegalPage from "./components/LegalPage";
 import { Toaster } from "./components/ui/toaster";
@@ -20,7 +19,6 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
-          <Route path="/booking" element={<Booking />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<LegalPage slug="privacy" />} />
           <Route path="/hipaa" element={<LegalPage slug="hipaa" />} />

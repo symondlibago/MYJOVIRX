@@ -3,6 +3,7 @@ import NavBar from "./NavBar";
 import ScrollToTop from "../components/ui/ScrollToTop";
 import { Link, useLocation } from "react-router-dom";
 import { Instagram, Facebook, Mail, Phone, MapPin, Clock, ArrowUpRight } from "lucide-react";
+import { BOOKING_URL, handleBookingClick } from "@/config";
 
 export default function Layout({ children }) {
   const { pathname } = useLocation();
@@ -13,7 +14,7 @@ export default function Layout({ children }) {
     { name: "Gallery", path: "/gallery" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
-    { name: "Book", path: "/booking" },
+    { name: "Book", href: BOOKING_URL, external: true },
   ];
 
   const legalLinks = [
@@ -91,13 +92,14 @@ export default function Layout({ children }) {
             <p className="text-xs tracking-[0.3em] uppercase text-white/40">
               Modern Wellness · Orange County, CA
             </p>
-            <Link
-              to="/booking"
+            <a
+              href={BOOKING_URL}
+              onClick={handleBookingClick}
               className="group inline-flex items-center gap-2 text-xs tracking-widest uppercase text-[#D4A5A5] border border-[#D4A5A5]/40 px-6 py-3 hover:bg-[#D4A5A5] hover:text-[#111111] transition-all duration-300"
             >
               Book a Consultation
               <ArrowUpRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
+            </a>
           </div>
         </div>
 
@@ -155,17 +157,23 @@ export default function Layout({ children }) {
               </h4>
               <ul className="space-y-3">
                 {navLinks.map((link) => (
-                  <li key={link.path}>
-                    <Link
-                      to={link.path}
-                      className={`footer-link text-sm ${
-                        pathname === link.path
-                          ? "text-[#D4A5A5]"
-                          : "text-white/70"
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
+                  <li key={link.name}>
+                    {link.external ? (
+                      <a href={link.href} onClick={handleBookingClick} className="footer-link text-sm text-white/70">
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.path}
+                        className={`footer-link text-sm ${
+                          pathname === link.path
+                            ? "text-[#D4A5A5]"
+                            : "text-white/70"
+                        }`}
+                      >
+                        {link.name}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

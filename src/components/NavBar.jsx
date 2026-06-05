@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { BOOKING_URL, handleBookingClick } from "@/config";
 
 export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,7 +21,7 @@ export default function NavBar() {
     { name: "Gallery", path: "/gallery" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
-    { name: "Book", path: "/booking" },
+    { name: "Book", href: BOOKING_URL, external: true },
   ];
 
   return (
@@ -57,27 +58,38 @@ export default function NavBar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
           {/* Brand Name */}
           <Link to="/" className="flex flex-col leading-none group">
-            <span className="font-serif text-2xl tracking-wide text-[#9C8B7A] duration-300">
+            <span className="font-serif text-2xl tracking-wide text-[#1a1a1a] duration-300">
               MyJoviRX
             </span>
-            <span className="text-[9px] tracking-[0.3em] uppercase text-[#9C8B7A] mt-0.5">
+            <span className="text-[9px] tracking-[0.3em] uppercase text-[#3D2B1F]/70 mt-0.5">
               Wellness &amp; IV Therapy
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`nav-link text-sm tracking-widest uppercase transition-colors duration-300 hover:text-[#9C8B7A] ${
-                  pathname === link.path ? "active text-[#9C8B7A]" : "text-[#1a1a1a]"
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.external ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={handleBookingClick}
+                  className="nav-link text-sm tracking-widest uppercase text-[#1a1a1a] transition-colors duration-300 hover:text-[#9C8B7A]"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`nav-link text-sm tracking-widest uppercase transition-colors duration-300 hover:text-[#9C8B7A] ${
+                    pathname === link.path ? "active text-[#9C8B7A]" : "text-[#1a1a1a]"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              )
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -106,7 +118,7 @@ export default function NavBar() {
                   <span className="font-serif text-2xl tracking-wide text-[#1a1a1a]">
                     MyJoviRX
                   </span>
-                  <span className="text-[9px] tracking-[0.3em] uppercase text-[#9C8B7A] mt-0.5">
+                  <span className="text-[9px] tracking-[0.3em] uppercase text-[#3D2B1F]/70 mt-0.5">
                     Wellness &amp; IV Therapy
                   </span>
                 </div>
@@ -119,27 +131,51 @@ export default function NavBar() {
               </div>
 
               <div className="flex-1 flex flex-col justify-center gap-8">
-                {navLinks.map((link, i) => (
-                  <motion.div
-                    key={link.path}
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.08, ease: "easeOut" }}
-                  >
-                    <Link
-                      to={link.path}
-                      onClick={() => setMobileOpen(false)}
-                      className={`group flex items-center gap-4 text-3xl font-serif tracking-wide transition-colors duration-300 ${
-                        pathname === link.path ? "text-[#9C8B7A]" : "text-[#1a1a1a] hover:text-[#9C8B7A]"
-                      }`}
+                {navLinks.map((link, i) => {
+                  const number = (
+                    <span className="text-xs text-[#9C8B7A]/50 font-sans tracking-widest">
+                      0{i + 1}
+                    </span>
+                  );
+                  return link.external ? (
+                    <motion.div
+                      key={link.name}
+                      initial={{ opacity: 0, x: -30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.08, ease: "easeOut" }}
                     >
-                      <span className="text-xs text-[#9C8B7A]/50 font-sans tracking-widest">
-                        0{i + 1}
-                      </span>
-                      {link.name}
-                    </Link>
-                  </motion.div>
-                ))}
+                      <a
+                        href={link.href}
+                        onClick={(e) => {
+                          setMobileOpen(false);
+                          handleBookingClick(e);
+                        }}
+                        className="group flex items-center gap-4 text-3xl font-serif tracking-wide text-[#1a1a1a] hover:text-[#9C8B7A] transition-colors duration-300"
+                      >
+                        {number}
+                        {link.name}
+                      </a>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key={link.path}
+                      initial={{ opacity: 0, x: -30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.08, ease: "easeOut" }}
+                    >
+                      <Link
+                        to={link.path}
+                        onClick={() => setMobileOpen(false)}
+                        className={`group flex items-center gap-4 text-3xl font-serif tracking-wide transition-colors duration-300 ${
+                          pathname === link.path ? "text-[#9C8B7A]" : "text-[#1a1a1a] hover:text-[#9C8B7A]"
+                        }`}
+                      >
+                        {number}
+                        {link.name}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
               </div>
 
               <div className="pb-4 text-xs text-[#9C8B7A] tracking-widest uppercase">

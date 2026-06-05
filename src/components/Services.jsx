@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { BOOKING_URL, handleBookingClick } from "@/config";
 import { ArrowRight, Clock, Sparkles, ShieldCheck, Video, BadgeDollarSign } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
 
@@ -104,13 +104,14 @@ export default function Services() {
                     <span className="font-serif text-3xl text-[#1a1a1a]">{service.price}</span>
                   </div>
 
-                  <Link
-                    to="/booking"
+                  <a
+                    href={BOOKING_URL}
+                    onClick={handleBookingClick}
                     className="inline-flex items-center gap-4 mt-10 text-[10px] tracking-[0.3em] uppercase group"
                   >
                     Book This Treatment
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </FadeIn>
@@ -186,13 +187,14 @@ export default function Services() {
               <h2 className="font-serif text-5xl text-[#1a1a1a] mb-8">
                 Ready to <span className="italic">Feel Your Best?</span>
               </h2>
-              <Link
-                to="/booking"
+              <a
+                href={BOOKING_URL}
+                onClick={handleBookingClick}
                 className="inline-flex items-center gap-4 bg-[#1a1a1a] text-white px-12 py-5 text-[10px] tracking-[0.4em] uppercase hover:bg-[#3D2B1F] transition-all"
               >
                 Book a Consultation
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
             </div>
             {/* Decorative element */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />

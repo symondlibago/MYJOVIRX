@@ -5,7 +5,6 @@ import Layout from '../components/Layout';
 import Services from '../components/Services';
 import Gallery from '../components/Gallery';
 import About from '../components/About';
-import Booking from '../components/Booking';
 import { Toaster } from '../components/ui/toaster';
 
 
@@ -19,7 +18,6 @@ const Navigate = () => {
           <Route path="/services" element={<Services />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
-          <Route path="/booking" element={<Booking />} />
         </Routes>
       </Layout>
       <Toaster />

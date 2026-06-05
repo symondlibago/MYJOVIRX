@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { BOOKING_URL, handleBookingClick } from "@/config";
 import { ArrowRight, Stethoscope, Heart, Leaf } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
 
@@ -174,13 +174,14 @@ export default function About() {
           <p className="text-[#3D2B1F]/60 mb-12 max-w-md mx-auto leading-relaxed">
             Ready to feel more like yourself? Book a consultation and we'll build a plan around your goals.
           </p>
-          <Link
-            to="/booking"
+          <a
+            href={BOOKING_URL}
+            onClick={handleBookingClick}
             className="inline-flex items-center gap-4 bg-[#1a1a1a] text-white px-12 py-5 text-[10px] tracking-[0.4em] uppercase hover:bg-[#B48A8E] transition-all group"
           >
             Book a Consultation
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-          </Link>
+          </a>
         </FadeIn>
       </div>
     </div>

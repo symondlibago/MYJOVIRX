@@ -46,10 +46,10 @@ export default function Gallery() {
         <FadeIn>
           <p className="text-[#B48A8E] text-[10px] tracking-[0.5em] uppercase mb-4">The Gallery</p>
           <h1 className="font-serif text-4xl md:text-8xl text-[#1a1a1a] mb-6 leading-tight">
-            Calm <span className="italic font-light text-[#B48A8E]">&</span> Care
+            A Look <span className="italic font-light text-[#B48A8E]">Inside</span>
           </h1>
           <p className="text-[#3D2B1F]/60 max-w-2xl mx-auto text-base md:text-lg">
-            A look inside our lounge, treatments, and the team behind them.
+            Our space, our treatments, and the team behind your care.
           </p>
         </FadeIn>
 

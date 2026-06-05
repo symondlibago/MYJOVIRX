@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { BOOKING_URL, handleBookingClick } from "@/config";
 import { MapPin, Phone, Mail, Clock, Instagram, Check, ArrowRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -186,9 +186,9 @@ export default function Contact() {
 
               <p className="text-center text-[#3D2B1F]/50 text-xs leading-relaxed">
                 Looking to schedule a visit?{" "}
-                <Link to="/booking" className="text-[#B48A8E] hover:underline">
+                <a href={BOOKING_URL} onClick={handleBookingClick} className="text-[#B48A8E] hover:underline">
                   Book a consultation
-                </Link>{" "}
+                </a>{" "}
                 through our partner portal.
               </p>
             </form>
