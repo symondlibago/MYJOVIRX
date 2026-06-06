@@ -2,19 +2,26 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Maximize2 } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
+import { getLenis } from "@/lib/lenis";
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeFilter, setActiveFilter] = useState("All");
 
-  // Prevent background scroll when modal is open to keep the blur consistent
+  // Prevent background scroll when modal is open (pause Lenis too)
   useEffect(() => {
+    const lenis = getLenis();
     if (selectedImage) {
       document.body.style.overflow = "hidden";
+      lenis?.stop();
     } else {
       document.body.style.overflow = "unset";
+      lenis?.start();
     }
-    return () => { document.body.style.overflow = "unset"; };
+    return () => {
+      document.body.style.overflow = "unset";
+      lenis?.start();
+    };
   }, [selectedImage]);
 
   const categories = ["All", "IV Therapy", "Recovery", "Boosters", "The Space", "Team"];
@@ -40,15 +47,15 @@ export default function Gallery() {
     : galleryImages.filter(img => img.category === activeFilter);
 
   return (
-    <div className="min-h-screen bg-[#F9F7F5] pt-24 md:pt-32 pb-24 relative">
+    <div className="min-h-screen bg-[#FFFFFF] pt-24 md:pt-32 pb-24 relative">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-12 md:mb-20 text-center">
         <FadeIn>
-          <p className="text-[#B48A8E] text-[10px] tracking-[0.5em] uppercase mb-4">The Gallery</p>
-          <h1 className="font-serif text-4xl md:text-8xl text-[#1a1a1a] mb-6 leading-tight">
-            A Look <span className="italic font-light text-[#B48A8E]">Inside</span>
+          <p className="text-[#B8A889] text-[10px] tracking-[0.5em] uppercase mb-4">The Gallery</p>
+          <h1 className="font-serif text-4xl md:text-8xl text-[#0F0F0F] mb-6 leading-tight">
+            A Look <span className="italic font-light text-[#B8A889]">Inside</span>
           </h1>
-          <p className="text-[#3D2B1F]/60 max-w-2xl mx-auto text-base md:text-lg">
+          <p className="text-[#453122]/60 max-w-2xl mx-auto text-base md:text-lg">
             Our space, our treatments, and the team behind your care.
           </p>
         </FadeIn>
@@ -60,7 +67,7 @@ export default function Gallery() {
               key={category}
               onClick={() => setActiveFilter(category)}
               className={`shrink-0 px-6 py-2 text-[9px] tracking-[0.2em] uppercase transition-all duration-500 rounded-full border cursor-pointer ${
-                activeFilter === category ? "bg-[#1a1a1a] text-white border-[#1a1a1a]" : "bg-white text-[#1a1a1a] border-transparent"
+                activeFilter === category ? "bg-[#0F0F0F] text-white border-[#0F0F0F]" : "bg-white text-[#0F0F0F] border-transparent"
               }`}
             >
               {category}
@@ -128,14 +135,14 @@ export default function Gallery() {
               </div>
 
               <div className="w-full md:w-2/5 text-center md:text-left">
-                <p className="text-[#000000] text-[10px] tracking-[0.5em] uppercase mb-4">{selectedImage.category}</p>
-                <h3 className="font-serif text-4xl md:text-6xl text-[#1a1a1a] mb-6">{selectedImage.title}</h3>
-                <p className="text-[#3D2B1F]/70 leading-relaxed mb-8 text-sm md:text-base">
+                <p className="text-[#0F0F0F] text-[10px] tracking-[0.5em] uppercase mb-4">{selectedImage.category}</p>
+                <h3 className="font-serif text-4xl md:text-6xl text-[#0F0F0F] mb-6">{selectedImage.title}</h3>
+                <p className="text-[#453122]/70 leading-relaxed mb-8 text-sm md:text-base">
                   Captured inside the MyJoviRX wellness lounge — where modern medicine meets genuine calm.
                 </p>
                 <button
                   onClick={() => setSelectedImage(null)}
-                  className="text-[10px] tracking-[0.3em] uppercase border-b border-[#1a1a1a] pb-1 hover:text-[#B48A8E] hover:border-[#B48A8E] transition-colors cursor-pointer"
+                  className="text-[10px] tracking-[0.3em] uppercase border-b border-[#0F0F0F] pb-1 hover:text-[#453122] hover:border-[#453122] transition-colors cursor-pointer"
                 >
                   Back to Gallery
                 </button>

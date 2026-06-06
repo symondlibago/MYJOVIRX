@@ -1,6 +1,7 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { BOOKING_URL, handleBookingClick } from "@/config";
-import { ArrowRight, Clock, Sparkles, ShieldCheck, Video, BadgeDollarSign } from "lucide-react";
+import { ArrowRight, Clock, ShieldCheck, Video, BadgeDollarSign } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
 
 export default function Services() {
@@ -45,19 +46,19 @@ export default function Services() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F9F7F5] pt-32 pb-24">
+    <div className="min-h-screen bg-[#FFFFFF] pt-32 pb-24">
       {/* Editorial Header */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-32">
         <div className="max-w-3xl">
           <FadeIn>
-            <p className="text-[#B48A8E] text-[10px] tracking-[0.5em] uppercase mb-6">
+            <p className="text-[#B8A889] text-[10px] tracking-[0.5em] uppercase mb-6">
               The Menu
             </p>
-            <h1 className="font-serif text-6xl md:text-8xl text-[#1a1a1a] mb-10 leading-[0.9]">
+            <h1 className="font-serif text-6xl md:text-8xl text-[#0F0F0F] mb-10 leading-[0.9]">
               Tailored <br />
               <span className="italic font-light">Protocols.</span>
             </h1>
-            <p className="text-[#3D2B1F]/60 text-lg md:text-xl leading-relaxed border-l border-[#1a1a1a]/10 pl-8">
+            <p className="text-[#453122]/60 text-lg md:text-xl leading-relaxed border-l border-[#0F0F0F]/10 pl-8">
               At MyJoviRX, every treatment begins with a medical consultation.
               Our protocols are unrushed, evidence-based, and overseen by licensed
               providers using premium, pharmacy-grade ingredients.
@@ -73,7 +74,7 @@ export default function Services() {
             <FadeIn key={service.name} direction={index % 2 === 0 ? "left" : "right"}>
               <div className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 lg:gap-24`}>
                 {/* Image Container */}
-                <div className="w-full md:w-1/2 aspect-4/5 overflow-hidden bg-[#ECE6E1]">
+                <div className="w-full md:w-1/2 aspect-4/5 overflow-hidden bg-[#E6E6E6]">
                   <img
                     src={service.image}
                     alt={service.name}
@@ -84,24 +85,39 @@ export default function Services() {
                 {/* Content Container */}
                 <div className="w-full md:w-1/2">
                   {service.popular && (
-                    <div className="flex items-center gap-2 text-[#B48A8E] mb-4">
-                      <Sparkles className="w-4 h-4" />
-                      <span className="text-[9px] tracking-[0.3em] uppercase font-bold">Most Requested</span>
-                    </div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 6 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                      className="inline-flex items-center gap-2.5 mb-6 pl-3 pr-4 py-1.5 rounded-full border border-[#B8A889]/50"
+                    >
+                      <span className="relative flex h-1.5 w-1.5">
+                        <motion.span
+                          className="absolute inline-flex h-full w-full rounded-full bg-[#B8A889]"
+                          animate={{ scale: [1, 2.8], opacity: [0.5, 0] }}
+                          transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
+                        />
+                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#B8A889]" />
+                      </span>
+                      <span className="text-[9px] tracking-[0.35em] uppercase text-[#453122] font-medium">
+                        Most Requested
+                      </span>
+                    </motion.div>
                   )}
-                  <h2 className="font-serif text-4xl md:text-5xl text-[#1a1a1a] mb-6 italic">
+                  <h2 className="font-serif text-4xl md:text-5xl text-[#0F0F0F] mb-6 italic">
                     {service.name}
                   </h2>
-                  <p className="text-[#3D2B1F]/70 text-lg leading-relaxed mb-10">
+                  <p className="text-[#453122]/70 text-lg leading-relaxed mb-10">
                     {service.description}
                   </p>
 
-                  <div className="flex items-end justify-between border-b border-[#1a1a1a]/10 pb-6">
-                    <div className="flex items-center gap-3 text-[#1a1a1a]/40 uppercase text-[10px] tracking-[0.2em]">
+                  <div className="flex items-end justify-between border-b border-[#0F0F0F]/10 pb-6">
+                    <div className="flex items-center gap-3 text-[#0F0F0F]/40 uppercase text-[10px] tracking-[0.2em]">
                       <Clock className="w-4 h-4" />
                       {service.duration}
                     </div>
-                    <span className="font-serif text-3xl text-[#1a1a1a]">{service.price}</span>
+                    <span className="font-serif text-3xl text-[#0F0F0F]">{service.price}</span>
                   </div>
 
                   <a
@@ -120,11 +136,11 @@ export default function Services() {
       </section>
 
       {/* Add-Ons & Boosters */}
-      <section className="bg-[#1a1a1a] py-32 text-white mb-40">
+      <section className="bg-[#453122] py-32 text-white mb-40">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-20">
             <FadeIn>
-              <p className="text-[#E8B4B8] text-[10px] tracking-[0.5em] uppercase mb-6">
+              <p className="text-[#B8A889] text-[10px] tracking-[0.5em] uppercase mb-6">
                 Enhancements
               </p>
               <h2 className="font-serif text-5xl mb-8">Add-Ons &amp; <br/>Boosters</h2>
@@ -143,7 +159,7 @@ export default function Services() {
                       <h4 className="text-lg mb-1">{item.name}</h4>
                       <p className="text-white/30 text-[10px] tracking-widest uppercase">{item.duration}</p>
                     </div>
-                    <span className="font-serif text-2xl text-[#E8B4B8]">{item.price}</span>
+                    <span className="font-serif text-2xl text-[#B8A889]">{item.price}</span>
                   </div>
                 </FadeIn>
               ))}
@@ -154,25 +170,25 @@ export default function Services() {
 
       {/* Clinic Policies - Clean Grid */}
       <section className="max-w-7xl mx-auto px-6 lg:px-12 mb-40">
-        <div className="grid md:grid-cols-3 gap-12 border-t border-[#1a1a1a]/10 pt-20">
+        <div className="grid md:grid-cols-3 gap-12 border-t border-[#0F0F0F]/10 pt-20">
           <FadeIn delay={0.1}>
-            <ShieldCheck className="w-8 h-8 text-[#B48A8E] mb-6" />
-            <h4 className="font-serif text-xl text-[#1a1a1a] mb-4">Medical Oversight</h4>
-            <p className="text-[#3D2B1F]/60 text-sm leading-relaxed">
+            <ShieldCheck className="w-8 h-8 text-[#453122] mb-6" />
+            <h4 className="font-serif text-xl text-[#0F0F0F] mb-4">Medical Oversight</h4>
+            <p className="text-[#453122]/60 text-sm leading-relaxed">
               Every protocol is reviewed and overseen by a licensed medical provider, with safety screening before treatment.
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <Video className="w-8 h-8 text-[#B48A8E] mb-6" />
-            <h4 className="font-serif text-xl text-[#1a1a1a] mb-4">Telehealth Visits</h4>
-            <p className="text-[#3D2B1F]/60 text-sm leading-relaxed">
+            <Video className="w-8 h-8 text-[#453122] mb-6" />
+            <h4 className="font-serif text-xl text-[#0F0F0F] mb-4">Telehealth Visits</h4>
+            <p className="text-[#453122]/60 text-sm leading-relaxed">
               Many consultations, lab reviews, and prescription refills are available virtually — from anywhere, on your schedule.
             </p>
           </FadeIn>
           <FadeIn delay={0.3}>
-            <BadgeDollarSign className="w-8 h-8 text-[#B48A8E] mb-6" />
-            <h4 className="font-serif text-xl text-[#1a1a1a] mb-4">Transparent Pricing</h4>
-            <p className="text-[#3D2B1F]/60 text-sm leading-relaxed">
+            <BadgeDollarSign className="w-8 h-8 text-[#453122] mb-6" />
+            <h4 className="font-serif text-xl text-[#0F0F0F] mb-4">Transparent Pricing</h4>
+            <p className="text-[#453122]/60 text-sm leading-relaxed">
               No surprise fees, hidden costs, or billing confusion — just clear pricing before you ever begin.
             </p>
           </FadeIn>
@@ -182,15 +198,15 @@ export default function Services() {
       {/* CTA Section */}
       <section className="max-w-5xl mx-auto px-6 text-center">
         <FadeIn>
-          <div className="bg-[#EFE6E2] py-24 px-12 relative overflow-hidden">
+          <div className="bg-[#E6E6E6] py-24 px-12 relative overflow-hidden">
             <div className="relative z-10">
-              <h2 className="font-serif text-5xl text-[#1a1a1a] mb-8">
+              <h2 className="font-serif text-5xl text-[#0F0F0F] mb-8">
                 Ready to <span className="italic">Feel Your Best?</span>
               </h2>
               <a
                 href={BOOKING_URL}
                 onClick={handleBookingClick}
-                className="inline-flex items-center gap-4 bg-[#1a1a1a] text-white px-12 py-5 text-[10px] tracking-[0.4em] uppercase hover:bg-[#3D2B1F] transition-all"
+                className="inline-flex items-center gap-4 bg-[#0F0F0F] text-white px-12 py-5 text-[10px] tracking-[0.4em] uppercase hover:bg-[#453122] transition-all"
               >
                 Book a Consultation
                 <ArrowRight className="w-4 h-4" />
