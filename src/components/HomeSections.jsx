@@ -23,8 +23,8 @@ const faqs = [
     a: "Most IV drips take 30–45 minutes. NAD+ and specialty therapies are administered more slowly for comfort and may take 60–90 minutes.",
   },
   {
-    q: "Do you offer telehealth?",
-    a: "Absolutely. Many consultations, lab reviews, hormone follow-ups, and prescription refills are available virtually from anywhere in the state.",
+    q: "Is there anything I should do before my appointment?",
+    a: "We recommend arriving well-hydrated and having eaten a light meal beforehand. Wear comfortable clothing with easy access to your arm. Our team will walk you through everything else when you arrive.",
   },
   {
     q: "How much do treatments cost?",

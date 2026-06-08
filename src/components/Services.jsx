@@ -180,9 +180,9 @@ export default function Services() {
           </FadeIn>
           <FadeIn delay={0.2}>
             <Video className="w-8 h-8 text-[#453122] mb-6" />
-            <h4 className="font-serif text-xl text-[#0F0F0F] mb-4">Telehealth Visits</h4>
+            <h4 className="font-serif text-xl text-[#0F0F0F] mb-4">Private Treatment Suites</h4>
             <p className="text-[#453122]/60 text-sm leading-relaxed">
-              Many consultations, lab reviews, and prescription refills are available virtually — from anywhere, on your schedule.
+              Every treatment is administered in a calm, private setting designed for comfort — no rushed appointments, no waiting room chaos.
             </p>
           </FadeIn>
           <FadeIn delay={0.3}>
