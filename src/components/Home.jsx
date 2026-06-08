@@ -252,48 +252,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* THE EXPERIENCE */}
-      <section className="py-28 px-6 bg-[#E6E6E6]">
-        <div className="max-w-7xl mx-auto grid items-stretch lg:grid-cols-12 gap-8 gap-x-16 lg:gap-y-10">
-          {/* Title + subtitle — mobile 1st · desktop right column, top */}
-          <FadeIn direction="right" className="lg:col-start-8 lg:col-span-5 lg:row-start-1 lg:self-end">
+      {/* THE EXPERIENCE — full-width video (text temporarily hidden per client) */}
+      <section className="bg-[#E6E6E6] py-20 px-6">
+        <FadeIn>
+          <div className="relative w-full max-w-360 mx-auto aspect-video overflow-hidden">
+            <video
+              className="absolute inset-0 w-full h-full object-cover"
+              src="/experience.mp4"
+              poster="/treatment-1.jpg"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="The MyJoviRX wellness experience"
+            />
+          </div>
+        </FadeIn>
+
+        {/* TEXT TEMPORARILY HIDDEN (client request) — restore below the video later:
+
+        <div className="max-w-7xl mx-auto px-3 md:px-6 mt-14">
+          <FadeIn>
             <p className="text-[#B8A889] text-xs tracking-[0.4em] uppercase mb-5">
               The Experience
             </p>
-            <h2 className="font-serif text-5xl text-[#0F0F0F] leading-tight">
+            <h2 className="font-serif text-5xl text-[#0F0F0F] leading-tight mb-6">
               Personalized Care,
               <br />
               <span className="italic text-[#B8A889]">
                 Real Results.
               </span>
             </h2>
-          </FadeIn>
-
-          {/* Video */}
-          <FadeIn direction="left" className="lg:col-start-1 lg:col-span-7 lg:row-start-1 lg:row-span-2 lg:self-center">
-            <div className="relative aspect-video overflow-hidden">
-              <video
-                className="absolute inset-0 w-full h-full object-cover"
-                src="/experience.mp4"
-                poster="/treatment-1.jpg"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="The MyJoviRX wellness experience"
-              />
-            </div>
-          </FadeIn>
-
-          {/* Body — mobile 3rd · desktop right column, below subtitle */}
-          <FadeIn direction="right" className="lg:col-start-8 lg:col-span-5 lg:row-start-2 lg:self-start">
-            <p className="text-[#453122]/70 leading-relaxed mb-6">
+            <p className="text-[#453122]/70 leading-relaxed mb-6 max-w-2xl">
               Every visit begins with a medical consultation and ends with a plan
               built around your goals. From hydration and recovery to hormones and
               weight management, each protocol is guided by a licensed provider.
             </p>
-            <p className="text-[#453122]/70 leading-relaxed mb-10">
+            <p className="text-[#453122]/70 leading-relaxed mb-10 max-w-2xl">
               No rushed appointments, no surprise fees — just modern, evidence-based
               wellness delivered in a calm, private setting designed to help you feel
               your best.
@@ -307,6 +303,8 @@ export default function Home() {
             </Link>
           </FadeIn>
         </div>
+
+        */}
       </section>
 
       {/* WHY CHOOSE US · TESTIMONIALS · FAQ */}

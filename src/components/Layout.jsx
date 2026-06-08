@@ -21,7 +21,7 @@ export default function Layout({ children }) {
     { name: "Treatments", path: "/services" },
     { name: "Our Team", path: "/our-team" },
     { name: "Contact", path: "/contact" },
-    { name: "Book", href: BOOKING_URL, external: true },
+    { name: "Reserve Now", href: BOOKING_URL, external: true },
   ];
 
   const legalLinks = [

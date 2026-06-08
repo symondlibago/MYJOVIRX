@@ -20,7 +20,7 @@ export default function NavBar() {
     { name: "Treatments", path: "/services" },
     { name: "Our Team", path: "/our-team" },
     { name: "Contact", path: "/contact" },
-    { name: "Book", href: BOOKING_URL, external: true },
+    { name: "Reserve Now", href: BOOKING_URL, external: true },
   ];
 
   return (
@@ -73,7 +73,7 @@ export default function NavBar() {
                   key={link.name}
                   href={link.href}
                   onClick={handleBookingClick}
-                  className="nav-link text-sm tracking-widest uppercase text-[#0F0F0F] transition-colors duration-300 hover:text-[#B8A889]"
+                  className="text-sm tracking-widest uppercase bg-[#453122] border border-[#453122] text-white px-5 py-2.5 hover:bg-[#0F0F0F] hover:border-[#0F0F0F] transition-colors duration-300"
                 >
                   {link.name}
                 </a>
