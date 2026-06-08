@@ -1,7 +1,3 @@
-// Compliance / trust content for MyJoviRX.
-// NOTE: These are professional templates. Have them reviewed by a licensed
-// attorney and update entity name, effective date, and states served before launch.
-
 const EMAIL = "hello@myjovirx.com";
 const UPDATED = "June 4, 2026";
 
