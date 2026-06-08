@@ -253,11 +253,11 @@ export default function Home() {
       </section>
 
       {/* THE EXPERIENCE — full-width video (text temporarily hidden per client) */}
-      <section className="bg-[#E6E6E6] py-20 px-6">
+      <section className="bg-white px-10">
         <FadeIn>
-          <div className="relative w-full max-w-360 mx-auto aspect-video overflow-hidden">
+          <div className="relative w-full aspect-video overflow-hidden">
             <video
-              className="absolute inset-0 w-full h-full object-cover"
+              className="w-full h-full object-cover block"
               src="/experience.mp4"
               poster="/treatment-1.jpg"
               autoPlay
