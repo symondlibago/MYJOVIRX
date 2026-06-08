@@ -1,10 +1,9 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./components/Home";
 import Services from "./components/Services";
-import Gallery from "./components/Gallery";
-import About from "./components/About";
+import OurTeam from "./components/OurTeam";
 import Contact from "./components/Contact";
 import LegalPage from "./components/LegalPage";
 import { Toaster } from "./components/ui/toaster";
@@ -17,8 +16,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/our-team" element={<OurTeam />} />
+          <Route path="/about" element={<Navigate to="/our-team" replace />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<LegalPage slug="privacy" />} />
           <Route path="/hipaa" element={<LegalPage slug="hipaa" />} />

@@ -19,8 +19,7 @@ export default function Layout({ children }) {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Treatments", path: "/services" },
-    { name: "Gallery", path: "/gallery" },
-    { name: "About", path: "/about" },
+    { name: "Our Team", path: "/our-team" },
     { name: "Contact", path: "/contact" },
     { name: "Book", href: BOOKING_URL, external: true },
   ];
@@ -131,7 +130,7 @@ export default function Layout({ children }) {
                 </span>
               </div>
               <p className="text-white/50 text-sm leading-relaxed mb-8 max-w-xs">
-                Replenish, recover, and thrive. Physician-guided IV therapy, peptides, hormone optimization, and telehealth — delivered in a calm, modern setting designed around you.
+                Personalized wellness solutions including IV therapy, peptides, hormone therapy, and lab testing. All designed to help you look, feel, and perform your best.
               </p>
               {/* Social */}
               <div className="flex items-center gap-3">
@@ -220,8 +219,9 @@ export default function Layout({ children }) {
                 <li className="flex gap-3">
                   <MapPin className="w-4 h-4 text-[#B8A889] shrink-0 mt-0.5" />
                   <span className="leading-relaxed">
-                    23382 Mill Creek Dr, Ste 130<br />
-                    Laguna Hills, CA 92653
+                    250 Fischer Ave<br />
+                    Costa Mesa, CA 92626<br />
+                    United States
                   </span>
                 </li>
                 <li className="flex gap-3">

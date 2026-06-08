@@ -18,8 +18,7 @@ export default function NavBar() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Treatments", path: "/services" },
-    { name: "Gallery", path: "/gallery" },
-    { name: "About", path: "/about" },
+    { name: "Our Team", path: "/our-team" },
     { name: "Contact", path: "/contact" },
     { name: "Book", href: BOOKING_URL, external: true },
   ];

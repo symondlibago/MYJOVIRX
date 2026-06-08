@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     q: "Where are you located and is there parking?",
-    a: "We're in Laguna Hills, serving all of Orange County, with free on-site parking. Telehealth visits are available statewide.",
+    a: "We're in Costa Mesa, serving all of Orange County, with free on-site parking. Telehealth visits are available statewide.",
   },
 ];
 

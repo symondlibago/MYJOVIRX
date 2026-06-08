@@ -20,7 +20,7 @@ export default function Contact() {
     {
       icon: MapPin,
       label: "Visit",
-      lines: ["23382 Mill Creek Dr, Ste 130", "Laguna Hills, CA 92653"],
+      lines: ["250 Fischer Ave", "Costa Mesa, CA 92626", "United States"],
     },
     {
       icon: Phone,
@@ -104,7 +104,7 @@ export default function Contact() {
             <div className="mt-10 aspect-video overflow-hidden border border-[#0F0F0F]/10">
               <iframe
                 title="MyJoviRX location map"
-                src="https://maps.google.com/maps?q=23382%20Mill%20Creek%20Dr%20Laguna%20Hills%20CA%2092653&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=250%20Fischer%20Ave%20Costa%20Mesa%20CA%2092626&t=&z=14&ie=UTF8&iwloc=&output=embed"
                 className="w-full h-full grayscale"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

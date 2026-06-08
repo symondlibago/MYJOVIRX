@@ -9,12 +9,6 @@ import { BOOKING_URL, handleBookingClick } from "@/config";
 
 const heroSlides = [
   {
-    image: "/iv-therapy.jpg",
-    tagline: "IV Therapy & Hydration",
-    accent: "Replenish from within,",
-    accentItalic: "feel the difference.",
-  },
-  {
     image: "/hero-1.jpg",
     tagline: "Modern Wellness Lounge",
     accent: "Unwind, restore,",
@@ -25,6 +19,12 @@ const heroSlides = [
     tagline: "Physician-Guided Care",
     accent: "Science-backed wellness,",
     accentItalic: "personalized for you.",
+  },
+  {
+    image: "/iv-therapy.jpg",
+    tagline: "IV Therapy & Hydration",
+    accent: "Replenish from within,",
+    accentItalic: "feel the difference.",
   },
 ];
 
@@ -254,9 +254,9 @@ export default function Home() {
 
       {/* THE EXPERIENCE */}
       <section className="py-28 px-6 bg-[#E6E6E6]">
-        <div className="max-w-7xl mx-auto grid items-stretch lg:grid-cols-2 gap-8 gap-x-20 lg:gap-y-10">
+        <div className="max-w-7xl mx-auto grid items-stretch lg:grid-cols-12 gap-8 gap-x-16 lg:gap-y-10">
           {/* Title + subtitle — mobile 1st · desktop right column, top */}
-          <FadeIn direction="right" className="lg:col-start-2 lg:row-start-1 lg:self-end">
+          <FadeIn direction="right" className="lg:col-start-8 lg:col-span-5 lg:row-start-1 lg:self-end">
             <p className="text-[#B8A889] text-xs tracking-[0.4em] uppercase mb-5">
               The Experience
             </p>
@@ -269,19 +269,25 @@ export default function Home() {
             </h2>
           </FadeIn>
 
-          {/* Image — mobile 2nd · desktop left column, spans both rows */}
-          <FadeIn direction="left" className="lg:col-start-1 lg:row-start-1 lg:row-span-2">
-            <div className="relative aspect-3/4 lg:aspect-auto lg:h-full overflow-hidden">
-              <img
-                src="/treatment-1.jpg"
-                alt="Relaxed wellness experience"
+          {/* Video */}
+          <FadeIn direction="left" className="lg:col-start-1 lg:col-span-7 lg:row-start-1 lg:row-span-2 lg:self-center">
+            <div className="relative aspect-video overflow-hidden">
+              <video
                 className="absolute inset-0 w-full h-full object-cover"
+                src="/experience.mp4"
+                poster="/treatment-1.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="The MyJoviRX wellness experience"
               />
             </div>
           </FadeIn>
 
           {/* Body — mobile 3rd · desktop right column, below subtitle */}
-          <FadeIn direction="right" className="lg:col-start-2 lg:row-start-2 lg:self-start">
+          <FadeIn direction="right" className="lg:col-start-8 lg:col-span-5 lg:row-start-2 lg:self-start">
             <p className="text-[#453122]/70 leading-relaxed mb-6">
               Every visit begins with a medical consultation and ends with a plan
               built around your goals. From hydration and recovery to hormones and
