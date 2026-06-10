@@ -1,221 +1,607 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
 import { BOOKING_URL, handleBookingClick } from "@/config";
-import { ArrowRight, Clock, ShieldCheck, Video, BadgeDollarSign } from "lucide-react";
-import FadeIn from "@/components/ui/FadeIn";
+import {
+  ArrowUpRight,
+  Syringe,
+  Droplets,
+  Zap,
+  FlaskConical,
+  Stethoscope,
+  ShieldCheck,
+  Clock,
+} from "lucide-react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+
+const EASE = [0.22, 1, 0.36, 1];
+
+// Container that staggers its direct motion children into view.
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.08 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 26 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.85, ease: EASE } },
+};
+
+const maskChild = {
+  hidden: { y: "115%" },
+  show: { y: 0, transition: { duration: 0.95, ease: EASE } },
+};
+
+// A single line of type that wipes up from behind a mask.
+function MaskLine({ children, className = "" }) {
+  return (
+    <span className="block overflow-hidden pb-[0.06em]">
+      <motion.span variants={maskChild} className={`block ${className}`}>
+        {children}
+      </motion.span>
+    </span>
+  );
+}
+
+function TreatmentArc({ services }) {
+  const N = services.length;
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  // Responsive geometry (circle diameter, side diameter, x-offset, arc lift).
+  const [dims, setDims] = useState({
+    center: 384,
+    side: 250,
+    offset: 322,
+    arc: 50,
+  });
+
+  useEffect(() => {
+    const compute = () => {
+      const w = window.innerWidth;
+      if (w < 640) setDims({ center: 196, side: 128, offset: 126, arc: 26 });
+      else if (w < 1024)
+        setDims({ center: 300, side: 196, offset: 248, arc: 40 });
+      else setDims({ center: 384, side: 250, offset: 322, arc: 50 });
+    };
+    compute();
+    window.addEventListener("resize", compute);
+    return () => window.removeEventListener("resize", compute);
+  }, []);
+
+  // Auto-advance, pausing while the user is hovering / interacting.
+  useEffect(() => {
+    if (paused) return;
+    const id = setTimeout(() => setActive((a) => (a + 1) % N), 5200);
+    return () => clearTimeout(id);
+  }, [active, paused, N]);
+
+  // Shortest signed distance from the active index (…, -1, 0, 1, …).
+  const slotOf = (i) => {
+    let d = ((i - active) % N + N) % N;
+    if (d > N / 2) d -= N;
+    return d;
+  };
+
+  // Target transform for a given slot.
+  const transformFor = (slot) => {
+    if (slot === 0) {
+      return { x: 0, y: -dims.arc, scale: 1, zIndex: 30 };
+    }
+    const dir = slot > 0 ? 1 : -1;
+    return {
+      x: dir * dims.offset,
+      y: dims.arc * 0.85,
+      scale: dims.side / dims.center,
+      zIndex: 20,
+    };
+  };
+
+  const select = (i) => setActive(i);
+
+  const current = services[active];
+
+  return (
+    <div
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Stage */}
+      <div
+        className="relative mx-auto w-full max-w-5xl"
+        style={{ height: dims.center + 120 }}
+      >
+        {/* Soft glow behind the centre circle */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{
+            width: dims.center * 1.5,
+            height: dims.center * 1.5,
+            background:
+              "radial-gradient(circle, rgba(212,207,196,0.55), transparent 68%)",
+          }}
+        />
+
+        {/* Circles */}
+        <AnimatePresence>
+          {services.map((s, i) => {
+            const slot = slotOf(i);
+            if (Math.abs(slot) > 1) return null; // only 3 visible
+            const target = transformFor(slot);
+            const isActive = slot === 0;
+            const sideScale = dims.side / dims.center;
+
+            return (
+              <motion.button
+                key={s.name}
+                type="button"
+                onClick={(e) =>
+                  isActive ? handleBookingClick(e) : select(i)
+                }
+                aria-label={
+                  isActive ? `Reserve ${s.name}` : `View ${s.name}`
+                }
+                className="group absolute left-1/2 top-1/2 overflow-hidden rounded-full shadow-[0_30px_60px_-28px_rgba(44,42,38,0.5)] ring-1 ring-white/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C8273]"
+                style={{
+                  width: dims.center,
+                  height: dims.center,
+                  marginLeft: -dims.center / 2,
+                  marginTop: -dims.center / 2,
+                }}
+                initial={{ ...target, opacity: 0 }}
+                animate={{ ...target, opacity: 1 }}
+                exit={{
+                  opacity: 0,
+                  scale: sideScale * 0.85,
+                  transition: { duration: 0.4, ease: EASE },
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 140,
+                  damping: 23,
+                  mass: 0.7,
+                }}
+                whileHover={!isActive ? { scale: sideScale * 1.05 } : undefined}
+              >
+                <img
+                  src={s.image}
+                  alt=""
+                  draggable={false}
+                  className="h-full w-full object-cover"
+                />
+
+                {isActive ? (
+                  <span className="pointer-events-none absolute inset-0 rounded-full ring-2 ring-[#FBF9F6]/70" />
+                ) : (
+                  <>
+                    <span className="pointer-events-none absolute inset-0 bg-[#2C2A26]/35 transition-colors duration-300 group-hover:bg-[#2C2A26]/15" />
+                    <span className="pointer-events-none absolute bottom-[15%] left-1/2 -translate-x-1/2 whitespace-nowrap text-[16px] font-medium uppercase tracking-[0.16em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+                      {s.short}
+                    </span>
+                  </>
+                )}
+              </motion.button>
+            );
+          })}
+        </AnimatePresence>
+      </div>
+
+      {/* Active treatment details */}
+      <div className="relative z-10 mx-auto mt-4 max-w-xl px-6 text-center min-h-[260px] md:min-h-[240px]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.45, ease: EASE }}
+          >
+            {current.popular && (
+              <span className="mb-4 inline-block text-[9px] uppercase tracking-[0.35em] text-[#8C8273]">
+                Highly Requested
+              </span>
+            )}
+
+            <h3 className="mb-4 font-serif text-3xl font-light leading-[1.1] text-[#2C2A26] md:text-5xl">
+              {current.name}
+            </h3>
+
+            <p className="mx-auto mb-8 max-w-lg text-sm font-light leading-relaxed text-[#2C2A26]/65 md:text-base">
+              {current.description}
+            </p>
+
+            <div className="mb-9 flex items-center justify-center gap-8">
+              <div>
+                <p className="mb-1.5 text-[10px] uppercase tracking-[0.2em] text-[#2C2A26]/40">
+                  Investment
+                </p>
+                <span className="font-serif text-xl">{current.price}</span>
+              </div>
+              <span className="h-9 w-px bg-[#2C2A26]/15" />
+              <div>
+                <p className="mb-1.5 text-[10px] uppercase tracking-[0.2em] text-[#2C2A26]/40">
+                  Duration
+                </p>
+                <span className="font-serif text-xl">{current.duration}</span>
+              </div>
+            </div>
+
+            <a
+              href={BOOKING_URL}
+              onClick={handleBookingClick}
+              className="group inline-flex items-center justify-center gap-3 rounded-sm bg-[#2C2A26] px-9 py-4 text-[10px] uppercase tracking-[0.3em] text-white transition-colors duration-500 hover:bg-[#8C8273]"
+            >
+              Reserve {current.short}
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Dots */}
+      <div className="mt-6 flex justify-center gap-2.5">
+        {services.map((s, i) => (
+          <button
+            key={s.name}
+            type="button"
+            onClick={() => select(i)}
+            aria-label={`Show ${s.name}`}
+            className={`h-1.5 rounded-full transition-all duration-400 ${
+              i === active
+                ? "w-7 bg-[#8C8273]"
+                : "w-1.5 bg-[#2C2A26]/20 hover:bg-[#2C2A26]/40"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Services() {
   const mainServices = [
     {
       name: "Signature IV Drip",
-      description: "A custom blend of fluids, electrolytes, vitamins, and antioxidants delivered intravenously for rapid hydration, immune support, and recovery. Choose from energy, immunity, beauty, and recovery formulas.",
+      short: "IV Drip",
+      description:
+        "A custom blend of fluids, electrolytes, vitamins, and antioxidants delivered intravenously for rapid hydration, immune support, and recovery. Choose from energy, immunity, beauty, and recovery formulas.",
       duration: "30–45 min",
       price: "From $149",
-      image: "/hero-2.jpg"
+      image: "/hero-2.jpg",
     },
     {
       name: "NAD+ Restoration",
-      description: "A premium cellular therapy that supports energy production, mental clarity, and healthy aging. Administered slowly and comfortably by our medical team in a private suite.",
+      short: "NAD+",
+      description:
+        "A premium cellular therapy that supports energy production, mental clarity, and healthy aging. Administered slowly and comfortably by our medical team in a private suite.",
       duration: "60–90 min",
       price: "From $399",
       image: "/treatment-5.jpg",
-      popular: true
+      popular: true,
     },
     {
       name: "Hormone Optimization",
-      description: "Testosterone replacement and hormone balancing for men and women, with routine lab monitoring to address fatigue, low libido, brain fog, and athletic performance.",
+      short: "Hormone",
+      description:
+        "Testosterone replacement and hormone balancing for men and women, with routine lab monitoring to address fatigue, low libido, brain fog, and athletic performance.",
       duration: "Monthly",
       price: "From $199/mo",
       image: "/treatment-6.jpg",
-      popular: true
+      popular: true,
     },
     {
       name: "Medical Weight Loss",
-      description: "Physician-supervised GLP-1 and peptide programs (semaglutide / tirzepatide) paired with nutrition guidance and check-ins for sustainable, healthy results.",
+      short: "Weight Loss",
+      description:
+        "Physician-supervised GLP-1 and peptide programs (semaglutide / tirzepatide) paired with nutrition guidance and check-ins for sustainable, healthy results.",
       duration: "Monthly",
       price: "From $299/mo",
-      image: "/treatment-4.jpg"
-    }
+      image: "/treatment-4.jpg",
+    },
   ];
 
   const maintenance = [
-    { name: "Vitamin B12 / Lipo-MIC Shot", price: "+$35", duration: "10 min" },
-    { name: "Glutathione Push", price: "+$45", duration: "15 min" },
-    { name: "NAD+ Add-On Boost", price: "+$99", duration: "30 min" },
-    { name: "Myers' Cocktail Upgrade", price: "+$50", duration: "15 min" }
+    { name: "Vitamin B12 / Lipo-MIC Shot", price: "+$35", duration: "10 min", icon: Syringe },
+    { name: "Glutathione Push", price: "+$45", duration: "15 min", icon: Droplets },
+    { name: "NAD+ Add-On Boost", price: "+$99", duration: "30 min", icon: Zap },
+    { name: "Myers' Cocktail Upgrade", price: "+$50", duration: "15 min", icon: FlaskConical },
   ];
 
+  const pillars = [
+    {
+      icon: Stethoscope,
+      title: "Physician-Guided",
+      desc: "Every protocol overseen by a licensed provider.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Pharmacy-Grade",
+      desc: "Premium, lab-tested ingredients, every time.",
+    },
+    {
+      icon: FlaskConical,
+      title: "Evidence-Based",
+      desc: "Protocols grounded in clinical research.",
+    },
+    {
+      icon: Clock,
+      title: "Unrushed Care",
+      desc: "Private suites, with time to do it right.",
+    },
+  ];
+
+  // Hero parallax — the intro lifts and dissolves as the page advances.
+  const heroRef = React.useRef(null);
+  const { scrollYProgress: heroScroll } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroY = useTransform(heroScroll, [0, 1], [0, 140]);
+  const heroOpacity = useTransform(heroScroll, [0, 0.85], [1, 0]);
+
   return (
-    <div className="min-h-screen bg-[#FFFFFF] pt-32 pb-24">
-      {/* Editorial Header */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-32">
-        <div className="max-w-3xl">
-          <FadeIn>
-            <p className="text-[#B8A889] text-[10px] tracking-[0.5em] uppercase mb-6">
-              The Menu
-            </p>
-            <h1 className="font-serif text-6xl md:text-8xl text-[#0F0F0F] mb-10 leading-[0.9]">
-              Tailored <br />
-              <span className="italic font-light">Protocols.</span>
-            </h1>
-            <p className="text-[#453122]/60 text-lg md:text-xl leading-relaxed border-l border-[#0F0F0F]/10 pl-8">
-              At MyJoviRX, every treatment begins with a medical consultation.
-              Our protocols are unrushed, evidence-based, and overseen by licensed
-              providers using premium, pharmacy-grade ingredients.
-            </p>
-          </FadeIn>
+    <div className="min-h-screen bg-[#FBF9F6] text-[#2C2A26] font-sans selection:bg-[#D4CFC4] selection:text-[#2C2A26] overflow-clip">
+
+      {/* ───────── Hero ───────── */}
+      <section
+        ref={heroRef}
+        className="relative pt-44 md:pt-56 pb-28 px-6 lg:px-12 max-w-5xl mx-auto text-center"
+      >
+        <motion.div
+          style={{ y: heroY, opacity: heroOpacity }}
+          variants={stagger}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.span
+            variants={fadeUp}
+            className="block text-[9px] tracking-[0.5em] uppercase text-[#8C8273] mb-9"
+          >
+            Treatment Menu
+          </motion.span>
+
+          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.08] font-light text-[#2C2A26] mb-9">
+            <MaskLine>Curated protocols for</MaskLine>
+            <MaskLine className="italic text-[#8C8273]">
+              optimal well-being.
+            </MaskLine>
+          </h1>
+
+          <motion.p
+            variants={fadeUp}
+            className="text-[#2C2A26]/60 text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-light"
+          >
+            Every treatment begins with an unrushed medical consultation. Our
+            protocols are evidence-based, overseen by licensed providers, and
+            utilize premium, pharmacy-grade ingredients.
+          </motion.p>
+
+          {/* Scroll cue */}
+          <motion.div
+            variants={fadeUp}
+            className="mt-16 flex flex-col items-center gap-3"
+          >
+            <span className="text-[9px] tracking-[0.4em] uppercase text-[#2C2A26]/35">
+              Explore
+            </span>
+            <span className="relative block h-12 w-px overflow-hidden bg-[#2C2A26]/15">
+              <motion.span
+                className="absolute inset-x-0 top-0 h-4 bg-[#8C8273]"
+                animate={{ y: ["-100%", "300%"] }}
+                transition={{
+                  duration: 2.2,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                  repeatDelay: 0.2,
+                }}
+              />
+            </span>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* ───────── Values band ───────── */}
+      <section className="border-y border-[#2C2A26]/10 bg-[#F4F1EB]/70">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          className="max-w-6xl mx-auto px-6 lg:px-12 py-14 md:py-16 grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-6"
+        >
+          {pillars.map((p, i) => (
+            <motion.div
+              key={p.title}
+              variants={fadeUp}
+              className={`group flex flex-col items-center text-center px-2 md:px-6 ${
+                i !== 0 ? "md:border-l md:border-[#2C2A26]/10" : ""
+              }`}
+            >
+              <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#8C8273]/12 text-[#8C8273] transition-all duration-500 group-hover:-translate-y-0.5 group-hover:bg-[#8C8273] group-hover:text-white">
+                <p.icon className="h-5 w-5" strokeWidth={1.5} />
+              </span>
+              <h3 className="font-serif text-lg md:text-xl text-[#2C2A26] mb-1.5">
+                {p.title}
+              </h3>
+              <p className="text-[12px] leading-relaxed font-light text-[#2C2A26]/55 max-w-[18ch]">
+                {p.desc}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* ───────── Treatments (circular coverflow) ───────── */}
+      <section className="relative overflow-hidden">
+        {/* Static gradient wash — premium, but zero per-frame cost */}
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(55% 45% at 50% 24%, rgba(212,207,196,0.45), transparent 70%),
+              radial-gradient(40% 40% at 12% 86%, rgba(140,130,115,0.12), transparent 72%),
+              radial-gradient(40% 40% at 90% 88%, rgba(184,168,137,0.12), transparent 72%),
+              linear-gradient(180deg, #FBF9F6 0%, #F3EFE8 50%, #FBF9F6 100%)
+            `,
+          }}
+        />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-12 py-28 md:py-36">
+          {/* Section heading */}
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+            className="max-w-2xl mx-auto text-center mb-14 md:mb-20"
+          >
+            <motion.span
+              variants={fadeUp}
+              className="block text-[9px] tracking-[0.5em] uppercase text-[#8C8273] mb-6"
+            >
+              Signature Protocols
+            </motion.span>
+            <h2 className="font-serif text-3xl md:text-5xl font-light leading-[1.1] mb-6">
+              <MaskLine>The Treatments</MaskLine>
+            </h2>
+            <motion.p
+              variants={fadeUp}
+              className="text-[#2C2A26]/60 text-sm md:text-base leading-relaxed font-light"
+            >
+              Tap any circle to explore — each protocol is tailored to your
+              biology and guided by a licensed provider.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.9, ease: EASE }}
+          >
+            <TreatmentArc services={mainServices} />
+          </motion.div>
         </div>
-      </div>
+      </section>
 
-      {/* Main Services - Alternating Layout */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-12 mb-40">
-        <div className="space-y-32">
-          {mainServices.map((service, index) => (
-            <FadeIn key={service.name} direction={index % 2 === 0 ? "left" : "right"}>
-              <div className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 lg:gap-24`}>
-                {/* Image Container */}
-                <div className="w-full md:w-1/2 aspect-4/5 overflow-hidden bg-[#E6E6E6]">
-                  <img
-                    src={service.image}
-                    alt={service.name}
-                    className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
-                  />
-                </div>
+      {/* ───────── Enhancements / Boosters ───────── */}
+      <section className="relative overflow-hidden bg-[#F0EEE9] py-28 md:py-32">
+        {/* Soft static wash */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(55% 50% at 50% 0%, rgba(212,207,196,0.45), transparent 70%)",
+          }}
+        />
 
-                {/* Content Container */}
-                <div className="w-full md:w-1/2">
-                  {service.popular && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 6 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      className="inline-flex items-center gap-2.5 mb-6 pl-3 pr-4 py-1.5 rounded-full border border-[#B8A889]/50"
-                    >
-                      <span className="relative flex h-1.5 w-1.5">
-                        <motion.span
-                          className="absolute inline-flex h-full w-full rounded-full bg-[#B8A889]"
-                          animate={{ scale: [1, 2.8], opacity: [0.5, 0] }}
-                          transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
-                        />
-                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#B8A889]" />
-                      </span>
-                      <span className="text-[9px] tracking-[0.35em] uppercase text-[#453122] font-medium">
-                        Most Requested
-                      </span>
-                    </motion.div>
-                  )}
-                  <h2 className="font-serif text-4xl md:text-5xl text-[#0F0F0F] mb-6 italic">
-                    {service.name}
-                  </h2>
-                  <p className="text-[#453122]/70 text-lg leading-relaxed mb-10">
-                    {service.description}
+        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-12">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+            className="text-center mb-14 md:mb-16"
+          >
+            <motion.span
+              variants={fadeUp}
+              className="block text-[9px] tracking-[0.5em] uppercase text-[#8C8273] mb-6"
+            >
+              Enhancements
+            </motion.span>
+            <h2 className="font-serif text-3xl md:text-5xl font-light mb-6">
+              <MaskLine>Targeted Boosters</MaskLine>
+            </h2>
+            <motion.p
+              variants={fadeUp}
+              className="text-[#2C2A26]/60 text-sm md:text-base leading-relaxed font-light max-w-xl mx-auto"
+            >
+              Add a focused boost to any treatment — quick, potent, and chosen
+              around exactly how you want to feel.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-60px" }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-5"
+          >
+            {maintenance.map((item) => (
+              <motion.div key={item.name} variants={fadeUp} className="h-full">
+                <div className="group relative flex h-full flex-col border border-[#2C2A26]/10 bg-[#FBF9F6]/70 p-7 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-[#8C8273]/40 hover:bg-white hover:shadow-[0_28px_55px_-32px_rgba(44,42,38,0.45)]">
+                  {/* hover top accent */}
+                  <span className="pointer-events-none absolute top-0 left-0 h-px w-full bg-[#8C8273] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
+
+                  <span className="mb-7 flex h-12 w-12 items-center justify-center rounded-full bg-[#8C8273]/12 text-[#8C8273] transition-colors duration-500 group-hover:bg-[#8C8273] group-hover:text-white">
+                    <item.icon className="h-5 w-5" strokeWidth={1.5} />
+                  </span>
+
+                  <h4 className="text-[15px] font-medium leading-snug text-[#2C2A26] mb-1.5">
+                    {item.name}
+                  </h4>
+                  <p className="text-[10px] tracking-[0.2em] uppercase text-[#2C2A26]/45">
+                    {item.duration}
                   </p>
 
-                  <div className="flex items-end justify-between border-b border-[#0F0F0F]/10 pb-6">
-                    <div className="flex items-center gap-3 text-[#0F0F0F]/40 uppercase text-[10px] tracking-[0.2em]">
-                      <Clock className="w-4 h-4" />
-                      {service.duration}
-                    </div>
-                    <span className="font-serif text-3xl text-[#0F0F0F]">{service.price}</span>
-                  </div>
-
-                  <a
-                    href={BOOKING_URL}
-                    onClick={handleBookingClick}
-                    className="inline-flex items-center gap-4 mt-10 text-[10px] tracking-[0.3em] uppercase group"
-                  >
-                    Book This Treatment
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-                  </a>
+                  <span className="mt-auto pt-8 font-serif text-2xl text-[#8C8273]">
+                    {item.price}
+                  </span>
                 </div>
-              </div>
-            </FadeIn>
-          ))}
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Closing note */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.7, ease: EASE }}
+            className="mt-12 text-center text-[11px] tracking-[0.25em] uppercase text-[#2C2A26]/40"
+          >
+            Boosters can be added to any visit — just ask your provider.
+          </motion.p>
         </div>
       </section>
 
-      {/* Add-Ons & Boosters */}
-      <section className="bg-[#453122] py-32 text-white mb-40">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-20">
-            <FadeIn>
-              <p className="text-[#B8A889] text-[10px] tracking-[0.5em] uppercase mb-6">
-                Enhancements
-              </p>
-              <h2 className="font-serif text-5xl mb-8">Add-Ons &amp; <br/>Boosters</h2>
-              <p className="text-white/40 max-w-md leading-relaxed">
-                Targeted boosters to amplify any drip — or quick, in-and-out
-                injections you can add on their own to support energy, immunity,
-                and recovery.
-              </p>
-            </FadeIn>
-
-            <div className="space-y-2">
-              {maintenance.map((item, idx) => (
-                <FadeIn key={item.name} delay={idx * 0.1}>
-                  <div className="flex items-center justify-between py-8 border-b border-white/10 group hover:bg-white/2 px-4 transition-colors">
-                    <div>
-                      <h4 className="text-lg mb-1">{item.name}</h4>
-                      <p className="text-white/30 text-[10px] tracking-widest uppercase">{item.duration}</p>
-                    </div>
-                    <span className="font-serif text-2xl text-[#B8A889]">{item.price}</span>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Clinic Policies - Clean Grid */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-12 mb-40">
-        <div className="grid md:grid-cols-3 gap-12 border-t border-[#0F0F0F]/10 pt-20">
-          <FadeIn delay={0.1}>
-            <ShieldCheck className="w-8 h-8 text-[#453122] mb-6" />
-            <h4 className="font-serif text-xl text-[#0F0F0F] mb-4">Medical Oversight</h4>
-            <p className="text-[#453122]/60 text-sm leading-relaxed">
-              Every protocol is reviewed and overseen by a licensed medical provider, with safety screening before treatment.
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.2}>
-            <Video className="w-8 h-8 text-[#453122] mb-6" />
-            <h4 className="font-serif text-xl text-[#0F0F0F] mb-4">Telehealth Visits</h4>
-            <p className="text-[#453122]/60 text-sm leading-relaxed">
-              Many consultations, lab reviews, and prescription refills are available virtually — from anywhere, on your schedule.
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.3}>
-            <BadgeDollarSign className="w-8 h-8 text-[#453122] mb-6" />
-            <h4 className="font-serif text-xl text-[#0F0F0F] mb-4">Transparent Pricing</h4>
-            <p className="text-[#453122]/60 text-sm leading-relaxed">
-              No surprise fees, hidden costs, or billing confusion — just clear pricing before you ever begin.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="max-w-5xl mx-auto px-6 text-center">
-        <FadeIn>
-          <div className="bg-[#E6E6E6] py-24 px-12 relative overflow-hidden">
-            <div className="relative z-10">
-              <h2 className="font-serif text-5xl text-[#0F0F0F] mb-8">
-                Ready to <span className="italic">Feel Your Best?</span>
-              </h2>
-              <a
-                href={BOOKING_URL}
-                onClick={handleBookingClick}
-                className="inline-flex items-center gap-4 bg-[#0F0F0F] text-white px-12 py-5 text-[10px] tracking-[0.4em] uppercase hover:bg-[#453122] transition-all"
-              >
-                Book a Consultation
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-            {/* Decorative element */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
-          </div>
-        </FadeIn>
+      {/* ───────── Call to action ───────── */}
+      <section className="py-36 px-6 text-center max-w-3xl mx-auto">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+        >
+          <h2 className="font-serif text-3xl md:text-5xl font-light mb-8 leading-[1.12]">
+            <MaskLine>Ready to elevate</MaskLine>
+            <MaskLine className="italic text-[#8C8273]">your baseline?</MaskLine>
+          </h2>
+          <motion.p
+            variants={fadeUp}
+            className="text-[#2C2A26]/60 text-sm leading-relaxed mb-10 font-light max-w-lg mx-auto"
+          >
+            Schedule a consultation with our medical team to design a protocol
+            tailored precisely to your biology.
+          </motion.p>
+          <motion.div variants={fadeUp}>
+            <a
+              href={BOOKING_URL}
+              onClick={handleBookingClick}
+              className="group inline-flex items-center justify-center gap-3 bg-[#2C2A26] text-white px-10 py-4 text-[10px] tracking-[0.3em] uppercase hover:bg-[#8C8273] transition-colors duration-500 rounded-sm"
+            >
+              Book a Consultation
+              <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          </motion.div>
+        </motion.div>
       </section>
     </div>
   );
