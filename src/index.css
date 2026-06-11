@@ -158,9 +158,8 @@ html.lenis body {
   --font-head: "Garet", system-ui, sans-serif;
   --font-body: "DM Sans", system-ui, sans-serif;
 
-  /* Heading weight — overridden by [data-weight]; default = Light so big
-     geometric faces (Garet) don't shout. */
-  --font-head-weight: 300;
+  /* Heading weight — overridden by [data-weight]; default = Bold. */
+  --font-head-weight: 700;
 }
 
 /* ───── Palette 2 · Cool Blue (telehealth) ───── */

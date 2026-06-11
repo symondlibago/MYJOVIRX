@@ -17,7 +17,7 @@ const STORAGE_KEY = "myjovirx-theme";
 const DEFAULTS = {
   palette: "current",
   font: "garet",
-  weight: "light",
+  weight: "bold",
   italic: "off",
   design: "editorial",
   customColors: {}, // { paletteId: { roleId: "#hex" } }
