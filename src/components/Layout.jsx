@@ -42,31 +42,26 @@ export default function Layout({ children }) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FCFAF7]">
+    <div className="min-h-screen bg-ivory">
       <style>{`
-        :root {
-          --color-ivory: #FCFAF7;
-          --color-charcoal: #0F0F0F;
-          --color-stone: #B8A889;
-          --color-blush: #B8A889;
-          --color-espresso: #453122;
-          --color-oxblood: #3E1119;
-          --color-maroon: #6B1F2E;
-        }
-
         ::selection {
-          background-color: #6B1F2E;
+          background-color: var(--color-brand);
           color: #FFFFFF;
         }
 
         body {
-          font-family: 'Inter', sans-serif;
+          font-family: var(--font-body);
           background-color: var(--color-ivory);
-          color: var(--color-charcoal);
+          color: var(--color-ink);
+        }
+
+        .font-sans {
+          font-family: var(--font-body);
         }
 
         .font-serif {
-          font-family: 'Cormorant Garamond', serif;
+          font-family: var(--font-head);
+          font-weight: var(--font-head-weight);
         }
 
         .footer-link {
@@ -81,27 +76,27 @@ export default function Layout({ children }) {
           left: 0;
           width: 0%;
           height: 1px;
-          background-color: #B8A889;
+          background-color: var(--color-gold);
           transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .footer-link:hover::after {
           width: 100%;
         }
         .footer-link:hover {
-          color: #B8A889;
+          color: var(--color-gold);
         }
       `}</style>
       <ScrollToTop />
       {/* Scroll progress bar */}
       <motion.div
         style={{ scaleX: progress }}
-        className="fixed top-0 left-0 right-0 h-0.75 bg-[#6B1F2E] origin-left z-60"
+        className="fixed top-0 left-0 right-0 h-0.75 bg-brand origin-left z-60"
       />
       <NavBar />
       <main>{children}</main>
 
       {/* ───── FOOTER ───── */}
-      <footer className="bg-[#3E1119] text-white">
+      <footer className="bg-brand-deep text-white">
 
         {/* Main Footer Body */}
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
@@ -113,7 +108,7 @@ export default function Layout({ children }) {
                 <span className="font-serif text-4xl tracking-wide block text-white">
                   MyJoviRX
                 </span>
-                <span className="text-[9px] tracking-[0.35em] uppercase text-[#B8A889] mt-1 block">
+                <span className="text-[9px] tracking-[0.35em] uppercase text-gold mt-1 block">
                   Wellness &amp; IV Therapy
                 </span>
               </div>
@@ -127,7 +122,7 @@ export default function Layout({ children }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
-                  className="w-9 h-9 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-[#B8A889] hover:text-[#B8A889] hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-9 h-9 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-gold hover:text-gold hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
@@ -136,14 +131,14 @@ export default function Layout({ children }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
-                  className="w-9 h-9 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-[#B8A889] hover:text-[#B8A889] hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-9 h-9 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-gold hover:text-gold hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <Facebook className="w-4 h-4" />
                 </a>
                 <a
                   href="mailto:hello@myjovirx.com"
                   aria-label="Email"
-                  className="w-9 h-9 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-[#B8A889] hover:text-[#B8A889] hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-9 h-9 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-gold hover:text-gold hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <Mail className="w-4 h-4" />
                 </a>
@@ -167,7 +162,7 @@ export default function Layout({ children }) {
                         to={link.path}
                         className={`footer-link text-sm ${
                           pathname === link.path
-                            ? "text-[#B8A889]"
+                            ? "text-gold"
                             : "text-white/70"
                         }`}
                       >
@@ -205,7 +200,7 @@ export default function Layout({ children }) {
               </h4>
               <ul className="space-y-5 text-sm text-white/60">
                 <li className="flex gap-3">
-                  <MapPin className="w-4 h-4 text-[#B8A889] shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-gold shrink-0 mt-0.5" />
                   <span className="leading-relaxed">
                     250 Fischer Ave<br />
                     Costa Mesa, CA 92626<br />
@@ -213,20 +208,20 @@ export default function Layout({ children }) {
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <Clock className="w-4 h-4 text-[#B8A889] shrink-0 mt-0.5" />
+                  <Clock className="w-4 h-4 text-gold shrink-0 mt-0.5" />
                   <span className="leading-relaxed">
                     Mon – Fri · 9:00 AM – 6:00 PM<br />
                     Saturday · 10:00 AM – 4:00 PM
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <Phone className="w-4 h-4 text-[#B8A889] shrink-0 mt-0.5" />
+                  <Phone className="w-4 h-4 text-gold shrink-0 mt-0.5" />
                   <a href="tel:+19492811440" className="footer-link">
                     (949) 281-1440
                   </a>
                 </li>
                 <li className="flex gap-3">
-                  <Mail className="w-4 h-4 text-[#B8A889] shrink-0 mt-0.5" />
+                  <Mail className="w-4 h-4 text-gold shrink-0 mt-0.5" />
                   <a href="mailto:hello@myjovirx.com" className="footer-link">
                     hello@myjovirx.com
                   </a>
@@ -258,7 +253,7 @@ export default function Layout({ children }) {
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/25">
             <p>© 2026 MyJoviRX. All rights reserved.</p>
-            <p className="text-[#B8A889]/60 tracking-widest uppercase">
+            <p className="text-gold/60 tracking-widest uppercase">
               Telehealth &amp; In-Clinic
             </p>
           </div>

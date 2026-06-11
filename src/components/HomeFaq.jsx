@@ -58,20 +58,20 @@ export default function HomeFaq() {
         {/* Left — heading */}
         <div className="lg:col-span-4">
           <FadeIn direction="left">
-            <p className="text-[#6B1F2E] text-xs tracking-[0.4em] uppercase mb-4">
+            <p className="text-brand text-xs tracking-[0.4em] uppercase mb-4">
               Questions
             </p>
-            <h2 className="font-serif text-5xl md:text-6xl text-[#0F0F0F] leading-tight mb-8">
+            <h2 className="font-serif text-5xl md:text-6xl text-ink leading-tight mb-8">
               Frequently <br />
-              <span className="italic text-[#6B1F2E]">Asked.</span>
+              <span className="italic text-brand">Asked.</span>
             </h2>
-            <p className="text-[#453122]/60 text-sm leading-relaxed mb-8 max-w-xs">
+            <p className="text-espresso/60 text-sm leading-relaxed mb-8 max-w-xs">
               Everything you need to know before your first visit. Still have a
               question? Our team is happy to help.
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-3 border-b-2 border-[#0F0F0F] pb-2 text-[10px] tracking-[0.3em] uppercase hover:border-[#6B1F2E] hover:text-[#6B1F2E] transition-colors"
+              className="inline-flex items-center gap-3 border-b-2 border-ink pb-2 text-[10px] tracking-[0.3em] uppercase hover:border-brand hover:text-brand transition-colors"
             >
               Ask Us Anything
               <ArrowRight className="w-3.5 h-3.5" />
@@ -87,12 +87,12 @@ export default function HomeFaq() {
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="border-b border-[#0F0F0F]/10"
+                  className="border-b border-ink/10"
                 >
-                  <AccordionTrigger className="font-serif text-xl md:text-2xl text-[#0F0F0F] py-6 hover:no-underline">
+                  <AccordionTrigger className="font-serif text-xl md:text-2xl text-ink py-6 hover:no-underline">
                     {item.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-[#453122]/60 text-base leading-relaxed pb-6 pr-8">
+                  <AccordionContent className="text-espresso/60 text-base leading-relaxed pb-6 pr-8">
                     {item.a}
                   </AccordionContent>
                 </AccordionItem>

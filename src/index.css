@@ -21,6 +21,23 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
 
+  /* ── Brand palette tokens (defaults = "Oxblood & Cream" = current design).
+     These are overridden at runtime by [data-palette] further down, so every
+     `bg-brand`, `text-ink`, etc. utility re-colors live when the palette flips. */
+  --color-brand: #6B1F2E;
+  --color-brand-deep: #3E1119;
+  --color-gold: #B8A889;
+  --color-espresso: #453122;
+  --color-ink: #0F0F0F;
+  --color-ink-warm: #2C2A26;
+  --color-ivory: #FCFAF7;
+  --color-cream: #FBF9F6;
+  --color-sand: #F4F1EB;
+  --color-sand2: #F3EFE8;
+  --color-sand3: #E9DFD4;
+  --color-taupe: #8C8273;
+  --color-mist: #E6E6E6;
+
   /* Accordion (FAQ) reveal animations — Tailwind v4 generates
      `animate-accordion-down` / `animate-accordion-up` from these. */
   --animate-accordion-down: accordion-down 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -117,4 +134,117 @@ html.lenis body {
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee { animation: none; }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   THEME SYSTEM  —  driven by data-attributes on <html>
+   (set by the Design Studio panel). Three independent axes:
+     data-palette = current | blue
+     data-font    = cormorant | garet | fraunces
+     data-design  = editorial | modern
+   ════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* RGB triplets — used by rgba()/gradients in inline styles so glows &
+     shadows recolor with the palette too. Default = current palette. */
+  --brand-rgb: 107 31 46;
+  --brand-deep-rgb: 62 17 25;
+  --gold-rgb: 184 168 137;
+  --ink-warm-rgb: 44 42 38;
+  --stone-rgb: 212 207 196;
+  --cream-rgb: 251 249 246;
+
+  /* Font tokens — default = Garet + DM Sans (the current pick). */
+  --font-head: "Garet", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+
+  /* Heading weight — overridden by [data-weight]; default = Light so big
+     geometric faces (Garet) don't shout. */
+  --font-head-weight: 300;
+}
+
+/* ───── Palette 2 · Cool Blue (telehealth) ───── */
+:root[data-palette="blue"] {
+  --color-brand: #3858D6;
+  --color-brand-deep: #1E2A4A;
+  --color-gold: #8FB3E8;
+  --color-espresso: #44557A;
+  --color-ink: #0E1729;
+  --color-ink-warm: #1B2540;
+  --color-ivory: #F5F8FD;
+  --color-cream: #F1F6FD;
+  --color-sand: #E7F0FB;
+  --color-sand2: #E4EDF9;
+  --color-sand3: #D6E5F6;
+  --color-taupe: #8094B4;
+  --color-mist: #DBE5F1;
+
+  --brand-rgb: 56 88 214;
+  --brand-deep-rgb: 30 42 74;
+  --gold-rgb: 143 179 232;
+  --ink-warm-rgb: 27 37 64;
+  --stone-rgb: 197 214 236;
+  --cream-rgb: 241 246 253;
+}
+
+/* ───── Palette 3 · Onyx & Champagne (premium, modern) ───── */
+:root[data-palette="premium"] {
+  --color-brand: #2E2A27;
+  --color-brand-deep: #1A1714;
+  --color-gold: #C3A461;
+  --color-espresso: #6B6258;
+  --color-ink: #1C1A17;
+  --color-ink-warm: #2A2622;
+  --color-ivory: #FAF8F3;
+  --color-cream: #F4F1EA;
+  --color-sand: #ECE7DC;
+  --color-sand2: #E9E3D6;
+  --color-sand3: #DFD7C7;
+  --color-taupe: #8C8578;
+  --color-mist: #E2DDD2;
+
+  --brand-rgb: 46 42 39;
+  --brand-deep-rgb: 26 23 20;
+  --gold-rgb: 195 164 97;
+  --ink-warm-rgb: 42 38 34;
+  --stone-rgb: 214 206 190;
+  --cream-rgb: 244 241 234;
+}
+
+/* ───── Font pairings ───── */
+:root[data-font="cormorant"] {
+  --font-head: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+:root[data-font="garet"] {
+  --font-head: "Garet", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+}
+:root[data-font="fraunces"] {
+  --font-head: "Fraunces", Georgia, serif;
+  --font-body: "Figtree", system-ui, sans-serif;
+}
+
+/* Garet's tall, wide geometry reads noticeably larger than the other faces,
+   so normalize its apparent heading size (by x-height). Lower = smaller. */
+:root[data-font="garet"] .font-serif {
+  font-size-adjust: 0.46;
+}
+
+/* ───── Heading weight ───── */
+:root[data-weight="light"]  { --font-head-weight: 300; }
+:root[data-weight="medium"] { --font-head-weight: 500; }
+:root[data-weight="bold"]   { --font-head-weight: 700; }
+
+/* ───── Italic headings (preview toggle) ───── */
+:root[data-italic="on"] .font-serif { font-style: italic; }
+
+/* ───── Design variants ───── */
+/* Editorial (default): relaxed tracking — no overrides. */
+/* Modern: tighter tracking for a clean clinical feel. */
+:root[data-design="modern"] .font-serif {
+  letter-spacing: -0.015em;
+}
+:root[data-design="modern"] body {
+  letter-spacing: 0.005em;
 }

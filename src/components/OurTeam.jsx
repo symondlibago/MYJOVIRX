@@ -33,7 +33,7 @@ export default function OurTeam() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FCFAF7] pt-32 pb-24">
+    <div className="min-h-screen bg-ivory pt-32 pb-24">
       <Seo
         title="Our Medical Team — Licensed RNs & Medical Director"
         description="Meet the MyJoviRX team: Medical Director Dr. Courtney S. Scott and experienced licensed registered nurses delivering personalized wellness care in Costa Mesa, CA."
@@ -55,17 +55,17 @@ export default function OurTeam() {
 
           <FadeIn direction="right">
             <div className="max-w-xl">
-              <p className="text-[#6B1F2E] text-[15px] tracking-[0.5em] uppercase mb-6">The Medical Director</p>
-              <h1 className="font-serif text-6xl md:text-7xl text-[#0F0F0F] mb-8 leading-tight">
+              <p className="text-brand text-[15px] tracking-[0.5em] uppercase mb-6">The Medical Director</p>
+              <h1 className="font-serif text-6xl md:text-7xl text-ink mb-8 leading-tight">
                 Dr. Courtney <br />
                 <span className="italic">S. Scott</span>
               </h1>
-              <p className="text-[#453122]/70 text-lg leading-relaxed mb-8">
+              <p className="text-espresso/70 text-lg leading-relaxed mb-8">
                 MyJoviRX is led by Medical Director Dr. Courtney S. Scott, whose practice
                 centers on comprehensive care—prevention, evaluation, diagnosis, and
                 treatment—with a focus on anti-aging and longevity.
               </p>
-              <p className="text-[#453122]/70 text-lg leading-relaxed mb-10">
+              <p className="text-espresso/70 text-lg leading-relaxed mb-10">
                 He built MyJoviRX to be a non-clinical, rejuvenating oasis: a place where
                 modern medicine meets genuine hospitality, and where every plan is
                 tailored to how you actually want to feel.
@@ -79,9 +79,9 @@ export default function OurTeam() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-32">
         <FadeIn>
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-[#6B1F2E] text-[10px] tracking-[0.5em] uppercase mb-6">The Team</p>
-            <h2 className="font-serif text-5xl md:text-6xl text-[#0F0F0F] mb-6">Our Wellness Team</h2>
-            <p className="text-[#453122]/60 leading-relaxed">
+            <p className="text-brand text-[10px] tracking-[0.5em] uppercase mb-6">The Team</p>
+            <h2 className="font-serif text-5xl md:text-6xl text-ink mb-6">Our Wellness Team</h2>
+            <p className="text-espresso/60 leading-relaxed">
               Meet the heart of MyJoviRX—a team of experienced, licensed registered nurses
               whose passion, expertise, and genuine care guide every visit.
             </p>
@@ -92,15 +92,15 @@ export default function OurTeam() {
           {team.map((member, index) => (
             <FadeIn key={member.name} delay={(index % 3) * 0.1}>
               <div className="group">
-                <div className="aspect-4/5 overflow-hidden bg-[#E6E6E6] mb-5">
+                <div className="aspect-4/5 overflow-hidden bg-mist mb-5">
                   <img
                     src={member.image}
                     alt={`${member.name}, ${member.credentials}`}
                     className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
                   />
                 </div>
-                <h3 className="font-serif text-2xl text-[#0F0F0F]">{member.name}</h3>
-                <p className="text-[#6B1F2E] text-[10px] tracking-[0.3em] uppercase mt-1.5">
+                <h3 className="font-serif text-2xl text-ink">{member.name}</h3>
+                <p className="text-brand text-[10px] tracking-[0.3em] uppercase mt-1.5">
                   {member.credentials}
                 </p>
               </div>
@@ -110,14 +110,14 @@ export default function OurTeam() {
       </div>
 
       {/* Philosophy / Values Section - Dark Mode Break */}
-      <div className="bg-[#3E1119] py-32 mb-32">
+      <div className="bg-brand-deep py-32 mb-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-3 gap-16">
             {values.map((value, index) => (
               <FadeIn key={value.title} delay={index * 0.1}>
                 <div className="text-center">
                   <div className="flex justify-center mb-8">
-                    <value.icon className="w-10 h-10 text-[#B8A889] stroke-[1px]" />
+                    <value.icon className="w-10 h-10 text-gold stroke-[1px]" />
                   </div>
                   <h3 className="font-serif text-2xl text-white mb-6 italic">{value.title}</h3>
                   <p className="text-white/40 leading-relaxed text-sm tracking-wide">
@@ -142,9 +142,9 @@ export default function OurTeam() {
           </div>
           <div className="lg:col-span-5 flex flex-col justify-center bg-white p-12 md:p-20 shadow-sm">
             <FadeIn>
-              <p className="text-[#6B1F2E] text-[10px] tracking-[0.5em] uppercase mb-6">The Space</p>
-              <h2 className="font-serif text-4xl text-[#0F0F0F] mb-6">A Non-Clinical Oasis</h2>
-              <p className="text-[#453122]/60 leading-relaxed text-sm">
+              <p className="text-brand text-[10px] tracking-[0.5em] uppercase mb-6">The Space</p>
+              <h2 className="font-serif text-4xl text-ink mb-6">A Non-Clinical Oasis</h2>
+              <p className="text-espresso/60 leading-relaxed text-sm">
                 Designed to feel nothing like a hospital, our private lounge and
                 treatment suites offer a serene environment where you can recline,
                 relax, and let your therapy do its work.
@@ -157,11 +157,11 @@ export default function OurTeam() {
       {/* Featured Press / Badges */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-32">
         <FadeIn>
-          <div className="border-y border-[#0F0F0F]/10 py-16">
-            <p className="text-center text-[#6B1F2E] text-[10px] tracking-[0.5em] uppercase mb-12">
+          <div className="border-y border-ink/10 py-16">
+            <p className="text-center text-brand text-[10px] tracking-[0.5em] uppercase mb-12">
               Our Standard
             </p>
-            <div className="flex flex-wrap justify-center items-center gap-16 text-[#453122]/70">
+            <div className="flex flex-wrap justify-center items-center gap-16 text-espresso/70">
               <span className="font-serif text-2xl tracking-tighter uppercase">Licensed</span>
               <span className="font-serif text-2xl tracking-tighter uppercase">Medical-Grade</span>
               <span className="font-serif text-2xl tracking-tighter uppercase">Personalized</span>
@@ -174,16 +174,16 @@ export default function OurTeam() {
       {/* Final CTA */}
       <div className="max-w-3xl mx-auto px-6 text-center">
         <FadeIn>
-          <h2 className="font-serif text-5xl text-[#0F0F0F] mb-8 italic">
+          <h2 className="font-serif text-5xl text-ink mb-8 italic">
             Begin Your Journey
           </h2>
-          <p className="text-[#453122]/60 mb-12 max-w-md mx-auto leading-relaxed">
+          <p className="text-espresso/60 mb-12 max-w-md mx-auto leading-relaxed">
             Ready to feel more like yourself? Book a consultation and we'll build a plan around your goals.
           </p>
           <a
             href={BOOKING_URL}
             onClick={handleBookingClick}
-            className="inline-flex items-center gap-4 bg-[#3E1119] text-white px-12 py-5 text-[10px] tracking-[0.4em] uppercase hover:bg-[#6B1F2E] transition-all group"
+            className="inline-flex items-center gap-4 bg-brand-deep text-white px-12 py-5 text-[10px] tracking-[0.4em] uppercase hover:bg-brand transition-all group"
           >
             Book a Consultation
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />

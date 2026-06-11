@@ -123,7 +123,7 @@ function TreatmentArc({ services }) {
             width: dims.center * 1.5,
             height: dims.center * 1.5,
             background:
-              "radial-gradient(circle, rgba(107,31,46,0.10), transparent 58%), radial-gradient(circle, rgba(212,207,196,0.5), transparent 68%)",
+              "radial-gradient(circle, rgb(var(--brand-rgb) / 0.10), transparent 58%), radial-gradient(circle, rgb(var(--stone-rgb) / 0.5), transparent 68%)",
           }}
         />
 
@@ -146,7 +146,7 @@ function TreatmentArc({ services }) {
                 aria-label={
                   isActive ? `Reserve ${s.name}` : `View ${s.name}`
                 }
-                className="group absolute left-1/2 top-1/2 overflow-hidden rounded-full shadow-[0_30px_60px_-28px_rgba(44,42,38,0.5)] ring-1 ring-white/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C8273]"
+                className="group absolute left-1/2 top-1/2 overflow-hidden rounded-full shadow-[0_30px_60px_-28px_rgba(44,42,38,0.5)] ring-1 ring-white/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-taupe"
                 style={{
                   width: dims.center,
                   height: dims.center,
@@ -176,10 +176,10 @@ function TreatmentArc({ services }) {
                 />
 
                 {isActive ? (
-                  <span className="pointer-events-none absolute inset-0 rounded-full ring-2 ring-[#FBF9F6]/70" />
+                  <span className="pointer-events-none absolute inset-0 rounded-full ring-2 ring-cream/70" />
                 ) : (
                   <>
-                    <span className="pointer-events-none absolute inset-0 bg-[#2C2A26]/35 transition-colors duration-300 group-hover:bg-[#2C2A26]/15" />
+                    <span className="pointer-events-none absolute inset-0 bg-ink-warm/35 transition-colors duration-300 group-hover:bg-ink-warm/15" />
                     <span className="pointer-events-none absolute bottom-[15%] left-1/2 -translate-x-1/2 whitespace-nowrap text-[16px] font-medium uppercase tracking-[0.16em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
                       {s.short}
                     </span>
@@ -202,29 +202,29 @@ function TreatmentArc({ services }) {
             transition={{ duration: 0.45, ease: EASE }}
           >
             {current.popular && (
-              <span className="mb-4 inline-block text-[9px] uppercase tracking-[0.35em] text-[#6B1F2E]">
+              <span className="mb-4 inline-block text-[9px] uppercase tracking-[0.35em] text-brand">
                 Highly Requested
               </span>
             )}
 
-            <h3 className="mb-4 font-serif text-3xl font-light leading-[1.1] text-[#2C2A26] md:text-5xl">
+            <h3 className="mb-4 font-serif text-3xl font-light leading-[1.1] text-ink-warm md:text-5xl">
               {current.name}
             </h3>
 
-            <p className="mx-auto mb-8 max-w-lg text-sm font-light leading-relaxed text-[#2C2A26]/65 md:text-base">
+            <p className="mx-auto mb-8 max-w-lg text-sm font-light leading-relaxed text-ink-warm/65 md:text-base">
               {current.description}
             </p>
 
             <div className="mb-9 flex items-center justify-center gap-8">
               <div>
-                <p className="mb-1.5 text-[10px] uppercase tracking-[0.2em] text-[#2C2A26]/40">
+                <p className="mb-1.5 text-[10px] uppercase tracking-[0.2em] text-ink-warm/40">
                   Investment
                 </p>
                 <span className="font-serif text-xl">{current.price}</span>
               </div>
-              <span className="h-9 w-px bg-[#2C2A26]/15" />
+              <span className="h-9 w-px bg-ink-warm/15" />
               <div>
-                <p className="mb-1.5 text-[10px] uppercase tracking-[0.2em] text-[#2C2A26]/40">
+                <p className="mb-1.5 text-[10px] uppercase tracking-[0.2em] text-ink-warm/40">
                   Duration
                 </p>
                 <span className="font-serif text-xl">{current.duration}</span>
@@ -234,7 +234,7 @@ function TreatmentArc({ services }) {
             <a
               href={BOOKING_URL}
               onClick={handleBookingClick}
-              className="group inline-flex items-center justify-center gap-3 rounded-sm bg-[#3E1119] px-9 py-4 text-[10px] uppercase tracking-[0.3em] text-white transition-colors duration-500 hover:bg-[#6B1F2E]"
+              className="group inline-flex items-center justify-center gap-3 rounded-sm bg-brand-deep px-9 py-4 text-[10px] uppercase tracking-[0.3em] text-white transition-colors duration-500 hover:bg-brand"
             >
               Reserve {current.short}
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -253,8 +253,8 @@ function TreatmentArc({ services }) {
             aria-label={`Show ${s.name}`}
             className={`h-1.5 rounded-full transition-all duration-400 ${
               i === active
-                ? "w-7 bg-[#6B1F2E]"
-                : "w-1.5 bg-[#2C2A26]/20 hover:bg-[#2C2A26]/40"
+                ? "w-7 bg-brand"
+                : "w-1.5 bg-ink-warm/20 hover:bg-ink-warm/40"
             }`}
           />
         ))}
@@ -345,41 +345,62 @@ export default function Treatments() {
   const heroOpacity = useTransform(heroScroll, [0, 0.85], [1, 0]);
 
   return (
-    <div className="min-h-screen bg-white text-[#2C2A26] font-sans selection:bg-[#6B1F2E] selection:text-[#FBF9F6] overflow-clip">
+    <div className="min-h-screen bg-white text-ink-warm font-sans selection:bg-brand selection:text-cream overflow-clip">
       <Seo
         title="IV Therapy, NAD+ & Weight Loss Treatments in Costa Mesa, CA"
         description="Explore MyJoviRX treatments: Signature IV drips from $149, NAD+ restoration, hormone optimization, and GLP-1 medical weight loss — all physician-guided in Costa Mesa, CA."
         path="/services"
       />
 
-      {/* ───────── Hero ───────── */}
+      {/* ───────── Hero (background photo + glass box) ───────── */}
       <section
         ref={heroRef}
-        className="relative pt-44 md:pt-56 pb-28 px-6 lg:px-12 max-w-5xl mx-auto text-center"
+        className="relative flex min-h-[92vh] items-center justify-center overflow-hidden px-6 py-32 md:py-40"
       >
+        {/* Full-bleed background photo */}
         <motion.div
-          style={{ y: heroY, opacity: heroOpacity }}
+          aria-hidden
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/treatments.jpg')" }}
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.6, ease: EASE }}
+        />
+        {/* Gentle wash to seat the box and soften the photo */}
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-b from-ink-warm/15 via-transparent to-ink-warm/20"
+        />
+
+        {/* Transparent glass box in front */}
+        <motion.div
+          style={{
+            y: heroY,
+            opacity: heroOpacity,
+            textShadow: "0 1px 16px rgba(251,249,246,0.85)",
+          }}
           variants={stagger}
           initial="hidden"
           animate="show"
+          className="relative z-10 w-full max-w-5xl rounded-[28px] md:rounded-[36px] ring-1 ring-white/25 bg-cream/35 px-8 py-14 text-center md:px-16 md:py-20"
         >
           <motion.span
             variants={fadeUp}
-            className="block text-[9px] tracking-[0.5em] uppercase text-[#6B1F2E] mb-9"
+            className="block text-[9px] tracking-[0.5em] uppercase text-brand mb-9"
           >
             Treatment Menu
           </motion.span>
 
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.08] font-light text-[#2C2A26] mb-9">
+          <h1 className="font-serif text-4xl md:text-6xl leading-[1.08] font-light text-ink-warm mb-9">
             <MaskLine>Curated protocols for</MaskLine>
-            <MaskLine className="italic text-[#6B1F2E]">
+            <MaskLine className="italic text-brand">
               optimal well-being.
             </MaskLine>
           </h1>
 
           <motion.p
             variants={fadeUp}
-            className="text-[#2C2A26]/60 text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-light"
+            className="text-ink-warm text-sm md:text-base leading-relaxed max-w-xl mx-auto font-md"
           >
             Every treatment begins with an unrushed medical consultation. Our
             protocols are evidence-based, overseen by licensed providers, and
@@ -389,14 +410,14 @@ export default function Treatments() {
           {/* Scroll cue */}
           <motion.div
             variants={fadeUp}
-            className="mt-16 flex flex-col items-center gap-3"
+            className="mt-14 flex flex-col items-center gap-3"
           >
-            <span className="text-[9px] tracking-[0.4em] uppercase text-[#2C2A26]/35">
+            <span className="text-[9px] tracking-[0.4em] uppercase text-ink-warm/45">
               Explore
             </span>
-            <span className="relative block h-12 w-px overflow-hidden bg-[#2C2A26]/15">
+            <span className="relative block h-12 w-px overflow-hidden bg-ink-warm/20">
               <motion.span
-                className="absolute inset-x-0 top-0 h-4 bg-[#6B1F2E]"
+                className="absolute inset-x-0 top-0 h-4 bg-brand"
                 animate={{ y: ["-100%", "300%"] }}
                 transition={{
                   duration: 2.2,
@@ -411,7 +432,7 @@ export default function Treatments() {
       </section>
 
       {/* ───────── Values band ───────── */}
-      <section className="border-y border-[#2C2A26]/10 bg-[#F4F1EB]/70">
+      <section className="border-y border-ink-warm/10 bg-sand/70">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -424,16 +445,16 @@ export default function Treatments() {
               key={p.title}
               variants={fadeUp}
               className={`group flex flex-col items-center text-center px-2 md:px-6 ${
-                i !== 0 ? "md:border-l md:border-[#2C2A26]/10" : ""
+                i !== 0 ? "md:border-l md:border-ink-warm/10" : ""
               }`}
             >
-              <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#6B1F2E]/10 text-[#6B1F2E] transition-all duration-500 group-hover:-translate-y-0.5 group-hover:bg-[#6B1F2E] group-hover:text-white">
+              <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand transition-all duration-500 group-hover:-translate-y-0.5 group-hover:bg-brand group-hover:text-white">
                 <p.icon className="h-5 w-5" strokeWidth={1.5} />
               </span>
-              <h3 className="font-serif text-lg md:text-xl text-[#2C2A26] mb-1.5">
+              <h3 className="font-serif text-lg md:text-xl text-ink-warm mb-1.5">
                 {p.title}
               </h3>
-              <p className="text-[12px] leading-relaxed font-light text-[#2C2A26]/55 max-w-[18ch]">
+              <p className="text-[12px] leading-relaxed font-light text-ink-warm/55 max-w-[18ch]">
                 {p.desc}
               </p>
             </motion.div>
@@ -449,10 +470,10 @@ export default function Treatments() {
           className="absolute inset-0"
           style={{
             background: `
-              radial-gradient(55% 45% at 50% 24%, rgba(212,207,196,0.45), transparent 70%),
-              radial-gradient(40% 40% at 12% 86%, rgba(107,31,46,0.08), transparent 72%),
-              radial-gradient(40% 40% at 90% 88%, rgba(184,168,137,0.12), transparent 72%),
-              linear-gradient(180deg, #FFFFFF 0%, #F3EFE8 50%, #FFFFFF 100%)
+              radial-gradient(55% 45% at 50% 24%, rgb(var(--stone-rgb) / 0.45), transparent 70%),
+              radial-gradient(40% 40% at 12% 86%, rgb(var(--brand-rgb) / 0.08), transparent 72%),
+              radial-gradient(40% 40% at 90% 88%, rgb(var(--gold-rgb) / 0.12), transparent 72%),
+              linear-gradient(180deg, #FFFFFF 0%, var(--color-sand2) 50%, #FFFFFF 100%)
             `,
           }}
         />
@@ -468,7 +489,7 @@ export default function Treatments() {
           >
             <motion.span
               variants={fadeUp}
-              className="block text-[9px] tracking-[0.5em] uppercase text-[#6B1F2E] mb-6"
+              className="block text-[9px] tracking-[0.5em] uppercase text-brand mb-6"
             >
               Signature Protocols
             </motion.span>
@@ -477,7 +498,7 @@ export default function Treatments() {
             </h2>
             <motion.p
               variants={fadeUp}
-              className="text-[#2C2A26]/60 text-sm md:text-base leading-relaxed font-light"
+              className="text-ink-warm/60 text-sm md:text-base leading-relaxed font-light"
             >
               Tap any circle to explore — each protocol is tailored to your
               biology and guided by a licensed provider.
@@ -507,7 +528,7 @@ export default function Treatments() {
           >
             <motion.span
               variants={fadeUp}
-              className="block text-[9px] tracking-[0.5em] uppercase text-[#6B1F2E] mb-6"
+              className="block text-[9px] tracking-[0.5em] uppercase text-brand mb-6"
             >
               Enhancements
             </motion.span>
@@ -516,7 +537,7 @@ export default function Treatments() {
             </h2>
             <motion.p
               variants={fadeUp}
-              className="text-[#2C2A26]/60 text-sm md:text-base leading-relaxed font-light max-w-xl mx-auto"
+              className="text-ink-warm/60 text-sm md:text-base leading-relaxed font-light max-w-xl mx-auto"
             >
               Add a focused boost to any treatment — quick, potent, and chosen
               around exactly how you want to feel.
@@ -532,22 +553,22 @@ export default function Treatments() {
           >
             {maintenance.map((item) => (
               <motion.div key={item.name} variants={fadeUp} className="h-full">
-                <div className="group relative flex h-full flex-col border border-[#2C2A26]/10 bg-[#FBF9F6]/70 p-7 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-[#6B1F2E]/35 hover:bg-white hover:shadow-[0_28px_55px_-32px_rgba(62,17,25,0.45)]">
+                <div className="group relative flex h-full flex-col border border-ink-warm/10 bg-cream/70 p-7 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-brand/35 hover:bg-white hover:shadow-[0_28px_55px_-32px_rgba(62,17,25,0.45)]">
                   {/* hover top accent */}
-                  <span className="pointer-events-none absolute top-0 left-0 h-px w-full bg-[#6B1F2E] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
+                  <span className="pointer-events-none absolute top-0 left-0 h-px w-full bg-brand origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
 
-                  <span className="mb-7 flex h-12 w-12 items-center justify-center rounded-full bg-[#6B1F2E]/10 text-[#6B1F2E] transition-colors duration-500 group-hover:bg-[#6B1F2E] group-hover:text-white">
+                  <span className="mb-7 flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand transition-colors duration-500 group-hover:bg-brand group-hover:text-white">
                     <item.icon className="h-5 w-5" strokeWidth={1.5} />
                   </span>
 
-                  <h4 className="text-[15px] font-medium leading-snug text-[#2C2A26] mb-1.5">
+                  <h4 className="text-[15px] font-medium leading-snug text-ink-warm mb-1.5">
                     {item.name}
                   </h4>
-                  <p className="text-[10px] tracking-[0.2em] uppercase text-[#2C2A26]/45">
+                  <p className="text-[10px] tracking-[0.2em] uppercase text-ink-warm/45">
                     {item.duration}
                   </p>
 
-                  <span className="mt-auto pt-8 font-serif text-2xl text-[#6B1F2E]">
+                  <span className="mt-auto pt-8 font-serif text-2xl text-brand">
                     {item.price}
                   </span>
                 </div>
@@ -561,7 +582,7 @@ export default function Treatments() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="mt-12 text-center text-[11px] tracking-[0.25em] uppercase text-[#2C2A26]/40"
+            className="mt-12 text-center text-[11px] tracking-[0.25em] uppercase text-ink-warm/40"
           >
             Boosters can be added to any visit — just ask your provider.
           </motion.p>
@@ -569,18 +590,18 @@ export default function Treatments() {
       </section>
 
       {/* ───────── Call to action — oxblood finale ───────── */}
-      <section className="relative overflow-hidden bg-[#3E1119] py-36 md:py-44 px-6 text-center">
+      <section className="relative overflow-hidden bg-brand-deep py-36 md:py-44 px-6 text-center">
         {/* Maroon glow rising from the top */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(70% 90% at 50% 0%, rgba(107,31,46,0.55), transparent 70%)",
+              "radial-gradient(70% 90% at 50% 0%, rgb(var(--brand-rgb) / 0.55), transparent 70%)",
           }}
         />
         {/* Hairline gold rule */}
-        <span className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-px w-40 bg-[#B8A889]/50" />
+        <span className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-px w-40 bg-gold/50" />
 
         <motion.div
           variants={stagger}
@@ -591,18 +612,18 @@ export default function Treatments() {
         >
           <motion.span
             variants={fadeUp}
-            className="block text-[9px] tracking-[0.5em] uppercase text-[#B8A889] mb-8"
+            className="block text-[9px] tracking-[0.5em] uppercase text-gold mb-8"
           >
             Reserve Your Visit
           </motion.span>
 
-          <h2 className="font-serif text-4xl md:text-6xl font-light mb-8 leading-[1.12] text-[#FBF9F6]">
+          <h2 className="font-serif text-4xl md:text-6xl font-light mb-8 leading-[1.12] text-cream">
             <MaskLine>Ready to elevate</MaskLine>
-            <MaskLine className="italic text-[#B8A889]">your baseline?</MaskLine>
+            <MaskLine className="italic text-gold">your baseline?</MaskLine>
           </h2>
           <motion.p
             variants={fadeUp}
-            className="text-[#FBF9F6]/60 text-sm md:text-base leading-relaxed mb-12 font-light max-w-lg mx-auto"
+            className="text-cream/60 text-sm md:text-base leading-relaxed mb-12 font-light max-w-lg mx-auto"
           >
             Schedule a consultation with our medical team to design a protocol
             tailored precisely to your biology.
@@ -611,7 +632,7 @@ export default function Treatments() {
             <a
               href={BOOKING_URL}
               onClick={handleBookingClick}
-              className="group inline-flex items-center justify-center gap-3 bg-[#FBF9F6] text-[#3E1119] px-11 py-4 text-[10px] tracking-[0.3em] uppercase hover:bg-[#B8A889] transition-colors duration-500 rounded-sm"
+              className="group inline-flex items-center justify-center gap-3 bg-cream text-brand-deep px-11 py-4 text-[10px] tracking-[0.3em] uppercase hover:bg-gold transition-colors duration-500 rounded-sm"
             >
               Book a Consultation
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

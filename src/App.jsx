@@ -7,6 +7,7 @@ import OurTeam from "./components/OurTeam";
 import Contact from "./components/Contact";
 import LegalPage from "./components/LegalPage";
 import { Toaster } from "./components/ui/toaster";
+import DesignStudio from "./components/DesignStudio";
 import "./App.css";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         </Routes>
       </Layout>
       <Toaster />
+      <DesignStudio />
     </BrowserRouter>
   );
 }

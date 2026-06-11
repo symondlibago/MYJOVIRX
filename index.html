@@ -39,13 +39,17 @@
     />
     <meta name="twitter:image" content="https://myjovirx.com/hero-1.jpg" />
 
-    <!-- Fonts: preconnect + non-blocking link (moved out of CSS @import) -->
+    <!-- Fonts: preconnect + non-blocking links for all three Design Studio pairings -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin />
+    <!-- Google Fonts: Cormorant Garamond + Inter (pairing 1), DM Sans (pairing 2 body), Fraunces + Figtree (pairing 3) -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Figtree:ital,wght@0,300..700;1,300..600&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@300;400;500;600&display=swap"
     />
+    <!-- Garet (pairing 2 headings) — not on Google Fonts, loaded via cdnfonts -->
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/garet" />
 
     <!-- Structured data: local medical business -->
     <script type="application/ld+json">
@@ -93,6 +97,48 @@
     </script>
   </head>
   <body>
+    <script>
+      // Apply the saved Design Studio theme before paint (prevents a flash of the default theme).
+      (function () {
+        try {
+          var s = JSON.parse(localStorage.getItem("myjovirx-theme") || "{}");
+          var r = document.documentElement;
+          if (s.palette) r.setAttribute("data-palette", s.palette);
+          if (s.font) r.setAttribute("data-font", s.font);
+          if (s.weight) r.setAttribute("data-weight", s.weight);
+          if (s.italic) r.setAttribute("data-italic", s.italic);
+          if (s.design) r.setAttribute("data-design", s.design);
+          // Re-apply any saved per-palette color edits as inline vars.
+          var c = (s.customColors || {})[s.palette] || {};
+          var vmap = {
+            primary: ["--color-brand"],
+            deep: ["--color-brand-deep"],
+            accent: ["--color-gold"],
+            bg: ["--color-ivory", "--color-cream"],
+          };
+          var rmap = {
+            primary: "--brand-rgb",
+            deep: "--brand-deep-rgb",
+            accent: "--gold-rgb",
+            bg: "--cream-rgb",
+          };
+          var h2r = function (h) {
+            h = h.replace("#", "");
+            if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+            var n = parseInt(h, 16);
+            return ((n >> 16) & 255) + " " + ((n >> 8) & 255) + " " + (n & 255);
+          };
+          Object.keys(vmap).forEach(function (k) {
+            if (c[k]) {
+              vmap[k].forEach(function (v) {
+                r.style.setProperty(v, c[k]);
+              });
+              if (rmap[k]) r.style.setProperty(rmap[k], h2r(c[k]));
+            }
+          });
+        } catch (e) {}
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

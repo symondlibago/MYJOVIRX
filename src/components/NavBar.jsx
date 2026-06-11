@@ -50,17 +50,17 @@ export default function NavBar() {
       `}</style>
 
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[#FCFAF7]/95 backdrop-blur-md ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-ivory/95 backdrop-blur-md ${
           isScrolled ? "py-4 shadow-md" : "py-6 shadow-sm"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
           {/* Brand Name */}
           <Link to="/" className="flex flex-col leading-tight group">
-            <span className="font-serif text-xl md:text-2xl tracking-wide text-[#0F0F0F] duration-300">
+            <span className="font-serif text-xl md:text-2xl tracking-wide text-ink duration-300">
               MyJoviRX
             </span>
-            <span className="text-[8px] md:text-[9px] tracking-[0.3em] uppercase text-[#453122]/70 mt-0.5">
+            <span className="text-[8px] md:text-[9px] tracking-[0.3em] uppercase text-espresso/70 mt-0.5">
               Wellness &amp; IV Therapy
             </span>
           </Link>
@@ -73,7 +73,7 @@ export default function NavBar() {
                   key={link.name}
                   href={link.href}
                   onClick={handleBookingClick}
-                  className="text-sm tracking-widest uppercase bg-[#6B1F2E] border border-[#6B1F2E] text-white px-5 py-2.5 hover:bg-[#3E1119] hover:border-[#3E1119] transition-colors duration-300"
+                  className="text-sm tracking-widest uppercase bg-brand border border-brand text-white px-5 py-2.5 hover:bg-brand-deep hover:border-brand-deep transition-colors duration-300"
                 >
                   {link.name}
                 </a>
@@ -81,8 +81,8 @@ export default function NavBar() {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`nav-link text-sm tracking-widest uppercase transition-colors duration-300 hover:text-[#6B1F2E] ${
-                    pathname === link.path ? "active text-[#6B1F2E]" : "text-[#0F0F0F]"
+                  className={`nav-link text-sm tracking-widest uppercase transition-colors duration-300 hover:text-brand ${
+                    pathname === link.path ? "active text-brand" : "text-ink"
                   }`}
                 >
                   {link.name}
@@ -94,7 +94,7 @@ export default function NavBar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileOpen(true)}
-            className="md:hidden p-2 text-[#0F0F0F]"
+            className="md:hidden p-2 text-ink"
           >
             <Menu className="w-6 h-6" />
           </button>
@@ -109,21 +109,21 @@ export default function NavBar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "tween", duration: 0.35, ease: "easeInOut" }}
-            className="fixed inset-0 z-100 bg-[#FCFAF7]"
+            className="fixed inset-0 z-100 bg-ivory"
           >
             <div className="flex flex-col h-full px-8 py-6">
               <div className="flex items-center justify-between">
                 <div className="flex flex-col leading-none">
-                  <span className="font-serif text-2xl tracking-wide text-[#0F0F0F]">
+                  <span className="font-serif text-2xl tracking-wide text-ink">
                     MyJoviRX
                   </span>
-                  <span className="text-[9px] tracking-[0.3em] uppercase text-[#453122]/70 mt-0.5">
+                  <span className="text-[9px] tracking-[0.3em] uppercase text-espresso/70 mt-0.5">
                     Wellness &amp; IV Therapy
                   </span>
                 </div>
                 <button
                   onClick={() => setMobileOpen(false)}
-                  className="p-2 text-[#0F0F0F]"
+                  className="p-2 text-ink"
                 >
                   <X className="w-6 h-6" />
                 </button>
@@ -132,7 +132,7 @@ export default function NavBar() {
               <div className="flex-1 flex flex-col justify-center gap-8">
                 {navLinks.map((link, i) => {
                   const number = (
-                    <span className="text-xs text-[#453122]/50 font-sans tracking-widest">
+                    <span className="text-xs text-espresso/50 font-sans tracking-widest">
                       0{i + 1}
                     </span>
                   );
@@ -149,7 +149,7 @@ export default function NavBar() {
                           setMobileOpen(false);
                           handleBookingClick(e);
                         }}
-                        className="group flex items-center gap-4 text-3xl font-serif tracking-wide text-[#0F0F0F] hover:text-[#6B1F2E] transition-colors duration-300"
+                        className="group flex items-center gap-4 text-3xl font-serif tracking-wide text-ink hover:text-brand transition-colors duration-300"
                       >
                         {number}
                         {link.name}
@@ -166,7 +166,7 @@ export default function NavBar() {
                         to={link.path}
                         onClick={() => setMobileOpen(false)}
                         className={`group flex items-center gap-4 text-3xl font-serif tracking-wide transition-colors duration-300 ${
-                          pathname === link.path ? "text-[#6B1F2E]" : "text-[#0F0F0F] hover:text-[#6B1F2E]"
+                          pathname === link.path ? "text-brand" : "text-ink hover:text-brand"
                         }`}
                       >
                         {number}
@@ -177,7 +177,7 @@ export default function NavBar() {
                 })}
               </div>
 
-              <div className="pb-4 text-xs text-[#453122] tracking-widest uppercase">
+              <div className="pb-4 text-xs text-espresso tracking-widest uppercase">
                 Orange County, CA · Telehealth &amp; In-Clinic
               </div>
             </div>

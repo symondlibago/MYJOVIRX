@@ -148,7 +148,7 @@ export default function Home() {
 
           <p className="font-serif text-2xl md:text-3xl text-white/80 mb-12">
             {heroSlides[current].accent}{" "}
-            <span className="italic text-[#B8A889]">
+            <span className="italic text-gold">
               {heroSlides[current].accentItalic}
             </span>
           </p>
@@ -157,7 +157,7 @@ export default function Home() {
             <a
               href={BOOKING_URL}
               onClick={handleBookingClick}
-              className="inline-flex items-center gap-3 bg-white/10 border border-white/30 text-white px-9 py-4 text-xs tracking-[0.25em] uppercase hover:bg-[#6B1F2E] hover:border-[#6B1F2E] transition-all"
+              className="inline-flex items-center gap-3 bg-white/10 border border-white/30 text-white px-9 py-4 text-xs tracking-[0.25em] uppercase hover:bg-brand hover:border-brand transition-all"
             >
               Book a Consultation
               <ArrowRight className="w-4 h-4" />
@@ -218,10 +218,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <FadeIn>
             <div className="mb-16">
-              <p className="text-[#6B1F2E] text-xs tracking-[0.4em] uppercase mb-4">
+              <p className="text-brand text-xs tracking-[0.4em] uppercase mb-4">
                 What We Offer
               </p>
-              <h2 className="font-serif text-6xl text-[#0F0F0F]">
+              <h2 className="font-serif text-6xl text-ink">
                 Featured Treatments
               </h2>
             </div>
@@ -232,7 +232,7 @@ export default function Home() {
               <FadeIn key={item.id}>
                 <Link
                   to="/services"
-                  className="group relative block overflow-hidden bg-[#E6E6E6]"
+                  className="group relative block overflow-hidden bg-mist"
                   style={{ aspectRatio: "4/3" }}
                 >
                   <img
@@ -241,7 +241,7 @@ export default function Home() {
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-black/70 to-transparent text-white">
-                    <p className="text-[10px] tracking-[0.4em] uppercase text-[#B8A889]">
+                    <p className="text-[10px] tracking-[0.4em] uppercase text-gold">
                       {item.category}
                     </p>
                     <h3 className="font-serif text-2xl">
@@ -280,29 +280,29 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-3 md:px-6 mt-14">
           <FadeIn>
-            <p className="text-[#B8A889] text-xs tracking-[0.4em] uppercase mb-5">
+            <p className="text-gold text-xs tracking-[0.4em] uppercase mb-5">
               The Experience
             </p>
-            <h2 className="font-serif text-5xl text-[#0F0F0F] leading-tight mb-6">
+            <h2 className="font-serif text-5xl text-ink leading-tight mb-6">
               Personalized Care,
               <br />
-              <span className="italic text-[#B8A889]">
+              <span className="italic text-gold">
                 Real Results.
               </span>
             </h2>
-            <p className="text-[#453122]/70 leading-relaxed mb-6 max-w-2xl">
+            <p className="text-espresso/70 leading-relaxed mb-6 max-w-2xl">
               Every visit begins with a medical consultation and ends with a plan
               built around your goals. From hydration and recovery to hormones and
               weight management, each protocol is guided by a licensed provider.
             </p>
-            <p className="text-[#453122]/70 leading-relaxed mb-10 max-w-2xl">
+            <p className="text-espresso/70 leading-relaxed mb-10 max-w-2xl">
               No rushed appointments, no surprise fees — just modern, evidence-based
               wellness delivered in a calm, private setting designed to help you feel
               your best.
             </p>
             <Link
               to="/services"
-              className="inline-flex items-center gap-3 border-b-2 border-[#0F0F0F] pb-2 text-xs tracking-[0.3em] uppercase hover:border-[#453122] hover:text-[#453122] transition-colors"
+              className="inline-flex items-center gap-3 border-b-2 border-ink pb-2 text-xs tracking-[0.3em] uppercase hover:border-espresso hover:text-espresso transition-colors"
             >
               Explore Treatments
               <ArrowRight className="w-3.5 h-3.5" />
