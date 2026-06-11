@@ -157,7 +157,7 @@ export default function Home() {
             <a
               href={BOOKING_URL}
               onClick={handleBookingClick}
-              className="inline-flex items-center gap-3 bg-white/10 border border-white/30 text-white px-9 py-4 text-xs tracking-[0.25em] uppercase hover:bg-brand hover:border-brand transition-all"
+              className="inline-flex items-center gap-3 bg-transparent border border-white text-white px-9 py-4 text-xs tracking-[0.25em] uppercase hover:bg-white hover:text-brand transition-all"
             >
               Book a Consultation
               <ArrowRight className="w-4 h-4" />
@@ -311,6 +311,71 @@ export default function Home() {
         </div>
 
         */}
+      </section>
+
+      {/* TELEHEALTH — connect with providers online */}
+      <section className="relative px-6 pt-24 md:pt-32 pb-16 lg:pb-0 bg-ivory">
+        <div className="max-w-6xl mx-auto">
+          <FadeIn>
+            <p className="text-center text-brand text-[11px] tracking-[0.4em] uppercase mb-6">
+              Invest in Your Longevity
+            </p>
+            <h2 className="text-center font-serif text-4xl md:text-6xl text-brand leading-[1.08] mb-16 md:mb-20 max-w-3xl mx-auto">
+              Connect with trusted healthcare professionals online.
+            </h2>
+          </FadeIn>
+
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <FadeIn direction="left">
+              <div className="max-w-xl">
+                <p className="text-espresso/70 text-sm md:text-[15px] leading-relaxed mb-5">
+                  MyJoviRx is a modern telehealth platform that brings trusted
+                  healthcare services closer to you. Connect with licensed
+                  healthcare providers through secure virtual consultations,
+                  receive personalized medical guidance, and manage your
+                  healthcare needs from the comfort of your home.
+                </p>
+                <p className="text-espresso/70 text-sm md:text-[15px] leading-relaxed mb-9">
+                  Whether you need routine care, prescription support, or
+                  professional medical advice, MyJoviRx offers a fast,
+                  convenient, and reliable way to access quality healthcare. Our
+                  mission is to make healthcare more accessible, efficient, and
+                  centered around your lifestyle.
+                </p>
+                <a
+                  href={BOOKING_URL}
+                  onClick={handleBookingClick}
+                  className="group inline-flex items-center gap-3 bg-brand-deep text-white px-9 py-4 text-[10px] tracking-[0.3em] uppercase hover:bg-brand transition-colors rounded-sm"
+                >
+                  Get Started
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                </a>
+              </div>
+            </FadeIn>
+
+            {/* Bottle — layered to sit on top of the FAQ card below */}
+            <div className="relative z-20 hidden lg:flex justify-center lg:justify-end lg:translate-y-0">
+              {/* Soft gold halo behind the product */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 flex items-center justify-center"
+              >
+                <div
+                  className="h-70 w-70 md:h-100 md:w-100 rounded-full"
+                  style={{
+                    background:
+                      "radial-gradient(circle, rgb(var(--gold-rgb) / 0.16), transparent 70%)",
+                  }}
+                />
+              </div>
+              <img
+                src="/bottle.png"
+                alt="MyJoviRx Joi+ Blokes supplement"
+                className="relative w-full max-w-70 md:max-w-md object-contain drop-shadow-[0_40px_70px_rgba(44,42,38,0.25)]"
+              />
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* FAQ */}

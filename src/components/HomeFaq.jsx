@@ -49,56 +49,75 @@ const faqJsonLd = {
 
 export default function HomeFaq() {
   return (
-    <section className="py-28 px-6 bg-white">
+    <section className="px-4 sm:px-6 pt-12 lg:pt-0 pb-20 md:pb-28 bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-start">
-        {/* Left — heading */}
-        <div className="lg:col-span-4">
-          <FadeIn direction="left">
-            <p className="text-brand text-xs tracking-[0.4em] uppercase mb-4">
-              Questions
-            </p>
-            <h2 className="font-serif text-5xl md:text-6xl text-ink leading-tight mb-8">
-              Frequently <br />
-              <span className="italic text-brand">Asked.</span>
-            </h2>
-            <p className="text-espresso/60 text-sm leading-relaxed mb-8 max-w-xs">
-              Everything you need to know before your first visit. Still have a
-              question? Our team is happy to help.
-            </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-3 border-b-2 border-ink pb-2 text-[10px] tracking-[0.3em] uppercase hover:border-brand hover:text-brand transition-colors"
-            >
-              Ask Us Anything
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </FadeIn>
-        </div>
+      <div className="max-w-7xl mx-auto">
+        {/* Premium oxblood card */}
+        <div className="relative overflow-hidden rounded-4xl md:rounded-[44px] bg-brand-deep px-6 py-14 md:px-14 lg:px-16 md:py-20 shadow-[0_40px_90px_-50px_rgba(0,0,0,0.6)]">
+          {/* Soft gold glow + hairline for depth */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(55% 60% at 50% 0%, rgb(var(--gold-rgb) / 0.10), transparent 70%)",
+            }}
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-px w-40 bg-gold/40"
+          />
 
-        {/* Right — accordion */}
-        <div className="lg:col-span-8">
-          <FadeIn direction="right">
-            <Accordion type="single" collapsible className="w-full">
-              {faqs.map((item, index) => (
-                <AccordionItem
-                  key={index}
-                  value={`item-${index}`}
-                  className="border-b border-ink/10"
+          <div className="relative z-10 grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            {/* Left — heading */}
+            <div className="lg:col-span-5">
+              <FadeIn direction="left">
+                <p className="text-gold text-[11px] tracking-[0.4em] uppercase mb-5">
+                  Questions
+                </p>
+                <h2 className="font-serif text-5xl md:text-6xl text-white leading-[1.04] mb-6">
+                  Frequently <br />
+                  <span className="italic text-gold">Asked.</span>
+                </h2>
+                <p className="text-white/55 text-sm leading-relaxed mb-8 max-w-xs">
+                  Everything you need to know before your first visit. Still have
+                  a question? Our team is happy to help.
+                </p>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-3 border-b border-gold/50 pb-2 text-[10px] tracking-[0.3em] uppercase text-gold hover:border-gold transition-colors"
                 >
-                  <AccordionTrigger className="font-serif text-xl md:text-2xl text-ink py-6 hover:no-underline">
-                    {item.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-espresso/60 text-base leading-relaxed pb-6 pr-8">
-                    {item.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </FadeIn>
+                  Ask Us Anything
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </FadeIn>
+            </div>
+
+            {/* Right — accordion */}
+            <div className="lg:col-span-7">
+              <FadeIn direction="right">
+                <Accordion type="single" collapsible className="w-full">
+                  {faqs.map((item, index) => (
+                    <AccordionItem
+                      key={index}
+                      value={`item-${index}`}
+                      className="border-white/12"
+                    >
+                      <AccordionTrigger className="font-sans font-normal text-[15px] md:text-base text-white/90 py-5 hover:no-underline hover:text-gold [&>svg]:text-gold/70 transition-colors">
+                        {item.q}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-white/55 text-sm md:text-[15px] leading-relaxed pb-5 pr-6">
+                        {item.a}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </FadeIn>
+            </div>
+          </div>
         </div>
       </div>
     </section>

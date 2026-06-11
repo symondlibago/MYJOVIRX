@@ -355,7 +355,7 @@ export default function Treatments() {
       {/* ───────── Hero (background photo + glass box) ───────── */}
       <section
         ref={heroRef}
-        className="relative flex min-h-[92vh] items-center justify-center overflow-hidden px-6 py-32 md:py-40"
+        className="relative overflow-hidden px-6 pt-28 pb-6"
       >
         {/* Full-bleed background photo */}
         <motion.div
@@ -374,15 +374,11 @@ export default function Treatments() {
 
         {/* Transparent glass box in front */}
         <motion.div
-          style={{
-            y: heroY,
-            opacity: heroOpacity,
-            textShadow: "0 1px 16px rgba(251,249,246,0.85)",
-          }}
+          style={{ y: heroY, opacity: heroOpacity }}
           variants={stagger}
           initial="hidden"
           animate="show"
-          className="relative z-10 w-full max-w-5xl rounded-[28px] md:rounded-[36px] ring-1 ring-white/25 bg-cream/35 px-8 py-14 text-center md:px-16 md:py-20"
+          className="relative z-10 w-full rounded-[28px] md:rounded-[36px] ring-1 ring-white/25 bg-cream/35 px-8 py-20 text-center md:px-16 md:py-28"
         >
           <motion.span
             variants={fadeUp}
@@ -632,7 +628,7 @@ export default function Treatments() {
             <a
               href={BOOKING_URL}
               onClick={handleBookingClick}
-              className="group inline-flex items-center justify-center gap-3 bg-cream text-brand-deep px-11 py-4 text-[10px] tracking-[0.3em] uppercase hover:bg-gold transition-colors duration-500 rounded-sm"
+              className="group inline-flex items-center justify-center gap-3 bg-transparent border border-white text-white px-11 py-4 text-[10px] tracking-[0.3em] uppercase hover:bg-white hover:text-brand transition-colors duration-500 rounded-sm"
             >
               Book a Consultation
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

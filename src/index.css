@@ -21,9 +21,7 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
 
-  /* ── Brand palette tokens (defaults = "Oxblood & Cream" = current design).
-     These are overridden at runtime by [data-palette] further down, so every
-     `bg-brand`, `text-ink`, etc. utility re-colors live when the palette flips. */
+  /* ── Brand palette tokens */
   --color-brand: #6B1F2E;
   --color-brand-deep: #3E1119;
   --color-gold: #B8A889;
@@ -136,13 +134,6 @@ html.lenis body {
   .animate-marquee { animation: none; }
 }
 
-/* ════════════════════════════════════════════════════════════════════
-   THEME SYSTEM  —  driven by data-attributes on <html>
-   (set by the Design Studio panel). Three independent axes:
-     data-palette = current | blue
-     data-font    = cormorant | garet | fraunces
-     data-design  = editorial | modern
-   ════════════════════════════════════════════════════════════════════ */
 
 :root {
   /* RGB triplets — used by rgba()/gradients in inline styles so glows &
