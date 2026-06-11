@@ -5,6 +5,7 @@ import { ArrowRight, ArrowDown } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
 import Marquee from "@/components/ui/Marquee";
 import HomeFaq from "./HomeFaq";
+import Seo from "./Seo";
 import { BOOKING_URL, handleBookingClick } from "@/config";
 
 const heroSlides = [
@@ -108,6 +109,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <Seo
+        title="MyJoviRX — IV Therapy, NAD+ & Medical Weight Loss | Costa Mesa, CA"
+        description="Physician-guided IV therapy, NAD+ restoration, hormone optimization, and medical weight loss in Costa Mesa — serving all of Orange County, in-clinic or via telehealth."
+        path="/"
+      />
 
       {/* HERO SECTION */}
       <section ref={heroRef} className="h-screen relative flex items-center justify-center overflow-hidden">

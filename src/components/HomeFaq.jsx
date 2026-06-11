@@ -36,9 +36,24 @@ const faqs = [
   },
 ];
 
+// FAQPage structured data so the questions are eligible for rich results.
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export default function HomeFaq() {
   return (
     <section className="py-28 px-6 bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-start">
         {/* Left — heading */}
         <div className="lg:col-span-4">

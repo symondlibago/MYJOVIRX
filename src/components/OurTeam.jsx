@@ -2,6 +2,7 @@ import React from "react";
 import { BOOKING_URL, handleBookingClick } from "@/config";
 import { ArrowRight, Stethoscope, Heart, Leaf } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
+import Seo from "./Seo";
 
 export default function OurTeam() {
   const values = [
@@ -33,6 +34,11 @@ export default function OurTeam() {
 
   return (
     <div className="min-h-screen bg-[#FCFAF7] pt-32 pb-24">
+      <Seo
+        title="Our Medical Team — Licensed RNs & Medical Director"
+        description="Meet the MyJoviRX team: Medical Director Dr. Courtney S. Scott and experienced licensed registered nurses delivering personalized wellness care in Costa Mesa, CA."
+        path="/our-team"
+      />
       {/* Hero Section - Split Layout */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-32">
         <div className="grid lg:grid-cols-2 gap-16 items-center">

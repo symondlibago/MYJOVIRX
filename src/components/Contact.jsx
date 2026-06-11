@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import FadeIn from "@/components/ui/FadeIn";
+import Seo from "./Seo";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -43,6 +44,11 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-[#FCFAF7] pt-32 pb-24">
+      <Seo
+        title="Contact Us — IV Therapy in Costa Mesa, Orange County"
+        description="Contact MyJoviRX at (949) 281-1440 or hello@myjovirx.com. Visit us at 250 Fischer Ave, Costa Mesa, CA 92626, or book a telehealth consultation across California."
+        path="/contact"
+      />
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-16 md:mb-24">
         <FadeIn>

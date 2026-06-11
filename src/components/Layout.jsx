@@ -3,7 +3,7 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import NavBar from "./NavBar";
 import ScrollToTop from "../components/ui/ScrollToTop";
 import { Link, useLocation } from "react-router-dom";
-import { Instagram, Facebook, Mail, Phone, MapPin, Clock, ArrowUpRight } from "lucide-react";
+import { Instagram, Facebook, Mail, Phone, MapPin, Clock } from "lucide-react";
 import { BOOKING_URL, handleBookingClick } from "@/config";
 import { initLenis } from "@/lib/lenis";
 
@@ -44,8 +44,6 @@ export default function Layout({ children }) {
   return (
     <div className="min-h-screen bg-[#FCFAF7]">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap');
-
         :root {
           --color-ivory: #FCFAF7;
           --color-charcoal: #0F0F0F;
@@ -104,23 +102,6 @@ export default function Layout({ children }) {
 
       {/* ───── FOOTER ───── */}
       <footer className="bg-[#3E1119] text-white">
-
-        {/* Top Banner */}
-        <div className="border-b border-white/10">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs tracking-[0.3em] uppercase text-white/40">
-              Modern Wellness · Orange County, CA
-            </p>
-            <a
-              href={BOOKING_URL}
-              onClick={handleBookingClick}
-              className="group inline-flex items-center gap-2 text-xs tracking-widest uppercase text-[#B8A889] border border-[#B8A889]/40 px-6 py-3 hover:bg-[#B8A889] hover:text-[#3E1119] transition-all duration-300"
-            >
-              Book a Consultation
-              <ArrowUpRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-          </div>
-        </div>
 
         {/* Main Footer Body */}
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
@@ -252,18 +233,6 @@ export default function Layout({ children }) {
                 </li>
               </ul>
 
-              {/* Instagram Handle */}
-              <div className="mt-8 pt-6 border-t border-white/10">
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs text-white/40 hover:text-[#B8A889] transition-colors duration-300 tracking-wider"
-                >
-                  <Instagram className="w-3.5 h-3.5" />
-                  @myjovirx
-                </a>
-              </div>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
 import { legalDocs } from "@/data/legal";
+import Seo from "./Seo";
 
 export default function LegalPage({ slug }) {
   const doc = legalDocs[slug];
@@ -20,6 +21,11 @@ export default function LegalPage({ slug }) {
 
   return (
     <div className="min-h-screen bg-[#FFFFFF] pt-32 pb-24">
+      <Seo
+        title={doc.title}
+        description={`${doc.title} for MyJoviRX, the Costa Mesa wellness & IV therapy clinic serving Orange County, CA.`}
+        path={`/${slug}`}
+      />
       <div className="max-w-3xl mx-auto px-6 lg:px-12">
         <FadeIn>
           <p className="text-[#B8A889] text-[10px] tracking-[0.5em] uppercase mb-6">Legal</p>

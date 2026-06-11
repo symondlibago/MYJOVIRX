@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BOOKING_URL, handleBookingClick } from "@/config";
+import Seo from "./Seo";
 import {
   ArrowUpRight,
   Syringe,
@@ -345,6 +346,11 @@ export default function Treatments() {
 
   return (
     <div className="min-h-screen bg-white text-[#2C2A26] font-sans selection:bg-[#6B1F2E] selection:text-[#FBF9F6] overflow-clip">
+      <Seo
+        title="IV Therapy, NAD+ & Weight Loss Treatments in Costa Mesa, CA"
+        description="Explore MyJoviRX treatments: Signature IV drips from $149, NAD+ restoration, hormone optimization, and GLP-1 medical weight loss — all physician-guided in Costa Mesa, CA."
+        path="/services"
+      />
 
       {/* ───────── Hero ───────── */}
       <section
