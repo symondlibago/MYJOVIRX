@@ -320,7 +320,7 @@ export default function Home() {
             <p className="text-center text-brand text-[11px] tracking-[0.4em] uppercase mb-6">
               Invest in Your Longevity
             </p>
-            <h2 className="text-center font-serif text-4xl md:text-6xl text-brand leading-[1.08] mb-16 md:mb-20 max-w-3xl mx-auto">
+            <h2 className="text-center font-serif text-3xl md:text-5xl text-brand leading-[1.08] mb-16 md:mb-20 max-w-2xl mx-auto">
               Connect with trusted healthcare professionals online.
             </h2>
           </FadeIn>
@@ -345,7 +345,7 @@ export default function Home() {
                 <a
                   href={BOOKING_URL}
                   onClick={handleBookingClick}
-                  className="group inline-flex items-center gap-3 bg-brand-deep text-white px-9 py-4 text-[10px] tracking-[0.3em] uppercase hover:bg-brand transition-colors rounded-sm"
+                  className="group inline-flex items-center gap-3 bg-transparent border border-brand text-brand px-9 py-4 text-[10px] tracking-[0.3em] uppercase hover:bg-brand hover:text-white transition-colors rounded-sm"
                 >
                   Get Started
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
