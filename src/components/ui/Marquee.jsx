@@ -5,7 +5,7 @@ import React from "react";
 export default function Marquee({ items, className = "" }) {
   const loop = [...items, ...items];
   return (
-    <div className={`relative overflow-hidden bg-[#453122] py-7 border-y border-black/20 ${className}`}>
+    <div className={`relative overflow-hidden bg-[#3E1119] py-7 border-y border-black/20 ${className}`}>
       <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
         {loop.map((item, i) => (
           <span key={i} className="flex items-center shrink-0">
@@ -17,8 +17,8 @@ export default function Marquee({ items, className = "" }) {
         ))}
       </div>
       {/* edge fades */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-linear-to-r from-[#453122] to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-linear-to-l from-[#453122] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-linear-to-r from-[#3E1119] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-linear-to-l from-[#3E1119] to-transparent" />
     </div>
   );
 }

@@ -32,7 +32,7 @@ export default function OurTeam() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFFFFF] pt-32 pb-24">
+    <div className="min-h-screen bg-[#FCFAF7] pt-32 pb-24">
       {/* Hero Section - Split Layout */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-32">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -49,7 +49,7 @@ export default function OurTeam() {
 
           <FadeIn direction="right">
             <div className="max-w-xl">
-              <p className="text-[#B8A889] text-[15px] tracking-[0.5em] uppercase mb-6">The Medical Director</p>
+              <p className="text-[#6B1F2E] text-[15px] tracking-[0.5em] uppercase mb-6">The Medical Director</p>
               <h1 className="font-serif text-6xl md:text-7xl text-[#0F0F0F] mb-8 leading-tight">
                 Dr. Courtney <br />
                 <span className="italic">S. Scott</span>
@@ -73,7 +73,7 @@ export default function OurTeam() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-32">
         <FadeIn>
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-[#B8A889] text-[10px] tracking-[0.5em] uppercase mb-6">The Team</p>
+            <p className="text-[#6B1F2E] text-[10px] tracking-[0.5em] uppercase mb-6">The Team</p>
             <h2 className="font-serif text-5xl md:text-6xl text-[#0F0F0F] mb-6">Our Wellness Team</h2>
             <p className="text-[#453122]/60 leading-relaxed">
               Meet the heart of MyJoviRX—a team of experienced, licensed registered nurses
@@ -94,7 +94,7 @@ export default function OurTeam() {
                   />
                 </div>
                 <h3 className="font-serif text-2xl text-[#0F0F0F]">{member.name}</h3>
-                <p className="text-[#B8A889] text-[10px] tracking-[0.3em] uppercase mt-1.5">
+                <p className="text-[#6B1F2E] text-[10px] tracking-[0.3em] uppercase mt-1.5">
                   {member.credentials}
                 </p>
               </div>
@@ -104,7 +104,7 @@ export default function OurTeam() {
       </div>
 
       {/* Philosophy / Values Section - Dark Mode Break */}
-      <div className="bg-[#453122] py-32 mb-32">
+      <div className="bg-[#3E1119] py-32 mb-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-3 gap-16">
             {values.map((value, index) => (
@@ -136,7 +136,7 @@ export default function OurTeam() {
           </div>
           <div className="lg:col-span-5 flex flex-col justify-center bg-white p-12 md:p-20 shadow-sm">
             <FadeIn>
-              <p className="text-[#B8A889] text-[10px] tracking-[0.5em] uppercase mb-6">The Space</p>
+              <p className="text-[#6B1F2E] text-[10px] tracking-[0.5em] uppercase mb-6">The Space</p>
               <h2 className="font-serif text-4xl text-[#0F0F0F] mb-6">A Non-Clinical Oasis</h2>
               <p className="text-[#453122]/60 leading-relaxed text-sm">
                 Designed to feel nothing like a hospital, our private lounge and
@@ -152,7 +152,7 @@ export default function OurTeam() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-32">
         <FadeIn>
           <div className="border-y border-[#0F0F0F]/10 py-16">
-            <p className="text-center text-[#B8A889] text-[10px] tracking-[0.5em] uppercase mb-12">
+            <p className="text-center text-[#6B1F2E] text-[10px] tracking-[0.5em] uppercase mb-12">
               Our Standard
             </p>
             <div className="flex flex-wrap justify-center items-center gap-16 text-[#453122]/70">
@@ -177,7 +177,7 @@ export default function OurTeam() {
           <a
             href={BOOKING_URL}
             onClick={handleBookingClick}
-            className="inline-flex items-center gap-4 bg-[#0F0F0F] text-white px-12 py-5 text-[10px] tracking-[0.4em] uppercase hover:bg-[#453122] transition-all group"
+            className="inline-flex items-center gap-4 bg-[#3E1119] text-white px-12 py-5 text-[10px] tracking-[0.4em] uppercase hover:bg-[#6B1F2E] transition-all group"
           >
             Book a Consultation
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />

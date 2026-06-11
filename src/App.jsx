@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./components/Home";
-import Services from "./components/Services";
+import Treatments from "./components/Treatments";
 import OurTeam from "./components/OurTeam";
 import Contact from "./components/Contact";
 import LegalPage from "./components/LegalPage";
@@ -15,7 +15,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
+          <Route path="/services" element={<Treatments />} />
           <Route path="/our-team" element={<OurTeam />} />
           <Route path="/about" element={<Navigate to="/our-team" replace />} />
           <Route path="/contact" element={<Contact />} />

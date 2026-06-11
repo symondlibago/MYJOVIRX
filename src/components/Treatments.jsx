@@ -122,7 +122,7 @@ function TreatmentArc({ services }) {
             width: dims.center * 1.5,
             height: dims.center * 1.5,
             background:
-              "radial-gradient(circle, rgba(212,207,196,0.55), transparent 68%)",
+              "radial-gradient(circle, rgba(107,31,46,0.10), transparent 58%), radial-gradient(circle, rgba(212,207,196,0.5), transparent 68%)",
           }}
         />
 
@@ -201,7 +201,7 @@ function TreatmentArc({ services }) {
             transition={{ duration: 0.45, ease: EASE }}
           >
             {current.popular && (
-              <span className="mb-4 inline-block text-[9px] uppercase tracking-[0.35em] text-[#8C8273]">
+              <span className="mb-4 inline-block text-[9px] uppercase tracking-[0.35em] text-[#6B1F2E]">
                 Highly Requested
               </span>
             )}
@@ -233,7 +233,7 @@ function TreatmentArc({ services }) {
             <a
               href={BOOKING_URL}
               onClick={handleBookingClick}
-              className="group inline-flex items-center justify-center gap-3 rounded-sm bg-[#2C2A26] px-9 py-4 text-[10px] uppercase tracking-[0.3em] text-white transition-colors duration-500 hover:bg-[#8C8273]"
+              className="group inline-flex items-center justify-center gap-3 rounded-sm bg-[#3E1119] px-9 py-4 text-[10px] uppercase tracking-[0.3em] text-white transition-colors duration-500 hover:bg-[#6B1F2E]"
             >
               Reserve {current.short}
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -252,7 +252,7 @@ function TreatmentArc({ services }) {
             aria-label={`Show ${s.name}`}
             className={`h-1.5 rounded-full transition-all duration-400 ${
               i === active
-                ? "w-7 bg-[#8C8273]"
+                ? "w-7 bg-[#6B1F2E]"
                 : "w-1.5 bg-[#2C2A26]/20 hover:bg-[#2C2A26]/40"
             }`}
           />
@@ -262,7 +262,7 @@ function TreatmentArc({ services }) {
   );
 }
 
-export default function Services() {
+export default function Treatments() {
   const mainServices = [
     {
       name: "Signature IV Drip",
@@ -344,7 +344,7 @@ export default function Services() {
   const heroOpacity = useTransform(heroScroll, [0, 0.85], [1, 0]);
 
   return (
-    <div className="min-h-screen bg-[#FBF9F6] text-[#2C2A26] font-sans selection:bg-[#D4CFC4] selection:text-[#2C2A26] overflow-clip">
+    <div className="min-h-screen bg-white text-[#2C2A26] font-sans selection:bg-[#6B1F2E] selection:text-[#FBF9F6] overflow-clip">
 
       {/* ───────── Hero ───────── */}
       <section
@@ -359,14 +359,14 @@ export default function Services() {
         >
           <motion.span
             variants={fadeUp}
-            className="block text-[9px] tracking-[0.5em] uppercase text-[#8C8273] mb-9"
+            className="block text-[9px] tracking-[0.5em] uppercase text-[#6B1F2E] mb-9"
           >
             Treatment Menu
           </motion.span>
 
           <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.08] font-light text-[#2C2A26] mb-9">
             <MaskLine>Curated protocols for</MaskLine>
-            <MaskLine className="italic text-[#8C8273]">
+            <MaskLine className="italic text-[#6B1F2E]">
               optimal well-being.
             </MaskLine>
           </h1>
@@ -390,7 +390,7 @@ export default function Services() {
             </span>
             <span className="relative block h-12 w-px overflow-hidden bg-[#2C2A26]/15">
               <motion.span
-                className="absolute inset-x-0 top-0 h-4 bg-[#8C8273]"
+                className="absolute inset-x-0 top-0 h-4 bg-[#6B1F2E]"
                 animate={{ y: ["-100%", "300%"] }}
                 transition={{
                   duration: 2.2,
@@ -421,7 +421,7 @@ export default function Services() {
                 i !== 0 ? "md:border-l md:border-[#2C2A26]/10" : ""
               }`}
             >
-              <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#8C8273]/12 text-[#8C8273] transition-all duration-500 group-hover:-translate-y-0.5 group-hover:bg-[#8C8273] group-hover:text-white">
+              <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#6B1F2E]/10 text-[#6B1F2E] transition-all duration-500 group-hover:-translate-y-0.5 group-hover:bg-[#6B1F2E] group-hover:text-white">
                 <p.icon className="h-5 w-5" strokeWidth={1.5} />
               </span>
               <h3 className="font-serif text-lg md:text-xl text-[#2C2A26] mb-1.5">
@@ -444,9 +444,9 @@ export default function Services() {
           style={{
             background: `
               radial-gradient(55% 45% at 50% 24%, rgba(212,207,196,0.45), transparent 70%),
-              radial-gradient(40% 40% at 12% 86%, rgba(140,130,115,0.12), transparent 72%),
+              radial-gradient(40% 40% at 12% 86%, rgba(107,31,46,0.08), transparent 72%),
               radial-gradient(40% 40% at 90% 88%, rgba(184,168,137,0.12), transparent 72%),
-              linear-gradient(180deg, #FBF9F6 0%, #F3EFE8 50%, #FBF9F6 100%)
+              linear-gradient(180deg, #FFFFFF 0%, #F3EFE8 50%, #FFFFFF 100%)
             `,
           }}
         />
@@ -462,7 +462,7 @@ export default function Services() {
           >
             <motion.span
               variants={fadeUp}
-              className="block text-[9px] tracking-[0.5em] uppercase text-[#8C8273] mb-6"
+              className="block text-[9px] tracking-[0.5em] uppercase text-[#6B1F2E] mb-6"
             >
               Signature Protocols
             </motion.span>
@@ -490,17 +490,7 @@ export default function Services() {
       </section>
 
       {/* ───────── Enhancements / Boosters ───────── */}
-      <section className="relative overflow-hidden bg-[#F0EEE9] py-28 md:py-32">
-        {/* Soft static wash */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(55% 50% at 50% 0%, rgba(212,207,196,0.45), transparent 70%)",
-          }}
-        />
-
+      <section className="relative overflow-hidden bg-white py-28 md:py-32">
         <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-12">
           <motion.div
             variants={stagger}
@@ -511,7 +501,7 @@ export default function Services() {
           >
             <motion.span
               variants={fadeUp}
-              className="block text-[9px] tracking-[0.5em] uppercase text-[#8C8273] mb-6"
+              className="block text-[9px] tracking-[0.5em] uppercase text-[#6B1F2E] mb-6"
             >
               Enhancements
             </motion.span>
@@ -536,11 +526,11 @@ export default function Services() {
           >
             {maintenance.map((item) => (
               <motion.div key={item.name} variants={fadeUp} className="h-full">
-                <div className="group relative flex h-full flex-col border border-[#2C2A26]/10 bg-[#FBF9F6]/70 p-7 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-[#8C8273]/40 hover:bg-white hover:shadow-[0_28px_55px_-32px_rgba(44,42,38,0.45)]">
+                <div className="group relative flex h-full flex-col border border-[#2C2A26]/10 bg-[#FBF9F6]/70 p-7 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-[#6B1F2E]/35 hover:bg-white hover:shadow-[0_28px_55px_-32px_rgba(62,17,25,0.45)]">
                   {/* hover top accent */}
-                  <span className="pointer-events-none absolute top-0 left-0 h-px w-full bg-[#8C8273] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
+                  <span className="pointer-events-none absolute top-0 left-0 h-px w-full bg-[#6B1F2E] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
 
-                  <span className="mb-7 flex h-12 w-12 items-center justify-center rounded-full bg-[#8C8273]/12 text-[#8C8273] transition-colors duration-500 group-hover:bg-[#8C8273] group-hover:text-white">
+                  <span className="mb-7 flex h-12 w-12 items-center justify-center rounded-full bg-[#6B1F2E]/10 text-[#6B1F2E] transition-colors duration-500 group-hover:bg-[#6B1F2E] group-hover:text-white">
                     <item.icon className="h-5 w-5" strokeWidth={1.5} />
                   </span>
 
@@ -551,7 +541,7 @@ export default function Services() {
                     {item.duration}
                   </p>
 
-                  <span className="mt-auto pt-8 font-serif text-2xl text-[#8C8273]">
+                  <span className="mt-auto pt-8 font-serif text-2xl text-[#6B1F2E]">
                     {item.price}
                   </span>
                 </div>
@@ -572,21 +562,41 @@ export default function Services() {
         </div>
       </section>
 
-      {/* ───────── Call to action ───────── */}
-      <section className="py-36 px-6 text-center max-w-3xl mx-auto">
+      {/* ───────── Call to action — oxblood finale ───────── */}
+      <section className="relative overflow-hidden bg-[#3E1119] py-36 md:py-44 px-6 text-center">
+        {/* Maroon glow rising from the top */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(70% 90% at 50% 0%, rgba(107,31,46,0.55), transparent 70%)",
+          }}
+        />
+        {/* Hairline gold rule */}
+        <span className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-px w-40 bg-[#B8A889]/50" />
+
         <motion.div
           variants={stagger}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
+          className="relative z-10 max-w-3xl mx-auto"
         >
-          <h2 className="font-serif text-3xl md:text-5xl font-light mb-8 leading-[1.12]">
+          <motion.span
+            variants={fadeUp}
+            className="block text-[9px] tracking-[0.5em] uppercase text-[#B8A889] mb-8"
+          >
+            Reserve Your Visit
+          </motion.span>
+
+          <h2 className="font-serif text-4xl md:text-6xl font-light mb-8 leading-[1.12] text-[#FBF9F6]">
             <MaskLine>Ready to elevate</MaskLine>
-            <MaskLine className="italic text-[#8C8273]">your baseline?</MaskLine>
+            <MaskLine className="italic text-[#B8A889]">your baseline?</MaskLine>
           </h2>
           <motion.p
             variants={fadeUp}
-            className="text-[#2C2A26]/60 text-sm leading-relaxed mb-10 font-light max-w-lg mx-auto"
+            className="text-[#FBF9F6]/60 text-sm md:text-base leading-relaxed mb-12 font-light max-w-lg mx-auto"
           >
             Schedule a consultation with our medical team to design a protocol
             tailored precisely to your biology.
@@ -595,7 +605,7 @@ export default function Services() {
             <a
               href={BOOKING_URL}
               onClick={handleBookingClick}
-              className="group inline-flex items-center justify-center gap-3 bg-[#2C2A26] text-white px-10 py-4 text-[10px] tracking-[0.3em] uppercase hover:bg-[#8C8273] transition-colors duration-500 rounded-sm"
+              className="group inline-flex items-center justify-center gap-3 bg-[#FBF9F6] text-[#3E1119] px-11 py-4 text-[10px] tracking-[0.3em] uppercase hover:bg-[#B8A889] transition-colors duration-500 rounded-sm"
             >
               Book a Consultation
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

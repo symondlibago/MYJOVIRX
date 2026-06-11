@@ -42,11 +42,11 @@ export default function Contact() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFFFFF] pt-32 pb-24">
+    <div className="min-h-screen bg-[#FCFAF7] pt-32 pb-24">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-16 md:mb-24">
         <FadeIn>
-          <p className="text-[#B8A889] text-[10px] tracking-[0.5em] uppercase mb-6">Get In Touch</p>
+          <p className="text-[#6B1F2E] text-[10px] tracking-[0.5em] uppercase mb-6">Get In Touch</p>
           <h1 className="font-serif text-6xl md:text-8xl text-[#0F0F0F] leading-[0.9] mb-8">
             Contact <span className="italic font-light">Us.</span>
           </h1>
@@ -65,7 +65,7 @@ export default function Contact() {
             <div className="grid sm:grid-cols-2 gap-10">
               {details.map((d) => (
                 <div key={d.label}>
-                  <d.icon className="w-6 h-6 text-[#453122] mb-4" />
+                  <d.icon className="w-6 h-6 text-[#6B1F2E] mb-4" />
                   <h3 className="text-[10px] tracking-[0.3em] uppercase text-[#0F0F0F]/40 mb-3">
                     {d.label}
                   </h3>
@@ -74,7 +74,7 @@ export default function Contact() {
                       <a
                         key={i}
                         href={d.href}
-                        className="block text-[#0F0F0F] leading-relaxed hover:text-[#453122] transition-colors"
+                        className="block text-[#0F0F0F] leading-relaxed hover:text-[#6B1F2E] transition-colors"
                       >
                         {line}
                       </a>
@@ -93,7 +93,7 @@ export default function Contact() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 text-[#0F0F0F] hover:text-[#453122] transition-colors text-sm tracking-wide"
+                className="inline-flex items-center gap-3 text-[#0F0F0F] hover:text-[#6B1F2E] transition-colors text-sm tracking-wide"
               >
                 <Instagram className="w-4 h-4" />
                 @myjovirx
@@ -117,7 +117,7 @@ export default function Contact() {
         <FadeIn direction="right">
           {submitted ? (
             <div className="bg-white p-12 shadow-sm text-center">
-              <div className="w-16 h-16 bg-[#0F0F0F] rounded-full flex items-center justify-center mx-auto mb-8">
+              <div className="w-16 h-16 bg-[#3E1119] rounded-full flex items-center justify-center mx-auto mb-8">
                 <Check className="w-8 h-8 text-white" />
               </div>
               <h2 className="font-serif text-4xl text-[#0F0F0F] mb-4 italic">Message Sent</h2>
@@ -127,7 +127,7 @@ export default function Contact() {
               </p>
               <button
                 onClick={() => setSubmitted(false)}
-                className="text-[10px] tracking-[0.4em] uppercase border-b border-[#0F0F0F] pb-2 hover:text-[#453122] hover:border-[#453122] transition-colors"
+                className="text-[10px] tracking-[0.4em] uppercase border-b border-[#0F0F0F] pb-2 hover:text-[#6B1F2E] hover:border-[#6B1F2E] transition-colors"
               >
                 Send Another Message
               </button>
@@ -178,7 +178,7 @@ export default function Contact() {
 
               <Button
                 type="submit"
-                className="w-full bg-[#0F0F0F] text-white py-7 rounded-none text-[10px] tracking-[0.5em] uppercase hover:bg-[#453122] transition-all group"
+                className="w-full bg-[#3E1119] text-white py-7 rounded-none text-[10px] tracking-[0.5em] uppercase hover:bg-[#6B1F2E] transition-all group"
               >
                 Send Message
                 <ArrowRight className="w-4 h-4 ml-4 transition-transform group-hover:translate-x-2" />
@@ -186,7 +186,7 @@ export default function Contact() {
 
               <p className="text-center text-[#453122]/50 text-xs leading-relaxed">
                 Looking to schedule a visit?{" "}
-                <a href={BOOKING_URL} onClick={handleBookingClick} className="text-[#453122] hover:underline">
+                <a href={BOOKING_URL} onClick={handleBookingClick} className="text-[#6B1F2E] hover:underline">
                   Book a consultation
                 </a>{" "}
                 through our partner portal.

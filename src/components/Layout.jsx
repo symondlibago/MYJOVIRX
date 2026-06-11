@@ -42,16 +42,23 @@ export default function Layout({ children }) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFFFFF]">
+    <div className="min-h-screen bg-[#FCFAF7]">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap');
 
         :root {
-          --color-ivory: #FFFFFF;
+          --color-ivory: #FCFAF7;
           --color-charcoal: #0F0F0F;
           --color-stone: #B8A889;
           --color-blush: #B8A889;
           --color-espresso: #453122;
+          --color-oxblood: #3E1119;
+          --color-maroon: #6B1F2E;
+        }
+
+        ::selection {
+          background-color: #6B1F2E;
+          color: #FFFFFF;
         }
 
         body {
@@ -90,13 +97,13 @@ export default function Layout({ children }) {
       {/* Scroll progress bar */}
       <motion.div
         style={{ scaleX: progress }}
-        className="fixed top-0 left-0 right-0 h-0.75 bg-[#B8A889] origin-left z-60"
+        className="fixed top-0 left-0 right-0 h-0.75 bg-[#6B1F2E] origin-left z-60"
       />
       <NavBar />
       <main>{children}</main>
 
       {/* ───── FOOTER ───── */}
-      <footer className="bg-[#0F0F0F] text-white">
+      <footer className="bg-[#3E1119] text-white">
 
         {/* Top Banner */}
         <div className="border-b border-white/10">
@@ -107,7 +114,7 @@ export default function Layout({ children }) {
             <a
               href={BOOKING_URL}
               onClick={handleBookingClick}
-              className="group inline-flex items-center gap-2 text-xs tracking-widest uppercase text-[#B8A889] border border-[#B8A889]/40 px-6 py-3 hover:bg-[#B8A889] hover:text-[#0F0F0F] transition-all duration-300"
+              className="group inline-flex items-center gap-2 text-xs tracking-widest uppercase text-[#B8A889] border border-[#B8A889]/40 px-6 py-3 hover:bg-[#B8A889] hover:text-[#3E1119] transition-all duration-300"
             >
               Book a Consultation
               <ArrowUpRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

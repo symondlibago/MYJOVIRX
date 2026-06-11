@@ -37,7 +37,7 @@ export default function NavBar() {
           left: 0;
           width: 0%;
           height: 1.5px;
-          background-color: #B8A889;
+          background-color: #6B1F2E;
           transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .nav-link:hover::after,
@@ -45,12 +45,12 @@ export default function NavBar() {
           width: 100%;
         }
         .nav-link.active {
-          color: #B8A889;
+          color: #6B1F2E;
         }
       `}</style>
 
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[#FFFFFF]/95 backdrop-blur-md ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[#FCFAF7]/95 backdrop-blur-md ${
           isScrolled ? "py-4 shadow-md" : "py-6 shadow-sm"
         }`}
       >
@@ -73,7 +73,7 @@ export default function NavBar() {
                   key={link.name}
                   href={link.href}
                   onClick={handleBookingClick}
-                  className="text-sm tracking-widest uppercase bg-[#453122] border border-[#453122] text-white px-5 py-2.5 hover:bg-[#0F0F0F] hover:border-[#0F0F0F] transition-colors duration-300"
+                  className="text-sm tracking-widest uppercase bg-[#6B1F2E] border border-[#6B1F2E] text-white px-5 py-2.5 hover:bg-[#3E1119] hover:border-[#3E1119] transition-colors duration-300"
                 >
                   {link.name}
                 </a>
@@ -81,8 +81,8 @@ export default function NavBar() {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`nav-link text-sm tracking-widest uppercase transition-colors duration-300 hover:text-[#B8A889] ${
-                    pathname === link.path ? "active text-[#B8A889]" : "text-[#0F0F0F]"
+                  className={`nav-link text-sm tracking-widest uppercase transition-colors duration-300 hover:text-[#6B1F2E] ${
+                    pathname === link.path ? "active text-[#6B1F2E]" : "text-[#0F0F0F]"
                   }`}
                 >
                   {link.name}
@@ -109,7 +109,7 @@ export default function NavBar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "tween", duration: 0.35, ease: "easeInOut" }}
-            className="fixed inset-0 z-100 bg-[#FFFFFF]"
+            className="fixed inset-0 z-100 bg-[#FCFAF7]"
           >
             <div className="flex flex-col h-full px-8 py-6">
               <div className="flex items-center justify-between">
@@ -149,7 +149,7 @@ export default function NavBar() {
                           setMobileOpen(false);
                           handleBookingClick(e);
                         }}
-                        className="group flex items-center gap-4 text-3xl font-serif tracking-wide text-[#0F0F0F] hover:text-[#B8A889] transition-colors duration-300"
+                        className="group flex items-center gap-4 text-3xl font-serif tracking-wide text-[#0F0F0F] hover:text-[#6B1F2E] transition-colors duration-300"
                       >
                         {number}
                         {link.name}
@@ -166,7 +166,7 @@ export default function NavBar() {
                         to={link.path}
                         onClick={() => setMobileOpen(false)}
                         className={`group flex items-center gap-4 text-3xl font-serif tracking-wide transition-colors duration-300 ${
-                          pathname === link.path ? "text-[#B8A889]" : "text-[#0F0F0F] hover:text-[#B8A889]"
+                          pathname === link.path ? "text-[#6B1F2E]" : "text-[#0F0F0F] hover:text-[#6B1F2E]"
                         }`}
                       >
                         {number}

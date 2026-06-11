@@ -36,19 +36,19 @@ const faqs = [
   },
 ];
 
-export default function HomeSections() {
+export default function HomeFaq() {
   return (
-    <section className="py-28 px-6 bg-[#FFFFFF]">
+    <section className="py-28 px-6 bg-white">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-start">
         {/* Left — heading */}
         <div className="lg:col-span-4">
           <FadeIn direction="left">
-            <p className="text-[#B8A889] text-xs tracking-[0.4em] uppercase mb-4">
+            <p className="text-[#6B1F2E] text-xs tracking-[0.4em] uppercase mb-4">
               Questions
             </p>
             <h2 className="font-serif text-5xl md:text-6xl text-[#0F0F0F] leading-tight mb-8">
               Frequently <br />
-              <span className="italic text-[#B8A889]">Asked.</span>
+              <span className="italic text-[#6B1F2E]">Asked.</span>
             </h2>
             <p className="text-[#453122]/60 text-sm leading-relaxed mb-8 max-w-xs">
               Everything you need to know before your first visit. Still have a
@@ -56,7 +56,7 @@ export default function HomeSections() {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-3 border-b-2 border-[#0F0F0F] pb-2 text-[10px] tracking-[0.3em] uppercase hover:border-[#453122] hover:text-[#453122] transition-colors"
+              className="inline-flex items-center gap-3 border-b-2 border-[#0F0F0F] pb-2 text-[10px] tracking-[0.3em] uppercase hover:border-[#6B1F2E] hover:text-[#6B1F2E] transition-colors"
             >
               Ask Us Anything
               <ArrowRight className="w-3.5 h-3.5" />

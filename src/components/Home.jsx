@@ -4,7 +4,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, ArrowDown } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
 import Marquee from "@/components/ui/Marquee";
-import HomeSections from "./HomeSections";
+import HomeFaq from "./HomeFaq";
 import { BOOKING_URL, handleBookingClick } from "@/config";
 
 const heroSlides = [
@@ -151,7 +151,7 @@ export default function Home() {
             <a
               href={BOOKING_URL}
               onClick={handleBookingClick}
-              className="inline-flex items-center gap-3 bg-white/10 border border-white/30 text-white px-9 py-4 text-xs tracking-[0.25em] uppercase hover:bg-white hover:text-[#0F0F0F] transition-all"
+              className="inline-flex items-center gap-3 bg-white/10 border border-white/30 text-white px-9 py-4 text-xs tracking-[0.25em] uppercase hover:bg-[#6B1F2E] hover:border-[#6B1F2E] transition-all"
             >
               Book a Consultation
               <ArrowRight className="w-4 h-4" />
@@ -208,11 +208,11 @@ export default function Home() {
       />
 
       {/* FEATURED TREATMENTS */}
-      <section className="py-28 px-6 bg-[#FFFFFF]">
+      <section className="py-28 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <FadeIn>
             <div className="mb-16">
-              <p className="text-[#B8A889] text-xs tracking-[0.4em] uppercase mb-4">
+              <p className="text-[#6B1F2E] text-xs tracking-[0.4em] uppercase mb-4">
                 What We Offer
               </p>
               <h2 className="font-serif text-6xl text-[#0F0F0F]">
@@ -307,8 +307,8 @@ export default function Home() {
         */}
       </section>
 
-      {/* WHY CHOOSE US · TESTIMONIALS · FAQ */}
-      <HomeSections />
+      {/* FAQ */}
+      <HomeFaq />
     </div>
   );
 }
