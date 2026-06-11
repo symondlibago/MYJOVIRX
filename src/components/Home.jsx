@@ -355,7 +355,6 @@ export default function Home() {
 
             {/* Bottle — layered to sit on top of the FAQ card below */}
             <div className="relative z-20 hidden lg:flex justify-center lg:justify-end lg:translate-y-0">
-              {/* Soft gold halo behind the product */}
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 flex items-center justify-center"
