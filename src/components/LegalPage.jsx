@@ -23,7 +23,7 @@ export default function LegalPage({ slug }) {
     <div className="min-h-screen bg-white pt-32 pb-24">
       <Seo
         title={doc.title}
-        description={`${doc.title} for MyJoviRX, the Costa Mesa wellness & IV therapy clinic serving Orange County, CA.`}
+        description={`${doc.title} for MotionRX, the Costa Mesa wellness & IV therapy clinic serving Orange County, CA.`}
         path={`/${slug}`}
       />
       <div className="max-w-3xl mx-auto px-6 lg:px-12">

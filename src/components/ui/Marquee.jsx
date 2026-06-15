@@ -5,7 +5,7 @@ import React from "react";
 export default function Marquee({ items, className = "" }) {
   const loop = [...items, ...items];
   return (
-    <div className={`relative overflow-hidden bg-brand-deep py-7 border-y border-black/20 ${className}`}>
+    <div className={`relative overflow-hidden bg-brand-deep py-4 border-y border-black/20 ${className}`}>
       <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
         {loop.map((item, i) => (
           <span key={i} className="flex items-center shrink-0">

@@ -9,17 +9,17 @@ export default function OurTeam() {
     {
       icon: Stethoscope,
       title: "Clinical Expertise",
-      description: "Every protocol is grounded in evidence and delivered by licensed medical professionals you can trust."
+      description: "Evidence-based protocols, delivered by licensed professionals."
     },
     {
       icon: Heart,
       title: "Personal Attention",
-      description: "We take time to understand your goals, labs, and lifestyle—no rushed, one-size-fits-all care."
+      description: "We take time to understand your goals and labs — never rushed, never one-size-fits-all."
     },
     {
       icon: Leaf,
       title: "Whole-Body Wellness",
-      description: "From hydration to hormones, we treat the root cause to help you feel and perform your best long term."
+      description: "From hydration to hormones, we treat the root cause — not just symptoms."
     }
   ];
 
@@ -36,7 +36,7 @@ export default function OurTeam() {
     <div className="min-h-screen bg-ivory pt-32 pb-24">
       <Seo
         title="Our Medical Team — Licensed RNs & Medical Director"
-        description="Meet the MyJoviRX team: Medical Director Dr. Courtney S. Scott and experienced licensed registered nurses delivering personalized wellness care in Costa Mesa, CA."
+        description="Meet the MotionRX team: Medical Director Dr. Courtney S. Scott and experienced licensed registered nurses delivering personalized wellness care in Costa Mesa, CA."
         path="/our-team"
       />
       {/* Hero Section - Split Layout */}
@@ -61,14 +61,13 @@ export default function OurTeam() {
                 <span className="italic">S. Scott</span>
               </h1>
               <p className="text-espresso/70 text-lg leading-relaxed mb-8">
-                MyJoviRX is led by Medical Director Dr. Courtney S. Scott, whose practice
-                centers on comprehensive care—prevention, evaluation, diagnosis, and
-                treatment—with a focus on anti-aging and longevity.
+                Dr. Courtney S. Scott leads MotionRX, with a practice focused on
+                prevention, diagnosis, and longevity medicine.
               </p>
               <p className="text-espresso/70 text-lg leading-relaxed mb-10">
-                He built MyJoviRX to be a non-clinical, rejuvenating oasis: a place where
-                modern medicine meets genuine hospitality, and where every plan is
-                tailored to how you actually want to feel.
+                He built MotionRX as a non-clinical oasis — where modern medicine
+                meets real hospitality, and every plan is built around how you
+                want to feel.
               </p>
             </div>
           </FadeIn>
@@ -82,8 +81,7 @@ export default function OurTeam() {
             <p className="text-brand text-[10px] tracking-[0.5em] uppercase mb-6">The Team</p>
             <h2 className="font-serif text-5xl md:text-6xl text-ink mb-6">Our Wellness Team</h2>
             <p className="text-espresso/60 leading-relaxed">
-              Meet the heart of MyJoviRX—a team of experienced, licensed registered nurses
-              whose passion, expertise, and genuine care guide every visit.
+              A team of experienced, licensed registered nurses who guide every visit.
             </p>
           </div>
         </FadeIn>
@@ -136,7 +134,7 @@ export default function OurTeam() {
           <div className="lg:col-span-7">
             <FadeIn>
               <div className="aspect-video overflow-hidden">
-                <img src="/hero-1.jpg" alt="The MyJoviRX wellness lounge" className="w-full h-full object-cover" />
+                <img src="/hero-1.jpg" alt="The MotionRX wellness lounge" className="w-full h-full object-cover" />
               </div>
             </FadeIn>
           </div>
@@ -145,9 +143,8 @@ export default function OurTeam() {
               <p className="text-brand text-[10px] tracking-[0.5em] uppercase mb-6">The Space</p>
               <h2 className="font-serif text-4xl text-ink mb-6">A Non-Clinical Oasis</h2>
               <p className="text-espresso/60 leading-relaxed text-sm">
-                Designed to feel nothing like a hospital, our private lounge and
-                treatment suites offer a serene environment where you can recline,
-                relax, and let your therapy do its work.
+                Nothing like a hospital. Private suites where you can recline,
+                relax, and let your therapy work.
               </p>
             </FadeIn>
           </div>

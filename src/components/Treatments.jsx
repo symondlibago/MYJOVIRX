@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BOOKING_URL, handleBookingClick } from "@/config";
 import Seo from "./Seo";
+import TreatmentsDetail from "./TreatmentsDetail";
 import {
   ArrowUpRight,
   Syringe,
@@ -348,83 +349,62 @@ export default function Treatments() {
     <div className="min-h-screen bg-white text-ink-warm font-sans selection:bg-brand selection:text-cream overflow-clip">
       <Seo
         title="IV Therapy, NAD+ & Weight Loss Treatments in Costa Mesa, CA"
-        description="Explore MyJoviRX treatments: Signature IV drips from $149, NAD+ restoration, hormone optimization, and GLP-1 medical weight loss — all physician-guided in Costa Mesa, CA."
+        description="Explore MotionRX treatments: Signature IV drips from $149, NAD+ restoration, hormone optimization, and GLP-1 medical weight loss — all physician-guided in Costa Mesa, CA."
         path="/services"
       />
 
-      {/* ───────── Hero (background photo + glass box) ───────── */}
-      <section
-        ref={heroRef}
-        className="relative overflow-hidden px-6 pt-28 pb-6"
-      >
-        {/* Full-bleed background photo */}
-        <motion.div
-          aria-hidden
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/treatments.jpg')" }}
-          initial={{ scale: 1.08 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.6, ease: EASE }}
-        />
-        {/* Gentle wash to seat the box and soften the photo */}
+      {/* ───────── Treatments (circular coverflow) ───────── */}
+      <section className="relative overflow-hidden">
+        {/* Static gradient wash — premium, but zero per-frame cost */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-ink-warm/15 via-transparent to-ink-warm/20"
+          className="absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(55% 45% at 50% 24%, rgb(var(--stone-rgb) / 0.45), transparent 70%),
+              radial-gradient(40% 40% at 12% 86%, rgb(var(--brand-rgb) / 0.08), transparent 72%),
+              radial-gradient(40% 40% at 90% 88%, rgb(var(--gold-rgb) / 0.12), transparent 72%),
+              linear-gradient(180deg, #FFFFFF 0%, var(--color-sand2) 50%, #FFFFFF 100%)
+            `,
+          }}
         />
 
-        {/* Transparent glass box in front */}
-        <motion.div
-          style={{ y: heroY, opacity: heroOpacity }}
-          variants={stagger}
-          initial="hidden"
-          animate="show"
-          className="relative z-10 w-full rounded-[28px] md:rounded-[36px] ring-1 ring-white/25 bg-cream/35 px-8 py-20 text-center md:px-16 md:py-28"
-        >
-          <motion.span
-            variants={fadeUp}
-            className="block text-[9px] tracking-[0.5em] uppercase text-brand mb-9"
-          >
-            Treatment Menu
-          </motion.span>
-
-          <h1 className="font-serif text-4xl md:text-6xl leading-[1.08] font-light text-ink-warm mb-9">
-            <MaskLine>Curated protocols for</MaskLine>
-            <MaskLine className="italic text-brand">
-              optimal well-being.
-            </MaskLine>
-          </h1>
-
-          <motion.p
-            variants={fadeUp}
-            className="text-ink-warm text-sm md:text-base leading-relaxed max-w-xl mx-auto font-md"
-          >
-            Every treatment begins with an unrushed medical consultation. Our
-            protocols are evidence-based, overseen by licensed providers, and
-            utilize premium, pharmacy-grade ingredients.
-          </motion.p>
-
-          {/* Scroll cue */}
+        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-12 pt-40 pb-28 md:pt-48 md:pb-36">
+          {/* Section heading */}
           <motion.div
-            variants={fadeUp}
-            className="mt-14 flex flex-col items-center gap-3"
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+            className="max-w-2xl mx-auto text-center mb-14 md:mb-20"
           >
-            <span className="text-[9px] tracking-[0.4em] uppercase text-ink-warm/45">
-              Explore
-            </span>
-            <span className="relative block h-12 w-px overflow-hidden bg-ink-warm/20">
-              <motion.span
-                className="absolute inset-x-0 top-0 h-4 bg-brand"
-                animate={{ y: ["-100%", "300%"] }}
-                transition={{
-                  duration: 2.2,
-                  ease: "easeInOut",
-                  repeat: Infinity,
-                  repeatDelay: 0.2,
-                }}
-              />
-            </span>
+            <motion.span
+              variants={fadeUp}
+              className="block text-[9px] tracking-[0.5em] uppercase text-brand mb-6"
+            >
+              Signature Protocols
+            </motion.span>
+            <h2 className="font-serif text-3xl md:text-5xl font-light leading-[1.1] mb-6">
+              <MaskLine>The Treatments</MaskLine>
+            </h2>
+            <motion.p
+              variants={fadeUp}
+              className="text-ink-warm/60 text-sm md:text-base leading-relaxed font-light"
+            >
+              Tap any circle to explore. Each protocol is tailored to you and
+              provider-guided.
+            </motion.p>
           </motion.div>
-        </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.9, ease: EASE }}
+          >
+            <TreatmentArc services={mainServices} />
+          </motion.div>
+        </div>
       </section>
 
       {/* ───────── Values band ───────── */}
@@ -458,59 +438,60 @@ export default function Treatments() {
         </motion.div>
       </section>
 
-      {/* ───────── Treatments (circular coverflow) ───────── */}
-      <section className="relative overflow-hidden">
-        {/* Static gradient wash — premium, but zero per-frame cost */}
+      {/* ───────── Treatment Menu banner (cover photo) ───────── */}
+      <section
+        ref={heroRef}
+        className="relative overflow-hidden px-6 py-6"
+      >
+        {/* Full-bleed background photo */}
+        <motion.div
+          aria-hidden
+          className="absolute inset-0 bg-cover bg-top"
+          style={{ backgroundImage: "url('/treatments.jpg')" }}
+          initial={{ scale: 1.08 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.6, ease: EASE }}
+        />
+        {/* Wash so the text stays legible over the photo */}
         <div
           aria-hidden
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(55% 45% at 50% 24%, rgb(var(--stone-rgb) / 0.45), transparent 70%),
-              radial-gradient(40% 40% at 12% 86%, rgb(var(--brand-rgb) / 0.08), transparent 72%),
-              radial-gradient(40% 40% at 90% 88%, rgb(var(--gold-rgb) / 0.12), transparent 72%),
-              linear-gradient(180deg, #FFFFFF 0%, var(--color-sand2) 50%, #FFFFFF 100%)
-            `,
-          }}
+          className="absolute inset-0 bg-gradient-to-b from-ink-warm/55 via-ink-warm/40 to-ink-warm/65"
         />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-12 py-28 md:py-36">
-          {/* Section heading */}
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            className="max-w-2xl mx-auto text-center mb-14 md:mb-20"
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          className="relative z-10 w-full px-8 py-20 text-center md:px-16 md:py-28"
+        >
+          <motion.span
+            variants={fadeUp}
+            className="block text-[9px] tracking-[0.5em] uppercase text-gold mb-9"
           >
-            <motion.span
-              variants={fadeUp}
-              className="block text-[9px] tracking-[0.5em] uppercase text-brand mb-6"
-            >
-              Signature Protocols
-            </motion.span>
-            <h2 className="font-serif text-3xl md:text-5xl font-light leading-[1.1] mb-6">
-              <MaskLine>The Treatments</MaskLine>
-            </h2>
-            <motion.p
-              variants={fadeUp}
-              className="text-ink-warm/60 text-sm md:text-base leading-relaxed font-light"
-            >
-              Tap any circle to explore — each protocol is tailored to your
-              biology and guided by a licensed provider.
-            </motion.p>
-          </motion.div>
+            Treatment Menu
+          </motion.span>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.9, ease: EASE }}
+          <h2 className="font-serif text-5xl md:text-7xl leading-[1.08] font-light text-cream mb-9">
+            <MaskLine>Curated protocols for</MaskLine>
+            <MaskLine className="italic text-gold">
+              optimal well-being.
+            </MaskLine>
+          </h2>
+
+          <motion.p
+            variants={fadeUp}
+            className="text-cream/85 text-sm md:text-base leading-relaxed max-w-xl mx-auto font-md"
           >
-            <TreatmentArc services={mainServices} />
-          </motion.div>
-        </div>
+            Every treatment starts with a real consultation: evidence-based
+            protocols, licensed providers, pharmacy-grade ingredients.
+          </motion.p>
+        </motion.div>
       </section>
+
+      {/* ───────── Detailed treatments menu (layout via Design Studio) ───────── */}
+      <TreatmentsDetail />
 
       {/* ───────── Enhancements / Boosters ───────── */}
       <section className="relative overflow-hidden bg-white py-28 md:py-32">
@@ -535,8 +516,7 @@ export default function Treatments() {
               variants={fadeUp}
               className="text-ink-warm/60 text-sm md:text-base leading-relaxed font-light max-w-xl mx-auto"
             >
-              Add a focused boost to any treatment — quick, potent, and chosen
-              around exactly how you want to feel.
+              Add a quick, focused boost to any treatment.
             </motion.p>
           </motion.div>
 
@@ -621,8 +601,7 @@ export default function Treatments() {
             variants={fadeUp}
             className="text-cream/60 text-sm md:text-base leading-relaxed mb-12 font-light max-w-lg mx-auto"
           >
-            Schedule a consultation with our medical team to design a protocol
-            tailored precisely to your biology.
+            Book a consult and we'll build a protocol around your goals.
           </motion.p>
           <motion.div variants={fadeUp}>
             <a

@@ -46,7 +46,7 @@ export default function Contact() {
     <div className="min-h-screen bg-ivory pt-32 pb-24">
       <Seo
         title="Contact Us — IV Therapy in Costa Mesa, Orange County"
-        description="Contact MyJoviRX at (949) 281-1440 or hello@myjovirx.com. Visit us at 250 Fischer Ave, Costa Mesa, CA 92626, or book a telehealth consultation across California."
+        description="Contact MotionRX at (949) 281-1440 or hello@myjovirx.com. Visit us at 250 Fischer Ave, Costa Mesa, CA 92626, or book a telehealth consultation across California."
         path="/contact"
       />
       {/* Header */}
@@ -109,7 +109,7 @@ export default function Contact() {
             {/* Map */}
             <div className="mt-10 aspect-video overflow-hidden border border-ink/10">
               <iframe
-                title="MyJoviRX location map"
+                title="MotionRX location map"
                 src="https://maps.google.com/maps?q=250%20Fischer%20Ave%20Costa%20Mesa%20CA%2092626&t=&z=14&ie=UTF8&iwloc=&output=embed"
                 className="w-full h-full grayscale"
                 loading="lazy"

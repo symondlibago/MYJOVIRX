@@ -106,7 +106,7 @@ export default function Layout({ children }) {
             <div className="lg:col-span-1">
               <div className="mb-6">
                 <span className="font-serif text-4xl tracking-wide block text-white">
-                  MyJoviRX
+                  MotionRX
                 </span>
                 <span className="text-[9px] tracking-[0.35em] uppercase text-gold mt-1 block">
                   Wellness &amp; IV Therapy
@@ -252,7 +252,7 @@ export default function Layout({ children }) {
         {/* Bottom Bar */}
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/25">
-            <p>© 2026 MyJoviRX. All rights reserved.</p>
+            <p>© 2026 MotionRX. All rights reserved.</p>
             <p className="text-gold/60 tracking-widest uppercase">
               Telehealth &amp; In-Clinic
             </p>

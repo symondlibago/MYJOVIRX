@@ -214,6 +214,18 @@ html.lenis body {
   --font-head: "Fraunces", Georgia, serif;
   --font-body: "Figtree", system-ui, sans-serif;
 }
+:root[data-font="bodoni"] {
+  --font-head: "Bodoni Moda", Georgia, serif;
+  --font-body: "Jost", system-ui, sans-serif;
+}
+:root[data-font="newsreader"] {
+  --font-head: "Newsreader", Georgia, serif;
+  --font-body: "Mulish", system-ui, sans-serif;
+}
+:root[data-font="montserrat"] {
+  --font-head: "Montserrat", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+}
 
 /* Garet's tall, wide geometry reads noticeably larger than the other faces,
    so normalize its apparent heading size (by x-height). Lower = smaller. */

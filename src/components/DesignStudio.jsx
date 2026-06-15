@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Palette, X, Check } from "lucide-react";
-
-/**
- * Floating "Design Studio" panel — preview palette / font / weight / design
- * combinations live, AND edit each palette's colors with native color pickers.
- *
- * It drives the site purely through CSS custom properties: data-attributes on
- * <html> select the base palette/font/etc (defined in index.css), and any
- * per-palette color edits are written as inline CSS vars on <html> (which beat
- * the stylesheet). Everything is saved to localStorage and re-applied before
- * paint by a small script in index.html.
- */
+import {
+  Palette,
+  X,
+  Check,
+  Monitor,
+  Tablet,
+  Smartphone,
+  RotateCw,
+} from "lucide-react";
 
 const STORAGE_KEY = "myjovirx-theme";
 const DEFAULTS = {
@@ -20,6 +17,8 @@ const DEFAULTS = {
   weight: "bold",
   italic: "off",
   design: "editorial",
+  txLayout: "explorer", // Treatments page detail-section layout
+  tmLayout: "cluster", // Home testimonials section layout
   customColors: {}, // { paletteId: { roleId: "#hex" } }
 };
 
@@ -75,6 +74,27 @@ const FONTS = [
     head: '"Fraunces", Georgia, serif',
     body: '"Figtree", sans-serif',
   },
+  {
+    id: "bodoni",
+    name: "Bodoni + Jost",
+    note: "Couture · high-contrast",
+    head: '"Bodoni Moda", Georgia, serif',
+    body: '"Jost", sans-serif',
+  },
+  {
+    id: "newsreader",
+    name: "Newsreader + Mulish",
+    note: "Refined · editorial",
+    head: '"Newsreader", Georgia, serif',
+    body: '"Mulish", sans-serif',
+  },
+  {
+    id: "montserrat",
+    name: "Montserrat + DM Sans",
+    note: "Geometric · clean",
+    head: '"Montserrat", sans-serif',
+    body: '"DM Sans", sans-serif',
+  },
 ];
 
 const WEIGHTS = [
@@ -88,6 +108,26 @@ const DESIGNS = [
   { id: "modern", name: "Modern", note: "Tighter spacing" },
 ];
 
+// Treatments-page detail section only — picks one of three layouts.
+const LAYOUTS = [
+  { id: "explorer", name: "Explorer", note: "List + detail panel" },
+  { id: "bento", name: "Bento", note: "Grid + slide-in drawer" },
+  { id: "stacked", name: "Stacked", note: "Expandable accordion" },
+];
+
+// Home testimonials section — picks one of two image-based layouts.
+const TM_LAYOUTS = [
+  { id: "cluster", name: "Cluster", note: "Scattered photo circles" },
+  { id: "coverflow", name: "Coverflow", note: "3D center carousel" },
+];
+
+// Responsive preview — real CSS-px widths so the site's actual breakpoints fire.
+const DEVICES = [
+  { id: "desktop", name: "Desktop", icon: Monitor, w: null, h: null },
+  { id: "tablet", name: "Tablet", icon: Tablet, w: 834, h: 1112 },
+  { id: "phone", name: "Phone", icon: Smartphone, w: 390, h: 844 },
+];
+
 function hexToTriplet(hex) {
   let h = String(hex).replace("#", "");
   if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
@@ -98,9 +138,18 @@ function hexToTriplet(hex) {
 export default function DesignStudio() {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState(DEFAULTS);
+  const [device, setDevice] = useState("desktop"); // transient preview, not saved
+  const [landscape, setLandscape] = useState(false);
+  const iframeRef = useRef(null);
+
+  // When rendered inside the preview iframe, hide the studio entirely (no nested
+  // panel / infinite frames). Hooks above run unconditionally; bail before JSX.
+  const framed =
+    typeof window !== "undefined" && window.self !== window.top;
 
   // Load any saved selection once on mount.
   useEffect(() => {
+    if (framed) return; // inside the preview iframe: anti-flash script handles it
     try {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
       setTheme((t) => ({
@@ -114,13 +163,23 @@ export default function DesignStudio() {
   }, []);
 
   // Apply to <html> + persist whenever the selection changes.
-  useEffect(() => {
+  useEffect(() => { 
+    if (framed) return;
     const root = document.documentElement;
     root.setAttribute("data-palette", theme.palette);
     root.setAttribute("data-font", theme.font);
     root.setAttribute("data-weight", theme.weight);
     root.setAttribute("data-italic", theme.italic);
     root.setAttribute("data-design", theme.design);
+    root.setAttribute("data-tx-layout", theme.txLayout);
+    root.setAttribute("data-tm-layout", theme.tmLayout);
+    // These sections are React components, not pure CSS — let them swap layouts.
+    window.dispatchEvent(
+      new CustomEvent("myjovirx-tx-layout", { detail: theme.txLayout })
+    );
+    window.dispatchEvent(
+      new CustomEvent("myjovirx-tm-layout", { detail: theme.tmLayout })
+    );
 
     // Per-palette color overrides — inline vars beat the stylesheet. We clear
     // every role var first so edits never bleed across palettes.
@@ -141,6 +200,13 @@ export default function DesignStudio() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(theme));
     } catch {
       /* ignore */
+    }
+
+    // Push the live theme into the device-preview iframe so edits reflect
+    // instantly without a reload.
+    const frame = iframeRef.current;
+    if (frame && frame.contentWindow) {
+      frame.contentWindow.postMessage({ __myjovirxTheme: theme }, "*");
     }
   }, [theme]);
 
@@ -177,12 +243,24 @@ export default function DesignStudio() {
     theme.weight === DEFAULTS.weight &&
     theme.italic === DEFAULTS.italic &&
     theme.design === DEFAULTS.design &&
+    theme.txLayout === DEFAULTS.txLayout &&
+    theme.tmLayout === DEFAULTS.tmLayout &&
     !anyCustom;
 
   const cardBase =
     "rounded-xl border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-black/70";
   const activeRing = "border-transparent ring-2 ring-black/80";
   const idleRing = "border-black/10 hover:border-black/30";
+
+  if (framed) return null;
+
+  const dev = DEVICES.find((d) => d.id === device) || DEVICES[0];
+  const previewW = landscape ? dev.h : dev.w;
+  const previewH = landscape ? dev.w : dev.h;
+  const previewSrc =
+    typeof window !== "undefined"
+      ? window.location.pathname + window.location.search
+      : "/";
 
   return (
     <div className="fixed bottom-6 right-6 z-[120] font-sans print:hidden">
@@ -211,7 +289,40 @@ export default function DesignStudio() {
               </button>
             </div>
 
-            <div className="max-h-[68vh] space-y-6 overflow-y-auto px-5 py-5">
+            <div
+              data-lenis-prevent
+              className="max-h-[68vh] space-y-6 overflow-y-auto overscroll-contain px-5 py-5"
+            >
+              {/* Device preview */}
+              <section>
+                <h4 className="mb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-black/40">
+                  Device Preview
+                </h4>
+                <p className="mb-3 text-[10px] text-black/40">
+                  See this page at real phone / tablet widths
+                </p>
+                <div className="grid grid-cols-3 gap-2">
+                  {DEVICES.map((d) => {
+                    const active = device === d.id;
+                    return (
+                      <button
+                        key={d.id}
+                        onClick={() => {
+                          setLandscape(false);
+                          setDevice(d.id);
+                        }}
+                        className={`flex flex-col items-center gap-1.5 px-2 py-3 ${cardBase} ${
+                          active ? activeRing : idleRing
+                        }`}
+                      >
+                        <d.icon className="h-4 w-4" strokeWidth={1.6} />
+                        <span className="text-[11px] font-medium">{d.name}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </section>
+
               {/* Palette */}
               <section>
                 <h4 className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-black/40">
@@ -389,6 +500,70 @@ export default function DesignStudio() {
                   })}
                 </div>
               </section>
+
+              {/* Treatments layout */}
+              <section>
+                <h4 className="mb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-black/40">
+                  Treatments Layout
+                </h4>
+                <p className="mb-3 text-[10px] text-black/40">
+                  Detail section on the Treatments page
+                </p>
+                <div className="space-y-2">
+                  {LAYOUTS.map((l) => {
+                    const active = theme.txLayout === l.id;
+                    return (
+                      <button
+                        key={l.id}
+                        onClick={() => set("txLayout", l.id)}
+                        className={`flex w-full items-center justify-between px-3.5 py-2.5 ${cardBase} ${
+                          active ? activeRing : idleRing
+                        }`}
+                      >
+                        <span className="min-w-0 text-left">
+                          <span className="block text-[13px] font-medium leading-tight">
+                            {l.name}
+                          </span>
+                          <span className="block text-[10px] text-black/45">{l.note}</span>
+                        </span>
+                        {active && <Check className="ml-2 h-4 w-4 shrink-0 text-black" />}
+                      </button>
+                    );
+                  })}
+                </div>
+              </section>
+
+              {/* Testimonials layout */}
+              <section>
+                <h4 className="mb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-black/40">
+                  Testimonials Layout
+                </h4>
+                <p className="mb-3 text-[10px] text-black/40">
+                  Testimonials section on the Home page
+                </p>
+                <div className="space-y-2">
+                  {TM_LAYOUTS.map((l) => {
+                    const active = theme.tmLayout === l.id;
+                    return (
+                      <button
+                        key={l.id}
+                        onClick={() => set("tmLayout", l.id)}
+                        className={`flex w-full items-center justify-between px-3.5 py-2.5 ${cardBase} ${
+                          active ? activeRing : idleRing
+                        }`}
+                      >
+                        <span className="min-w-0 text-left">
+                          <span className="block text-[13px] font-medium leading-tight">
+                            {l.name}
+                          </span>
+                          <span className="block text-[10px] text-black/45">{l.note}</span>
+                        </span>
+                        {active && <Check className="ml-2 h-4 w-4 shrink-0 text-black" />}
+                      </button>
+                    );
+                  })}
+                </div>
+              </section>
             </div>
 
             {/* Footer */}
@@ -401,6 +576,81 @@ export default function DesignStudio() {
               >
                 Reset all
               </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Device preview overlay */}
+      <AnimatePresence>
+        {device !== "desktop" && (
+          <motion.div
+            key="device-preview"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[130] flex flex-col bg-black/75 backdrop-blur-sm"
+          >
+            {/* Toolbar */}
+            <div className="flex items-center justify-center gap-2 px-4 py-3 text-white">
+              {DEVICES.map((d) => {
+                const active = device === d.id;
+                return (
+                  <button
+                    key={d.id}
+                    onClick={() => {
+                      setLandscape(false);
+                      setDevice(d.id);
+                    }}
+                    className={`flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[11px] font-medium transition-colors ${
+                      active ? "bg-white text-black" : "bg-white/10 hover:bg-white/20"
+                    }`}
+                  >
+                    <d.icon className="h-3.5 w-3.5" strokeWidth={1.6} />
+                    {d.name}
+                  </button>
+                );
+              })}
+              <button
+                onClick={() => setLandscape((l) => !l)}
+                aria-label="Rotate"
+                className="ml-1 flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-medium transition-colors hover:bg-white/20"
+              >
+                <RotateCw className="h-3.5 w-3.5" strokeWidth={1.6} />
+                <span className="tabular-nums">
+                  {previewW} × {previewH}
+                </span>
+              </button>
+              <button
+                onClick={() => {
+                  setDevice("desktop");
+                  setLandscape(false);
+                }}
+                aria-label="Close preview"
+                className="ml-1 rounded-full bg-white/10 p-1.5 transition-colors hover:bg-white/20"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            {/* Device frame */}
+            <div className="flex flex-1 items-center justify-center overflow-auto p-4">
+              <div className="overflow-hidden rounded-[2.2rem] border-[12px] border-black bg-black shadow-[0_40px_90px_-20px_rgba(0,0,0,0.7)]">
+                <iframe
+                  ref={iframeRef}
+                  src={previewSrc}
+                  title="Responsive device preview"
+                  style={{
+                    width: previewW,
+                    height: `min(${previewH}px, 80vh)`,
+                    // Lenis sets `pointer-events:none` on all iframes during smooth
+                    // scroll — override so the preview stays scrollable/interactive.
+                    pointerEvents: "auto",
+                  }}
+                  className="block bg-white"
+                />
+              </div>
             </div>
           </motion.div>
         )}

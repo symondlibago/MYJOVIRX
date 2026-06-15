@@ -51,18 +51,17 @@ export default function NavBar() {
 
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-ivory/95 backdrop-blur-md ${
-          isScrolled ? "py-4 shadow-md" : "py-6 shadow-sm"
+          isScrolled ? "py-3 shadow-md" : "py-4 shadow-sm"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
-          {/* Brand Name */}
-          <Link to="/" className="flex flex-col leading-tight group">
-            <span className="font-serif text-xl md:text-2xl tracking-wide text-ink duration-300">
-              MyJoviRX
-            </span>
-            <span className="text-[8px] md:text-[9px] tracking-[0.3em] uppercase text-espresso/70 mt-0.5">
-              Wellness &amp; IV Therapy
-            </span>
+          {/* Brand logo */}
+          <Link to="/" className="group flex items-center" aria-label="MotionRX home">
+            <img
+              src="/1.png"
+              alt="MotionRX — Wellness & IV Therapy"
+              className="h-10 md:h-15 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -115,7 +114,7 @@ export default function NavBar() {
               <div className="flex items-center justify-between">
                 <div className="flex flex-col leading-none">
                   <span className="font-serif text-2xl tracking-wide text-ink">
-                    MyJoviRX
+                    MotionRX
                   </span>
                   <span className="text-[9px] tracking-[0.3em] uppercase text-espresso/70 mt-0.5">
                     Wellness &amp; IV Therapy

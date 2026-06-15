@@ -6,7 +6,7 @@ export const legalDocs = {
     title: "Privacy Policy",
     updated: UPDATED,
     intro:
-      "MyJoviRX (“we,” “us,” or “our”) respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy explains what we collect, how we use it, and the choices you have. Protected health information is also governed by our HIPAA Notice of Privacy Practices.",
+      "MotionRX (“we,” “us,” or “our”) respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy explains what we collect, how we use it, and the choices you have. Protected health information is also governed by our HIPAA Notice of Privacy Practices.",
     sections: [
       {
         heading: "Information We Collect",
@@ -135,7 +135,7 @@ export const legalDocs = {
     title: "Terms of Service",
     updated: UPDATED,
     intro:
-      "These Terms of Service govern your use of the MyJoviRX website. By accessing or using the site, you agree to be bound by these Terms.",
+      "These Terms of Service govern your use of the MotionRX website. By accessing or using the site, you agree to be bound by these Terms.",
     sections: [
       {
         heading: "Use of the Site",
@@ -158,7 +158,7 @@ export const legalDocs = {
       {
         heading: "Intellectual Property",
         body: [
-          "All content on this site, including text, graphics, logos, and images, is the property of MyJoviRX or its licensors and is protected by applicable intellectual property laws. You may not reproduce it without permission.",
+          "All content on this site, including text, graphics, logos, and images, is the property of MotionRX or its licensors and is protected by applicable intellectual property laws. You may not reproduce it without permission.",
         ],
       },
       {
@@ -170,7 +170,7 @@ export const legalDocs = {
       {
         heading: "Limitation of Liability",
         body: [
-          "To the fullest extent permitted by law, MyJoviRX will not be liable for any indirect, incidental, or consequential damages arising out of your use of, or inability to use, the site.",
+          "To the fullest extent permitted by law, MotionRX will not be liable for any indirect, incidental, or consequential damages arising out of your use of, or inability to use, the site.",
         ],
       },
       {
@@ -192,7 +192,7 @@ export const legalDocs = {
     title: "Telehealth Informed Consent",
     updated: UPDATED,
     intro:
-      "This consent explains the telehealth services offered by MyJoviRX, including the benefits, risks, and your rights. Please read it before your virtual visit.",
+      "This consent explains the telehealth services offered by MotionRX, including the benefits, risks, and your rights. Please read it before your virtual visit.",
     sections: [
       {
         heading: "What Is Telehealth",
@@ -251,7 +251,7 @@ export const legalDocs = {
     title: "Medical Disclaimer",
     updated: UPDATED,
     intro:
-      "The information provided by MyJoviRX on this website is for general informational purposes only.",
+      "The information provided by MotionRX on this website is for general informational purposes only.",
     sections: [
       {
         heading: "No Medical Advice",

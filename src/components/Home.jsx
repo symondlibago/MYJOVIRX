@@ -5,6 +5,7 @@ import { ArrowRight, ArrowDown } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
 import Marquee from "@/components/ui/Marquee";
 import HomeFaq from "./HomeFaq";
+import Testimonials from "./Testimonials";
 import Seo from "./Seo";
 import { BOOKING_URL, handleBookingClick } from "@/config";
 
@@ -110,7 +111,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Seo
-        title="MyJoviRX — IV Therapy, NAD+ & Medical Weight Loss | Costa Mesa, CA"
+        title="MotionRX — IV Therapy, NAD+ & Medical Weight Loss | Costa Mesa, CA"
         description="Physician-guided IV therapy, NAD+ restoration, hormone optimization, and medical weight loss in Costa Mesa — serving all of Orange County, in-clinic or via telehealth."
         path="/"
       />
@@ -143,7 +144,7 @@ export default function Home() {
           </p>
 
           <h1 className="font-serif text-7xl md:text-9xl text-white leading-none mb-6">
-            MyJoviRX
+            MotionRX
           </h1>
 
           <p className="font-serif text-2xl md:text-3xl text-white/80 mb-12">
@@ -258,6 +259,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* TESTIMONIALS — image-based (layout via Design Studio) */}
+      <Testimonials />
+
       {/* THE EXPERIENCE — full-width video (text temporarily hidden per client) */}
       <section className="bg-white px-10">
         <FadeIn>
@@ -271,7 +275,7 @@ export default function Home() {
               loop
               playsInline
               preload="metadata"
-              aria-label="The MyJoviRX wellness experience"
+              aria-label="The MotionRX wellness experience"
             />
           </div>
         </FadeIn>
@@ -329,18 +333,13 @@ export default function Home() {
             <FadeIn direction="left">
               <div className="max-w-xl">
                 <p className="text-espresso/70 text-sm md:text-[15px] leading-relaxed mb-5">
-                  MyJoviRx is a modern telehealth platform that brings trusted
-                  healthcare services closer to you. Connect with licensed
-                  healthcare providers through secure virtual consultations,
-                  receive personalized medical guidance, and manage your
-                  healthcare needs from the comfort of your home.
+                  See a licensed provider by secure video — no waiting room.
+                  Get personalized guidance, prescriptions, and follow-ups on
+                  your schedule.
                 </p>
                 <p className="text-espresso/70 text-sm md:text-[15px] leading-relaxed mb-9">
-                  Whether you need routine care, prescription support, or
-                  professional medical advice, MyJoviRx offers a fast,
-                  convenient, and reliable way to access quality healthcare. Our
-                  mission is to make healthcare more accessible, efficient, and
-                  centered around your lifestyle.
+                  Routine care, prescription support, or expert advice — handled
+                  online, across California.
                 </p>
                 <a
                   href={BOOKING_URL}
@@ -369,7 +368,7 @@ export default function Home() {
               </div>
               <img
                 src="/bottle.png"
-                alt="MyJoviRx Joi+ Blokes supplement"
+                alt="MotionRX Joi+ Blokes supplement"
                 className="relative w-full max-w-70 md:max-w-md object-contain drop-shadow-[0_40px_70px_rgba(44,42,38,0.25)]"
               />
             </div>

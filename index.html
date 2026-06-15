@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary SEO -->
-    <title>MyJoviRX — IV Therapy, NAD+ &amp; Medical Weight Loss | Costa Mesa, CA</title>
+    <title>MotionRX — IV Therapy, NAD+ &amp; Medical Weight Loss | Costa Mesa, CA</title>
     <meta
       name="description"
       content="Physician-guided IV therapy, NAD+ restoration, hormone optimization, and medical weight loss in Costa Mesa, serving all of Orange County, CA. In-clinic & telehealth."
@@ -20,9 +20,9 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="MyJoviRX" />
+    <meta property="og:site_name" content="MotionRX" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="MyJoviRX — IV Therapy, NAD+ & Medical Weight Loss | Costa Mesa, CA" />
+    <meta property="og:title" content="MotionRX — IV Therapy, NAD+ & Medical Weight Loss | Costa Mesa, CA" />
     <meta
       property="og:description"
       content="Physician-guided IV therapy, NAD+, hormone optimization, and medical weight loss in Costa Mesa, Orange County. In-clinic & telehealth."
@@ -32,7 +32,7 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="MyJoviRX — IV Therapy, NAD+ & Medical Weight Loss | Costa Mesa, CA" />
+    <meta name="twitter:title" content="MotionRX — IV Therapy, NAD+ & Medical Weight Loss | Costa Mesa, CA" />
     <meta
       name="twitter:description"
       content="Physician-guided IV therapy, NAD+, hormone optimization, and medical weight loss in Costa Mesa, Orange County. In-clinic & telehealth."
@@ -43,10 +43,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin />
-    <!-- Google Fonts: Cormorant Garamond + Inter (pairing 1), DM Sans (pairing 2 body), Fraunces + Figtree (pairing 3) -->
+    <!-- Google Fonts: Cormorant Garamond + Inter (1), DM Sans (2 body), Fraunces + Figtree (3), Bodoni Moda + Jost (4), Newsreader + Mulish (5) -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Figtree:ital,wght@0,300..700;1,300..600&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Figtree:ital,wght@0,300..700;1,300..600&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@300;400;500;600&family=Jost:ital,wght@0,300..700;1,300..600&family=Montserrat:ital,wght@0,300..800;1,300..700&family=Mulish:ital,wght@0,300..800;1,300..700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..700&display=swap"
     />
     <!-- Garet (pairing 2 headings) — not on Google Fonts, loaded via cdnfonts -->
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/garet" />
@@ -56,7 +56,7 @@
       {
         "@context": "https://schema.org",
         "@type": "MedicalClinic",
-        "name": "MyJoviRX",
+        "name": "MotionRX",
         "description": "Physician-guided IV therapy, NAD+ restoration, hormone optimization, medical weight loss, vitamin injections, and lab testing in Costa Mesa, Orange County, CA.",
         "url": "https://myjovirx.com",
         "telephone": "+1-949-281-1440",
@@ -98,45 +98,75 @@
   </head>
   <body>
     <script>
-      // Apply the saved Design Studio theme before paint (prevents a flash of the default theme).
+      // Apply the saved Design Studio theme before paint (prevents a flash of the
+      // default theme). Also exposed as a postMessage handler so the Design
+      // Studio's device-preview iframe live-updates as you edit.
       (function () {
-        try {
-          var s = JSON.parse(localStorage.getItem("myjovirx-theme") || "{}");
-          var r = document.documentElement;
+        var r = document.documentElement;
+        var vmap = {
+          primary: ["--color-brand"],
+          deep: ["--color-brand-deep"],
+          accent: ["--color-gold"],
+          bg: ["--color-ivory", "--color-cream"],
+        };
+        var rmap = {
+          primary: "--brand-rgb",
+          deep: "--brand-deep-rgb",
+          accent: "--gold-rgb",
+          bg: "--cream-rgb",
+        };
+        var h2r = function (h) {
+          h = h.replace("#", "");
+          if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+          var n = parseInt(h, 16);
+          return ((n >> 16) & 255) + " " + ((n >> 8) & 255) + " " + (n & 255);
+        };
+        function applyTheme(s) {
+          if (!s) return;
           if (s.palette) r.setAttribute("data-palette", s.palette);
           if (s.font) r.setAttribute("data-font", s.font);
           if (s.weight) r.setAttribute("data-weight", s.weight);
           if (s.italic) r.setAttribute("data-italic", s.italic);
           if (s.design) r.setAttribute("data-design", s.design);
-          // Re-apply any saved per-palette color edits as inline vars.
+          if (s.txLayout) {
+            r.setAttribute("data-tx-layout", s.txLayout);
+            try {
+              window.dispatchEvent(
+                new CustomEvent("myjovirx-tx-layout", { detail: s.txLayout })
+              );
+            } catch (e) {}
+          }
+          if (s.tmLayout) {
+            r.setAttribute("data-tm-layout", s.tmLayout);
+            try {
+              window.dispatchEvent(
+                new CustomEvent("myjovirx-tm-layout", { detail: s.tmLayout })
+              );
+            } catch (e) {}
+          }
+          // Set or clear each per-palette color edit (so edits never bleed).
           var c = (s.customColors || {})[s.palette] || {};
-          var vmap = {
-            primary: ["--color-brand"],
-            deep: ["--color-brand-deep"],
-            accent: ["--color-gold"],
-            bg: ["--color-ivory", "--color-cream"],
-          };
-          var rmap = {
-            primary: "--brand-rgb",
-            deep: "--brand-deep-rgb",
-            accent: "--gold-rgb",
-            bg: "--cream-rgb",
-          };
-          var h2r = function (h) {
-            h = h.replace("#", "");
-            if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
-            var n = parseInt(h, 16);
-            return ((n >> 16) & 255) + " " + ((n >> 8) & 255) + " " + (n & 255);
-          };
           Object.keys(vmap).forEach(function (k) {
             if (c[k]) {
               vmap[k].forEach(function (v) {
                 r.style.setProperty(v, c[k]);
               });
               if (rmap[k]) r.style.setProperty(rmap[k], h2r(c[k]));
+            } else {
+              vmap[k].forEach(function (v) {
+                r.style.removeProperty(v);
+              });
+              if (rmap[k]) r.style.removeProperty(rmap[k]);
             }
           });
+        }
+        try {
+          applyTheme(JSON.parse(localStorage.getItem("myjovirx-theme") || "{}"));
         } catch (e) {}
+        // Live updates from the parent Design Studio when shown in the preview iframe.
+        window.addEventListener("message", function (e) {
+          if (e.data && e.data.__myjovirxTheme) applyTheme(e.data.__myjovirxTheme);
+        });
       })();
     </script>
     <div id="root"></div>
