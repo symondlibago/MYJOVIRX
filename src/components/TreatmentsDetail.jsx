@@ -117,6 +117,7 @@ const TX = [
     name: "Hormone Optimization",
     cat: "TRT & Balance",
     eyebrow: "Hormone Optimization",
+    provider: "Adam",
     tag: "TRT & Balance",
     icon: Activity,
     tone: "a",
@@ -163,6 +164,7 @@ const TX = [
     name: "Nutrition Coaching",
     cat: "Fuel & Performance",
     eyebrow: "Nutrition",
+    provider: "Frankie",
     tag: "Fuel & Performance",
     icon: Apple,
     tone: "a",
@@ -299,6 +301,11 @@ function PanelBody({ t, showHead = true }) {
         <h3 className="mb-4 font-serif text-2xl font-light leading-[1.1] text-ink-warm md:text-3xl">
           {t.name}
         </h3>
+      )}
+      {t.provider && (
+        <p className="mb-4 text-[11px] uppercase tracking-[0.2em] text-gold">
+          With {t.provider}
+        </p>
       )}
       <p className="mb-7 max-w-[48ch] text-sm leading-relaxed text-ink-warm/65 md:text-[15px]">
         {t.lead}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BOOKING_URL, handleBookingClick } from "@/config";
 import Seo from "./Seo";
 import TreatmentsDetail from "./TreatmentsDetail";
+import Memberships from "./Memberships";
 import {
   ArrowUpRight,
   Syringe,
@@ -564,6 +565,9 @@ export default function Treatments() {
           </motion.p>
         </div>
       </section>
+
+      {/* ───────── Memberships ───────── */}
+      <Memberships />
 
       {/* ───────── Call to action — oxblood finale ───────── */}
       <section className="relative overflow-hidden bg-brand-deep py-36 md:py-44 px-6 text-center">
