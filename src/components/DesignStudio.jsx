@@ -44,7 +44,7 @@ const PALETTES = [
   },
 ];
 
-// Each editable swatch → the CSS variable(s) it drives (+ optional rgb triplet
+
 // used by gradients/glows).
 const ROLES = [
   { id: "primary", label: "Primary", vars: ["--color-brand"], rgb: "--brand-rgb" },
