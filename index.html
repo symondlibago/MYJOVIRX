@@ -136,22 +136,6 @@
               );
             } catch (e) {}
           }
-          if (s.tmLayout) {
-            r.setAttribute("data-tm-layout", s.tmLayout);
-            try {
-              window.dispatchEvent(
-                new CustomEvent("myjovirx-tm-layout", { detail: s.tmLayout })
-              );
-            } catch (e) {}
-          }
-          if (s.clLayout) {
-            r.setAttribute("data-cl-layout", s.clLayout);
-            try {
-              window.dispatchEvent(
-                new CustomEvent("myjovirx-cl-layout", { detail: s.clLayout })
-              );
-            } catch (e) {}
-          }
           // Set or clear each per-palette color edit (so edits never bleed).
           var c = (s.customColors || {})[s.palette] || {};
           Object.keys(vmap).forEach(function (k) {

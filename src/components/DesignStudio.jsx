@@ -18,8 +18,6 @@ const DEFAULTS = {
   italic: "off",
   design: "editorial",
   txLayout: "explorer", // Treatments page detail-section layout
-  tmLayout: "cluster", // Home testimonials section layout
-  clLayout: "classic", // Contact page layout
   customColors: {}, // { paletteId: { roleId: "#hex" } }
 };
 
@@ -116,18 +114,6 @@ const LAYOUTS = [
   { id: "stacked", name: "Stacked", note: "Expandable accordion" },
 ];
 
-// Home testimonials section — picks one of two image-based layouts.
-const TM_LAYOUTS = [
-  { id: "cluster", name: "Cluster", note: "Scattered photo circles" },
-  { id: "coverflow", name: "Coverflow", note: "3D center carousel" },
-];
-
-// Contact page layout.
-const CL_LAYOUTS = [
-  { id: "classic", name: "Classic", note: "Header + details + map" },
-  { id: "split", name: "Split", note: "Maroon image panel + form" },
-];
-
 // Responsive preview — real CSS-px widths so the site's actual breakpoints fire.
 const DEVICES = [
   { id: "desktop", name: "Desktop", icon: Monitor, w: null, h: null },
@@ -179,17 +165,10 @@ export default function DesignStudio() {
     root.setAttribute("data-italic", theme.italic);
     root.setAttribute("data-design", theme.design);
     root.setAttribute("data-tx-layout", theme.txLayout);
-    root.setAttribute("data-tm-layout", theme.tmLayout);
-    root.setAttribute("data-cl-layout", theme.clLayout);
-    // These sections are React components, not pure CSS — let them swap layouts.
+    // The Treatments detail section is a React component, not pure CSS — let it
+    // know to swap layouts.
     window.dispatchEvent(
       new CustomEvent("myjovirx-tx-layout", { detail: theme.txLayout })
-    );
-    window.dispatchEvent(
-      new CustomEvent("myjovirx-tm-layout", { detail: theme.tmLayout })
-    );
-    window.dispatchEvent(
-      new CustomEvent("myjovirx-cl-layout", { detail: theme.clLayout })
     );
 
     // Per-palette color overrides — inline vars beat the stylesheet. We clear
@@ -255,8 +234,6 @@ export default function DesignStudio() {
     theme.italic === DEFAULTS.italic &&
     theme.design === DEFAULTS.design &&
     theme.txLayout === DEFAULTS.txLayout &&
-    theme.tmLayout === DEFAULTS.tmLayout &&
-    theme.clLayout === DEFAULTS.clLayout &&
     !anyCustom;
 
   const cardBase =
@@ -528,70 +505,6 @@ export default function DesignStudio() {
                       <button
                         key={l.id}
                         onClick={() => set("txLayout", l.id)}
-                        className={`flex w-full items-center justify-between px-3.5 py-2.5 ${cardBase} ${
-                          active ? activeRing : idleRing
-                        }`}
-                      >
-                        <span className="min-w-0 text-left">
-                          <span className="block text-[13px] font-medium leading-tight">
-                            {l.name}
-                          </span>
-                          <span className="block text-[10px] text-black/45">{l.note}</span>
-                        </span>
-                        {active && <Check className="ml-2 h-4 w-4 shrink-0 text-black" />}
-                      </button>
-                    );
-                  })}
-                </div>
-              </section>
-
-              {/* Testimonials layout */}
-              <section>
-                <h4 className="mb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-black/40">
-                  Testimonials Layout
-                </h4>
-                <p className="mb-3 text-[10px] text-black/40">
-                  Testimonials section on the Home page
-                </p>
-                <div className="space-y-2">
-                  {TM_LAYOUTS.map((l) => {
-                    const active = theme.tmLayout === l.id;
-                    return (
-                      <button
-                        key={l.id}
-                        onClick={() => set("tmLayout", l.id)}
-                        className={`flex w-full items-center justify-between px-3.5 py-2.5 ${cardBase} ${
-                          active ? activeRing : idleRing
-                        }`}
-                      >
-                        <span className="min-w-0 text-left">
-                          <span className="block text-[13px] font-medium leading-tight">
-                            {l.name}
-                          </span>
-                          <span className="block text-[10px] text-black/45">{l.note}</span>
-                        </span>
-                        {active && <Check className="ml-2 h-4 w-4 shrink-0 text-black" />}
-                      </button>
-                    );
-                  })}
-                </div>
-              </section>
-
-              {/* Contact layout */}
-              <section>
-                <h4 className="mb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-black/40">
-                  Contact Layout
-                </h4>
-                <p className="mb-3 text-[10px] text-black/40">
-                  Layout of the Contact page
-                </p>
-                <div className="space-y-2">
-                  {CL_LAYOUTS.map((l) => {
-                    const active = theme.clLayout === l.id;
-                    return (
-                      <button
-                        key={l.id}
-                        onClick={() => set("clLayout", l.id)}
                         className={`flex w-full items-center justify-between px-3.5 py-2.5 ${cardBase} ${
                           active ? activeRing : idleRing
                         }`}
