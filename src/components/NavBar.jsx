@@ -58,9 +58,9 @@ export default function NavBar() {
           {/* Brand logo */}
           <Link to="/" className="group flex items-center" aria-label="MotionRX home">
             <img
-              src="/1.png"
+              src="/motionlogo.png"
               alt="MotionRX — Wellness & IV Therapy"
-              className="h-10 md:h-15 w-auto object-contain"
+              className="h-8 md:h-13 w-auto object-contain"
             />
           </Link>
 
