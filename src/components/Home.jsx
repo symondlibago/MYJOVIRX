@@ -6,6 +6,7 @@ import FadeIn from "@/components/ui/FadeIn";
 import Marquee from "@/components/ui/Marquee";
 import HomeFaq from "./HomeFaq";
 import Testimonials from "./Testimonials";
+import IntroSplash from "./IntroSplash";
 import Seo from "./Seo";
 import { BOOKING_URL, handleBookingClick } from "@/config";
 
@@ -110,6 +111,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <IntroSplash />
       <Seo
         title="MotionRX — IV Therapy, NAD+ & Medical Weight Loss | Costa Mesa, CA"
         description="Physician-guided IV therapy, NAD+ restoration, hormone optimization, and medical weight loss in Costa Mesa — serving all of Orange County, in-clinic or via telehealth."
