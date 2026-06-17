@@ -14,7 +14,7 @@ import Seo from "./Seo";
 const DETAILS = [
   { icon: MapPin, label: "Visit", lines: ["Costa Mesa, Orange County, CA", "By appointment"] },
   { icon: Phone, label: "Call or Text", lines: ["(949) 281-1440"] },
-  { icon: Mail, label: "Email", lines: ["hello@myjovirx.com"] },
+  { icon: Mail, label: "Email", lines: ["hello@motionrx.co"] },
   { icon: Clock, label: "Hours", lines: ["Mon – Fri · 9am – 6pm  |  Sat · by request"] },
 ];
 
@@ -111,8 +111,8 @@ export default function Contact() {
   return (
     <>
       <Seo
-        title="Contact Us — IV Therapy in Costa Mesa, Orange County"
-        description="Contact MotionRX at (949) 281-1440 or hello@myjovirx.com. Visit us at 250 Fischer Ave, Costa Mesa, CA 92626, or book a telehealth consultation across California."
+        title="Contact Us | IV Therapy in Costa Mesa, Orange County"
+        description="Contact MotionRX at (949) 281-1440 or hello@motionrx.co. Visit us at 250 Fischer Ave, Costa Mesa, CA 92626, or book a telehealth consultation across California."
         path="/contact"
       />
 

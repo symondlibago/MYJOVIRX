@@ -12,15 +12,15 @@ import {
 const faqs = [
   {
     q: "What is IV therapy?",
-    a: "Fluids, vitamins, and antioxidants delivered straight into your bloodstream — for fast hydration, energy, and recovery.",
+    a: "Fluids, vitamins, and antioxidants delivered straight into your bloodstream, for fast hydration, energy, and recovery.",
   },
   {
     q: "Do I need a consultation first?",
-    a: "Yes. A quick intake lets a provider confirm the right protocol for you — often done virtually before your visit.",
+    a: "Yes. A quick intake lets a provider confirm the right protocol for you, often done virtually before your visit.",
   },
   {
     q: "How long does a treatment take?",
-    a: "Most drips take 30–45 minutes. NAD+ and specialty therapies run slower for comfort — about 60–90 minutes.",
+    a: "Most drips take 30–45 minutes. NAD+ and specialty therapies run slower for comfort, about 60–90 minutes.",
   },
   {
     q: "Is there anything I should do before my appointment?",
@@ -28,11 +28,11 @@ const faqs = [
   },
   {
     q: "How much do treatments cost?",
-    a: "Signature drips start at $149, with memberships and packages available. Transparent pricing — no hidden fees.",
+    a: "Signature drips start at $149, with memberships and packages available. Transparent pricing, no hidden fees.",
   },
   {
     q: "Where are you located and is there parking?",
-    a: "Costa Mesa, with free on-site parking — serving all of Orange County. Telehealth is available statewide.",
+    a: "Costa Mesa, with free on-site parking, serving all of Orange County. Telehealth is available statewide.",
   },
 ];
 

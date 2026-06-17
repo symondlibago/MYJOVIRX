@@ -136,7 +136,7 @@ export default function Layout({ children }) {
                   <Facebook className="w-4 h-4" />
                 </a>
                 <a
-                  href="mailto:hello@myjovirx.com"
+                  href="mailto:hello@motionrx.co"
                   aria-label="Email"
                   className="w-9 h-9 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-gold hover:text-gold hover:-translate-y-0.5 transition-all duration-300"
                 >
@@ -222,8 +222,8 @@ export default function Layout({ children }) {
                 </li>
                 <li className="flex gap-3">
                   <Mail className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                  <a href="mailto:hello@myjovirx.com" className="footer-link">
-                    hello@myjovirx.com
+                  <a href="mailto:hello@motionrx.co" className="footer-link">
+                    hello@motionrx.co
                   </a>
                 </li>
               </ul>

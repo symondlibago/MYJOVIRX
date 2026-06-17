@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 /**
  * Home-only intro — "reveal through the M":
- * A maroon overlay sits over the Home page with the Motion "M" cut out of it,
+ * A black overlay sits over the Home page with the Motion "M" cut out of it,
  * so you glimpse the site through the M. The overlay then zooms outward and
  * dissolves, landing you on Home.
  *
@@ -31,9 +31,8 @@ export default function IntroSplash() {
     <motion.div
       className="fixed inset-0 z-[200]"
       style={{
-        background:
-          "radial-gradient(120% 120% at 50% 40%, var(--color-brand), var(--color-brand-deep) 82%)",
-        // Maroon everywhere EXCEPT the M (the M becomes a transparent window).
+        background: "#000",
+        // Pure black everywhere EXCEPT the M (the M becomes a transparent window).
         WebkitMaskImage: "url(/motion-m.png), linear-gradient(#000, #000)",
         maskImage: "url(/motion-m.png), linear-gradient(#000, #000)",
         WebkitMaskSize: "150px, 100% 100%",

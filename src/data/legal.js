@@ -1,4 +1,4 @@
-const EMAIL = "hello@myjovirx.com";
+const EMAIL = "hello@motionrx.co";
 const UPDATED = "June 4, 2026";
 
 export const legalDocs = {

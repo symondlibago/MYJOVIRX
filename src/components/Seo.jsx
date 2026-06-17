@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 // Canonical production origin. Update here (one place) if the domain changes.
-const SITE_URL = "https://myjovirx.com";
+const SITE_URL = "https://motionrx.co";
 const SITE_NAME = "MotionRX";
 const DEFAULT_IMAGE = `${SITE_URL}/hero-1.jpg`;
 

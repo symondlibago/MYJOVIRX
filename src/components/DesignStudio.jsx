@@ -12,12 +12,12 @@ import {
 
 const STORAGE_KEY = "myjovirx-theme";
 const DEFAULTS = {
-  palette: "current",
-  font: "garet",
-  weight: "bold",
+  palette: "premium", // Onyx & Champagne
+  font: "cormorant", // Cormorant + Inter
+  weight: "medium",
   italic: "off",
-  design: "editorial",
-  txLayout: "explorer", // Treatments page detail-section layout
+  design: "modern",
+  txLayout: "stacked", // Treatments page detail-section layout
   customColors: {}, // { paletteId: { roleId: "#hex" } }
 };
 

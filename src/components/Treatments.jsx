@@ -56,19 +56,20 @@ function TreatmentArc({ services }) {
 
   // Responsive geometry (circle diameter, side diameter, x-offset, arc lift).
   const [dims, setDims] = useState({
-    center: 384,
+    center: 448,
     side: 250,
-    offset: 322,
+    offset: 350,
     arc: 50,
   });
 
   useEffect(() => {
     const compute = () => {
       const w = window.innerWidth;
-      if (w < 640) setDims({ center: 196, side: 128, offset: 126, arc: 26 });
+      // Center circle enlarged; side circles kept at their original size.
+      if (w < 640) setDims({ center: 230, side: 128, offset: 140, arc: 26 });
       else if (w < 1024)
-        setDims({ center: 300, side: 196, offset: 248, arc: 40 });
-      else setDims({ center: 384, side: 250, offset: 322, arc: 50 });
+        setDims({ center: 350, side: 196, offset: 270, arc: 40 });
+      else setDims({ center: 448, side: 250, offset: 350, arc: 50 });
     };
     compute();
     window.addEventListener("resize", compute);
@@ -350,7 +351,7 @@ export default function Treatments() {
     <div className="min-h-screen bg-white text-ink-warm font-sans selection:bg-brand selection:text-cream overflow-clip">
       <Seo
         title="IV Therapy, NAD+ & Weight Loss Treatments in Costa Mesa, CA"
-        description="Explore MotionRX treatments: Signature IV drips from $149, NAD+ restoration, hormone optimization, and GLP-1 medical weight loss — all physician-guided in Costa Mesa, CA."
+        description="Explore MotionRX treatments: Signature IV drips from $149, NAD+ restoration, hormone optimization, and GLP-1 medical weight loss, all physician-guided in Costa Mesa, CA."
         path="/services"
       />
 
@@ -561,7 +562,7 @@ export default function Treatments() {
             transition={{ duration: 0.7, ease: EASE }}
             className="mt-12 text-center text-[11px] tracking-[0.25em] uppercase text-ink-warm/40"
           >
-            Boosters can be added to any visit — just ask your provider.
+            Boosters can be added to any visit. Just ask your provider.
           </motion.p>
         </div>
       </section>

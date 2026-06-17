@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ArrowDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
 import Marquee from "@/components/ui/Marquee";
 import HomeFaq from "./HomeFaq";
@@ -75,6 +75,20 @@ const featuredTreatments = [
     category: "Diagnostics",
     desc: "Comprehensive bloodwork with a clear, actionable plan",
   },
+  {
+    id: 7,
+    image: "/treatment-3.jpg",
+    title: "Nutrition & Weight Support",
+    category: "Nutrition & Weight",
+    desc: "Personalized plans for weight management and metabolic health",
+  },
+  {
+    id: 8,
+    image: "/treatment-1.jpg",
+    title: "Peptide Consultation",
+    category: "Peptide Therapy",
+    desc: "Expert guidance on peptide protocols for performance and recovery",
+  },
 ];
 
 export default function Home() {
@@ -113,8 +127,8 @@ export default function Home() {
     <div className="min-h-screen">
       <IntroSplash />
       <Seo
-        title="MotionRX — IV Therapy, NAD+ & Medical Weight Loss | Costa Mesa, CA"
-        description="Physician-guided IV therapy, NAD+ restoration, hormone optimization, and medical weight loss in Costa Mesa — serving all of Orange County, in-clinic or via telehealth."
+        title="MotionRX: IV Therapy, NAD+ & Medical Weight Loss | Costa Mesa, CA"
+        description="Physician-guided IV therapy, NAD+ restoration, hormone optimization, and medical weight loss in Costa Mesa, serving all of Orange County, in-clinic or via telehealth."
         path="/"
       />
 
@@ -194,13 +208,6 @@ export default function Home() {
             </button>
           ))}
         </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <ArrowDown className="w-4 h-4 text-white/40" />
-          <span className="text-[9px] tracking-[0.4em] text-white/30 uppercase">
-            Scroll
-          </span>
-        </div>
       </section>
 
       {/* MOVING MARQUEE */}
@@ -264,8 +271,8 @@ export default function Home() {
       {/* TESTIMONIALS — image-based (layout via Design Studio) */}
       <Testimonials />
 
-      {/* THE EXPERIENCE — full-width video (text temporarily hidden per client) */}
-      <section className="bg-white px-10">
+      {/* THE EXPERIENCE — full-width video (edge-to-edge on mobile, padded on desktop) */}
+      <section className="bg-white px-0 md:px-10">
         <FadeIn>
           <div className="relative w-full aspect-video overflow-hidden">
             <video
@@ -302,7 +309,7 @@ export default function Home() {
               weight management, each protocol is guided by a licensed provider.
             </p>
             <p className="text-espresso/70 leading-relaxed mb-10 max-w-2xl">
-              No rushed appointments, no surprise fees — just modern, evidence-based
+              No rushed appointments, no surprise fees, just modern, evidence-based
               wellness delivered in a calm, private setting designed to help you feel
               your best.
             </p>
@@ -335,13 +342,13 @@ export default function Home() {
             <FadeIn direction="left">
               <div className="max-w-xl">
                 <p className="text-espresso/70 text-sm md:text-[15px] leading-relaxed mb-5">
-                  See a licensed provider by secure video — no waiting room.
+                  See a licensed provider by secure video, no waiting room.
                   Get personalized guidance, prescriptions, and follow-ups on
                   your schedule.
                 </p>
                 <p className="text-espresso/70 text-sm md:text-[15px] leading-relaxed mb-9">
-                  Routine care, prescription support, or expert advice — handled
-                  online, across California.
+                  Routine care, prescription support, and expert advice, all
+                  handled online across California.
                 </p>
                 <a
                   href={BOOKING_URL}

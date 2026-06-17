@@ -14,12 +14,12 @@ export default function OurTeam() {
     {
       icon: Heart,
       title: "Personal Attention",
-      description: "We take time to understand your goals and labs — never rushed, never one-size-fits-all."
+      description: "We take time to understand your goals and labs, never rushed, never one-size-fits-all."
     },
     {
       icon: Leaf,
       title: "Whole-Body Wellness",
-      description: "From hydration to hormones, we treat the root cause — not just symptoms."
+      description: "From hydration to hormones, we treat the root cause, not just symptoms."
     }
   ];
 
@@ -35,7 +35,7 @@ export default function OurTeam() {
   return (
     <div className="min-h-screen bg-ivory pt-32 pb-24">
       <Seo
-        title="Our Medical Team — Licensed RNs & Medical Director"
+        title="Our Medical Team | Licensed RNs & Medical Director"
         description="Meet the MotionRX team: Medical Director Dr. Courtney S. Scott and experienced licensed registered nurses delivering personalized wellness care in Costa Mesa, CA."
         path="/our-team"
       />
@@ -65,7 +65,7 @@ export default function OurTeam() {
                 prevention, diagnosis, and longevity medicine.
               </p>
               <p className="text-espresso/70 text-lg leading-relaxed mb-10">
-                He built MotionRX as a non-clinical oasis — where modern medicine
+                He built MotionRX as a non-clinical oasis where modern medicine
                 meets real hospitality, and every plan is built around how you
                 want to feel.
               </p>

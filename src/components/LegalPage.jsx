@@ -56,7 +56,7 @@ export default function LegalPage({ slug }) {
                   <ul className="space-y-3 mt-2">
                     {section.list.map((item, k) => (
                       <li key={k} className="flex gap-3 text-espresso/70 leading-relaxed">
-                        <span className="text-gold mt-1 shrink-0">—</span>
+                        <span className="text-gold mt-1 shrink-0">·</span>
                         <span>{item}</span>
                       </li>
                     ))}
