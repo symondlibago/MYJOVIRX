@@ -36,7 +36,8 @@ export default function NavBar() {
       <style>{`
         .nav-link {
           position: relative;
-          display: inline-block;
+          display: inline-flex;
+          align-items: center;
         }
         .nav-link::after {
           content: '';
