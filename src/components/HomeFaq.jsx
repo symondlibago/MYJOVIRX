@@ -49,7 +49,7 @@ const faqJsonLd = {
 
 export default function HomeFaq() {
   return (
-    <section className="px-4 sm:px-6 pt-12 lg:pt-0 pb-20 md:pb-28 bg-white">
+    <section className="px-4 sm:px-6 pt-8 md:pt-10 pb-20 md:pb-28 bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

@@ -15,18 +15,25 @@ export default function NavBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const treatmentLinks = [
-    "IV Hydration Therapy",
-    "NAD+ Restoration",
-    "Hormone Optimization",
-    "Medical Weight Loss",
-    "Nutrition & Weight Support",
-    "Peptide Consultation",
+  const serviceLinks = [
+    { name: "IV Nutrient Therapy", slug: "iv-nutrient-therapy" },
+    { name: "Medical Weight Optimization", slug: "medical-weight-optimization" },
+    { name: "Hormone Optimization", slug: "hormone-optimization" },
+    { name: "Peptide Therapy", slug: "peptide-therapy" },
+    { name: "Laboratory Testing", slug: "laboratory-testing" },
+    { name: "Discreet STI / STD Testing", slug: "sti-std-testing" },
+    { name: "Longevity Medicine", slug: "longevity-medicine" },
+    { name: "Nutrition & Lifestyle Medicine", slug: "nutrition-lifestyle-medicine" },
+    { name: "Mobile IV Therapy", slug: "mobile-iv-therapy" },
+    { name: "Men's Health", slug: "mens-health" },
+    { name: "Women's Health", slug: "womens-health" },
   ];
 
   const navLinks = [
-    { name: "Treatments", path: "/services", dropdown: treatmentLinks },
-    { name: "Our Team", path: "/our-team" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services", dropdown: serviceLinks },
+    { name: "Memberships", path: "/memberships" },
+    { name: "Patient Results", path: "/patient-results" },
     { name: "Contact", path: "/contact" },
     { name: "Reserve Now", href: BOOKING_URL, external: true },
   ];
@@ -74,7 +81,7 @@ export default function NavBar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) =>
               link.external ? (
                 <a
@@ -102,11 +109,11 @@ export default function NavBar() {
                     <div className="min-w-60 border border-ink/5 bg-ivory py-3 shadow-[0_24px_50px_-20px_rgba(44,42,38,0.35)]">
                       {link.dropdown.map((t) => (
                         <Link
-                          key={t}
-                          to={link.path}
+                          key={t.slug}
+                          to={`/services/${t.slug}`}
                           className="block px-5 py-2.5 text-[13px] tracking-wide text-ink/75 transition-colors hover:bg-sand/60 hover:text-brand"
                         >
-                          {t}
+                          {t.name}
                         </Link>
                       ))}
                     </div>
@@ -129,7 +136,7 @@ export default function NavBar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileOpen(true)}
-            className="md:hidden p-2 text-ink"
+            className="lg:hidden p-2 text-ink"
           >
             <Menu className="w-6 h-6" />
           </button>
@@ -221,12 +228,12 @@ export default function NavBar() {
                         <div className="mt-4 ml-10 flex flex-col gap-3 border-l border-ink/10 pl-5">
                           {link.dropdown.map((t) => (
                             <Link
-                              key={t}
-                              to={link.path}
+                              key={t.slug}
+                              to={`/services/${t.slug}`}
                               onClick={() => setMobileOpen(false)}
                               className="text-sm tracking-wide text-espresso/70 hover:text-brand transition-colors duration-300"
                             >
-                              {t}
+                              {t.name}
                             </Link>
                           ))}
                         </div>

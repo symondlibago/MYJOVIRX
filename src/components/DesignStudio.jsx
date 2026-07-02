@@ -12,8 +12,8 @@ import {
 
 const STORAGE_KEY = "myjovirx-theme";
 const DEFAULTS = {
-  palette: "premium", // Onyx & Champagne
-  font: "cormorant", // Cormorant + Inter
+  palette: "current", // Oxblood & Cream (maroon)
+  font: "montserrat", // Montserrat + DM Sans (clean modern sans)
   weight: "medium",
   italic: "off",
   design: "modern",
@@ -22,6 +22,12 @@ const DEFAULTS = {
 };
 
 const PALETTES = [
+  {
+    id: "teal",
+    name: "Clinical Teal",
+    note: "Clean · clinical",
+    colors: { primary: "#0F766E", deep: "#0B3F3B", accent: "#14B8A6", bg: "#FBFDFC" },
+  },
   {
     id: "current",
     name: "Oxblood & Cream",

@@ -44,6 +44,11 @@ export default function IntroSplash() {
         WebkitMaskComposite: "xor",
         maskComposite: "exclude",
         transformOrigin: "50% 50%",
+        // Promote to its own GPU layer so the masked layer is rasterized once
+        // and then scaled on the GPU (avoids re-rasterizing the mask each frame).
+        willChange: "transform, opacity",
+        backfaceVisibility: "hidden",
+        WebkitBackfaceVisibility: "hidden",
       }}
       initial={{ scale: 1, opacity: 1 }}
       animate={{ scale: [1, 1.06, 11], opacity: [1, 1, 0] }}

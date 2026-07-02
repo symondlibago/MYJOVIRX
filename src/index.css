@@ -201,6 +201,30 @@ html.lenis body {
   --cream-rgb: 244 241 234;
 }
 
+/* ───── Palette 4 · Clinical Teal (repositioning default) ───── */
+:root[data-palette="teal"] {
+  --color-brand: #0F766E;
+  --color-brand-deep: #0B3F3B;
+  --color-gold: #14B8A6;
+  --color-espresso: #47585A;
+  --color-ink: #10201E;
+  --color-ink-warm: #1C2A28;
+  --color-ivory: #FBFDFC;
+  --color-cream: #F3F8F7;
+  --color-sand: #ECF4F2;
+  --color-sand2: #E7F1EF;
+  --color-sand3: #D9E8E5;
+  --color-taupe: #7C8F8D;
+  --color-mist: #DCE6E4;
+
+  --brand-rgb: 15 118 110;
+  --brand-deep-rgb: 11 63 59;
+  --gold-rgb: 20 184 166;
+  --ink-warm-rgb: 28 42 40;
+  --stone-rgb: 201 216 214;
+  --cream-rgb: 243 248 247;
+}
+
 /* ───── Font pairings ───── */
 :root[data-font="cormorant"] {
   --font-head: "Cormorant Garamond", Georgia, serif;

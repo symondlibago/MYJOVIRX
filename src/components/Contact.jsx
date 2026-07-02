@@ -18,17 +18,19 @@ const DETAILS = [
   { icon: Clock, label: "Hours", lines: ["Mon – Fri · 9am – 6pm  |  Sat · by request"] },
 ];
 
-const PILLS = ["IV Therapy", "NAD+", "Hormone Optimization", "Medical Weight Loss", "Telehealth"];
+const PILLS = ["Longevity", "Hormones", "Peptides", "IV Therapy", "Diagnostics", "Telehealth"];
 
 const INTERESTS = [
-  "IV Therapy",
-  "NAD+ Restoration",
+  "IV Nutrient Therapy",
+  "Medical Weight Optimization",
   "Hormone Optimization",
-  "Medical Weight Loss",
-  "Peptide Consultations",
-  "Nutrition",
-  "Lab Testing",
-  "Telehealth",
+  "Peptide Therapy",
+  "Laboratory Testing",
+  "Longevity Medicine",
+  "Nutrition & Lifestyle",
+  "Men's Health",
+  "Women's Health",
+  "Something else",
 ];
 
 /* Custom dropdown that matches the underline form fields. */
@@ -133,18 +135,17 @@ export default function Contact() {
               <div className="mt-12 md:mt-16">
                 <p className="mb-6 inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.34em] text-gold">
                   <span className="h-px w-7 bg-gold/70" />
-                  Concierge Wellness
+                  Get in Touch
                 </p>
                 <h1 className="mb-6 font-serif text-5xl font-light leading-[1.02] md:text-6xl">
-                  Begin your
+                  Start your
                   <br />
-                  <span className="italic text-gold">restoration.</span>
+                  <span className="italic text-gold">optimization.</span>
                 </h1>
                 <p className="max-w-md text-sm leading-relaxed text-white/70 md:text-[15px]">
-                  Physician-guided IV therapy, NAD+ restoration, hormone
-                  optimization, and medical weight loss, in our Costa Mesa clinic
-                  or by telehealth across Orange County. Tell us where you'd like
-                  to begin.
+                  Longevity, hormone, peptide, and performance medicine, in our
+                  Costa Mesa clinic or by telehealth across Orange County. Tell us
+                  where you'd like to begin.
                 </p>
               </div>
 
@@ -206,7 +207,7 @@ export default function Contact() {
                   Send a Message
                 </p>
                 <h2 className="mb-3 font-serif text-4xl font-light leading-[1.05] text-ink md:text-5xl">
-                  How can we care for you?
+                  How can we help?
                 </h2>
                 <p className="mb-9 text-sm text-espresso/60">
                   Share a few details and our team will be in touch personally.

@@ -6,6 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Instagram, Facebook, Mail, Phone, MapPin, Clock } from "lucide-react";
 import { BOOKING_URL, handleBookingClick } from "@/config";
 import { initLenis } from "@/lib/lenis";
+import { SERVICES } from "@/data/services";
 
 export default function Layout({ children }) {
   const { pathname } = useLocation();
@@ -18,9 +19,14 @@ export default function Layout({ children }) {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Treatments", path: "/services" },
-    { name: "Our Team", path: "/our-team" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Memberships", path: "/memberships" },
+    { name: "Patient Results", path: "/patient-results" },
     { name: "Contact", path: "/contact" },
+    { name: "FAQ", path: "/faq" },
+    { name: "Coming Soon", path: "/coming-soon" },
+    { name: "Resources", path: "/blog" },
     { name: "Reserve Now", href: BOOKING_URL, external: true },
   ];
 
@@ -32,14 +38,7 @@ export default function Layout({ children }) {
     { name: "Medical Disclaimer", path: "/disclaimer" },
   ];
 
-  const services = [
-    "Signature IV Drip",
-    "NAD+ Restoration",
-    "Hormone Optimization",
-    "Medical Weight Loss",
-    "Vitamin Injections",
-    "Lab Testing & Panels",
-  ];
+  const footerServices = SERVICES.slice(0, 6);
 
   return (
     <div className="min-h-screen bg-ivory">
@@ -109,11 +108,11 @@ export default function Layout({ children }) {
                   MotionRX
                 </span>
                 <span className="text-[9px] tracking-[0.35em] uppercase text-gold mt-1 block">
-                  Wellness &amp; IV Therapy
+                  Longevity &amp; Performance Medicine
                 </span>
               </div>
               <p className="text-white/50 text-sm leading-relaxed mb-8 max-w-xs">
-                Personalized wellness solutions including IV therapy, peptides, hormone therapy, and lab testing. All designed to help you look, feel, and perform your best.
+                Modern medicine for longevity, performance, and prevention. Advanced diagnostics, hormone and peptide therapy, IV nutrition, and lab testing.
               </p>
               {/* Social */}
               <div className="flex items-center gap-3">
@@ -177,16 +176,16 @@ export default function Layout({ children }) {
             {/* Col 3 — Services */}
             <div>
               <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/30 mb-6">
-                Treatments
+                Services
               </h4>
               <ul className="space-y-3">
-                {services.map((s) => (
-                  <li key={s}>
+                {footerServices.map((s) => (
+                  <li key={s.slug}>
                     <Link
-                      to="/services"
+                      to={`/services/${s.slug}`}
                       className="footer-link text-sm text-white/70"
                     >
-                      {s}
+                      {s.name}
                     </Link>
                   </li>
                 ))}
@@ -228,6 +227,9 @@ export default function Layout({ children }) {
                 </li>
               </ul>
 
+              <p className="mt-6 text-[11px] leading-relaxed text-white/35">
+                Telehealth available to patients located in California.
+              </p>
             </div>
           </div>
         </div>
