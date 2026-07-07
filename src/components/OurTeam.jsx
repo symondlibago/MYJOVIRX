@@ -180,7 +180,7 @@ export default function OurTeam() {
           <a
             href={BOOKING_URL}
             onClick={handleBookingClick}
-            className="inline-flex items-center gap-4 bg-transparent border border-brand text-brand px-12 py-5 text-[10px] tracking-[0.4em] uppercase hover:bg-brand hover:text-white transition-all group"
+            className="inline-flex items-center gap-4 bg-transparent border border-ink text-ink px-12 py-5 text-[10px] tracking-[0.4em] uppercase hover:bg-ink hover:text-ivory transition-all group"
           >
             Book a Consultation
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />

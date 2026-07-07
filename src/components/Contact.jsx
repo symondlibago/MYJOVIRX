@@ -267,7 +267,7 @@ export default function Contact() {
 
                   <button
                     type="submit"
-                    className="group flex w-full items-center justify-center gap-3 rounded-sm bg-gold py-5 text-[11px] uppercase tracking-[0.35em] text-brand-deep transition-colors duration-500 hover:bg-brand hover:text-white"
+                    className="group flex w-full items-center justify-center gap-3 rounded-sm bg-ink py-5 text-[11px] uppercase tracking-[0.35em] text-ivory transition-colors duration-500 hover:bg-ink-warm"
                   >
                     Request Your Consultation
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1.5" />

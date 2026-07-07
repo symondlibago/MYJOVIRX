@@ -1,12 +1,14 @@
 import React from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
 import Seo from "./Seo";
 import { SERVICES, getService } from "@/data/services";
 import { BOOKING_URL, handleBookingClick } from "@/config";
 
-// Reusable template rendering a single service by its URL slug.
+// Service page template — the V2 "editorial" layout from
+// MotionRx_Service_Pages.pdf: split hero, serif statement, image with
+// "How it works" detail specs, detail table, benefits, explore more, CTA.
 export default function ServicePage() {
   const { slug } = useParams();
   const service = getService(slug);
@@ -14,7 +16,12 @@ export default function ServicePage() {
   // Unknown slug falls back to the Services landing.
   if (!service) return <Navigate to="/services" replace />;
 
-  const related = SERVICES.filter((s) => s.slug !== slug).slice(0, 3);
+  // Related pages come from the PDF's per-service "Explore More" picks,
+  // falling back to the first three other services.
+  const related = (
+    service.explore?.map((s) => getService(s)).filter(Boolean) ||
+    SERVICES.filter((s) => s.slug !== slug)
+  ).slice(0, 3);
 
   return (
     <div className="min-h-screen bg-ivory text-ink">
@@ -24,162 +31,203 @@ export default function ServicePage() {
         path={`/services/${service.slug}`}
       />
 
-      {/* Hero */}
-      <section className="relative flex min-h-[56vh] items-end overflow-hidden pb-14 pt-32 md:min-h-[62vh] md:pb-20">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${service.image}')` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/55 to-ink/45" />
-        <div className="relative z-10 mx-auto w-full max-w-5xl px-6 lg:px-12">
+      {/* ───────── 1. SPLIT HERO ───────── */}
+      <section className="grid lg:grid-cols-2">
+        <div className="flex items-center bg-ivory px-6 pb-16 pt-36 md:px-14 lg:min-h-[80vh] lg:px-16 lg:pt-32">
           <FadeIn>
-            <p className="mb-4 text-[11px] uppercase tracking-[0.4em] text-gold">
+            <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-gold">
               {service.category}
             </p>
-            <h1 className="font-serif text-4xl font-medium leading-tight text-white md:text-6xl">
+            <h1 className="max-w-md font-serif text-4xl font-medium leading-[1.08] text-ink md:text-5xl">
               {service.name}
             </h1>
-            <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-white/80 md:text-base">
+            <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-espresso">
               {service.promise}
             </p>
-            <a
-              href={BOOKING_URL}
-              onClick={handleBookingClick}
-              className="group mt-8 inline-flex items-center gap-3 bg-brand px-8 py-4 text-[11px] uppercase tracking-[0.25em] text-white transition-colors hover:bg-brand-deep"
-            >
-              {service.bookLabel}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Body */}
-      <section className="px-6 py-20 md:py-28 lg:px-12">
-        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-3 lg:gap-16">
-          {/* Main column */}
-          <div className="lg:col-span-2">
-            <FadeIn>
-              <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-brand">
-                Overview
-              </p>
-              {service.overview.map((p, i) => (
-                <p
-                  key={i}
-                  className="mb-5 text-[15px] leading-relaxed text-espresso md:text-base"
-                >
-                  {p}
-                </p>
-              ))}
-            </FadeIn>
-
-            {service.included && (
-              <FadeIn>
-                <h2 className="mb-6 mt-12 font-serif text-2xl font-medium text-ink md:text-3xl">
-                  {service.included.title}
-                </h2>
-                <ul className="space-y-3">
-                  {service.included.items.map((it) => (
-                    <li
-                      key={it}
-                      className="flex gap-3 text-[15px] leading-relaxed text-espresso"
-                    >
-                      <Check className="mt-1 h-4 w-4 shrink-0 text-brand" />
-                      <span>{it}</span>
-                    </li>
-                  ))}
-                </ul>
-              </FadeIn>
-            )}
-
-            {service.bullets && (
-              <FadeIn>
-                <h2 className="mb-6 mt-12 font-serif text-2xl font-medium text-ink md:text-3xl">
-                  Paired with
-                </h2>
-                <ul className="grid gap-3 sm:grid-cols-2">
-                  {service.bullets.map((it) => (
-                    <li key={it} className="flex gap-3 text-[15px] text-espresso">
-                      <Check className="mt-1 h-4 w-4 shrink-0 text-brand" />
-                      <span>{it}</span>
-                    </li>
-                  ))}
-                </ul>
-              </FadeIn>
-            )}
-
-            {service.note && (
-              <p className="mt-10 border-l-2 border-gold/50 pl-4 text-[13px] italic leading-relaxed text-espresso/70">
-                {service.note}
-              </p>
-            )}
-          </div>
-
-          {/* Sidebar */}
-          <aside className="lg:col-span-1">
-            <div className="sticky top-28 rounded-2xl border border-ink/10 bg-white p-8">
-              {service.pricing && (
-                <>
-                  <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-ink/40">
-                    Investment
-                  </p>
-                  <p className="mb-6 font-serif text-2xl text-ink">
-                    {service.pricing}
-                  </p>
-                </>
-              )}
-              <p className="mb-6 text-sm leading-relaxed text-espresso">
-                Every plan starts with a consultation to map your goals and build
-                a protocol around them.
-              </p>
+            <div className="mt-9 flex flex-wrap items-center gap-5">
               <a
                 href={BOOKING_URL}
                 onClick={handleBookingClick}
-                className="group flex items-center justify-center gap-3 bg-brand px-6 py-4 text-[11px] uppercase tracking-[0.25em] text-white transition-colors hover:bg-brand-deep"
+                className="inline-flex items-center gap-3 bg-ink px-8 py-4 text-[10px] uppercase tracking-[0.25em] text-ivory transition-colors hover:bg-ink-warm"
               >
                 {service.bookLabel}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </a>
+              <Link
+                to="/memberships"
+                className="group inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-ink/70 transition-colors hover:text-brand"
+              >
+                View Pricing
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+              </Link>
             </div>
-          </aside>
+          </FadeIn>
+        </div>
+        <div className="relative min-h-[320px] overflow-hidden lg:min-h-full">
+          <img
+            src={service.image}
+            alt={service.name}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
         </div>
       </section>
 
-      {/* Related services */}
-      <section className="bg-cream px-6 py-20 md:py-24 lg:px-12">
-        <div className="mx-auto max-w-6xl">
-          <p className="mb-8 text-[11px] uppercase tracking-[0.4em] text-brand">
-            Explore more
-          </p>
-          <div className="grid gap-6 md:grid-cols-3">
-            {related.map((s) => (
-              <Link
-                key={s.slug}
-                to={`/services/${s.slug}`}
-                className="group relative block overflow-hidden rounded-xl bg-mist"
-                style={{ aspectRatio: "4/3" }}
-              >
-                <img
-                  src={s.image}
-                  alt={s.name}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/80 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5">
-                  <div>
-                    <p className="mb-1 text-[10px] uppercase tracking-[0.3em] text-gold">
-                      {s.category}
-                    </p>
-                    <h3 className="font-serif text-lg font-medium text-white">
-                      {s.name}
-                    </h3>
-                  </div>
-                  <ArrowUpRight className="mb-1 h-5 w-5 shrink-0 text-white/80 transition-transform group-hover:-translate-y-0.5" />
-                </div>
-              </Link>
+      {/* ───────── 2. SERIF STATEMENT ───────── */}
+      <section className="bg-linen px-6 py-20 md:px-14 md:py-28 lg:px-16">
+        <div className="mx-auto max-w-5xl">
+          <FadeIn>
+            <h2 className="max-w-3xl font-serif text-2xl font-medium leading-snug text-ink md:text-4xl">
+              {service.statement}
+            </h2>
+          </FadeIn>
+          <div className="mt-10 grid gap-8 md:grid-cols-2 md:gap-14">
+            {service.overview.map((p, i) => (
+              <FadeIn key={i}>
+                <p className="text-sm leading-relaxed text-espresso md:text-[15px]">
+                  {p}
+                </p>
+              </FadeIn>
             ))}
           </div>
         </div>
+      </section>
+
+      {/* ───────── 3. IMAGE + HOW IT WORKS SPECS ───────── */}
+      <section className="grid bg-ivory lg:grid-cols-[1.15fr_1fr]">
+        <div className="relative min-h-[320px] overflow-hidden lg:min-h-full">
+          <img
+            src={service.image2 || service.image}
+            alt={`${service.name} at MotionRx`}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+        <div className="px-6 py-16 md:px-14 md:py-24 lg:px-16">
+          <FadeIn>
+            <p className="mb-5 text-[10px] uppercase tracking-[0.35em] text-espresso/70">
+              How it works
+            </p>
+            <h2 className="max-w-sm font-serif text-2xl font-medium leading-snug text-ink md:text-3xl">
+              {service.how.text}
+            </h2>
+          </FadeIn>
+          <div className="mt-10 max-w-sm border-t-2 border-ink">
+            {service.how.specs.map((spec) => (
+              <FadeIn key={spec.label}>
+                <div className="border-b border-ink/10 py-4">
+                  <p className="mb-1 text-[11px] font-medium tracking-wide text-ink">
+                    {spec.label}
+                  </p>
+                  <p className="text-sm text-espresso">{spec.value}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── 4. DETAIL TABLE (continues the porcelain band) ───────── */}
+      <section className="bg-ivory px-6 py-20 md:px-14 md:py-28 lg:px-16">
+        <div className="mx-auto max-w-4xl">
+          <FadeIn>
+            <h2 className="font-serif text-2xl font-medium text-ink md:text-3xl">
+              {service.details.title}
+            </h2>
+          </FadeIn>
+          <div className="mt-8 border-t-2 border-ink">
+            {service.details.rows.map((row) => (
+              <FadeIn key={row.term}>
+                <div className="grid gap-1 border-b border-ink/10 py-5 sm:grid-cols-[220px_1fr] sm:gap-8">
+                  <p className="font-serif text-base text-ink">{row.term}</p>
+                  <p className="text-sm leading-relaxed text-espresso">
+                    {row.desc}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+          {service.details.note && (
+            <p className="mt-8 border-l-2 border-gold/50 pl-4 text-[13px] italic leading-relaxed text-espresso/70">
+              {service.details.note}
+            </p>
+          )}
+        </div>
+      </section>
+
+      {/* ───────── 5. BENEFITS (the warm linen band) ───────── */}
+      <section className="bg-linen px-6 py-20 md:px-14 md:py-28 lg:px-16">
+        <div className="mx-auto max-w-5xl">
+          <FadeIn>
+            <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-gold">
+              {service.benefits.label}
+            </p>
+            <h2 className="font-serif text-2xl font-medium text-ink md:text-3xl">
+              {service.benefits.title}
+            </h2>
+          </FadeIn>
+          <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {service.benefits.items.map((b) => (
+              <FadeIn key={b.title}>
+                <div className="border-t border-ink/15 pt-5">
+                  <h3 className="mb-2 font-serif text-base font-medium text-ink">
+                    {b.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-espresso">
+                    {b.desc}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── 6. EXPLORE MORE ───────── */}
+      <section className="bg-ivory px-6 py-20 md:px-14 md:py-24 lg:px-16">
+        <div className="mx-auto max-w-5xl">
+          <FadeIn>
+            <p className="mb-10 text-[11px] uppercase tracking-[0.4em] text-espresso/70">
+              Explore More
+            </p>
+          </FadeIn>
+          <div className="grid gap-8 sm:grid-cols-3">
+            {related.map((s) => (
+              <FadeIn key={s.slug}>
+                <Link to={`/services/${s.slug}`} className="group block">
+                  <div className="aspect-4/3 overflow-hidden bg-mist">
+                    <img
+                      src={s.image}
+                      alt={s.name}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <span className="mt-4 flex items-center justify-between gap-3 border-b border-ink/25 pb-3">
+                    <span className="font-serif text-base text-ink transition-colors group-hover:text-brand">
+                      {s.name}
+                    </span>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-ink/50 transition-all group-hover:translate-x-1 group-hover:text-brand" />
+                  </span>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── 7. CTA ───────── */}
+      <section className="bg-linen px-6 py-24 text-center md:py-32">
+        <FadeIn>
+          <h2 className="font-serif text-3xl font-medium leading-[1.2] text-ink md:text-4xl">
+            Ready when you are.
+          </h2>
+          <div className="mt-8">
+            <a
+              href={BOOKING_URL}
+              onClick={handleBookingClick}
+              className="inline-flex items-center gap-3 bg-ink px-9 py-4 text-[10px] uppercase tracking-[0.25em] text-ivory transition-colors hover:bg-ink-warm"
+            >
+              Reserve Now
+            </a>
+          </div>
+        </FadeIn>
       </section>
     </div>
   );

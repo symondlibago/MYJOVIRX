@@ -88,7 +88,7 @@ export default function NavBar() {
                   key={link.name}
                   href={link.href}
                   onClick={handleBookingClick}
-                  className="text-sm tracking-widest uppercase bg-brand border border-brand text-white px-6 py-2.5 hover:bg-brand-deep hover:border-brand-deep transition-colors duration-300"
+                  className="text-sm tracking-widest uppercase bg-ink border border-ink text-ivory px-6 py-2.5 hover:bg-ink-warm hover:border-ink-warm transition-colors duration-300"
                 >
                   {link.name}
                 </a>
@@ -198,7 +198,7 @@ export default function NavBar() {
                             setMobileOpen(false);
                             handleBookingClick(e);
                           }}
-                          className="flex items-center justify-center gap-3 bg-brand text-white px-8 py-4 text-sm tracking-[0.25em] uppercase hover:bg-brand-deep transition-colors duration-300"
+                          className="flex items-center justify-center gap-3 bg-ink text-ivory px-8 py-4 text-sm tracking-[0.25em] uppercase hover:bg-ink-warm transition-colors duration-300"
                         >
                           {link.name}
                         </a>

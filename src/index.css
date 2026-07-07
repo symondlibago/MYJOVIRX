@@ -21,20 +21,24 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
 
-  /* ── Brand palette tokens */
-  --color-brand: #6B1F2E;
-  --color-brand-deep: #3E1119;
-  --color-gold: #B8A889;
-  --color-espresso: #453122;
-  --color-ink: #0F0F0F;
-  --color-ink-warm: #2C2A26;
-  --color-ivory: #FCFAF7;
-  --color-cream: #FBF9F6;
-  --color-sand: #F4F1EB;
-  --color-sand2: #F3EFE8;
-  --color-sand3: #E9DFD4;
-  --color-taupe: #8C8273;
-  --color-mist: #E6E6E6;
+  /* ── Brand palette tokens — default = Olive & Porcelain ("oasis"),
+        from MotionRx_Website_Layout.pdf */
+  --color-brand: #6C6F4D;
+  --color-brand-deep: #494C33;
+  --color-gold: #A77B5E;
+  --color-espresso: #5C5245;
+  --color-ink: #2A2620;
+  --color-ink-warm: #3A352C;
+  --color-ivory: #F7EFE6;
+  --color-cream: #FFFFFF;
+  --color-sand: #E8D9C6;
+  --color-sand2: #E4D5BF;
+  --color-sand3: #DFD4B9;
+  --color-taupe: #9A8C74;
+  --color-mist: #E6DBC9;
+  /* The PDF palette's "Cream" swatch — the warm light band on service pages
+     (distinct from --color-cream, which the homepage uses as white). */
+  --color-linen: #FBEEDC;
 
   /* Accordion (FAQ) reveal animations — Tailwind v4 generates
      `animate-accordion-down` / `animate-accordion-up` from these. */
@@ -102,7 +106,8 @@
 
 /* ───── Smooth scroll (Lenis) ───── */
 html {
-  background-color: #FCFAF7;
+  /* Default palette = Olive & Porcelain (matches [data-palette="oasis"]) */
+  background-color: #F7EFE6;
 }
 html.lenis,
 html.lenis body {
@@ -137,17 +142,17 @@ html.lenis body {
 
 :root {
   /* RGB triplets — used by rgba()/gradients in inline styles so glows &
-     shadows recolor with the palette too. Default = current palette. */
-  --brand-rgb: 107 31 46;
-  --brand-deep-rgb: 62 17 25;
-  --gold-rgb: 184 168 137;
-  --ink-warm-rgb: 44 42 38;
-  --stone-rgb: 212 207 196;
-  --cream-rgb: 251 249 246;
+     shadows recolor with the palette too. Default = oasis palette. */
+  --brand-rgb: 108 111 77;
+  --brand-deep-rgb: 73 76 51;
+  --gold-rgb: 167 123 94;
+  --ink-warm-rgb: 58 53 44;
+  --stone-rgb: 206 183 159;
+  --cream-rgb: 255 255 255;
 
-  /* Font tokens — default = Garet + DM Sans (the current pick). */
-  --font-head: "Garet", system-ui, sans-serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
+  /* Font tokens — default = Zapf Humanist + Hanken Grotesk (brand-layout PDF). */
+  --font-head: "Zapf Humanist 601", "Zapf Humanist", "Optima", "Candara", "Marcellus", serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
 
   /* Heading weight — overridden by [data-weight]; default = Bold. */
   --font-head-weight: 700;
@@ -163,6 +168,7 @@ html.lenis body {
   --color-ink-warm: #1B2540;
   --color-ivory: #F5F8FD;
   --color-cream: #F1F6FD;
+  --color-linen: #F1F6FD;
   --color-sand: #E7F0FB;
   --color-sand2: #E4EDF9;
   --color-sand3: #D6E5F6;
@@ -187,6 +193,7 @@ html.lenis body {
   --color-ink-warm: #2A2622;
   --color-ivory: #FAF8F3;
   --color-cream: #F4F1EA;
+  --color-linen: #F4F1EA;
   --color-sand: #ECE7DC;
   --color-sand2: #E9E3D6;
   --color-sand3: #DFD7C7;
@@ -201,6 +208,60 @@ html.lenis body {
   --cream-rgb: 244 241 234;
 }
 
+/* ───── Palette 1 · Olive & Porcelain ("oasis" · site default) ─────
+   Swatches from MotionRx_Website_Layout.pdf: Porcelain #F7EFE6, Cream #FBEEDC,
+   Greige #E8D9C6, Sand #DFD4B9, Camel #CEB79F, Olive #6C6F4D, Brown #A77B5E.
+   Values live in the base @theme / :root blocks above; this selector exists so
+   an explicit data-palette="oasis" choice also resolves. */
+:root[data-palette="oasis"] {
+  --color-brand: #6C6F4D;
+  --color-brand-deep: #494C33;
+  --color-gold: #A77B5E;
+  --color-espresso: #5C5245;
+  --color-ink: #2A2620;
+  --color-ink-warm: #3A352C;
+  --color-ivory: #F7EFE6;
+  --color-cream: #FFFFFF;
+  --color-linen: #FBEEDC;
+  --color-sand: #E8D9C6;
+  --color-sand2: #E4D5BF;
+  --color-sand3: #DFD4B9;
+  --color-taupe: #9A8C74;
+  --color-mist: #E6DBC9;
+
+  --brand-rgb: 108 111 77;
+  --brand-deep-rgb: 73 76 51;
+  --gold-rgb: 167 123 94;
+  --ink-warm-rgb: 58 53 44;
+  --stone-rgb: 206 183 159;
+  --cream-rgb: 255 255 255;
+}
+
+/* ───── Palette 2 · Oxblood & Cream (previous default) ───── */
+:root[data-palette="current"] {
+  --color-brand: #6B1F2E;
+  --color-brand-deep: #3E1119;
+  --color-gold: #B8A889;
+  --color-espresso: #453122;
+  --color-ink: #0F0F0F;
+  --color-ink-warm: #2C2A26;
+  --color-ivory: #FCFAF7;
+  --color-cream: #FBF9F6;
+  --color-linen: #FBF9F6;
+  --color-sand: #F4F1EB;
+  --color-sand2: #F3EFE8;
+  --color-sand3: #E9DFD4;
+  --color-taupe: #8C8273;
+  --color-mist: #E6E6E6;
+
+  --brand-rgb: 107 31 46;
+  --brand-deep-rgb: 62 17 25;
+  --gold-rgb: 184 168 137;
+  --ink-warm-rgb: 44 42 38;
+  --stone-rgb: 212 207 196;
+  --cream-rgb: 251 249 246;
+}
+
 /* ───── Palette 4 · Clinical Teal (repositioning default) ───── */
 :root[data-palette="teal"] {
   --color-brand: #0F766E;
@@ -211,6 +272,7 @@ html.lenis body {
   --color-ink-warm: #1C2A28;
   --color-ivory: #FBFDFC;
   --color-cream: #F3F8F7;
+  --color-linen: #F3F8F7;
   --color-sand: #ECF4F2;
   --color-sand2: #E7F1EF;
   --color-sand3: #D9E8E5;
@@ -226,6 +288,10 @@ html.lenis body {
 }
 
 /* ───── Font pairings ───── */
+:root[data-font="zapf"] {
+  --font-head: "Zapf Humanist 601", "Zapf Humanist", "Optima", "Candara", "Marcellus", serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+}
 :root[data-font="cormorant"] {
   --font-head: "Cormorant Garamond", Georgia, serif;
   --font-body: "Inter", system-ui, sans-serif;

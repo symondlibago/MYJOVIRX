@@ -11,7 +11,7 @@ export default function MembershipsPage() {
         description="MotionRx memberships and subscriptions: IV, peptide, and injection plans, TRT and HRT membership, and lab packages."
         path="/memberships"
       />
-      <div className="pt-16 md:pt-20">
+      <div className="pt-24 md:pt-28">
         <Memberships />
       </div>
     </div>

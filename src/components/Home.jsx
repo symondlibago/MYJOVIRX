@@ -3,57 +3,229 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
-  Microscope,
-  Dna,
-  Activity,
-  MapPin,
-  Phone,
-  Clock,
+  HeartPulse,
+  Smile,
+  Leaf,
+  CalendarCheck,
+  Plus,
 } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
-import Marquee from "@/components/ui/Marquee";
-import HomeFaq from "./HomeFaq";
-import Testimonials from "./Testimonials";
 import IntroSplash from "./IntroSplash";
 import Seo from "./Seo";
 import { BOOKING_URL, handleBookingClick } from "@/config";
+import { SERVICES } from "@/data/services";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
-// Featured services grid — original layout kept per client request.
-const featuredServices = [
-  { id: 1, image: "/treatment-2.jpg", title: "IV Hydration Therapy", category: "Hydration & Recovery", desc: "Rapid rehydration with vitamins and electrolytes" },
-  { id: 2, image: "/treatment-5.jpg", title: "NAD+ Restoration", category: "Cellular Energy", desc: "Anti-aging and mental clarity at the cellular level" },
-  { id: 3, image: "/treatment-4.jpg", title: "Vitamin Injections", category: "Boosters", desc: "B12, glutathione & lipo shots for daily energy" },
-  { id: 4, image: "/treatment-6.jpg", title: "Hormone Optimization", category: "TRT & Balance", desc: "Restore energy, focus, and performance" },
-  { id: 5, image: "/hero-2.jpg", title: "Medical Weight Loss", category: "GLP-1 & Peptides", desc: "Physician-supervised programs built to last" },
-  { id: 6, image: "/clinic-room.jpg", title: "Lab Testing & Panels", category: "Diagnostics", desc: "Comprehensive bloodwork with a clear, actionable plan" },
-  { id: 7, image: "/treatment-3.jpg", title: "Nutrition & Weight Support", category: "Nutrition & Weight", desc: "Personalized plans for weight management and metabolic health" },
-  { id: 8, image: "/treatment-1.jpg", title: "Peptide Consultation", category: "Peptide Therapy", desc: "Expert guidance on peptide protocols for performance and recovery" },
-];
+// ── Content mirrors MotionRx_Website_Layout.pdf (homepage direction) ──
 
-const pillars = [
+const oasisFeatures = [
   {
-    icon: Microscope,
-    title: "Precision Diagnostics",
-    desc: "Advanced labs and biomarkers that find risk before it becomes disease.",
+    icon: HeartPulse,
+    title: "Health-led",
+    desc: "Treatments guided by our medical team.",
   },
   {
-    icon: Dna,
-    title: "Regenerative Therapies",
-    desc: "Peptides, hormones, and IV protocols that help the body repair and perform.",
+    icon: Smile,
+    title: "Genuine staff",
+    desc: "Warm, attentive, never rushed.",
   },
   {
-    icon: Activity,
-    title: "Longevity & Performance",
-    desc: "Data-driven plans to move better, think clearer, and live longer.",
+    icon: Leaf,
+    title: "Tranquil space",
+    desc: "A calm, botanical setting to unwind.",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Easy booking",
+    desc: "Stress-free scheduling, in and out.",
   },
 ];
 
-const teamPreview = [
-  "/dr-scott.jpg",
-  "/team-camron.jpg",
-  "/team-laura.jpg",
-  "/team-tori.jpg",
+const menuCategories = [
+  {
+    image: "/iv-stand.jpg",
+    title: "IV Drips",
+    desc: "Hydration, recovery, immunity, and radiance, infused for full absorption from the inside out.",
+    linkLabel: "Explore Drips",
+    to: "/services/iv-nutrient-therapy",
+  },
+  {
+    image: "/injection-green.jpg",
+    title: "Injections & Shots",
+    desc: "Fast, targeted vitamin and amino boosts for energy, metabolism, and everyday balance.",
+    linkLabel: "Explore Shots",
+    to: "/services",
+  },
+  {
+    image: "/vials-marble.jpg",
+    title: "Peptides & NAD+",
+    desc: "Advanced longevity and cellular support for recovery, clarity, and performance.",
+    linkLabel: "Explore Therapies",
+    to: "/services/peptide-therapy",
+  },
 ];
+
+const benefits = [
+  {
+    title: "Fluid hydration",
+    desc: "Replenish vital fluids and stay hydrated from the inside out.",
+  },
+  {
+    title: "Energy & endurance",
+    desc: "Restore your reserves and fuel an active lifestyle.",
+  },
+  {
+    title: "Mental clarity",
+    desc: "Sharpen focus and cognitive agility for daily demands.",
+  },
+  {
+    title: "Recovery",
+    desc: "Support faster recovery and optimise athletic performance.",
+  },
+  {
+    title: "Immunity",
+    desc: "Address vitamin deficiencies and safeguard your wellbeing.",
+  },
+  {
+    title: "Metabolism",
+    desc: "Support your body's natural balance and healthy weight.",
+  },
+];
+
+const ritualSteps = [
+  {
+    num: "01",
+    title: "Assess",
+    desc: "A short intake to understand your goals and match the right infusion.",
+  },
+  {
+    num: "02",
+    title: "Restore",
+    desc: "Settle into the lounge as your treatment works, at your own pace.",
+  },
+  {
+    num: "03",
+    title: "Sustain",
+    desc: "Leave replenished, with guidance to keep the benefits going.",
+  },
+];
+
+const pressQuotes = [
+  {
+    quote: "A breath of fresh air, a bohemian rejuvenation.",
+    source: "Irvine Weekly",
+  },
+  {
+    quote: "Where bio-hacking meets the concept of age reversal.",
+    source: "Cali Post",
+  },
+  {
+    quote: "Not just revived, but genuinely transformed.",
+    source: "Irvine Weekly",
+  },
+];
+
+// ── PDF page 3 (continuation of the homepage direction) ──
+
+const experienceFeatures = [
+  {
+    icon: HeartPulse,
+    title: "Health-led",
+    desc: "Guided by our medical director.",
+  },
+  {
+    icon: Leaf,
+    title: "Tranquil",
+    desc: "A calm space to fully unwind.",
+  },
+  {
+    icon: Plus,
+    title: "Physician-guided",
+    desc: "Every treatment, overseen.",
+  },
+];
+
+const guestStories = [
+  {
+    image: "/portrait-white-dress.jpg",
+    quote: "Clearer, lighter, and genuinely rested",
+    name: "Maya R.",
+    treatment: "Immunity Drip",
+  },
+  {
+    image: "/portrait-blue-tee.jpg",
+    quote: "Medical, without ever feeling clinical",
+    name: "David L.",
+    treatment: "NAD+ Infusion",
+  },
+  {
+    image: "/portrait-cap.jpg",
+    quote: "Back to training the next morning",
+    name: "Chris B.",
+    treatment: "Performance Drip",
+  },
+  {
+    image: "/portrait-book.jpg",
+    quote: "The easiest hour of my week",
+    name: "Marcus W.",
+    treatment: "Recovery Drip",
+  },
+];
+
+const pressCards = [
+  {
+    source: "Irvine Weekly",
+    quote:
+      "Reframes the drip bar as something quieter and more considered — you leave genuinely restored.",
+  },
+  {
+    source: "Locale OC",
+    quote:
+      "Laguna Hills' most refined take on IV wellness — minimal, medical, and unmistakably calm.",
+  },
+];
+
+const faqs = [
+  {
+    q: "What is IV therapy?",
+    a: "Fluids, vitamins, and antioxidants delivered straight into your bloodstream, for fast hydration, energy, and recovery.",
+  },
+  {
+    q: "Do I need a consultation first?",
+    a: "Yes. A quick intake lets a provider confirm the right protocol for you, often done virtually before your visit.",
+  },
+  {
+    q: "How long does a treatment take?",
+    a: "Most drips take 30–45 minutes. NAD+ and specialty therapies run slower for comfort, about 60–90 minutes.",
+  },
+  {
+    q: "Is there anything I should do before my appointment?",
+    a: "Arrive hydrated, eat a light meal, and wear something with easy access to your arm. We'll handle the rest.",
+  },
+  {
+    q: "How much do treatments cost?",
+    a: "Signature drips start at $149, with memberships and packages available. Transparent pricing, no hidden fees.",
+  },
+  {
+    q: "Where are you located and is there parking?",
+    a: "Costa Mesa, with free on-site parking, serving all of Orange County. Telehealth is available statewide.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 
 export default function Home() {
   const heroRef = useRef(null);
@@ -69,15 +241,15 @@ export default function Home() {
     <div className="min-h-screen bg-ivory text-ink">
       <IntroSplash />
       <Seo
-        title="MotionRx: Longevity, Performance & Regenerative Medicine | Costa Mesa, CA"
-        description="MotionRx is where modern medicine meets human performance. Advanced diagnostics, hormone and peptide therapy, IV nutrition, and medical weight optimization in Costa Mesa, CA."
+        title="MotionRx: IV Therapy, Hydration & Recovery Lounge"
+        description="A laidback, non-clinical oasis for IV vitamin infusions, injections, peptides, and NAD+. Replenish your body, revitalise your energy, and restore your balance at MotionRx."
         path="/"
       />
 
       {/* ───────── 1. HERO ───────── */}
       <section
         ref={heroRef}
-        className="relative flex h-[92vh] min-h-[600px] items-center justify-center overflow-hidden"
+        className="relative flex h-svh min-h-[600px] items-end overflow-hidden"
       >
         <motion.div
           style={{ scale: heroImgScale }}
@@ -85,92 +257,76 @@ export default function Home() {
         >
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/hero-3.jpg')" }}
+            style={{ backgroundImage: "url('/hero-lounge.jpg')" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/45 to-ink/75" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/30 to-ink/25" />
         </motion.div>
 
         <motion.div
           style={{ y: heroTextY, opacity: heroTextOpacity }}
-          className="relative z-10 mx-auto max-w-4xl px-6 text-center"
+          className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 md:pb-24 lg:px-12"
         >
-          <p className="mb-7 text-[11px] uppercase tracking-[0.45em] text-white/70">
-            Modern Medicine · Human Performance
+          <p className="mb-6 text-[11px] uppercase tracking-[0.45em] text-white/75">
+            IV Therapy · Laguna Hills
           </p>
-          <h1 className="font-serif text-5xl font-medium leading-[1.05] text-white md:text-7xl">
-            Optimize your health.
+          <h1 className="max-w-3xl font-serif text-5xl font-medium leading-[1.05] text-white md:text-7xl">
+            Unwind.
             <br />
-            <span className="text-gold">Elevate your performance.</span>
+            Replenish. Thrive.
           </h1>
-          <p className="mx-auto mt-8 max-w-xl text-[15px] leading-relaxed text-white/80 md:text-base">
-            Advanced diagnostics, regenerative therapies, and evidence-based
-            care to help you move better, feel stronger, and live longer.
+          <p className="mt-7 max-w-xl text-[15px] leading-relaxed text-white/80 md:text-base">
+            A laidback oasis designed to replenish your body, revitalise your
+            energy, and restore your balance.
           </p>
-          <div className="mt-11 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
               href={BOOKING_URL}
               onClick={handleBookingClick}
-              className="group inline-flex items-center gap-3 bg-brand px-9 py-4 text-[11px] uppercase tracking-[0.25em] text-white transition-colors hover:bg-brand-deep"
+              className="group inline-flex items-center justify-center gap-3 rounded-full bg-ivory px-9 py-4 text-[11px] uppercase tracking-[0.25em] text-ink transition-colors hover:bg-cream"
             >
-              Book a Consultation
+              Book Your Visit
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 border-b border-white/30 pb-1 text-[11px] uppercase tracking-[0.25em] text-white/85 transition-colors hover:border-white hover:text-white"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 px-9 py-4 text-[11px] uppercase tracking-[0.25em] text-white transition-colors hover:border-white hover:bg-white/10"
             >
-              Explore Services
+              Explore Treatments
             </Link>
           </div>
         </motion.div>
       </section>
 
-      {/* Thin trust band */}
-      <Marquee
-        items={[
-          "Precision Diagnostics",
-          "Hormone Optimization",
-          "Peptide Therapy",
-          "IV Nutrient Therapy",
-          "Medical Weight Optimization",
-          "Longevity Medicine",
-          "Human Performance",
-        ]}
-      />
-
-      {/* ───────── 2. WHY MOTIONRX ───────── */}
-      <section className="bg-ivory px-6 py-24 md:py-32">
+      {/* ───────── 2. A HOLISTIC OASIS ───────── */}
+      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
-            <div className="mx-auto max-w-3xl text-center">
-              <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
-                Why MotionRx
-              </p>
-              <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
-                Where modern medicine meets human performance.
-              </h2>
-              <p className="mx-auto mt-7 max-w-2xl text-[15px] leading-relaxed text-espresso md:text-base">
-                We combine advanced diagnostics, personalized treatment plans,
-                regenerative therapies, and evidence-based medicine. Our approach
-                is proactive rather than reactive, focused on prevention,
-                optimization, and helping you take control of your long-term
-                health.
-              </p>
-            </div>
+            <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
+              A Holistic Oasis
+            </p>
+            <h2 className="max-w-3xl font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
+              Wellness reimagined as a non-clinical space for hydration,
+              recovery, and calm.
+            </h2>
+            <p className="mt-7 max-w-2xl text-[15px] leading-relaxed text-espresso md:text-base">
+              At MotionRx, IV vitamin infusions deliver optimal hydration and
+              nutrition to support vibrant health. No clinical rush. Just a
+              considered, restful experience built around how you want to feel.
+            </p>
           </FadeIn>
 
-          <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 md:grid-cols-3">
-            {pillars.map((p) => (
-              <FadeIn key={p.title}>
-                <div className="flex h-full flex-col bg-ivory p-8 md:p-10">
-                  <span className="mb-6 flex h-11 w-11 items-center justify-center rounded-full bg-brand/10 text-brand">
-                    <p.icon className="h-5 w-5" strokeWidth={1.6} />
+          <div className="mt-16 grid gap-10 border-t border-ink/10 pt-10 sm:grid-cols-2 lg:grid-cols-4">
+            {oasisFeatures.map((f) => (
+              <FadeIn key={f.title}>
+                <div>
+                  <span className="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-brand/10 text-brand">
+                    <f.icon className="h-5 w-5" strokeWidth={1.6} />
                   </span>
                   <h3 className="mb-2 font-serif text-lg font-medium text-ink">
-                    {p.title}
+                    {f.title}
                   </h3>
                   <p className="text-sm leading-relaxed text-espresso">
-                    {p.desc}
+                    {f.desc}
                   </p>
                 </div>
               </FadeIn>
@@ -179,38 +335,63 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 3. FEATURED SERVICES (original grid) ───────── */}
-      <section className="bg-white px-6 py-28">
-        <div className="mx-auto max-w-7xl">
+      {/* ───────── 3. THE MENU ───────── */}
+      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+        <div className="mx-auto max-w-6xl">
           <FadeIn>
-            <div className="mb-16">
-              <p className="mb-4 text-xs uppercase tracking-[0.4em] text-brand">
-                What We Offer
+            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
+                  The Menu
+                </p>
+                <h2 className="max-w-xl font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
+                  Over ten treatments,
+                  <br />
+                  one considered ritual.
+                </h2>
+              </div>
+              <p className="text-[11px] uppercase tracking-[0.25em] text-espresso/70 md:pb-2 md:text-right">
+                All infusions overseen
+                <br className="hidden md:block" /> by our medical director
               </p>
-              <h2 className="font-serif text-6xl text-ink">Featured Services</h2>
             </div>
           </FadeIn>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {featuredServices.map((item) => (
-              <FadeIn key={item.id}>
-                <Link
-                  to="/services"
-                  className="group relative block overflow-hidden bg-mist"
-                  style={{ aspectRatio: "4/3" }}
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-6 text-white">
-                    <p className="text-[10px] uppercase tracking-[0.4em] text-gold">
-                      {item.category}
-                    </p>
-                    <h3 className="font-serif text-2xl">{item.title}</h3>
-                    <p className="text-sm text-white/70">{item.desc}</p>
+          <div className="mt-14 grid gap-10 md:grid-cols-3">
+            {menuCategories.map((c) => (
+              <FadeIn key={c.title}>
+                <Link to={c.to} className="group block">
+                  <div className="aspect-[4/5] overflow-hidden bg-mist">
+                    {c.video ? (
+                      <video
+                        src={c.video}
+                        poster={c.image}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        aria-label={c.title}
+                        className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                      />
+                    ) : (
+                      <img
+                        src={c.image}
+                        alt={c.title}
+                        className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                      />
+                    )}
                   </div>
+                  <h3 className="mt-6 font-serif text-2xl text-ink">
+                    {c.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-espresso">
+                    {c.desc}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors group-hover:border-brand group-hover:text-brand">
+                    {c.linkLabel}
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                  </span>
                 </Link>
               </FadeIn>
             ))}
@@ -218,270 +399,385 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The experience — full-width video (below Featured Services) */}
-      <section className="bg-ivory px-0 md:px-10">
-        <FadeIn>
-          <div className="relative aspect-video w-full overflow-hidden md:rounded-2xl">
-            <video
-              className="block h-full w-full object-cover"
-              src="/experience.mp4"
-              poster="/treatment-1.jpg"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="The MotionRx experience"
+      {/* ───────── 4. BENEFITS (the only white band, per PDF) ───────── */}
+      <section className="bg-cream px-6 py-24 md:py-32 lg:px-12">
+        <div className="mx-auto max-w-6xl">
+          <FadeIn>
+            <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
+              Benefits
+            </p>
+            <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
+              Look, feel, and radiate health.
+            </h2>
+          </FadeIn>
+
+          <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            {benefits.map((b) => (
+              <FadeIn key={b.title}>
+                <div className="border-t border-ink/10 pt-6">
+                  <h3 className="mb-2 font-serif text-lg font-medium text-ink">
+                    {b.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-espresso">
+                    {b.desc}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── 5. THE CONSIDERED RITUAL ───────── */}
+      <section className="bg-ivory">
+        <div className="grid lg:grid-cols-2">
+          <div className="relative min-h-[320px] overflow-hidden lg:min-h-full">
+            <img
+              src="/ritual-lounge.jpg"
+              alt="The MotionRx lounge"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
-        </FadeIn>
-      </section>
-
-      {/* ───────── 4. PRECISION DIAGNOSTICS ───────── */}
-      <section className="bg-ivory px-6 py-24 md:py-28 lg:px-12">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <FadeIn direction="left">
-            <div>
-              <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-brand">
-                Precision Diagnostics
+          <div className="px-6 py-20 md:px-14 md:py-28 lg:px-16">
+            <FadeIn>
+              <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
+                The Considered Ritual
               </p>
-              <h2 className="font-serif text-3xl font-medium leading-[1.12] text-ink md:text-5xl">
-                Decisions driven by your data.
+              <h2 className="max-w-md font-serif text-3xl font-medium leading-[1.15] text-ink md:text-4xl">
+                Care that reads like a prescription, not a pitch.
               </h2>
-              <p className="mt-6 text-[15px] leading-relaxed text-espresso md:text-base">
-                Advanced labs, biomarkers, and body composition give us a
-                complete picture of your health, so every recommendation is based
-                on evidence, not guesswork.
-              </p>
-              <Link
-                to="/services/laboratory-testing"
-                className="mt-8 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors hover:border-brand hover:text-brand"
-              >
-                Explore Lab Testing
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
+            </FadeIn>
+            <div className="mt-12 space-y-0">
+              {ritualSteps.map((s) => (
+                <FadeIn key={s.num}>
+                  <div className="flex gap-6 border-t border-ink/10 py-7">
+                    <span className="font-serif text-sm text-gold">
+                      {s.num}
+                    </span>
+                    <div>
+                      <h3 className="mb-1.5 font-serif text-lg font-medium text-ink">
+                        {s.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-espresso">
+                        {s.desc}
+                      </p>
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
             </div>
-          </FadeIn>
-          <FadeIn direction="right">
-            <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-mist">
-              <img
-                src="/clinic-room.jpg"
-                alt="Advanced diagnostics at MotionRx"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </FadeIn>
+          </div>
         </div>
       </section>
 
-      {/* ───────── 5. LONGEVITY & BIOHACKING ───────── */}
-      <section className="bg-cream px-6 py-24 md:py-28 lg:px-12">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      {/* ───────── 6. OUR MEDICAL DIRECTOR ───────── */}
+      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <FadeIn direction="left">
-            <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-mist">
+            <div className="aspect-[4/3] overflow-hidden bg-mist">
               <img
-                src="/treatment-5.jpg"
-                alt="Longevity and biohacking therapies"
+                src="/team-group.jpg"
+                alt="The MotionRx team, led by Dr. Courtney S. Scott"
                 className="h-full w-full object-cover"
               />
             </div>
           </FadeIn>
           <FadeIn direction="right">
             <div>
-              <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-brand">
-                Longevity &amp; Biohacking
+              <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
+                Our Medical Director
               </p>
-              <h2 className="font-serif text-3xl font-medium leading-[1.12] text-ink md:text-5xl">
-                Optimize for the long game.
+              <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
+                Care led by
+                <br />
+                Dr. Courtney S. Scott.
               </h2>
-              <p className="mt-6 text-[15px] leading-relaxed text-espresso md:text-base">
-                Regenerative therapies, hormone and peptide protocols, and
-                lifestyle medicine work together to slow aging, sharpen
-                performance, and extend your healthspan.
-              </p>
-              <Link
-                to="/services/longevity-medicine"
-                className="mt-8 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors hover:border-brand hover:text-brand"
-              >
-                Explore Longevity Medicine
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ───────── 6. INBODY BODY COMPOSITION ───────── */}
-      <section className="bg-white px-6 py-24 md:py-28">
-        <div className="mx-auto max-w-3xl text-center">
-          <FadeIn>
-            <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-brand">
-              InBody Analysis
-            </p>
-            <h2 className="font-serif text-3xl font-medium leading-[1.12] text-ink md:text-5xl">
-              Measure what matters.
-            </h2>
-            <p className="mx-auto mt-6 max-w-xl text-[15px] leading-relaxed text-espresso md:text-base">
-              Precision body composition scans track muscle, fat, and hydration,
-              so you can see progress in real numbers and adjust your plan with
-              data.
-            </p>
-            <a
-              href={BOOKING_URL}
-              onClick={handleBookingClick}
-              className="group mt-9 inline-flex items-center gap-3 bg-brand px-9 py-4 text-[11px] uppercase tracking-[0.25em] text-white transition-colors hover:bg-brand-deep"
-            >
-              Schedule InBody Scan
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ───────── 7. MEET THE MEDICAL TEAM (teaser) ───────── */}
-      <section className="bg-cream px-6 py-24 md:py-28 lg:px-12">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <FadeIn direction="left">
-            <div>
-              <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-brand">
-                The Team
-              </p>
-              <h2 className="font-serif text-3xl font-medium leading-[1.12] text-ink md:text-5xl">
-                Physician-led, expert-guided.
-              </h2>
-              <p className="mt-6 text-[15px] leading-relaxed text-espresso md:text-base">
-                Every plan is guided by our medical director and a team of
-                licensed clinicians, with the diagnostics and follow-through to
-                back it up.
+              <p className="mt-7 max-w-md text-[15px] leading-relaxed text-espresso md:text-base">
+                Recognising the role of holistic health in longevity, our team
+                provides comprehensive care spanning prevention, evaluation,
+                and treatment.
               </p>
               <Link
                 to="/about"
-                className="mt-8 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors hover:border-brand hover:text-brand"
+                className="group mt-9 inline-flex items-center gap-3 rounded-full border border-ink/25 px-9 py-4 text-[11px] uppercase tracking-[0.25em] text-ink transition-colors hover:border-ink hover:bg-ink hover:text-ivory"
               >
                 Meet the Team
-                <ArrowRight className="h-3.5 w-3.5" />
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
-            </div>
-          </FadeIn>
-          <FadeIn direction="right">
-            <div className="grid grid-cols-2 gap-4">
-              {teamPreview.map((img) => (
-                <div
-                  key={img}
-                  className="aspect-[4/5] overflow-hidden rounded-xl bg-mist"
-                >
-                  <img
-                    src={img}
-                    alt="MotionRx clinician"
-                    className="h-full w-full object-cover object-top"
-                  />
-                </div>
-              ))}
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* ───────── 8. PATIENT SUCCESS STORIES (carousel) ───────── */}
-      <Testimonials />
+      {/* ───────── 7. PRESS ───────── */}
+      <section className="border-t border-ink/10 bg-ivory px-6 py-20 md:py-24 lg:px-12">
+        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-3">
+          {pressQuotes.map((q, i) => (
+            <FadeIn key={i}>
+              <figure>
+                <blockquote className="font-serif text-xl leading-snug text-ink md:text-2xl">
+                  {q.quote}
+                </blockquote>
+                <figcaption className="mt-5 text-[10px] uppercase tracking-[0.35em] text-espresso/70">
+                  {q.source}
+                </figcaption>
+              </figure>
+            </FadeIn>
+          ))}
+        </div>
+      </section>
 
-      {/* ───────── 9. FAQ ───────── */}
-      <HomeFaq />
+      {/* ───────── 8. THE EXPERIENCE (full-bleed video band) ───────── */}
+      <section className="relative overflow-hidden">
+        <video
+          src="/experience.mp4"
+          poster="/lounge-wide.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="The MotionRx experience"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-linear-to-r from-ink/85 via-ink/60 to-ink/40" />
+        <div className="relative z-10 mx-auto max-w-6xl px-6 py-24 md:py-32 lg:px-12">
+          <FadeIn>
+            <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-white/70">
+              The Experience
+            </p>
+            <h2 className="max-w-xl font-serif text-3xl font-medium leading-[1.12] text-white md:text-5xl">
+              Calm care. Clear results
+            </h2>
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/75">
+              A botanical, light-filled lounge where every infusion is overseen
+              by our medical team.
+            </p>
+          </FadeIn>
+          <div className="mt-14 grid max-w-3xl gap-8 sm:grid-cols-3">
+            {experienceFeatures.map((f) => (
+              <FadeIn key={f.title}>
+                <div className="border-t border-white/20 pt-5">
+                  <f.icon className="mb-3 h-5 w-5 text-white/80" strokeWidth={1.6} />
+                  <h3 className="mb-1 font-serif text-base font-medium text-white">
+                    {f.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-white/65">
+                    {f.desc}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* ───────── 10. LOCATION & CONTACT ───────── */}
-      <section className="bg-white px-6 py-24 md:py-28 lg:px-12">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <FadeIn direction="left">
-            <div>
-              <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-brand">
-                Visit Us
+      {/* ───────── 9. FEATURED SERVICES (numbered list) ───────── */}
+      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+        <div className="mx-auto max-w-6xl">
+          <FadeIn>
+            <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-gold">
+              What We Offer
+            </p>
+            <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
+              Featured Services
+            </h2>
+            <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-espresso">
+              A full spectrum of physician-guided care — from a single drip to
+              ongoing optimization.
+            </p>
+          </FadeIn>
+
+          <div className="mt-14 grid gap-x-16 md:grid-cols-2">
+            {SERVICES.map((s, i) => (
+              <FadeIn key={s.slug}>
+                <Link
+                  to={`/services/${s.slug}`}
+                  className="group flex items-baseline gap-6 border-b border-ink/10 py-5"
+                >
+                  <span className="text-[11px] tabular-nums tracking-[0.2em] text-gold">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="flex flex-1 items-center justify-between gap-4">
+                    <span className="font-serif text-lg text-ink transition-colors group-hover:text-brand md:text-xl">
+                      {s.name}
+                    </span>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-ink/30 transition-all group-hover:translate-x-1 group-hover:text-brand" />
+                  </span>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── 10. GUEST STORIES ───────── */}
+      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+        <div className="mx-auto max-w-6xl">
+          <FadeIn>
+            <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-gold">
+              In Their Words
+            </p>
+            <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
+              Guest stories
+            </h2>
+          </FadeIn>
+
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {guestStories.map((g) => (
+              <FadeIn key={g.name}>
+                <figure className="group relative overflow-hidden bg-mist">
+                  <div className="aspect-3/4">
+                    <img
+                      src={g.image}
+                      alt={`${g.name} — ${g.treatment}`}
+                      className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-linear-to-t from-ink/80 via-ink/20 to-transparent" />
+                  <figcaption className="absolute inset-x-0 bottom-0 p-5">
+                    <span className="mb-2 block font-serif text-2xl leading-none text-gold">
+                      &ldquo;
+                    </span>
+                    <blockquote className="font-serif text-lg leading-snug text-white">
+                      {g.quote}
+                    </blockquote>
+                    <p className="mt-3 text-[10px] uppercase tracking-[0.3em] text-white/65">
+                      {g.name} · {g.treatment}
+                    </p>
+                  </figcaption>
+                </figure>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── 11. PRESS · FEATURED IN ───────── */}
+      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+        <div className="mx-auto max-w-6xl">
+          <FadeIn>
+            <p className="mb-8 text-[11px] uppercase tracking-[0.4em] text-gold">
+              Press
+            </p>
+            <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
+              Featured in
+            </h2>
+          </FadeIn>
+
+          <FadeIn>
+            <figure className="mt-12 border-t border-ink/10 pt-10">
+              <blockquote className="max-w-3xl font-serif text-2xl leading-snug text-ink md:text-4xl">
+                &ldquo;A calm, clinical sanctuary where evidence-based care
+                meets the simple art of feeling well.&rdquo;
+              </blockquote>
+              <figcaption className="mt-6 text-[10px] uppercase tracking-[0.35em] text-espresso/70">
+                The Cali Post
+              </figcaption>
+              <span className="mt-5 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70">
+                Read the Feature
+                <ArrowRight className="h-3.5 w-3.5" />
+              </span>
+            </figure>
+          </FadeIn>
+
+          <div className="mt-14 grid gap-10 border-t border-ink/10 pt-10 md:grid-cols-2">
+            {pressCards.map((p) => (
+              <FadeIn key={p.source}>
+                <div>
+                  <h3 className="mb-3 font-serif text-xl text-ink">
+                    {p.source}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-espresso">
+                    &ldquo;{p.quote}&rdquo;
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70">
+                    Read More
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── 12. FREQUENTLY ASKED ───────── */}
+      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+        <div className="mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <FadeIn direction="left">
+              <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-gold">
+                Questions
               </p>
-              <h2 className="font-serif text-3xl font-medium leading-[1.12] text-ink md:text-5xl">
-                Costa Mesa, California.
+              <h2 className="font-serif text-4xl leading-[1.08] text-ink md:text-5xl">
+                Frequently
+                <br />
+                <span className="text-gold">Asked</span>
               </h2>
-              <ul className="mt-8 space-y-5 text-[15px] text-espresso">
-                <li className="flex gap-3">
-                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
-                  <span className="leading-relaxed">
-                    250 Fischer Ave
-                    <br />
-                    Costa Mesa, CA 92626
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <Clock className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
-                  <span className="leading-relaxed">
-                    Mon to Fri · 9:00 AM to 6:00 PM
-                    <br />
-                    Saturday · 10:00 AM to 4:00 PM
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <Phone className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
-                  <a
-                    href="tel:+19492811440"
-                    className="leading-relaxed transition-colors hover:text-brand"
+              <p className="mt-6 max-w-xs text-sm leading-relaxed text-espresso">
+                Everything you need to know before your first visit. Still have
+                a question? Our team is happy to help.
+              </p>
+              <Link
+                to="/contact"
+                className="mt-8 inline-flex items-center gap-3 border-b border-ink/25 pb-2 text-[10px] uppercase tracking-[0.3em] text-ink/70 transition-colors hover:border-brand hover:text-brand"
+              >
+                Ask Us Anything
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </FadeIn>
+          </div>
+          <div className="lg:col-span-7">
+            <FadeIn direction="right">
+              <Accordion type="single" collapsible className="w-full">
+                {faqs.map((item, index) => (
+                  <AccordionItem
+                    key={index}
+                    value={`item-${index}`}
+                    className="border-ink/10"
                   >
-                    (949) 281-1440
-                  </a>
-                </li>
-              </ul>
+                    <AccordionTrigger className="py-5 font-sans text-[15px] font-normal text-ink transition-colors hover:text-brand hover:no-underline md:text-base [&>svg]:text-gold">
+                      {item.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="pb-5 pr-6 text-sm leading-relaxed text-espresso md:text-[15px]">
+                      {item.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── 13. BEGIN (CTA) ───────── */}
+      <section className="bg-ivory px-6 py-28 text-center md:py-36">
+        <div className="mx-auto max-w-2xl">
+          <FadeIn>
+            <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
+              Begin
+            </p>
+            <h2 className="font-serif text-3xl font-medium leading-[1.2] text-ink md:text-5xl">
+              Replenish your body.
+              <br />
+              Restore your balance.
+            </h2>
+            <div className="mt-10">
               <a
                 href={BOOKING_URL}
                 onClick={handleBookingClick}
-                className="group mt-9 inline-flex items-center gap-3 bg-brand px-9 py-4 text-[11px] uppercase tracking-[0.25em] text-white transition-colors hover:bg-brand-deep"
+                className="group inline-flex items-center gap-3 rounded-full bg-ink px-10 py-4 text-[11px] uppercase tracking-[0.25em] text-ivory transition-colors hover:bg-ink-warm"
               >
-                Book a Consultation
+                Schedule Today
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </a>
             </div>
           </FadeIn>
-          <FadeIn direction="right">
-            <div className="aspect-[4/3] overflow-hidden rounded-2xl border border-ink/10 bg-mist">
-              <iframe
-                title="MotionRx location map"
-                src="https://www.google.com/maps?q=250+Fischer+Ave,+Costa+Mesa,+CA+92626&output=embed"
-                className="h-full w-full border-0"
-                style={{ pointerEvents: "auto" }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ───────── 11. SCHEDULE YOUR CONSULTATION ───────── */}
-      <section className="relative overflow-hidden bg-brand-deep px-6 py-28 text-center md:py-36">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(70% 90% at 50% 0%, rgb(var(--brand-rgb) / 0.55), transparent 70%)",
-          }}
-        />
-        <div className="relative z-10 mx-auto max-w-2xl">
-          <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
-            Get Started
-          </p>
-          <h2 className="font-serif text-3xl font-medium leading-[1.15] text-white md:text-5xl">
-            Schedule your consultation.
-          </h2>
-          <p className="mx-auto mt-6 max-w-lg text-[15px] leading-relaxed text-white/70">
-            A 15-minute consult to map your diagnostics, goals, and a plan built
-            around your long-term health.
-          </p>
-          <div className="mt-10">
-            <a
-              href={BOOKING_URL}
-              onClick={handleBookingClick}
-              className="group inline-flex items-center gap-3 bg-white px-10 py-4 text-[11px] uppercase tracking-[0.25em] text-brand-deep transition-colors hover:bg-gold hover:text-white"
-            >
-              Book a Consultation
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
-          </div>
         </div>
       </section>
     </div>

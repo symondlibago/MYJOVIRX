@@ -12,8 +12,8 @@ import {
 
 const STORAGE_KEY = "myjovirx-theme";
 const DEFAULTS = {
-  palette: "current", // Oxblood & Cream (maroon)
-  font: "montserrat", // Montserrat + DM Sans (clean modern sans)
+  palette: "oasis", // Olive & Porcelain (brand-layout PDF)
+  font: "zapf", // Zapf Humanist + Hanken Grotesk (brand-layout PDF)
   weight: "medium",
   italic: "off",
   design: "modern",
@@ -22,6 +22,12 @@ const DEFAULTS = {
 };
 
 const PALETTES = [
+  {
+    id: "oasis",
+    name: "Olive & Porcelain",
+    note: "Warm · botanical (default)",
+    colors: { primary: "#6C6F4D", deep: "#494C33", accent: "#A77B5E", bg: "#F7EFE6" },
+  },
   {
     id: "teal",
     name: "Clinical Teal",
@@ -58,6 +64,13 @@ const ROLES = [
 ];
 
 const FONTS = [
+  {
+    id: "zapf",
+    name: "Zapf Humanist + Hanken",
+    note: "Brand layout (default)",
+    head: '"Zapf Humanist 601", "Zapf Humanist", Optima, Candara, "Marcellus", serif',
+    body: '"Hanken Grotesk", sans-serif',
+  },
   {
     id: "cormorant",
     name: "Cormorant + Inter",

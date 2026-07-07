@@ -1,11 +1,13 @@
 import React from "react";
 import { BOOKING_URL, handleBookingClick } from "@/config";
 import { ArrowUpRight } from "lucide-react";
+import FadeIn from "@/components/ui/FadeIn";
 
 /**
- * Membership & subscription plans. Pricing shown as ranges per the content
- * guide (no separate pricing page). Final tiers/inclusions are pending client
- * confirmation before launch.
+ * Membership & subscription plans, restyled to the editorial brand-layout
+ * direction: hairline rules instead of cards, serif pricing, ink buttons.
+ * Pricing shown as ranges per the content guide (no separate pricing page).
+ * Final tiers/inclusions are pending client confirmation before launch.
  */
 const PLANS = [
   {
@@ -40,88 +42,80 @@ const PLANS = [
 
 export default function Memberships() {
   return (
-    <section className="bg-cream px-6 py-24 md:py-28">
+    <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
       <div className="mx-auto max-w-6xl">
-        <div className="mx-auto mb-14 max-w-2xl text-center md:mb-16">
-          <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-brand">
+        <FadeIn>
+          <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
             Memberships &amp; Subscriptions
           </p>
-          <h2 className="mb-5 font-serif text-3xl font-medium leading-[1.12] text-ink md:text-5xl">
+          <h2 className="max-w-2xl font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
             Ongoing care, without the one-off booking.
           </h2>
-          <p className="text-[15px] leading-relaxed text-espresso md:text-base">
+          <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-espresso md:text-base">
             Recurring plans for patients who want continuous optimization.
             Member pricing, priority booking, and monitoring built in. Pause or
             change anytime.
           </p>
-        </div>
+        </FadeIn>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
           {PLANS.map((p) => (
-            <div
-              key={p.name}
-              className={`relative flex flex-col rounded-2xl p-8 ${
-                p.featured
-                  ? "bg-brand-deep text-white shadow-[0_40px_90px_-50px_rgba(0,0,0,0.6)]"
-                  : "border border-ink/10 bg-white"
-              }`}
-            >
-              {p.featured && (
-                <span className="absolute right-6 top-6 text-[10px] uppercase tracking-[0.22em] text-gold">
-                  ● Popular
-                </span>
-              )}
-
-              <h3
-                className={`font-serif text-lg font-medium leading-snug ${
-                  p.featured ? "text-white" : "text-ink"
+            <FadeIn key={p.name}>
+              <div
+                className={`flex h-full flex-col pt-6 ${
+                  p.featured
+                    ? "border-t-2 border-ink"
+                    : "border-t border-ink/15"
                 }`}
               >
-                {p.name}
-              </h3>
+                {p.featured ? (
+                  <span className="mb-4 text-[10px] uppercase tracking-[0.3em] text-gold">
+                    Most Popular
+                  </span>
+                ) : (
+                  <span className="mb-4 block text-[10px]">&nbsp;</span>
+                )}
 
-              <div className="mb-5 mt-4 flex items-end gap-1">
-                <span
-                  className={`font-serif text-3xl leading-none ${
-                    p.featured ? "text-white" : "text-ink"
+                <h3 className="font-serif text-lg font-medium leading-snug text-ink">
+                  {p.name}
+                </h3>
+
+                <div className="mb-5 mt-5 flex items-end gap-1">
+                  <span className="font-serif text-3xl leading-none text-ink">
+                    {p.price}
+                  </span>
+                  {p.cadence && (
+                    <span className="pb-0.5 text-sm text-espresso/60">
+                      {p.cadence}
+                    </span>
+                  )}
+                </div>
+
+                <p className="mb-9 text-sm leading-relaxed text-espresso">
+                  {p.blurb}
+                </p>
+
+                <a
+                  href={BOOKING_URL}
+                  onClick={handleBookingClick}
+                  className={`group mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[10px] uppercase tracking-[0.28em] transition-colors duration-300 ${
+                    p.featured
+                      ? "bg-ink text-ivory hover:bg-ink-warm"
+                      : "border border-ink/30 text-ink hover:border-ink hover:bg-ink hover:text-ivory"
                   }`}
                 >
-                  {p.price}
-                </span>
-                {p.cadence && (
-                  <span
-                    className={`pb-1 text-sm ${
-                      p.featured ? "text-white/55" : "text-ink/45"
-                    }`}
-                  >
-                    {p.cadence}
-                  </span>
-                )}
+                  Get Started
+                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
               </div>
-
-              <p
-                className={`mb-8 text-sm leading-relaxed ${
-                  p.featured ? "text-white/70" : "text-espresso"
-                }`}
-              >
-                {p.blurb}
-              </p>
-
-              <a
-                href={BOOKING_URL}
-                onClick={handleBookingClick}
-                className={`group mt-auto inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3.5 text-[10px] uppercase tracking-[0.28em] transition-colors duration-500 ${
-                  p.featured
-                    ? "bg-gold text-brand-deep hover:bg-white"
-                    : "bg-brand-deep text-white hover:bg-brand"
-                }`}
-              >
-                Get Started
-                <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            </div>
+            </FadeIn>
           ))}
         </div>
+
+        <p className="mt-14 border-l-2 border-gold/50 pl-4 text-[13px] italic leading-relaxed text-espresso/70">
+          Final tiers and inclusions are confirmed at your consultation.
+          Memberships can be paused or changed anytime.
+        </p>
       </div>
     </section>
   );

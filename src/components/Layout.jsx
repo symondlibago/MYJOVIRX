@@ -44,8 +44,8 @@ export default function Layout({ children }) {
     <div className="min-h-screen bg-ivory">
       <style>{`
         ::selection {
-          background-color: var(--color-brand);
-          color: #FFFFFF;
+          background-color: rgb(var(--brand-rgb) / 0.22);
+          color: inherit;
         }
 
         body {
@@ -94,8 +94,8 @@ export default function Layout({ children }) {
       <NavBar />
       <main>{children}</main>
 
-      {/* ───── FOOTER ───── */}
-      <footer className="bg-brand-deep text-white">
+      {/* ───── FOOTER (dark ink per brand-layout PDF) ───── */}
+      <footer className="bg-ink text-ivory">
 
         {/* Main Footer Body */}
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
@@ -104,15 +104,17 @@ export default function Layout({ children }) {
             {/* Col 1 — Brand */}
             <div className="lg:col-span-1">
               <div className="mb-6">
-                <span className="font-serif text-4xl tracking-wide block text-white">
-                  MotionRX
+                <span className="font-serif text-4xl tracking-wide block text-ivory">
+                  MotionRx
                 </span>
                 <span className="text-[9px] tracking-[0.35em] uppercase text-gold mt-1 block">
-                  Longevity &amp; Performance Medicine
+                  Hydration · Recovery · Calm
                 </span>
               </div>
-              <p className="text-white/50 text-sm leading-relaxed mb-8 max-w-xs">
-                Modern medicine for longevity, performance, and prevention. Advanced diagnostics, hormone and peptide therapy, IV nutrition, and lab testing.
+              <p className="text-ivory/50 text-sm leading-relaxed mb-8 max-w-xs">
+                A non-clinical oasis for hydration, recovery, and calm. IV
+                vitamin infusions, injections, peptides, and NAD+ overseen by
+                our medical team.
               </p>
               {/* Social */}
               <div className="flex items-center gap-3">
@@ -121,7 +123,7 @@ export default function Layout({ children }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
-                  className="w-9 h-9 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-gold hover:text-gold hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-9 h-9 flex items-center justify-center rounded-full border border-ivory/15 text-ivory/70 hover:border-gold hover:text-gold hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
@@ -130,14 +132,14 @@ export default function Layout({ children }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
-                  className="w-9 h-9 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-gold hover:text-gold hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-9 h-9 flex items-center justify-center rounded-full border border-ivory/15 text-ivory/70 hover:border-gold hover:text-gold hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <Facebook className="w-4 h-4" />
                 </a>
                 <a
                   href="mailto:hello@motionrx.co"
                   aria-label="Email"
-                  className="w-9 h-9 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-gold hover:text-gold hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-9 h-9 flex items-center justify-center rounded-full border border-ivory/15 text-ivory/70 hover:border-gold hover:text-gold hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <Mail className="w-4 h-4" />
                 </a>
@@ -146,14 +148,14 @@ export default function Layout({ children }) {
 
             {/* Col 2 — Navigation */}
             <div>
-              <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/30 mb-6">
+              <h4 className="text-[10px] tracking-[0.35em] uppercase text-ivory/35 mb-6">
                 Navigate
               </h4>
               <ul className="space-y-3">
                 {navLinks.map((link) => (
                   <li key={link.name}>
                     {link.external ? (
-                      <a href={link.href} onClick={handleBookingClick} className="footer-link text-sm text-white/70">
+                      <a href={link.href} onClick={handleBookingClick} className="footer-link text-sm text-ivory/70">
                         {link.name}
                       </a>
                     ) : (
@@ -162,7 +164,7 @@ export default function Layout({ children }) {
                         className={`footer-link text-sm ${
                           pathname === link.path
                             ? "text-gold"
-                            : "text-white/70"
+                            : "text-ivory/70"
                         }`}
                       >
                         {link.name}
@@ -175,7 +177,7 @@ export default function Layout({ children }) {
 
             {/* Col 3 — Services */}
             <div>
-              <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/30 mb-6">
+              <h4 className="text-[10px] tracking-[0.35em] uppercase text-ivory/35 mb-6">
                 Services
               </h4>
               <ul className="space-y-3">
@@ -183,7 +185,7 @@ export default function Layout({ children }) {
                   <li key={s.slug}>
                     <Link
                       to={`/services/${s.slug}`}
-                      className="footer-link text-sm text-white/70"
+                      className="footer-link text-sm text-ivory/70"
                     >
                       {s.name}
                     </Link>
@@ -194,10 +196,10 @@ export default function Layout({ children }) {
 
             {/* Col 4 — Contact & Hours */}
             <div>
-              <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/30 mb-6">
+              <h4 className="text-[10px] tracking-[0.35em] uppercase text-ivory/35 mb-6">
                 Visit Us
               </h4>
-              <ul className="space-y-5 text-sm text-white/60">
+              <ul className="space-y-5 text-sm text-ivory/60">
                 <li className="flex gap-3">
                   <MapPin className="w-4 h-4 text-gold shrink-0 mt-0.5" />
                   <span className="leading-relaxed">
@@ -227,7 +229,7 @@ export default function Layout({ children }) {
                 </li>
               </ul>
 
-              <p className="mt-6 text-[11px] leading-relaxed text-white/35">
+              <p className="mt-6 text-[11px] leading-relaxed text-ivory/35">
                 Telehealth available to patients located in California.
               </p>
             </div>
@@ -235,14 +237,14 @@ export default function Layout({ children }) {
         </div>
 
         {/* Legal / Compliance Links */}
-        <div className="border-y border-white/[0.07]">
+        <div className="border-y border-ivory/8">
           <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6">
             <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
               {legalLinks.map((l) => (
                 <Link
                   key={l.path}
                   to={l.path}
-                  className="footer-link text-[11px] tracking-wide text-white/40"
+                  className="footer-link text-[11px] tracking-wide text-ivory/40"
                 >
                   {l.name}
                 </Link>
@@ -253,11 +255,9 @@ export default function Layout({ children }) {
 
         {/* Bottom Bar */}
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/25">
-            <p>© 2026 MotionRX. All rights reserved.</p>
-            <p className="text-gold/60 tracking-widest uppercase">
-              Telehealth &amp; In-Clinic
-            </p>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-ivory/35">
+            <p>© 2026 MotionRx. All rights reserved.</p>
+            <p className="tracking-widest uppercase">motionrx.co</p>
           </div>
         </div>
       </footer>

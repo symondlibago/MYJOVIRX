@@ -237,7 +237,7 @@ function TreatmentArc({ services }) {
             <a
               href={BOOKING_URL}
               onClick={handleBookingClick}
-              className="group inline-flex items-center justify-center gap-3 rounded-sm bg-brand-deep px-9 py-4 text-[10px] uppercase tracking-[0.3em] text-white transition-colors duration-500 hover:bg-brand"
+              className="group inline-flex items-center justify-center gap-3 rounded-sm bg-ink px-9 py-4 text-[10px] uppercase tracking-[0.3em] text-ivory transition-colors duration-500 hover:bg-ink-warm"
             >
               Reserve {current.short}
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
