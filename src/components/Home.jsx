@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
   HeartPulse,
@@ -22,6 +22,17 @@ import {
 } from "@/components/ui/accordion";
 
 // ── Content mirrors MotionRx_Website_Layout.pdf (homepage direction) ──
+
+// Hero eyebrow cycles through the service menu (client request).
+const rotatingServices = [
+  "IV Therapy",
+  "Injections & Shots",
+  "Peptides & NAD+",
+  "Hormone Optimization",
+  "Weight Optimization",
+  "Lab Testing",
+  "Mobile IV Therapy",
+];
 
 const oasisFeatures = [
   {
@@ -237,6 +248,16 @@ export default function Home() {
   const heroTextY = useTransform(heroScroll, [0, 1], [0, 90]);
   const heroTextOpacity = useTransform(heroScroll, [0, 0.75], [1, 0]);
 
+  // Rotate the eyebrow service word every few seconds.
+  const [serviceIndex, setServiceIndex] = useState(0);
+  useEffect(() => {
+    const id = setInterval(
+      () => setServiceIndex((i) => (i + 1) % rotatingServices.length),
+      2600
+    );
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <div className="min-h-screen bg-ivory text-ink">
       <IntroSplash />
@@ -267,7 +288,19 @@ export default function Home() {
           className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 md:pb-24 lg:px-12"
         >
           <p className="mb-6 text-[11px] uppercase tracking-[0.45em] text-white/75">
-            IV Therapy · Laguna Hills
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={serviceIndex}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="inline-block"
+              >
+                {rotatingServices[serviceIndex]}
+              </motion.span>
+            </AnimatePresence>
+            <span> · Costa Mesa</span>
           </p>
           <h1 className="max-w-3xl font-serif text-5xl font-medium leading-[1.05] text-white md:text-7xl">
             Unwind.
@@ -335,8 +368,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 3. THE MENU ───────── */}
-      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+      {/* ───────── 3. THE MENU (no top padding — the oasis section above provides the gap) ───────── */}
+      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">

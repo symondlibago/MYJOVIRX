@@ -113,6 +113,13 @@ const FONTS = [
     head: '"Montserrat", sans-serif',
     body: '"DM Sans", sans-serif',
   },
+  {
+    id: "playfair",
+    name: "Playfair + Open Sans",
+    note: "motiondripp.com",
+    head: '"Playfair Display", Georgia, serif',
+    body: '"Open Sans", sans-serif',
+  },
 ];
 
 const WEIGHTS = [

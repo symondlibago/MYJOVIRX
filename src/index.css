@@ -316,6 +316,10 @@ html.lenis body {
   --font-head: "Montserrat", system-ui, sans-serif;
   --font-body: "DM Sans", system-ui, sans-serif;
 }
+:root[data-font="playfair"] {
+  --font-head: "Playfair Display", Georgia, serif;
+  --font-body: "Open Sans", system-ui, sans-serif;
+}
 
 /* Garet's tall, wide geometry reads noticeably larger than the other faces,
    so normalize its apparent heading size (by x-height). Lower = smaller. */
