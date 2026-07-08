@@ -19,9 +19,9 @@ const values = [
   },
   {
     icon: ShieldCheck,
-    title: "Evidence-Based",
+    title: "Evidence Based",
     description:
-      "Physician-guided protocols grounded in clinical research and delivered by licensed professionals.",
+      "Physician guided protocols grounded in clinical research and delivered by licensed professionals.",
   },
 ];
 
@@ -51,7 +51,7 @@ export default function About() {
               About MotionRx
             </p>
             <h1 className="font-serif text-4xl font-medium leading-[1.08] text-ink md:text-6xl">
-              Where modern medicine meets human performance.
+              Where modern medicine meets human performance
             </h1>
             <p className="mt-7 max-w-2xl text-[15px] leading-relaxed text-espresso md:text-lg">
               MotionRx is a modern medical practice focused on longevity,
@@ -210,7 +210,7 @@ export default function About() {
             Get Started
           </p>
           <h2 className="font-serif text-3xl font-medium leading-[1.15] text-white md:text-5xl">
-            Take control of your long-term health.
+            Take control of your long-term health
           </h2>
           <div className="mt-10">
             <a

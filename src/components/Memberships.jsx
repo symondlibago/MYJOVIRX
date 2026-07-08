@@ -34,7 +34,7 @@ const PLANS = [
   },
   {
     name: "Laboratory Testing",
-    price: "$149–$999",
+    price: "$149 to $999",
     cadence: "",
     blurb: "Advanced panels a la carte, or bundled into any plan.",
   },
@@ -49,7 +49,7 @@ export default function Memberships() {
             Memberships &amp; Subscriptions
           </p>
           <h2 className="max-w-2xl font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
-            Ongoing care, without the one-off booking.
+            Ongoing care, without the one-off booking
           </h2>
           <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-espresso md:text-base">
             Recurring plans for patients who want continuous optimization.

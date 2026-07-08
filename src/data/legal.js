@@ -12,9 +12,9 @@ export const legalDocs = {
         heading: "Information We Collect",
         body: ["We collect information in the following ways:"],
         list: [
-          "Information you provide directly — such as your name, email, phone number, and the contents of messages or intake forms you submit.",
-          "Information collected automatically — such as your IP address, device and browser type, and pages visited, gathered through cookies and analytics tools.",
-          "Information from partners — such as appointment details from our third-party scheduling and CRM partner when you book a visit.",
+          "Information you provide directly, such as your name, email, phone number, and the contents of messages or intake forms you submit.",
+          "Information collected automatically, such as your IP address, device and browser type, and pages visited, gathered through cookies and analytics tools.",
+          "Information from partners, such as appointment details from our third-party scheduling and CRM partner when you book a visit.",
         ],
       },
       {
@@ -88,9 +88,9 @@ export const legalDocs = {
         heading: "How We May Use and Disclose Your Health Information",
         body: ["We may use and disclose your PHI for the following purposes:"],
         list: [
-          "Treatment — to provide, coordinate, and manage your care among the providers involved in your treatment.",
-          "Payment — to bill and obtain payment for the services you receive.",
-          "Health Care Operations — for quality improvement, training, and the general business operations of the practice.",
+          "Treatment: to provide, coordinate, and manage your care among the providers involved in your treatment.",
+          "Payment: to bill and obtain payment for the services you receive.",
+          "Health Care Operations: for quality improvement, training, and the general business operations of the practice.",
         ],
       },
       {

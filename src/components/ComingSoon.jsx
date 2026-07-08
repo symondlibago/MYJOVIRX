@@ -8,12 +8,12 @@ const UPCOMING = [
   {
     name: "Stem Cell Therapy",
     image: "/treatment-5.jpg",
-    desc: "Regenerative medicine focused on orthopedic health, tissue repair, recovery, and healthy aging.",
+    desc: "Regenerative therapy focused on orthopedic health, tissue repair, recovery, and healthy aging.",
   },
   {
-    name: "EBO₂ Therapy",
+    name: "EBO2 Therapy",
     image: "/treatment-1.jpg",
-    desc: "Extracorporeal blood oxygenation and ozonation, positioned to support circulation, detoxification, immune function, cellular health, recovery, and overall wellness.",
+    desc: "Advanced blood filtration and oxygenation therapy designed to support circulation, detoxification, immune health, cellular wellness, and recovery.",
   },
 ];
 
@@ -34,11 +34,11 @@ export default function ComingSoon() {
               Launching Fall 2026
             </p>
             <h1 className="font-serif text-4xl font-medium leading-[1.08] text-ink md:text-6xl">
-              Coming soon to MotionRx.
+              Coming soon to MotionRx
             </h1>
             <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-espresso md:text-lg">
-              Two new regenerative therapies are on the way. Join the waitlist to
-              be the first to book when they open.
+              Stem Cell Therapy and EBO2 Therapy are coming soon. Join the
+              waitlist to be the first to know when bookings open.
             </p>
           </FadeIn>
         </div>
@@ -48,9 +48,10 @@ export default function ComingSoon() {
       <section className="px-6 pb-8 lg:px-12">
         <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2">
           {UPCOMING.map((u) => (
-            <FadeIn key={u.name}>
-              <div className="group overflow-hidden rounded-2xl border border-ink/10 bg-white">
-                <div className="relative aspect-[16/10] overflow-hidden bg-mist">
+            <FadeIn key={u.name} className="h-full">
+              {/* Symmetrical cards: equal height, image size, padding, and spacing */}
+              <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-ink/10 bg-white">
+                <div className="relative aspect-[16/10] shrink-0 overflow-hidden bg-mist">
                   <img
                     src={u.image}
                     alt={u.name}
@@ -60,7 +61,7 @@ export default function ComingSoon() {
                     Fall 2026
                   </span>
                 </div>
-                <div className="p-8">
+                <div className="flex flex-1 flex-col p-8">
                   <h2 className="mb-3 font-serif text-2xl font-medium text-ink">
                     {u.name}
                   </h2>
@@ -89,7 +90,7 @@ export default function ComingSoon() {
             Be First in Line
           </p>
           <h2 className="font-serif text-3xl font-medium leading-[1.15] text-white md:text-5xl">
-            Join the waitlist.
+            Join the waitlist
           </h2>
           <div className="mt-10">
             <a

@@ -22,7 +22,7 @@ export default function PatientResults() {
               Patient Results
             </p>
             <h1 className="font-serif text-5xl font-medium leading-[1.05] text-ink md:text-7xl">
-              Real people. Real results.
+              Real people. Real results
             </h1>
             <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-espresso md:text-base">
               Stories from patients optimizing their energy, performance, and
@@ -53,7 +53,7 @@ export default function PatientResults() {
         />
         <div className="relative z-10 mx-auto max-w-2xl">
           <h2 className="font-serif text-3xl font-medium leading-[1.15] text-white md:text-5xl">
-            Your results start with a consult.
+            Your results start with a consult
           </h2>
           <div className="mt-10">
             <a

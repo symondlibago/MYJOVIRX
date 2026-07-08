@@ -67,10 +67,31 @@ export default function NavBar() {
 
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-ivory/95 backdrop-blur-md ${
-          isScrolled ? "py-3 shadow-md" : "py-4 shadow-sm"
+          isScrolled ? "shadow-md" : "shadow-sm"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+        {/* Homepage announcement bar — thin, links to the Coming Soon page */}
+        {pathname === "/" && (
+          <Link
+            to="/coming-soon"
+            className="group block bg-ink text-center transition-colors duration-300 hover:bg-ink-warm"
+          >
+            <p className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-3 gap-y-0.5 px-6 py-2 text-[10px] uppercase tracking-[0.18em] text-ivory/85 md:text-[11px]">
+              <span>
+                Stem Cell Therapy and EBO2 Therapy launching Fall 2026. Join
+                the waitlist.
+              </span>
+              <span className="text-gold underline decoration-gold/40 underline-offset-4 transition-colors group-hover:decoration-gold">
+                Learn More
+              </span>
+            </p>
+          </Link>
+        )}
+        <div
+          className={`max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between transition-all duration-500 ${
+            isScrolled ? "py-3" : "py-4"
+          }`}
+        >
           {/* Brand logo */}
           <Link to="/" className="group flex items-center" aria-label="MotionRX home">
             <img

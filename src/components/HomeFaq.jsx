@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: "How long does a treatment take?",
-    a: "Most drips take 30–45 minutes. NAD+ and specialty therapies run slower for comfort, about 60–90 minutes.",
+    a: "Most drips take 30 to 45 minutes. NAD+ and specialty therapies run slower for comfort, about 60 to 90 minutes.",
   },
   {
     q: "Is there anything I should do before my appointment?",
@@ -80,7 +80,7 @@ export default function HomeFaq() {
                 </p>
                 <h2 className="font-serif text-5xl md:text-6xl text-white leading-[1.04] mb-6">
                   Frequently <br />
-                  <span className="italic text-gold">Asked.</span>
+                  <span className="italic text-gold">Asked</span>
                 </h2>
                 <p className="text-white/55 text-sm leading-relaxed mb-8 max-w-xs">
                   Everything you need to know before your first visit. Still have

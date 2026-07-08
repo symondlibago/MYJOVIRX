@@ -8,7 +8,7 @@ export default function BlogPage() {
     <div className="flex min-h-screen items-center bg-ivory text-ink">
       <Seo
         title="Resources | MotionRx"
-        description="Evidence-based articles on longevity, hormones, peptides, and performance medicine from MotionRx. Coming soon."
+        description="Evidence based articles on longevity, hormones, peptides, and performance medicine from MotionRx. Coming soon."
         path="/blog"
       />
       <div className="mx-auto max-w-2xl px-6 py-40 text-center">
@@ -16,10 +16,10 @@ export default function BlogPage() {
           Resources
         </p>
         <h1 className="font-serif text-4xl font-medium leading-[1.1] text-ink md:text-6xl">
-          Insights on longevity &amp; performance.
+          Insights on longevity &amp; performance
         </h1>
         <p className="mt-6 text-[15px] leading-relaxed text-espresso">
-          Our resources library is coming soon: evidence-based articles on
+          Our resources library is coming soon: evidence based articles on
           longevity, hormones, peptides, diagnostics, and performance medicine.
         </p>
         <Link

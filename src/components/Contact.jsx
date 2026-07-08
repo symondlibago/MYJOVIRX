@@ -140,7 +140,7 @@ export default function Contact() {
                 <h1 className="mb-6 font-serif text-5xl font-light leading-[1.02] md:text-6xl">
                   Start your
                   <br />
-                  <span className="italic text-gold">optimization.</span>
+                  <span className="italic text-gold">optimization</span>
                 </h1>
                 <p className="max-w-md text-sm leading-relaxed text-white/70 md:text-[15px]">
                   Longevity, hormone, peptide, and performance medicine, in our

@@ -17,7 +17,7 @@ import {
 const experienceFeatures = [
   {
     icon: HeartPulse,
-    title: "Health-led",
+    title: "Health led",
     desc: "Guided by our medical director.",
   },
   {
@@ -27,7 +27,7 @@ const experienceFeatures = [
   },
   {
     icon: Plus,
-    title: "Physician-guided",
+    title: "Physician guided",
     desc: "Every treatment, overseen.",
   },
 ];
@@ -83,7 +83,7 @@ const faqs = [
   },
   {
     q: "How long does a treatment take?",
-    a: "Most drips take 30–45 minutes. NAD+ and specialty therapies run slower for comfort, about 60–90 minutes.",
+    a: "Most drips take 30 to 45 minutes. NAD+ and specialty therapies run slower for comfort, about 60 to 90 minutes.",
   },
   {
     q: "Is there anything I should do before my appointment?",
@@ -114,7 +114,7 @@ export default function Services() {
     <div className="min-h-screen bg-ivory text-ink">
       <Seo
         title="Treatments | MotionRx"
-        description="The MotionRx menu: a full spectrum of infusions, injections, and physician-guided therapies — IV nutrient therapy, peptides, NAD+, hormone optimization, lab testing, and more."
+        description="The MotionRx menu: a full spectrum of infusions, injections, and physician guided therapies, including IV nutrient therapy, peptides, NAD+, hormone optimization, lab testing, and more."
         path="/services"
       />
       <script
@@ -133,7 +133,7 @@ export default function Services() {
               The menu
             </h1>
             <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-espresso md:text-base">
-              A full spectrum of infusions, injections, and physician-guided
+              A full spectrum of infusions, injections, and physician guided
               therapies, each built around how you want to feel. Every
               treatment follows a short intake and is overseen by our medical
               team.
@@ -191,7 +191,7 @@ export default function Services() {
               Featured Services
             </h2>
             <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-espresso">
-              A full spectrum of physician-guided care — from a single drip to
+              A full spectrum of physician guided care, from a single drip to
               ongoing optimization.
             </p>
           </FadeIn>
@@ -219,8 +219,8 @@ export default function Services() {
         </div>
       </section>
 
-      {/* ───────── 4. GUEST STORIES ───────── */}
-      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+      {/* ───────── 4. GUEST STORIES (bottom padding only — the section above provides the gap) ───────── */}
+      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
             <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-gold">
@@ -238,7 +238,7 @@ export default function Services() {
                   <div className="aspect-[3/4]">
                     <img
                       src={g.image}
-                      alt={`${g.name} — ${g.treatment}`}
+                      alt={`${g.name}, ${g.treatment}`}
                       className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
                   </div>
@@ -261,8 +261,8 @@ export default function Services() {
         </div>
       </section>
 
-      {/* ───────── 5. PRESS · FEATURED IN ───────── */}
-      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+      {/* ───────── 5. PRESS · FEATURED IN (bottom padding only) ───────── */}
+      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
             <p className="mb-8 text-[11px] uppercase tracking-[0.4em] text-gold">
@@ -310,8 +310,8 @@ export default function Services() {
         </div>
       </section>
 
-      {/* ───────── 6. FREQUENTLY ASKED ───────── */}
-      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+      {/* ───────── 6. FREQUENTLY ASKED (bottom padding only) ───────── */}
+      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
         <div className="mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <FadeIn direction="left">
@@ -359,8 +359,8 @@ export default function Services() {
         </div>
       </section>
 
-      {/* ───────── 7. BEGIN (CTA) ───────── */}
-      <section className="bg-ivory px-6 py-28 text-center md:py-36">
+      {/* ───────── 7. BEGIN (CTA, bottom padding only) ───────── */}
+      <section className="bg-ivory px-6 pb-28 text-center md:pb-36">
         <div className="mx-auto max-w-2xl">
           <FadeIn>
             <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">

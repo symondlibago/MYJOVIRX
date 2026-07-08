@@ -15,13 +15,13 @@ export const SERVICES = [
       "Pharmaceutical-grade IV infusions for energy, immunity, and recovery.",
     bookLabel: "Book IV Therapy",
     statement:
-      "Personalized infusions that replenish, restore, and revitalize, from the inside out.",
+      "Personalized infusions that replenish, restore, and revitalize, from the inside out",
     overview: [
       "Personalized IV infusions formulated with pharmaceutical-grade vitamins, minerals, amino acids, antioxidants, and hydration to support recovery, energy, immunity, cognitive performance, and athletic recovery.",
       "Available in 500ml and 1000ml bags, administered by professional medical staff.",
     ],
     how: {
-      text: "Settle into the lounge as a tailored infusion is administered by our medical team, then leave replenished.",
+      text: "Settle into the lounge as a tailored infusion is administered by our medical team, then leave replenished",
       specs: [
         { label: "Duration", value: "30 to 45 minutes" },
         { label: "Format", value: "500ml or 1000ml" },
@@ -53,7 +53,7 @@ export const SERVICES = [
     },
     benefits: {
       label: "Benefits",
-      title: "Feel the difference.",
+      title: "Feel the difference",
       items: [
         { title: "Hydration", desc: "Replenish fluids and electrolytes fast." },
         { title: "Energy", desc: "Restore endurance and daily drive." },
@@ -70,16 +70,16 @@ export const SERVICES = [
     image: "/hero-lounge.jpg",
     image2: "/ritual-lounge.jpg",
     promise:
-      "Physician-guided weight management built around your metabolism.",
+      "Physician guided weight management built around your metabolism.",
     bookLabel: "Book a Consult",
     statement:
-      "Physician-guided weight care, built around your metabolism, not a template.",
+      "Physician guided weight care, built around your metabolism, not a template",
     overview: [
       "A medically supervised program that combines evaluation, lab work, and a personalized protocol to support sustainable, healthy weight management.",
       "Plans may include nutrition guidance, lifestyle coaching, and medications where clinically appropriate, with ongoing monitoring by your provider.",
     ],
     how: {
-      text: "We assess, build a personalized protocol, and support you with monitoring and adjustments over time.",
+      text: "We assess, build a personalized protocol, and support you with monitoring and adjustments over time",
       specs: [
         { label: "Includes", value: "Labs, plan, monitoring" },
         { label: "Directed by", value: "Medical provider" },
@@ -100,7 +100,7 @@ export const SERVICES = [
         },
         {
           term: "Prescription support",
-          desc: "Medications where clinically appropriate, provider-directed.",
+          desc: "Medications where clinically appropriate, provider directed.",
         },
         {
           term: "Ongoing check-ins",
@@ -111,14 +111,14 @@ export const SERVICES = [
     },
     benefits: {
       label: "Outcomes",
-      title: "Built to last.",
+      title: "Built to last",
       items: [
         {
           title: "Sustainable",
           desc: "Habits and support designed for the long term.",
         },
-        { title: "Guided", desc: "Provider-led every step." },
-        { title: "Data-informed", desc: "Decisions grounded in your labs." },
+        { title: "Guided", desc: "Provider led every step." },
+        { title: "Data informed", desc: "Decisions grounded in your labs." },
         { title: "Personal", desc: "No one-size-fits-all plans." },
       ],
     },
@@ -134,16 +134,16 @@ export const SERVICES = [
     category: "Balance & Vitality",
     image: "/ritual-lounge.jpg",
     image2: "/vials-marble.jpg",
-    promise: "Restore balance with physician-guided hormone care.",
+    promise: "Restore balance with physician guided hormone care.",
     bookLabel: "Book a Consult",
     statement:
-      "Restore balance with individualized, provider-guided hormone optimization.",
+      "Restore balance with individualized, provider guided hormone optimization",
     overview: [
       "Comprehensive hormone evaluation and individualized optimization to support energy, mood, sleep, libido, and overall vitality.",
       "Includes lab testing, provider review, and a tailored plan that is monitored and adjusted over time.",
     ],
     how: {
-      text: "A baseline panel and consultation inform a tailored plan, monitored and adjusted as you progress.",
+      text: "A baseline panel and consultation inform a tailored plan, monitored and adjusted as you progress",
       specs: [
         { label: "Includes", value: "Panel, consult, plan" },
         { label: "Directed by", value: "Licensed provider" },
@@ -175,7 +175,7 @@ export const SERVICES = [
     },
     benefits: {
       label: "Benefits",
-      title: "Feel like yourself again.",
+      title: "Feel like yourself again",
       items: [
         { title: "Energy", desc: "Steadier, more consistent daily energy." },
         { title: "Sleep", desc: "Support for restorative rest." },
@@ -195,15 +195,15 @@ export const SERVICES = [
       "Targeted peptide protocols for recovery, performance, and healthy aging.",
     bookLabel: "Book a Consult",
     statement:
-      "Targeted peptide protocols for recovery, performance, and healthy aging.",
+      "Targeted peptide protocols for recovery, performance, and healthy aging",
     overview: [
       "Peptide protocols selected and monitored by our medical team to support recovery, tissue repair, metabolic health, and longevity goals.",
       "Every protocol follows a consultation and evaluation, and is individualized to your needs.",
     ],
     how: {
-      text: "Following evaluation, your provider selects and oversees a protocol tailored to your goals.",
+      text: "Following evaluation, your provider selects and oversees a protocol tailored to your goals",
       specs: [
-        { label: "Format", value: "Provider-selected protocol" },
+        { label: "Format", value: "Provider selected protocol" },
         { label: "Oversight", value: "Medical team" },
         { label: "Cadence", value: "Individualized" },
         { label: "Best for", value: "Recovery, longevity" },
@@ -217,7 +217,7 @@ export const SERVICES = [
           desc: "We start with what you want to achieve.",
         },
         {
-          term: "Provider-selected protocol",
+          term: "Provider selected protocol",
           desc: "A plan chosen and overseen by our medical team.",
         },
         {
@@ -229,11 +229,11 @@ export const SERVICES = [
           desc: "Follow-up to review progress and adjust.",
         },
       ],
-      note: "Peptide protocols are individualized and provider-directed following evaluation.",
+      note: "Peptide protocols are individualized and provider directed following evaluation.",
     },
     benefits: {
       label: "Focus Areas",
-      title: "Support where it counts.",
+      title: "Support where it counts",
       items: [
         { title: "Recovery", desc: "Support tissue repair and rest." },
         { title: "Performance", desc: "Optimize training and output." },
@@ -256,13 +256,13 @@ export const SERVICES = [
     promise: "Comprehensive lab panels for a clear picture of your health.",
     bookLabel: "Book a Panel",
     statement:
-      "A clear, comprehensive picture of your health, translated into action.",
+      "A clear, comprehensive picture of your health, translated into action",
     overview: [
       "Advanced diagnostic testing to establish baselines and guide your care, from metabolic and hormone panels to micronutrient and inflammatory markers.",
-      "Convenient draws and provider-reviewed results, translated into clear, actionable next steps.",
+      "Convenient draws and provider reviewed results, translated into clear, actionable next steps.",
     ],
     how: {
-      text: "Comprehensive panels are drawn on site, then reviewed with a provider and turned into next steps.",
+      text: "Comprehensive panels are drawn on site, then reviewed with a provider and turned into next steps",
       specs: [
         { label: "Scope", value: "Comprehensive panels" },
         { label: "Draws", value: "Fast, on site" },
@@ -293,7 +293,7 @@ export const SERVICES = [
     },
     benefits: {
       label: "Why It Matters",
-      title: "Clarity you can act on.",
+      title: "Clarity you can act on",
       items: [
         { title: "Baseline", desc: "Know where you truly stand." },
         { title: "Prevention", desc: "Catch what matters early." },
@@ -316,13 +316,13 @@ export const SERVICES = [
     promise: "Confidential testing with discreet, judgment-free care.",
     bookLabel: "Book Testing",
     statement:
-      "Confidential, judgment-free testing, handled with discretion and care.",
+      "Confidential, judgment-free testing, handled with discretion and care",
     overview: [
-      "Private, comprehensive STI and STD screening with discreet scheduling, professional collection, and confidential, provider-reviewed results.",
+      "Private, comprehensive STI and STD screening with discreet scheduling, professional collection, and confidential, provider reviewed results.",
       "Judgment-free care from a team focused on your privacy and peace of mind, with treatment guidance available where appropriate.",
     ],
     how: {
-      text: "Discreet scheduling and professional collection, with private results and provider follow-up where needed.",
+      text: "Discreet scheduling and professional collection, with private results and provider follow-up where needed",
       specs: [
         { label: "Privacy", value: "Fully confidential" },
         { label: "Scope", value: "Comprehensive screening" },
@@ -354,7 +354,7 @@ export const SERVICES = [
     },
     benefits: {
       label: "Our Promise",
-      title: "Private, professional, kind.",
+      title: "Private, professional, kind",
       items: [
         { title: "Confidential", desc: "Your privacy comes first." },
         { title: "Comfortable", desc: "Judgment-free from start to finish." },
@@ -370,16 +370,16 @@ export const SERVICES = [
     category: "Healthspan",
     image: "/ritual-lounge.jpg",
     image2: "/hero-lounge.jpg",
-    promise: "A proactive, data-driven approach to how you age.",
+    promise: "A proactive, data driven approach to how you age.",
     bookLabel: "Book a Consult",
     statement:
-      "A proactive, data-driven approach to how you age and how you feel.",
+      "A proactive, data driven approach to how you age and how you feel",
     overview: [
       "A comprehensive, preventive approach that combines advanced diagnostics, lifestyle medicine, and personalized protocols to support healthspan and long-term vitality.",
       "We look beyond symptoms to optimize how you feel and function for years to come.",
     ],
     how: {
-      text: "Advanced diagnostics establish your baseline, guiding a personalized plan refined over time.",
+      text: "Advanced diagnostics establish your baseline, guiding a personalized plan refined over time",
       specs: [
         { label: "Includes", value: "Diagnostics, plan" },
         { label: "Approach", value: "Preventive" },
@@ -410,7 +410,7 @@ export const SERVICES = [
     },
     benefits: {
       label: "The Focus",
-      title: "More good years.",
+      title: "More good years",
       items: [
         {
           title: "Prevention",
@@ -436,16 +436,16 @@ export const SERVICES = [
     promise: "Sustainable nutrition and lifestyle guidance that lasts.",
     bookLabel: "Book a Consult",
     statement:
-      "Sustainable nutrition and lifestyle guidance, built on habits you can keep.",
+      "Sustainable nutrition and lifestyle guidance, built on habits you can keep",
     overview: [
-      "Practical, evidence-informed nutrition and lifestyle coaching tailored to your goals, from energy and body composition to long-term metabolic health.",
+      "Practical, evidence informed nutrition and lifestyle coaching tailored to your goals, from energy and body composition to long-term metabolic health.",
       "Real change built on habits you can keep, with support from a team that meets you where you are.",
     ],
     how: {
-      text: "We assess your goals, build a practical plan, and support you with coaching and accountability.",
+      text: "We assess your goals, build a practical plan, and support you with coaching and accountability",
       specs: [
         { label: "Format", value: "Assessment and coaching" },
-        { label: "Approach", value: "Evidence-informed" },
+        { label: "Approach", value: "Evidence informed" },
         { label: "Cadence", value: "Ongoing support" },
         { label: "Best for", value: "Lasting habits" },
       ],
@@ -473,7 +473,7 @@ export const SERVICES = [
     },
     benefits: {
       label: "Outcomes",
-      title: "Habits that hold.",
+      title: "Habits that hold",
       items: [
         { title: "Energy", desc: "Fuel your day the right way." },
         { title: "Composition", desc: "Support healthy body composition." },
@@ -498,13 +498,13 @@ export const SERVICES = [
     image2: "/injection-green.jpg",
     promise: "Our IV lounge, brought to your door.",
     bookLabel: "Book Mobile IV",
-    statement: "The MotionRx lounge, brought to your door.",
+    statement: "The MotionRx lounge, brought to your door",
     overview: [
       "The MotionRx experience at home, at the office, or on location. The same pharmaceutical-grade infusions and professional medical staff, delivered to you.",
       "Ideal for recovery days, events, or anytime you'd rather we come to you.",
     ],
     how: {
-      text: "Choose a time and place; our medical team arrives fully equipped to administer your infusion.",
+      text: "Choose a time and place; our medical team arrives fully equipped to administer your infusion",
       specs: [
         { label: "Location", value: "Home, office, event" },
         { label: "Format", value: "Full drip menu" },
@@ -536,7 +536,7 @@ export const SERVICES = [
     },
     benefits: {
       label: "Why Mobile",
-      title: "Wellness, wherever.",
+      title: "Wellness, wherever",
       items: [
         { title: "Convenient", desc: "No travel, no waiting room." },
         { title: "Flexible", desc: "Home, office, or event." },
@@ -555,13 +555,13 @@ export const SERVICES = [
     promise: "Comprehensive care built around men's health goals.",
     bookLabel: "Book a Consult",
     statement:
-      "Comprehensive care built around men's performance, vitality, and longevity.",
+      "Comprehensive care built around men's performance, vitality, and longevity",
     overview: [
-      "A tailored approach spanning hormone optimization, metabolic health, recovery, and longevity, guided by lab work and a provider-led plan.",
+      "A tailored approach spanning hormone optimization, metabolic health, recovery, and longevity, guided by lab work and a provider led plan.",
       "Care designed to help you perform, recover, and feel your best at every stage.",
     ],
     how: {
-      text: "Comprehensive labs and a provider review shape a plan for how you want to perform and feel.",
+      text: "Comprehensive labs and a provider review shape a plan for how you want to perform and feel",
       specs: [
         { label: "Includes", value: "Labs, hormone review, plan" },
         { label: "Directed by", value: "Medical provider" },
@@ -589,7 +589,7 @@ export const SERVICES = [
     },
     benefits: {
       label: "Focus Areas",
-      title: "Optimized, not average.",
+      title: "Optimized, not average",
       items: [
         { title: "Energy", desc: "Restore drive and endurance." },
         { title: "Performance", desc: "Train and recover better." },
@@ -612,13 +612,13 @@ export const SERVICES = [
     promise: "Personalized care for every stage.",
     bookLabel: "Book a Consult",
     statement:
-      "Personalized, attentive care for every stage of a woman's health.",
+      "Personalized, attentive care for every stage of a woman's health",
     overview: [
-      "Individualized care addressing hormones, energy, metabolic health, and wellbeing, supported by comprehensive testing and a provider-led plan.",
+      "Individualized care addressing hormones, energy, metabolic health, and wellbeing, supported by comprehensive testing and a provider led plan.",
       "Attentive, personalized care that adapts with you through every stage of life.",
     ],
     how: {
-      text: "Comprehensive testing and a thoughtful review shape care that adapts with you over time.",
+      text: "Comprehensive testing and a thoughtful review shape care that adapts with you over time",
       specs: [
         { label: "Includes", value: "Labs, wellness review, plan" },
         { label: "Directed by", value: "Medical provider" },
@@ -646,7 +646,7 @@ export const SERVICES = [
     },
     benefits: {
       label: "Focus Areas",
-      title: "Care that adapts with you.",
+      title: "Care that adapts with you",
       items: [
         { title: "Balance", desc: "Support steadier hormones." },
         { title: "Energy", desc: "Restore daily vitality." },

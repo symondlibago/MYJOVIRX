@@ -216,7 +216,7 @@ export default function ServicePage() {
       <section className="bg-linen px-6 py-24 text-center md:py-32">
         <FadeIn>
           <h2 className="font-serif text-3xl font-medium leading-[1.2] text-ink md:text-4xl">
-            Ready when you are.
+            Ready when you are
           </h2>
           <div className="mt-8">
             <a

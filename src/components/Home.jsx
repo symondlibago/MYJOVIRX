@@ -7,7 +7,6 @@ import {
   Smile,
   Leaf,
   CalendarCheck,
-  Plus,
 } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
 import IntroSplash from "./IntroSplash";
@@ -37,23 +36,23 @@ const rotatingServices = [
 const oasisFeatures = [
   {
     icon: HeartPulse,
-    title: "Health-led",
-    desc: "Treatments guided by our medical team.",
+    title: "Health led",
+    desc: "Treatments guided by licensed medical professionals.",
   },
   {
     icon: Smile,
     title: "Genuine staff",
-    desc: "Warm, attentive, never rushed.",
+    desc: "Warm, attentive care without feeling rushed.",
   },
   {
     icon: Leaf,
     title: "Tranquil space",
-    desc: "A calm, botanical setting to unwind.",
+    desc: "A calm, relaxing environment designed to help you unwind.",
   },
   {
     icon: CalendarCheck,
     title: "Easy booking",
-    desc: "Stress-free scheduling, in and out.",
+    desc: "Simple scheduling for a smooth, stress free visit.",
   },
 ];
 
@@ -61,21 +60,21 @@ const menuCategories = [
   {
     image: "/iv-stand.jpg",
     title: "IV Drips",
-    desc: "Hydration, recovery, immunity, and radiance, infused for full absorption from the inside out.",
+    desc: "Hydration, recovery, immunity, and radiance, delivered for full body support from the inside out.",
     linkLabel: "Explore Drips",
     to: "/services/iv-nutrient-therapy",
   },
   {
     image: "/injection-green.jpg",
     title: "Injections & Shots",
-    desc: "Fast, targeted vitamin and amino boosts for energy, metabolism, and everyday balance.",
+    desc: "Fast, targeted vitamin and amino acid boosts for energy, metabolism, and everyday balance.",
     linkLabel: "Explore Shots",
     to: "/services",
   },
   {
     image: "/vials-marble.jpg",
     title: "Peptides & NAD+",
-    desc: "Advanced longevity and cellular support for recovery, clarity, and performance.",
+    desc: "Advanced support for recovery, clarity, performance, and healthy aging.",
     linkLabel: "Explore Therapies",
     to: "/services/peptide-therapy",
   },
@@ -83,24 +82,24 @@ const menuCategories = [
 
 const benefits = [
   {
-    title: "Fluid hydration",
-    desc: "Replenish vital fluids and stay hydrated from the inside out.",
+    title: "Hydration",
+    desc: "Replenish vital fluids and support hydration from the inside out.",
   },
   {
-    title: "Energy & endurance",
-    desc: "Restore your reserves and fuel an active lifestyle.",
+    title: "Energy & Endurance",
+    desc: "Support energy levels and fuel an active lifestyle.",
   },
   {
-    title: "Mental clarity",
-    desc: "Sharpen focus and cognitive agility for daily demands.",
+    title: "Mental Clarity",
+    desc: "Support focus, clarity, and daily cognitive performance.",
   },
   {
     title: "Recovery",
-    desc: "Support faster recovery and optimise athletic performance.",
+    desc: "Support faster recovery and improved physical performance.",
   },
   {
     title: "Immunity",
-    desc: "Address vitamin deficiencies and safeguard your wellbeing.",
+    desc: "Support vitamin balance and overall wellness.",
   },
   {
     title: "Metabolism",
@@ -112,17 +111,17 @@ const ritualSteps = [
   {
     num: "01",
     title: "Assess",
-    desc: "A short intake to understand your goals and match the right infusion.",
+    desc: "A short intake to understand your goals and match you with the right treatment.",
   },
   {
     num: "02",
     title: "Restore",
-    desc: "Settle into the lounge as your treatment works, at your own pace.",
+    desc: "Settle into the lounge as your treatment works at your own pace.",
   },
   {
     num: "03",
     title: "Sustain",
-    desc: "Leave replenished, with guidance to keep the benefits going.",
+    desc: "Leave feeling replenished, with guidance to help keep the benefits going.",
   },
 ];
 
@@ -142,24 +141,6 @@ const pressQuotes = [
 ];
 
 // ── PDF page 3 (continuation of the homepage direction) ──
-
-const experienceFeatures = [
-  {
-    icon: HeartPulse,
-    title: "Health-led",
-    desc: "Guided by our medical director.",
-  },
-  {
-    icon: Leaf,
-    title: "Tranquil",
-    desc: "A calm space to fully unwind.",
-  },
-  {
-    icon: Plus,
-    title: "Physician-guided",
-    desc: "Every treatment, overseen.",
-  },
-];
 
 const guestStories = [
   {
@@ -212,7 +193,7 @@ const faqs = [
   },
   {
     q: "How long does a treatment take?",
-    a: "Most drips take 30–45 minutes. NAD+ and specialty therapies run slower for comfort, about 60–90 minutes.",
+    a: "Most drips take 30 to 45 minutes. NAD+ and specialty therapies run slower for comfort, about 60 to 90 minutes.",
   },
   {
     q: "Is there anything I should do before my appointment?",
@@ -305,7 +286,7 @@ export default function Home() {
           <h1 className="max-w-3xl font-serif text-5xl font-medium leading-[1.05] text-white md:text-7xl">
             Unwind.
             <br />
-            Replenish. Thrive.
+            Replenish. Thrive
           </h1>
           <p className="mt-7 max-w-xl text-[15px] leading-relaxed text-white/80 md:text-base">
             A laidback oasis designed to replenish your body, revitalise your
@@ -338,13 +319,14 @@ export default function Home() {
               A Holistic Oasis
             </p>
             <h2 className="max-w-3xl font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
-              Wellness reimagined as a non-clinical space for hydration,
-              recovery, and calm.
+              Wellness reimagined in a calming space for hydration, recovery,
+              and balance
             </h2>
             <p className="mt-7 max-w-2xl text-[15px] leading-relaxed text-espresso md:text-base">
-              At MotionRx, IV vitamin infusions deliver optimal hydration and
-              nutrition to support vibrant health. No clinical rush. Just a
-              considered, restful experience built around how you want to feel.
+              At MotionRx, IV vitamin infusions are designed to support
+              hydration, nutrition, recovery, and overall wellness. No clinical
+              rush, just a calm, personalized experience built around how you
+              want to feel.
             </p>
           </FadeIn>
 
@@ -378,13 +360,13 @@ export default function Home() {
                   The Menu
                 </p>
                 <h2 className="max-w-xl font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
-                  Over ten treatments,
+                  Over ten treatments.
                   <br />
-                  one considered ritual.
+                  One personalized wellness ritual
                 </h2>
               </div>
               <p className="text-[11px] uppercase tracking-[0.25em] text-espresso/70 md:pb-2 md:text-right">
-                All infusions overseen
+                All treatments overseen
                 <br className="hidden md:block" /> by our medical director
               </p>
             </div>
@@ -432,7 +414,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 4. BENEFITS (the only white band, per PDF) ───────── */}
+      {/* ───────── 4. THE EXPERIENCE (full-bleed video, clean visual only) ───────── */}
+      <section className="relative h-[70svh] min-h-[440px] overflow-hidden md:h-[85svh]">
+        <video
+          src="/experience.mp4"
+          poster="/lounge-wide.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="The MotionRx experience"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </section>
+
+      {/* ───────── 5. BENEFITS (the only white band, per PDF) ───────── */}
       <section className="bg-cream px-6 py-24 md:py-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
@@ -440,7 +437,7 @@ export default function Home() {
               Benefits
             </p>
             <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
-              Look, feel, and radiate health.
+              Look, feel, and function at your best
             </h2>
           </FadeIn>
 
@@ -461,7 +458,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 5. THE CONSIDERED RITUAL ───────── */}
+      {/* ───────── 6. THE CONSIDERED RITUAL ───────── */}
       <section className="bg-ivory">
         <div className="grid lg:grid-cols-2">
           <div className="relative min-h-[320px] overflow-hidden lg:min-h-full">
@@ -477,7 +474,7 @@ export default function Home() {
                 The Considered Ritual
               </p>
               <h2 className="max-w-md font-serif text-3xl font-medium leading-[1.15] text-ink md:text-4xl">
-                Care that reads like a prescription, not a pitch.
+                Care that feels personal, not rushed
               </h2>
             </FadeIn>
             <div className="mt-12 space-y-0">
@@ -503,14 +500,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 6. OUR MEDICAL DIRECTOR ───────── */}
-      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+      {/* ───────── 7. OUR MEDICAL DIRECTOR (no top padding while stacked — the ritual column above provides the gap) ───────── */}
+      <section className="bg-ivory px-6 pb-24 pt-0 md:pb-32 lg:pt-32 lg:px-12">
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <FadeIn direction="left">
-            <div className="aspect-[4/3] overflow-hidden bg-mist">
+            <div className="aspect-[4/5] overflow-hidden bg-mist">
               <img
-                src="/team-group.jpg"
-                alt="The MotionRx team, led by Dr. Courtney S. Scott"
+                src="/dr-scott.jpg"
+                alt="Dr. Courtney S. Scott, Medical Director"
                 className="h-full w-full object-cover"
               />
             </div>
@@ -523,12 +520,12 @@ export default function Home() {
               <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
                 Care led by
                 <br />
-                Dr. Courtney S. Scott.
+                Dr. Courtney S. Scott
               </h2>
               <p className="mt-7 max-w-md text-[15px] leading-relaxed text-espresso md:text-base">
-                Recognising the role of holistic health in longevity, our team
-                provides comprehensive care spanning prevention, evaluation,
-                and treatment.
+                Recognizing the importance of holistic health in anti aging and
+                longevity, Dr. Scott is committed to comprehensive care focused
+                on prevention, evaluation, diagnosis, and treatment.
               </p>
               <Link
                 to="/about"
@@ -542,8 +539,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 7. PRESS ───────── */}
-      <section className="border-t border-ink/10 bg-ivory px-6 py-20 md:py-24 lg:px-12">
+      {/* ───────── 8. PRESS (compact band — hairline divider carries the separation) ───────── */}
+      <section className="border-t border-ink/10 bg-ivory px-6 py-14 md:py-16 lg:px-12">
         <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-3">
           {pressQuotes.map((q, i) => (
             <FadeIn key={i}>
@@ -560,53 +557,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 8. THE EXPERIENCE (full-bleed video band) ───────── */}
-      <section className="relative overflow-hidden">
-        <video
-          src="/experience.mp4"
-          poster="/lounge-wide.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-label="The MotionRx experience"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-linear-to-r from-ink/85 via-ink/60 to-ink/40" />
-        <div className="relative z-10 mx-auto max-w-6xl px-6 py-24 md:py-32 lg:px-12">
-          <FadeIn>
-            <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-white/70">
-              The Experience
-            </p>
-            <h2 className="max-w-xl font-serif text-3xl font-medium leading-[1.12] text-white md:text-5xl">
-              Calm care. Clear results
-            </h2>
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/75">
-              A botanical, light-filled lounge where every infusion is overseen
-              by our medical team.
-            </p>
-          </FadeIn>
-          <div className="mt-14 grid max-w-3xl gap-8 sm:grid-cols-3">
-            {experienceFeatures.map((f) => (
-              <FadeIn key={f.title}>
-                <div className="border-t border-white/20 pt-5">
-                  <f.icon className="mb-3 h-5 w-5 text-white/80" strokeWidth={1.6} />
-                  <h3 className="mb-1 font-serif text-base font-medium text-white">
-                    {f.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-white/65">
-                    {f.desc}
-                  </p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ───────── 9. FEATURED SERVICES (numbered list) ───────── */}
-      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+      {/* ───────── 9. FEATURED SERVICES (numbered list, bottom padding only) ───────── */}
+      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
             <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-gold">
@@ -616,7 +568,7 @@ export default function Home() {
               Featured Services
             </h2>
             <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-espresso">
-              A full spectrum of physician-guided care — from a single drip to
+              A full spectrum of physician guided care, from a single drip to
               ongoing optimization.
             </p>
           </FadeIn>
@@ -644,8 +596,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 10. GUEST STORIES ───────── */}
-      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+      {/* ───────── 10. GUEST STORIES (tight to the section above, per revisions) ───────── */}
+      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
             <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-gold">
@@ -663,7 +615,7 @@ export default function Home() {
                   <div className="aspect-3/4">
                     <img
                       src={g.image}
-                      alt={`${g.name} — ${g.treatment}`}
+                      alt={`${g.name}, ${g.treatment}`}
                       className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
                   </div>
@@ -686,8 +638,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 11. PRESS · FEATURED IN ───────── */}
-      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+      {/* ───────── 11. PRESS · FEATURED IN (bottom padding only — the section above provides the gap) ───────── */}
+      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
             <p className="mb-8 text-[11px] uppercase tracking-[0.4em] text-gold">
@@ -735,8 +687,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 12. FREQUENTLY ASKED ───────── */}
-      <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+      {/* ───────── 12. FREQUENTLY ASKED (bottom padding only) ───────── */}
+      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -788,8 +740,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 13. BEGIN (CTA) ───────── */}
-      <section className="bg-ivory px-6 py-28 text-center md:py-36">
+      {/* ───────── 13. BEGIN (CTA, bottom padding only) ───────── */}
+      <section className="bg-ivory px-6 pb-28 text-center md:pb-36">
         <div className="mx-auto max-w-2xl">
           <FadeIn>
             <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
@@ -798,7 +750,7 @@ export default function Home() {
             <h2 className="font-serif text-3xl font-medium leading-[1.2] text-ink md:text-5xl">
               Replenish your body.
               <br />
-              Restore your balance.
+              Restore your balance
             </h2>
             <div className="mt-10">
               <a

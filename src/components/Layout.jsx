@@ -4,7 +4,6 @@ import NavBar from "./NavBar";
 import ScrollToTop from "../components/ui/ScrollToTop";
 import { Link, useLocation } from "react-router-dom";
 import { Instagram, Facebook, Mail, Phone, MapPin, Clock } from "lucide-react";
-import { BOOKING_URL, handleBookingClick } from "@/config";
 import { initLenis } from "@/lib/lenis";
 import { SERVICES } from "@/data/services";
 
@@ -26,8 +25,6 @@ export default function Layout({ children }) {
     { name: "Contact", path: "/contact" },
     { name: "FAQ", path: "/faq" },
     { name: "Coming Soon", path: "/coming-soon" },
-    { name: "Resources", path: "/blog" },
-    { name: "Reserve Now", href: BOOKING_URL, external: true },
   ];
 
   const legalLinks = [
@@ -154,22 +151,16 @@ export default function Layout({ children }) {
               <ul className="space-y-3">
                 {navLinks.map((link) => (
                   <li key={link.name}>
-                    {link.external ? (
-                      <a href={link.href} onClick={handleBookingClick} className="footer-link text-sm text-ivory/70">
-                        {link.name}
-                      </a>
-                    ) : (
-                      <Link
-                        to={link.path}
-                        className={`footer-link text-sm ${
-                          pathname === link.path
-                            ? "text-gold"
-                            : "text-ivory/70"
-                        }`}
-                      >
-                        {link.name}
-                      </Link>
-                    )}
+                    <Link
+                      to={link.path}
+                      className={`footer-link text-sm ${
+                        pathname === link.path
+                          ? "text-gold"
+                          : "text-ivory/70"
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
