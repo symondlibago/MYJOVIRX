@@ -25,10 +25,10 @@ export default function OurTeam() {
 
   const team = [
     { name: "Camron Love", credentials: "MSN, RN, CCRN", image: "/team-camron.jpg" },
-    { name: "Laura Le", credentials: "MSN, RN, CEN", image: "/team-laura.jpg" },
+    { name: "Taylor Mortis", credentials: "BSN, RN", image: "/team-taylor.jpg" },
     { name: "Tori Cathcart", credentials: "BSN, RN", image: "/team-tori.jpg" },
     { name: "Kathy Pak", credentials: "BSN, RN", image: "/team-kathy.jpg" },
-    { name: "Taylor Mortis", credentials: "BSN, RN", image: "/team-taylor.jpg" },
+    { name: "Laura Le", credentials: "MSN, RN, CEN", image: "/team-laura.jpg" },
     { name: "Joy-Li Van Pala", credentials: "BSN, RN", image: "/team-joy.jpg" }
   ];
 

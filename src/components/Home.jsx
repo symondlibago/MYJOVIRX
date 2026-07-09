@@ -414,7 +414,46 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 4. THE EXPERIENCE (full-bleed video, clean visual only) ───────── */}
+      {/* ───────── 4. FEATURED SERVICES (full list — kept directly under the treatment cards per revisions) ───────── */}
+      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
+        <div className="mx-auto max-w-6xl">
+          <FadeIn>
+            <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-gold">
+              What We Offer
+            </p>
+            <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
+              Featured Services
+            </h2>
+            <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-espresso">
+              A full spectrum of physician guided care, from a single drip to
+              ongoing optimization.
+            </p>
+          </FadeIn>
+
+          <div className="mt-14 grid gap-x-16 md:grid-cols-2">
+            {SERVICES.map((s, i) => (
+              <FadeIn key={s.slug}>
+                <Link
+                  to={`/services/${s.slug}`}
+                  className="group flex items-baseline gap-6 border-b border-ink/10 py-5"
+                >
+                  <span className="text-[11px] tabular-nums tracking-[0.2em] text-gold">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="flex flex-1 items-center justify-between gap-4">
+                    <span className="font-serif text-lg text-ink transition-colors group-hover:text-brand md:text-xl">
+                      {s.name}
+                    </span>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-ink/30 transition-all group-hover:translate-x-1 group-hover:text-brand" />
+                  </span>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── 5. THE EXPERIENCE (full-bleed video, clean visual only) ───────── */}
       <section className="relative h-[70svh] min-h-[440px] overflow-hidden md:h-[85svh]">
         <video
           src="/experience.mp4"
@@ -429,7 +468,7 @@ export default function Home() {
         />
       </section>
 
-      {/* ───────── 5. BENEFITS (the only white band, per PDF) ───────── */}
+      {/* ───────── 6. BENEFITS (the only white band, per PDF) ───────── */}
       <section className="bg-cream px-6 py-24 md:py-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
@@ -458,7 +497,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 6. THE CONSIDERED RITUAL ───────── */}
+      {/* ───────── 7. THE CONSIDERED RITUAL ───────── */}
       <section className="bg-ivory">
         <div className="grid lg:grid-cols-2">
           <div className="relative min-h-[320px] overflow-hidden lg:min-h-full">
@@ -500,7 +539,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 7. OUR MEDICAL DIRECTOR (no top padding while stacked — the ritual column above provides the gap) ───────── */}
+      {/* ───────── 8. OUR MEDICAL DIRECTOR (no top padding while stacked — the ritual column above provides the gap) ───────── */}
       <section className="bg-ivory px-6 pb-24 pt-0 md:pb-32 lg:pt-32 lg:px-12">
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <FadeIn direction="left">
@@ -539,7 +578,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 8. PRESS (compact band — hairline divider carries the separation) ───────── */}
+      {/* ───────── 9. PRESS (compact band — hairline divider carries the separation) ───────── */}
       <section className="border-t border-ink/10 bg-ivory px-6 py-14 md:py-16 lg:px-12">
         <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-3">
           {pressQuotes.map((q, i) => (
@@ -557,54 +596,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 9. FEATURED SERVICES (numbered list, bottom padding only) ───────── */}
-      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
-        <div className="mx-auto max-w-6xl">
-          <FadeIn>
-            <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-gold">
-              What We Offer
-            </p>
-            <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
-              Featured Services
-            </h2>
-            <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-espresso">
-              A full spectrum of physician guided care, from a single drip to
-              ongoing optimization.
-            </p>
-          </FadeIn>
-
-          <div className="mt-14 grid gap-x-16 md:grid-cols-2">
-            {SERVICES.map((s, i) => (
-              <FadeIn key={s.slug}>
-                <Link
-                  to={`/services/${s.slug}`}
-                  className="group flex items-baseline gap-6 border-b border-ink/10 py-5"
-                >
-                  <span className="text-[11px] tabular-nums tracking-[0.2em] text-gold">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="flex flex-1 items-center justify-between gap-4">
-                    <span className="font-serif text-lg text-ink transition-colors group-hover:text-brand md:text-xl">
-                      {s.name}
-                    </span>
-                    <ArrowRight className="h-4 w-4 shrink-0 text-ink/30 transition-all group-hover:translate-x-1 group-hover:text-brand" />
-                  </span>
-                </Link>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ───────── 10. GUEST STORIES (tight to the section above, per revisions) ───────── */}
-      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
+      {/* ───────── 10. PATIENT STORIES (follows the compact press band) ───────── */}
+      <section className="bg-ivory px-6 pt-10 pb-24 md:pt-16 md:pb-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
             <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-gold">
               In Their Words
             </p>
             <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
-              Guest stories
+              Patient Stories
             </h2>
           </FadeIn>
 

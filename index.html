@@ -21,7 +21,7 @@
       content="Physician-guided IV therapy, NAD+ restoration, hormone optimization, and medical weight loss in Costa Mesa, serving all of Orange County, CA. In-clinic & telehealth."
     />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="theme-color" content="#494C33" />
+    <meta name="theme-color" content="#3B2E22" />
 
     <!-- Local SEO -->
     <meta name="geo.region" content="US-CA" />
@@ -107,6 +107,26 @@
         ]
       }
     </script>
+
+    <!-- Boulevard Self-Booking overlay (businessId from client email, July 2026).
+         Exposes window.blvd; "Book" buttons open the overlay via
+         handleBookingClick in src/config.js. -->
+    <script>
+      (function (a) {
+        var b = {
+          businessId: '489388f6-0346-44d4-9050-660e3b8cc2ea',
+        };
+        var c = a.createElement('script');
+        var d = a.querySelector('script');
+        c.src = 'https://static.joinboulevard.com/injector.min.js';
+        c.async = true;
+        c.onload = function () {
+          blvd.init(b);
+        };
+        d.parentNode.insertBefore(c, d);
+      })(document);
+    </script>
+    <!-- End Boulevard Self-Booking overlay -->
   </head>
   <body>
     <script>

@@ -21,10 +21,11 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
 
-  /* ── Brand palette tokens — default = Olive & Porcelain ("oasis"),
-        from MotionRx_Website_Layout.pdf */
-  --color-brand: #6C6F4D;
-  --color-brand-deep: #494C33;
+  /* ── Brand palette tokens — default = Bronze & Porcelain ("oasis").
+        Olive retired per July 2026 client revisions (reads too heavy);
+        brand roles now use the warm bronze/brown family from the layout PDF. */
+  --color-brand: #8A6248;
+  --color-brand-deep: #3B2E22;
   --color-gold: #A77B5E;
   --color-espresso: #5C5245;
   --color-ink: #2A2620;
@@ -143,8 +144,8 @@ html.lenis body {
 :root {
   /* RGB triplets — used by rgba()/gradients in inline styles so glows &
      shadows recolor with the palette too. Default = oasis palette. */
-  --brand-rgb: 108 111 77;
-  --brand-deep-rgb: 73 76 51;
+  --brand-rgb: 138 98 72;
+  --brand-deep-rgb: 59 46 34;
   --gold-rgb: 167 123 94;
   --ink-warm-rgb: 58 53 44;
   --stone-rgb: 206 183 159;
@@ -208,14 +209,15 @@ html.lenis body {
   --cream-rgb: 244 241 234;
 }
 
-/* ───── Palette 1 · Olive & Porcelain ("oasis" · site default) ─────
+/* ───── Palette 1 · Bronze & Porcelain ("oasis" · site default) ─────
    Swatches from MotionRx_Website_Layout.pdf: Porcelain #F7EFE6, Cream #FBEEDC,
-   Greige #E8D9C6, Sand #DFD4B9, Camel #CEB79F, Olive #6C6F4D, Brown #A77B5E.
+   Greige #E8D9C6, Sand #DFD4B9, Camel #CEB79F, Brown #A77B5E. The PDF's
+   Olive swatch was retired per July 2026 client revisions.
    Values live in the base @theme / :root blocks above; this selector exists so
    an explicit data-palette="oasis" choice also resolves. */
 :root[data-palette="oasis"] {
-  --color-brand: #6C6F4D;
-  --color-brand-deep: #494C33;
+  --color-brand: #8A6248;
+  --color-brand-deep: #3B2E22;
   --color-gold: #A77B5E;
   --color-espresso: #5C5245;
   --color-ink: #2A2620;
@@ -229,8 +231,8 @@ html.lenis body {
   --color-taupe: #9A8C74;
   --color-mist: #E6DBC9;
 
-  --brand-rgb: 108 111 77;
-  --brand-deep-rgb: 73 76 51;
+  --brand-rgb: 138 98 72;
+  --brand-deep-rgb: 59 46 34;
   --gold-rgb: 167 123 94;
   --ink-warm-rgb: 58 53 44;
   --stone-rgb: 206 183 159;

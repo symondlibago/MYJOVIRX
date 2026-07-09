@@ -27,10 +27,10 @@ const values = [
 
 const team = [
   { name: "Camron Love", credentials: "MSN, RN, CCRN", image: "/team-camron.jpg" },
-  { name: "Laura Le", credentials: "MSN, RN, CEN", image: "/team-laura.jpg" },
+  { name: "Taylor Mortis", credentials: "BSN, RN", image: "/team-taylor.jpg" },
   { name: "Tori Cathcart", credentials: "BSN, RN", image: "/team-tori.jpg" },
   { name: "Kathy Pak", credentials: "BSN, RN", image: "/team-kathy.jpg" },
-  { name: "Taylor Mortis", credentials: "BSN, RN", image: "/team-taylor.jpg" },
+  { name: "Laura Le", credentials: "MSN, RN, CEN", image: "/team-laura.jpg" },
   { name: "Joy-Li Van Pala", credentials: "BSN, RN", image: "/team-joy.jpg" },
 ];
 
@@ -104,7 +104,7 @@ export default function About() {
 
       {/* Medical Director */}
       <section className="px-6 py-20 md:py-28 lg:px-12">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <FadeIn direction="left">
             <div className="group relative aspect-[3/4] overflow-hidden rounded-2xl">
               <img
@@ -130,8 +130,45 @@ export default function About() {
               <p className="text-[15px] leading-relaxed text-espresso md:text-base">
                 His approach pairs advanced diagnostics with regenerative and
                 performance therapies, building each plan around measurable,
-                long-term health.
+                long term health.
               </p>
+
+              {/* Full bio (per client revisions, July 2026) */}
+              <div className="mt-9 space-y-5 border-t border-ink/10 pt-9">
+                <p className="text-[15px] leading-relaxed text-espresso">
+                  Dr. Courtney S. Scott is a dedicated physician with a focus
+                  on wellness, biohacking, anti aging, and longevity
+                  treatments. Dr. Scott earned his medical degree from the
+                  prestigious Keck School of Medicine, USC, in 2006. With over
+                  13 years of experience as a licensed physician, Dr. Scott has
+                  honed his expertise in emergency and internal medicine,
+                  particularly in the field of holistic health approaches.
+                </p>
+                <p className="text-[15px] leading-relaxed text-espresso">
+                  Recognizing the importance of holistic health in anti aging
+                  and longevity, Dr. Scott is committed to providing
+                  comprehensive care that encompasses prevention, evaluation,
+                  diagnosis, and treatment. He understands the complexities of
+                  aging and the environmental and genetic predispositions that
+                  can accompany it. Dr. Scott has collaborated with various
+                  wellness centers and clinics, serving as a Medical Director
+                  and actively contributing to the development of innovative
+                  treatment strategies.
+                </p>
+                <p className="text-[15px] leading-relaxed text-espresso">
+                  Drawing from over a decade of direct experience in holistic
+                  health, Dr. Scott delivers compassionate care to patients
+                  seeking to improve their overall well being. He believes in
+                  addressing the root causes of health issues and promoting
+                  whole health through a combination of evidence based
+                  treatments and holistic approaches.
+                </p>
+                <p className="text-[15px] leading-relaxed text-espresso">
+                  Passionate about education and community outreach, Dr. Scott
+                  is on a mission to empower individuals and communities with
+                  the knowledge and tools needed to achieve optimal wellness.
+                </p>
+              </div>
             </div>
           </FadeIn>
         </div>

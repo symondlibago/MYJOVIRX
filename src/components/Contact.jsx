@@ -120,7 +120,7 @@ export default function Contact() {
 
       <div className="min-h-screen bg-ivory px-4 pt-28 pb-16 sm:px-6">
         <div className="mx-auto grid max-w-6xl overflow-hidden rounded-3xl shadow-[0_50px_110px_-60px_rgba(0,0,0,0.6)] lg:grid-cols-2">
-          {/* Left — maroon image panel */}
+          {/* Left — warm ink-brown image panel (green overlay retired per revisions) */}
           <div className="relative min-h-[480px] overflow-hidden bg-brand-deep p-10 text-white md:p-14">
             <div aria-hidden className="absolute inset-0">
               <img src="/hero-3.jpg" alt="" className="h-full w-full object-cover" />
@@ -140,7 +140,7 @@ export default function Contact() {
                 <h1 className="mb-6 font-serif text-5xl font-light leading-[1.02] md:text-6xl">
                   Start your
                   <br />
-                  <span className="italic text-gold">optimization</span>
+                  <span className="italic text-gold">Optimization</span>
                 </h1>
                 <p className="max-w-md text-sm leading-relaxed text-white/70 md:text-[15px]">
                   Longevity, hormone, peptide, and performance medicine, in our

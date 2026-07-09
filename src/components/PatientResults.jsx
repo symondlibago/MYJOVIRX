@@ -22,11 +22,11 @@ export default function PatientResults() {
               Patient Results
             </p>
             <h1 className="font-serif text-5xl font-medium leading-[1.05] text-ink md:text-7xl">
-              Real people. Real results
+              Real Patients. Real Progress
             </h1>
             <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-espresso md:text-base">
-              Stories from patients optimizing their energy, performance, and
-              long-term health with MotionRx.
+              Stories from patients improving their energy, performance,
+              recovery, and long term health with MotionRx.
             </p>
           </FadeIn>
         </div>
@@ -34,14 +34,15 @@ export default function PatientResults() {
 
       <Testimonials />
 
-      <section className="px-6 pb-24 lg:px-12">
+      <section className="px-6 pb-16 lg:px-12">
         <p className="mx-auto max-w-6xl text-[12px] leading-relaxed text-espresso/50">
           Images shown are placeholders. Real patient photos and stories will be
           added with written consent.
         </p>
       </section>
 
-      {/* CTA */}
+      {/* CTA — directly below the patient photos and stories (per revisions);
+          warm ink-brown band, olive retired */}
       <section className="relative overflow-hidden bg-brand-deep px-6 py-24 text-center md:py-32">
         <div
           aria-hidden

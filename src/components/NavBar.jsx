@@ -53,7 +53,7 @@ export default function NavBar() {
           left: 0;
           width: 0%;
           height: 1.5px;
-          background-color: #6B1F2E;
+          background-color: var(--color-brand);
           transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .nav-link:hover::after,
@@ -61,7 +61,7 @@ export default function NavBar() {
           width: 100%;
         }
         .nav-link.active {
-          color: #6B1F2E;
+          color: var(--color-brand);
         }
       `}</style>
 

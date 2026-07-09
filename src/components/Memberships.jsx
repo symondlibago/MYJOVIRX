@@ -15,14 +15,14 @@ const PLANS = [
     price: "From $99",
     cadence: "/mo",
     blurb:
-      "Recurring IV drips, peptide protocols, and vitamin injections at member pricing.",
+      "Recurring IV drips, peptide protocols, and vitamin injections with member pricing.",
   },
   {
     name: "Injectable Shots",
     price: "From $99",
     cadence: "/mo",
     blurb:
-      "B12, Vitamin D, NAD, MIC, Glutathione, and BPC-157. Buy individually with no commitment, or as a monthly package.",
+      "B12, Vitamin D, NAD, MIC, Glutathione, and BPC 157. Purchase individually or as a monthly package.",
   },
   {
     name: "TRT / HRT Membership",
@@ -36,7 +36,7 @@ const PLANS = [
     name: "Laboratory Testing",
     price: "$149 to $999",
     cadence: "",
-    blurb: "Advanced panels a la carte, or bundled into any plan.",
+    blurb: "Advanced lab panels available individually or bundled into your care plan.",
   },
 ];
 
@@ -49,12 +49,12 @@ export default function Memberships() {
             Memberships &amp; Subscriptions
           </p>
           <h2 className="max-w-2xl font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
-            Ongoing care, without the one-off booking
+            Ongoing Care, Made Simple
           </h2>
           <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-espresso md:text-base">
-            Recurring plans for patients who want continuous optimization.
-            Member pricing, priority booking, and monitoring built in. Pause or
-            change anytime.
+            Membership plans for patients who want consistent care, preferred
+            pricing, priority booking, and ongoing support. Pause or change
+            anytime.
           </p>
         </FadeIn>
 
@@ -113,8 +113,8 @@ export default function Memberships() {
         </div>
 
         <p className="mt-14 border-l-2 border-gold/50 pl-4 text-[13px] italic leading-relaxed text-espresso/70">
-          Final tiers and inclusions are confirmed at your consultation.
-          Memberships can be paused or changed anytime.
+          Final pricing and plan details are confirmed during your
+          consultation. Memberships can be paused or changed anytime.
         </p>
       </div>
     </section>

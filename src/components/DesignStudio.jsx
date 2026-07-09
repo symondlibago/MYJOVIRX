@@ -12,7 +12,7 @@ import {
 
 const STORAGE_KEY = "myjovirx-theme";
 const DEFAULTS = {
-  palette: "oasis", // Olive & Porcelain (brand-layout PDF)
+  palette: "oasis", // Bronze & Porcelain (brand-layout PDF, olive retired)
   font: "zapf", // Zapf Humanist + Hanken Grotesk (brand-layout PDF)
   weight: "medium",
   italic: "off",
@@ -24,9 +24,9 @@ const DEFAULTS = {
 const PALETTES = [
   {
     id: "oasis",
-    name: "Olive & Porcelain",
+    name: "Bronze & Porcelain",
     note: "Warm · botanical (default)",
-    colors: { primary: "#6C6F4D", deep: "#494C33", accent: "#A77B5E", bg: "#F7EFE6" },
+    colors: { primary: "#8A6248", deep: "#3B2E22", accent: "#A77B5E", bg: "#F7EFE6" },
   },
   {
     id: "teal",

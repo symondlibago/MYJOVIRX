@@ -219,7 +219,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* ───────── 4. GUEST STORIES (bottom padding only — the section above provides the gap) ───────── */}
+      {/* ───────── 4. PATIENT STORIES (bottom padding only — the section above provides the gap) ───────── */}
       <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
@@ -227,7 +227,7 @@ export default function Services() {
               In Their Words
             </p>
             <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
-              Guest stories
+              Patient Stories
             </h2>
           </FadeIn>
 
