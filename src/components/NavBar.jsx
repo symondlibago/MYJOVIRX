@@ -76,13 +76,20 @@ export default function NavBar() {
             to="/coming-soon"
             className="group block bg-ink text-center transition-colors duration-300 hover:bg-ink-warm"
           >
-            <p className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-3 gap-y-0.5 px-6 py-2 text-[10px] uppercase tracking-[0.18em] text-ivory/85 md:text-[11px]">
+            {/* Mobile: exactly 2 lines, no "Join the waitlist" (client request).
+                Desktop (md+): full single-line sentence as before. */}
+            <p className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-y-0.5 px-6 py-1.5 text-[10px] uppercase tracking-[0.18em] text-ivory/85 md:flex-row md:flex-wrap md:gap-x-3 md:py-2 md:text-[11px]">
               <span>
-                Stem Cell Therapy and EBO2 Therapy launching Fall 2026. Join
-                the waitlist.
+                Stem Cell Therapy and EBO2 Therapy
+                <span className="hidden md:inline">
+                  {" "}launching Fall 2026. Join the waitlist.
+                </span>
               </span>
-              <span className="text-gold underline decoration-gold/40 underline-offset-4 transition-colors group-hover:decoration-gold">
-                Learn More
+              <span className="flex items-center gap-x-2">
+                <span className="md:hidden">Launching Fall 2026</span>
+                <span className="text-gold underline decoration-gold/40 underline-offset-4 transition-colors group-hover:decoration-gold">
+                  Learn More
+                </span>
               </span>
             </p>
           </Link>
