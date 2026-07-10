@@ -309,7 +309,6 @@ export default function Home() {
   const heroTextY = useTransform(heroScroll, [0, 1], [0, 90]);
   const heroTextOpacity = useTransform(heroScroll, [0, 0.75], [1, 0]);
 
-  // Rotate the eyebrow service word every few seconds.
   const [serviceIndex, setServiceIndex] = useState(0);
   useEffect(() => {
     const id = setInterval(
