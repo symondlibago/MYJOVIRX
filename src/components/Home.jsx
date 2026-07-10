@@ -175,13 +175,15 @@ const guestStories = [
 const pressCards = [
   {
     source: "Irvine Weekly",
+    logo: "/irvine.png",
     quote:
       "Reframes the drip bar as something quieter and more considered — you leave genuinely restored.",
   },
   {
     source: "Locale OC",
+    logo: "/calipost.png",
     quote:
-      "Laguna Hills' most refined take on IV wellness — minimal, medical, and unmistakably calm.",
+      "Costa Mesa' most refined take on IV wellness — minimal, medical, and unmistakably calm.",
   },
 ];
 
@@ -740,7 +742,13 @@ export default function Home() {
             {pressCards.map((p) => (
               <FadeIn key={p.source}>
                 <div>
-                  <h3 className="mb-3 font-serif text-xl text-ink">
+                  <img
+                    src={p.logo}
+                    alt={`${p.source} logo`}
+                    className="h-30 w-auto object-contain"
+                    loading="lazy"
+                  />
+                  <h3 className="mt-3 mb-3 font-serif text-xl text-ink">
                     {p.source}
                   </h3>
                   <p className="text-sm leading-relaxed text-espresso">
