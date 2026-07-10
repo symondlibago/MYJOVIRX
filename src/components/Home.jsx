@@ -1,8 +1,11 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import useEmblaCarousel from "embla-carousel-react";
 import {
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   HeartPulse,
   Smile,
   Leaf,
@@ -219,6 +222,83 @@ const faqJsonLd = {
   })),
 };
 
+// One patient story card — shared by the mobile carousel and the sm+ grid so
+// the two layouts can't drift apart.
+function StoryCard({ story }) {
+  return (
+    <figure className="group relative overflow-hidden bg-mist">
+      <div className="aspect-3/4">
+        <img
+          src={story.image}
+          alt={`${story.name}, ${story.treatment}`}
+          className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+        />
+      </div>
+      <div className="absolute inset-0 bg-linear-to-t from-ink/80 via-ink/20 to-transparent" />
+      <figcaption className="absolute inset-x-0 bottom-0 p-5">
+        <span className="mb-2 block font-serif text-2xl leading-none text-gold">
+          &ldquo;
+        </span>
+        <blockquote className="font-serif text-lg leading-snug text-white">
+          {story.quote}
+        </blockquote>
+        <p className="mt-3 text-[10px] uppercase tracking-[0.3em] text-white/65">
+          {story.name} · {story.treatment}
+        </p>
+      </figcaption>
+    </figure>
+  );
+}
+
+// Patient Stories carousel — mobile only; hidden from sm up where the grid
+// takes over. Shows one full-width slide at a time, moved by swipe or arrows.
+// Embla clips inside its own viewport, so no page-level horizontal scroll.
+function StoriesCarousel() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "start",
+    duration: 35, // embla speed factor (not ms) — a touch slower for a smooth glide
+    breakpoints: { "(min-width: 640px)": { active: false } },
+  });
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+
+  const arrowCls =
+    "absolute top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-ivory/90 text-ink shadow-[0_10px_30px_-12px_rgba(44,42,38,0.7)] ring-1 ring-ink/10 backdrop-blur transition-colors hover:bg-ivory";
+
+  return (
+    <div className="relative mt-14 sm:hidden">
+      <div className="overflow-hidden" ref={emblaRef}>
+        <div className="flex gap-4">
+          {guestStories.map((g) => (
+            <div key={g.name} className="min-w-0 shrink-0 basis-full">
+              <StoryCard story={g} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <button
+        type="button"
+        onClick={scrollPrev}
+        aria-label="Previous story"
+        className={`${arrowCls} left-3`}
+      >
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+      <button
+        type="button"
+        onClick={scrollNext}
+        aria-label="Next story"
+        className={`${arrowCls} right-3`}
+      >
+        <ChevronRight className="h-5 w-5" />
+      </button>
+    </div>
+  );
+}
+
 export default function Home() {
   const heroRef = useRef(null);
   const { scrollYProgress: heroScroll } = useScroll({
@@ -350,8 +430,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 3. A HOLISTIC OASIS (no top padding — Featured Services above provides the gap) ───────── */}
-      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
+      {/* ───────── 3. A HOLISTIC OASIS (no top padding — Featured Services above provides the gap) ─────────
+          Hidden on mobile per client request; shown at md+ (tablet/desktop). */}
+      <section className="hidden bg-ivory px-6 pb-24 md:block md:pb-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
             <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
@@ -414,8 +495,9 @@ export default function Home() {
           <div className="mt-14 grid gap-10 md:grid-cols-3">
             {menuCategories.map((c) => (
               <FadeIn key={c.title}>
-                <Link to={c.to} className="group block">
-                  <div className="aspect-[4/5] overflow-hidden bg-mist">
+                {/* Mobile: thumbnail beside the text. md and up: the original stacked card. */}
+                <Link to={c.to} className="group flex items-start gap-5 md:block">
+                  <div className="aspect-[4/5] w-28 shrink-0 overflow-hidden bg-mist sm:w-32 md:w-full">
                     {c.video ? (
                       <video
                         src={c.video}
@@ -436,16 +518,18 @@ export default function Home() {
                       />
                     )}
                   </div>
-                  <h3 className="mt-6 font-serif text-2xl text-ink">
-                    {c.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-espresso">
-                    {c.desc}
-                  </p>
-                  <span className="mt-4 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors group-hover:border-brand group-hover:text-brand">
-                    {c.linkLabel}
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </span>
+                  <div className="min-w-0 flex-1 md:mt-6">
+                    <h3 className="font-serif text-2xl text-ink">
+                      {c.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-espresso">
+                      {c.desc}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors group-hover:border-brand group-hover:text-brand">
+                      {c.linkLabel}
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </div>
                 </Link>
               </FadeIn>
             ))}
@@ -468,8 +552,9 @@ export default function Home() {
         />
       </section>
 
-      {/* ───────── 6. BENEFITS (the only white band, per PDF) ───────── */}
-      <section className="bg-cream px-6 py-24 md:py-32 lg:px-12">
+      {/* ───────── 6. BENEFITS (the only white band, per PDF) ─────────
+          Hidden on mobile per client request; shown at md+ (tablet/desktop). */}
+      <section className="hidden bg-cream px-6 py-24 md:block md:py-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
             <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
@@ -500,7 +585,8 @@ export default function Home() {
       {/* ───────── 7. THE CONSIDERED RITUAL ───────── */}
       <section className="bg-ivory">
         <div className="grid lg:grid-cols-2">
-          <div className="relative min-h-[320px] overflow-hidden lg:min-h-full">
+          {/* mt gives mobile breathing room from the video above (Benefits is hidden there); md+ has Benefits in between. */}
+          <div className="relative mt-12 min-h-[320px] overflow-hidden md:mt-0 lg:min-h-full">
             <img
               src="/ritual-lounge.avif"
               alt="The MotionRx lounge"
@@ -578,8 +664,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 9. PRESS (compact band — hairline divider carries the separation) ───────── */}
-      <section className="border-t border-ink/10 bg-ivory px-6 py-14 md:py-16 lg:px-12">
+      {/* ───────── 9. PRESS (compact band — hairline divider carries the separation) ─────────
+          Hidden on mobile per client request; shown at md+ (tablet/desktop). */}
+      <section className="hidden border-t border-ink/10 bg-ivory px-6 py-14 md:block md:py-16 lg:px-12">
         <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-3">
           {pressQuotes.map((q, i) => (
             <FadeIn key={i}>
@@ -608,30 +695,14 @@ export default function Home() {
             </h2>
           </FadeIn>
 
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Mobile: one-at-a-time carousel */}
+          <StoriesCarousel />
+
+          {/* sm and up: the original grid, unchanged */}
+          <div className="mt-14 hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-4">
             {guestStories.map((g) => (
               <FadeIn key={g.name}>
-                <figure className="group relative overflow-hidden bg-mist">
-                  <div className="aspect-3/4">
-                    <img
-                      src={g.image}
-                      alt={`${g.name}, ${g.treatment}`}
-                      className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-linear-to-t from-ink/80 via-ink/20 to-transparent" />
-                  <figcaption className="absolute inset-x-0 bottom-0 p-5">
-                    <span className="mb-2 block font-serif text-2xl leading-none text-gold">
-                      &ldquo;
-                    </span>
-                    <blockquote className="font-serif text-lg leading-snug text-white">
-                      {g.quote}
-                    </blockquote>
-                    <p className="mt-3 text-[10px] uppercase tracking-[0.3em] text-white/65">
-                      {g.name} · {g.treatment}
-                    </p>
-                  </figcaption>
-                </figure>
+                <StoryCard story={g} />
               </FadeIn>
             ))}
           </div>
