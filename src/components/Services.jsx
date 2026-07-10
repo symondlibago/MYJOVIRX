@@ -34,25 +34,25 @@ const experienceFeatures = [
 
 const guestStories = [
   {
-    image: "/portrait-white-dress.jpg",
+    image: "/portrait-white-dress.avif",
     quote: "Clearer, lighter, and genuinely rested",
     name: "Maya R.",
     treatment: "Immunity Drip",
   },
   {
-    image: "/portrait-blue-tee.jpg",
+    image: "/portrait-blue-tee.avif",
     quote: "Medical, without ever feeling clinical",
     name: "David L.",
     treatment: "NAD+ Infusion",
   },
   {
-    image: "/portrait-cap.jpg",
+    image: "/portrait-cap.avif",
     quote: "Back to training the next morning",
     name: "Chris B.",
     treatment: "Performance Drip",
   },
   {
-    image: "/portrait-book.jpg",
+    image: "/portrait-book.avif",
     quote: "The easiest hour of my week",
     name: "Marcus W.",
     treatment: "Recovery Drip",
@@ -146,7 +146,7 @@ export default function Services() {
       <section className="relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/lounge-wide.jpg')" }}
+          style={{ backgroundImage: "url('/lounge-wide.avif')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/60 to-ink/40" />
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-24 md:py-32 lg:px-12">

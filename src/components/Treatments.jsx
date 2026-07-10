@@ -275,7 +275,7 @@ export default function Treatments() {
         "A custom blend of fluids, electrolytes, vitamins, and antioxidants delivered intravenously for rapid hydration, immune support, and recovery. Choose from energy, immunity, beauty, and recovery formulas.",
       duration: "30–45 min",
       price: "From $149",
-      image: "/hero-2.jpg",
+      image: "/hero-2.avif",
     },
     {
       name: "NAD+ Restoration",
@@ -284,7 +284,7 @@ export default function Treatments() {
         "A premium cellular therapy that supports energy production, mental clarity, and healthy aging. Administered slowly and comfortably by our medical team in a private suite.",
       duration: "60–90 min",
       price: "From $399",
-      image: "/treatment-5.jpg",
+      image: "/treatment-5.avif",
       popular: true,
     },
     {
@@ -294,7 +294,7 @@ export default function Treatments() {
         "Testosterone replacement and hormone balancing for men and women, with routine lab monitoring to address fatigue, low libido, brain fog, and athletic performance.",
       duration: "Monthly",
       price: "From $199/mo",
-      image: "/treatment-6.jpg",
+      image: "/treatment-6.avif",
       popular: true,
     },
     {
@@ -304,7 +304,7 @@ export default function Treatments() {
         "Physician-supervised GLP-1 and peptide programs (semaglutide / tirzepatide) paired with nutrition guidance and check-ins for sustainable, healthy results.",
       duration: "Monthly",
       price: "From $299/mo",
-      image: "/treatment-4.jpg",
+      image: "/treatment-4.avif",
     },
   ];
 
@@ -449,7 +449,7 @@ export default function Treatments() {
         <motion.div
           aria-hidden
           className="absolute inset-0 bg-cover bg-top"
-          style={{ backgroundImage: "url('/treatments.jpg')" }}
+          style={{ backgroundImage: "url('/treatments.avif')" }}
           initial={{ scale: 1.08 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}

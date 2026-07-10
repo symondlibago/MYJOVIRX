@@ -123,7 +123,7 @@ export default function Contact() {
           {/* Left — warm ink-brown image panel (green overlay retired per revisions) */}
           <div className="relative min-h-[480px] overflow-hidden bg-brand-deep p-10 text-white md:p-14">
             <div aria-hidden className="absolute inset-0">
-              <img src="/hero-3.jpg" alt="" className="h-full w-full object-cover" />
+              <img src="/hero-3.avif" alt="" className="h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-br from-brand-deep/95 via-brand-deep/88 to-brand/80" />
             </div>
 

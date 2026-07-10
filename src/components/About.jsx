@@ -26,12 +26,12 @@ const values = [
 ];
 
 const team = [
-  { name: "Camron Love", credentials: "MSN, RN, CCRN", image: "/team-camron.jpg" },
-  { name: "Taylor Mortis", credentials: "BSN, RN", image: "/team-taylor.jpg" },
-  { name: "Tori Cathcart", credentials: "BSN, RN", image: "/team-tori.jpg" },
-  { name: "Kathy Pak", credentials: "BSN, RN", image: "/team-kathy.jpg" },
-  { name: "Laura Le", credentials: "MSN, RN, CEN", image: "/team-laura.jpg" },
-  { name: "Joy-Li Van Pala", credentials: "BSN, RN", image: "/team-joy.jpg" },
+  { name: "Camron Love", credentials: "MSN, RN, CCRN", image: "/team-camron.avif" },
+  { name: "Taylor Mortis", credentials: "BSN, RN", image: "/team-taylor.avif" },
+  { name: "Tori Cathcart", credentials: "BSN, RN", image: "/team-tori.avif" },
+  { name: "Kathy Pak", credentials: "BSN, RN", image: "/team-kathy.avif" },
+  { name: "Laura Le", credentials: "MSN, RN, CEN", image: "/team-laura.avif" },
+  { name: "Joy-Li Van Pala", credentials: "BSN, RN", image: "/team-joy.avif" },
 ];
 
 export default function About() {
@@ -108,7 +108,7 @@ export default function About() {
           <FadeIn direction="left">
             <div className="group relative aspect-[3/4] overflow-hidden rounded-2xl">
               <img
-                src="/dr-scott.jpg"
+                src="/dr-scott.avif"
                 alt="Dr. Courtney S. Scott, Medical Director"
                 className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
@@ -123,19 +123,8 @@ export default function About() {
               <h2 className="mb-6 font-serif text-4xl font-medium leading-tight text-ink md:text-5xl">
                 Dr. Courtney S. Scott
               </h2>
-              <p className="mb-5 text-[15px] leading-relaxed text-espresso md:text-base">
-                Dr. Scott leads MotionRx with a practice focused on prevention,
-                precision diagnostics, and longevity medicine.
-              </p>
-              <p className="text-[15px] leading-relaxed text-espresso md:text-base">
-                His approach pairs advanced diagnostics with regenerative and
-                performance therapies, building each plan around measurable,
-                long term health.
-              </p>
-
-              {/* Full bio (per client revisions, July 2026) */}
-              <div className="mt-9 space-y-5 border-t border-ink/10 pt-9">
-                <p className="text-[15px] leading-relaxed text-espresso">
+              <div className="space-y-5">
+                <p className="text-[15px] leading-relaxed text-espresso md:text-base">
                   Dr. Courtney S. Scott is a dedicated physician with a focus
                   on wellness, biohacking, anti aging, and longevity
                   treatments. Dr. Scott earned his medical degree from the
@@ -144,7 +133,7 @@ export default function About() {
                   honed his expertise in emergency and internal medicine,
                   particularly in the field of holistic health approaches.
                 </p>
-                <p className="text-[15px] leading-relaxed text-espresso">
+                <p className="text-[15px] leading-relaxed text-espresso md:text-base">
                   Recognizing the importance of holistic health in anti aging
                   and longevity, Dr. Scott is committed to providing
                   comprehensive care that encompasses prevention, evaluation,
@@ -155,7 +144,7 @@ export default function About() {
                   and actively contributing to the development of innovative
                   treatment strategies.
                 </p>
-                <p className="text-[15px] leading-relaxed text-espresso">
+                <p className="text-[15px] leading-relaxed text-espresso md:text-base">
                   Drawing from over a decade of direct experience in holistic
                   health, Dr. Scott delivers compassionate care to patients
                   seeking to improve their overall well being. He believes in
@@ -163,7 +152,7 @@ export default function About() {
                   whole health through a combination of evidence based
                   treatments and holistic approaches.
                 </p>
-                <p className="text-[15px] leading-relaxed text-espresso">
+                <p className="text-[15px] leading-relaxed text-espresso md:text-base">
                   Passionate about education and community outreach, Dr. Scott
                   is on a mission to empower individuals and communities with
                   the knowledge and tools needed to achieve optimal wellness.

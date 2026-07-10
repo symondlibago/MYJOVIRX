@@ -24,12 +24,12 @@ export default function OurTeam() {
   ];
 
   const team = [
-    { name: "Camron Love", credentials: "MSN, RN, CCRN", image: "/team-camron.jpg" },
-    { name: "Taylor Mortis", credentials: "BSN, RN", image: "/team-taylor.jpg" },
-    { name: "Tori Cathcart", credentials: "BSN, RN", image: "/team-tori.jpg" },
-    { name: "Kathy Pak", credentials: "BSN, RN", image: "/team-kathy.jpg" },
-    { name: "Laura Le", credentials: "MSN, RN, CEN", image: "/team-laura.jpg" },
-    { name: "Joy-Li Van Pala", credentials: "BSN, RN", image: "/team-joy.jpg" }
+    { name: "Camron Love", credentials: "MSN, RN, CCRN", image: "/team-camron.avif" },
+    { name: "Taylor Mortis", credentials: "BSN, RN", image: "/team-taylor.avif" },
+    { name: "Tori Cathcart", credentials: "BSN, RN", image: "/team-tori.avif" },
+    { name: "Kathy Pak", credentials: "BSN, RN", image: "/team-kathy.avif" },
+    { name: "Laura Le", credentials: "MSN, RN, CEN", image: "/team-laura.avif" },
+    { name: "Joy-Li Van Pala", credentials: "BSN, RN", image: "/team-joy.avif" }
   ];
 
   return (
@@ -45,7 +45,7 @@ export default function OurTeam() {
           <FadeIn direction="left">
             <div className="relative aspect-3/4 overflow-hidden group">
               <img
-                src="/dr-scott.jpg"
+                src="/dr-scott.avif"
                 alt="Dr. Courtney S. Scott, Medical Director"
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />

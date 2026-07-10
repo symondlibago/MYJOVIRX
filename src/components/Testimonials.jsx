@@ -1,24 +1,12 @@
 import React from "react";
-
-/**
- * Image-based testimonials for the Home page — a large, continuously gliding
- * marquee of patient photos. No copy, pure imagery.
- *
- * Smoothness: a single GPU-accelerated `translateX` over a duplicated track
- * (linear timing = constant speed, seamless loop). Pauses on hover.
- *
- * NOTE: these reuse existing photos as PLACEHOLDERS — swap in real patient /
- * outcome photos in PEOPLE below.
- */
-
 const PEOPLE = [
-  "/team-laura.jpg",
-  "/team-camron.jpg",
-  "/team-tori.jpg",
-  "/team-kathy.jpg",
-  "/team-taylor.jpg",
-  "/team-joy.jpg",
-  "/dr-scott.jpg",
+  "/team-laura.avif",
+  "/team-camron.avif",
+  "/team-tori.avif",
+  "/team-kathy.avif",
+  "/team-taylor.avif",
+  "/team-joy.avif",
+  "/dr-scott.avif",
 ];
 
 export default function Testimonials() {

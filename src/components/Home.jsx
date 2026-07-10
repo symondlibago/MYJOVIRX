@@ -58,21 +58,21 @@ const oasisFeatures = [
 
 const menuCategories = [
   {
-    image: "/iv-stand.jpg",
+    image: "/iv-stand.avif",
     title: "IV Drips",
     desc: "Hydration, recovery, immunity, and radiance, delivered for full body support from the inside out.",
     linkLabel: "Explore Drips",
     to: "/services/iv-nutrient-therapy",
   },
   {
-    image: "/injection-green.jpg",
+    image: "/injection-green.avif",
     title: "Injections & Shots",
     desc: "Fast, targeted vitamin and amino acid boosts for energy, metabolism, and everyday balance.",
     linkLabel: "Explore Shots",
     to: "/services",
   },
   {
-    image: "/vials-marble.jpg",
+    image: "/vials-marble.avif",
     title: "Peptides & NAD+",
     desc: "Advanced support for recovery, clarity, performance, and healthy aging.",
     linkLabel: "Explore Therapies",
@@ -144,25 +144,25 @@ const pressQuotes = [
 
 const guestStories = [
   {
-    image: "/portrait-white-dress.jpg",
+    image: "/portrait-white-dress.avif",
     quote: "Clearer, lighter, and genuinely rested",
     name: "Maya R.",
     treatment: "Immunity Drip",
   },
   {
-    image: "/portrait-blue-tee.jpg",
+    image: "/portrait-blue-tee.avif",
     quote: "Medical, without ever feeling clinical",
     name: "David L.",
     treatment: "NAD+ Infusion",
   },
   {
-    image: "/portrait-cap.jpg",
+    image: "/portrait-cap.avif",
     quote: "Back to training the next morning",
     name: "Chris B.",
     treatment: "Performance Drip",
   },
   {
-    image: "/portrait-book.jpg",
+    image: "/portrait-book.avif",
     quote: "The easiest hour of my week",
     name: "Marcus W.",
     treatment: "Recovery Drip",
@@ -259,7 +259,7 @@ export default function Home() {
         >
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/hero-lounge.jpg')" }}
+            style={{ backgroundImage: "url('/hero-lounge.avif')" }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/30 to-ink/25" />
         </motion.div>
@@ -311,8 +311,47 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ───────── 2. A HOLISTIC OASIS ───────── */}
+      {/* ───────── 2. FEATURED SERVICES (full list — moved directly below the hero per client request, Jul 2026) ───────── */}
       <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
+        <div className="mx-auto max-w-6xl">
+          <FadeIn>
+            <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-gold">
+              What We Offer
+            </p>
+            <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
+              Featured Services
+            </h2>
+            <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-espresso">
+              A full spectrum of physician guided care, from a single drip to
+              ongoing optimization.
+            </p>
+          </FadeIn>
+
+          <div className="mt-14 grid gap-x-16 md:grid-cols-2">
+            {SERVICES.map((s, i) => (
+              <FadeIn key={s.slug}>
+                <Link
+                  to={`/services/${s.slug}`}
+                  className="group flex items-baseline gap-6 border-b border-ink/10 py-5"
+                >
+                  <span className="text-[11px] tabular-nums tracking-[0.2em] text-gold">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="flex flex-1 items-center justify-between gap-4">
+                    <span className="font-serif text-lg text-ink transition-colors group-hover:text-brand md:text-xl">
+                      {s.name}
+                    </span>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-ink/30 transition-all group-hover:translate-x-1 group-hover:text-brand" />
+                  </span>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── 3. A HOLISTIC OASIS (no top padding — Featured Services above provides the gap) ───────── */}
+      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
             <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
@@ -350,7 +389,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 3. THE MENU (no top padding — the oasis section above provides the gap) ───────── */}
+      {/* ───────── 4. THE MENU (no top padding — the oasis section above provides the gap) ───────── */}
       <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
@@ -414,50 +453,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 4. FEATURED SERVICES (full list — kept directly under the treatment cards per revisions) ───────── */}
-      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
-        <div className="mx-auto max-w-6xl">
-          <FadeIn>
-            <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-gold">
-              What We Offer
-            </p>
-            <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
-              Featured Services
-            </h2>
-            <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-espresso">
-              A full spectrum of physician guided care, from a single drip to
-              ongoing optimization.
-            </p>
-          </FadeIn>
-
-          <div className="mt-14 grid gap-x-16 md:grid-cols-2">
-            {SERVICES.map((s, i) => (
-              <FadeIn key={s.slug}>
-                <Link
-                  to={`/services/${s.slug}`}
-                  className="group flex items-baseline gap-6 border-b border-ink/10 py-5"
-                >
-                  <span className="text-[11px] tabular-nums tracking-[0.2em] text-gold">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="flex flex-1 items-center justify-between gap-4">
-                    <span className="font-serif text-lg text-ink transition-colors group-hover:text-brand md:text-xl">
-                      {s.name}
-                    </span>
-                    <ArrowRight className="h-4 w-4 shrink-0 text-ink/30 transition-all group-hover:translate-x-1 group-hover:text-brand" />
-                  </span>
-                </Link>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ───────── 5. THE EXPERIENCE (full-bleed video, clean visual only) ───────── */}
       <section className="relative h-[70svh] min-h-[440px] overflow-hidden md:h-[85svh]">
         <video
           src="/experience.mp4"
-          poster="/lounge-wide.jpg"
+          poster="/lounge-wide.avif"
           autoPlay
           muted
           loop
@@ -502,7 +502,7 @@ export default function Home() {
         <div className="grid lg:grid-cols-2">
           <div className="relative min-h-[320px] overflow-hidden lg:min-h-full">
             <img
-              src="/ritual-lounge.jpg"
+              src="/ritual-lounge.avif"
               alt="The MotionRx lounge"
               className="absolute inset-0 h-full w-full object-cover"
             />
@@ -545,7 +545,7 @@ export default function Home() {
           <FadeIn direction="left">
             <div className="aspect-[4/5] overflow-hidden bg-mist">
               <img
-                src="/dr-scott.jpg"
+                src="/dr-scott.avif"
                 alt="Dr. Courtney S. Scott, Medical Director"
                 className="h-full w-full object-cover"
               />

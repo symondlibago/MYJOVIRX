@@ -7,12 +7,12 @@ import { BOOKING_URL, handleBookingClick } from "@/config";
 const UPCOMING = [
   {
     name: "Stem Cell Therapy",
-    image: "/treatment-5.jpg",
+    image: "/treatment-5.avif",
     desc: "Regenerative therapy focused on orthopedic health, tissue repair, recovery, and healthy aging.",
   },
   {
     name: "EBO2 Therapy",
-    image: "/treatment-1.jpg",
+    image: "/treatment-1.avif",
     desc: "Advanced blood filtration and oxygenation therapy designed to support circulation, detoxification, immune health, cellular wellness, and recovery.",
   },
 ];
