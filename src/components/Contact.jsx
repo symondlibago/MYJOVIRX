@@ -12,7 +12,7 @@ import {
 import Seo from "./Seo";
 
 const DETAILS = [
-  { icon: MapPin, label: "Visit", lines: ["Costa Mesa, Orange County, CA", "By appointment"] },
+  { icon: MapPin, label: "Visit", lines: ["Costa Mesa, CA", "By appointment"] },
   { icon: Phone, label: "Call or Text", lines: ["(949) 281-1440"] },
   { icon: Mail, label: "Email", lines: ["hello@motionrx.co"] },
   { icon: Clock, label: "Hours", lines: ["Mon – Fri · 9am – 6pm  |  Sat · by request"] },
@@ -113,7 +113,7 @@ export default function Contact() {
   return (
     <>
       <Seo
-        title="Contact Us | IV Therapy in Costa Mesa, Orange County"
+        title="Contact Us | IV Therapy in Costa Mesa, CA"
         description="Contact MotionRX at (949) 281-1440 or hello@motionrx.co. Visit us at 250 Fischer Ave, Costa Mesa, CA 92626, or book a telehealth consultation across California."
         path="/contact"
       />
@@ -144,7 +144,7 @@ export default function Contact() {
                 </h1>
                 <p className="max-w-md text-sm leading-relaxed text-white/70 md:text-[15px]">
                   Longevity, hormone, peptide, and performance medicine, in our
-                  Costa Mesa clinic or by telehealth across Orange County. Tell us
+                  Costa Mesa clinic or by telehealth. Tell us
                   where you'd like to begin.
                 </p>
               </div>

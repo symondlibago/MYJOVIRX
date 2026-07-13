@@ -10,6 +10,12 @@ import {
   Smile,
   Leaf,
   CalendarCheck,
+  Droplet,
+  Zap,
+  Brain,
+  Moon,
+  Shield,
+  Flame,
 } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
 import IntroSplash from "./IntroSplash";
@@ -59,52 +65,34 @@ const oasisFeatures = [
   },
 ];
 
-const menuCategories = [
-  {
-    image: "/iv-stand.avif",
-    title: "IV Drips",
-    desc: "Hydration, recovery, immunity, and radiance, delivered for full body support from the inside out.",
-    linkLabel: "Explore Drips",
-    to: "/services/iv-nutrient-therapy",
-  },
-  {
-    image: "/injection-green.avif",
-    title: "Injections & Shots",
-    desc: "Fast, targeted vitamin and amino acid boosts for energy, metabolism, and everyday balance.",
-    linkLabel: "Explore Shots",
-    to: "/services",
-  },
-  {
-    image: "/vials-marble.avif",
-    title: "Peptides & NAD+",
-    desc: "Advanced support for recovery, clarity, performance, and healthy aging.",
-    linkLabel: "Explore Therapies",
-    to: "/services/peptide-therapy",
-  },
-];
-
 const benefits = [
   {
+    icon: Droplet,
     title: "Hydration",
     desc: "Replenish vital fluids and support hydration from the inside out.",
   },
   {
+    icon: Zap,
     title: "Energy & Endurance",
     desc: "Support energy levels and fuel an active lifestyle.",
   },
   {
+    icon: Brain,
     title: "Mental Clarity",
     desc: "Support focus, clarity, and daily cognitive performance.",
   },
   {
+    icon: Moon,
     title: "Recovery",
     desc: "Support faster recovery and improved physical performance.",
   },
   {
+    icon: Shield,
     title: "Immunity",
     desc: "Support vitamin balance and overall wellness.",
   },
   {
+    icon: Flame,
     title: "Metabolism",
     desc: "Support your body's natural balance and healthy weight.",
   },
@@ -176,12 +164,14 @@ const pressCards = [
   {
     source: "Irvine Weekly",
     logo: "/irvine.png",
+    url: "#", // TODO: replace with the real press-article URL
     quote:
       "Reframes the drip bar as something quieter and more considered — you leave genuinely restored.",
   },
   {
     source: "Locale OC",
     logo: "/calipost.png",
+    url: "#", // TODO: replace with the real press-article URL
     quote:
       "Costa Mesa' most refined take on IV wellness — minimal, medical, and unmistakably calm.",
   },
@@ -210,7 +200,7 @@ const faqs = [
   },
   {
     q: "Where are you located and is there parking?",
-    a: "Costa Mesa, with free on-site parking, serving all of Orange County. Telehealth is available statewide.",
+    a: "Costa Mesa, with free on-site parking. Telehealth is available statewide.",
   },
 ];
 
@@ -223,7 +213,6 @@ const faqJsonLd = {
     acceptedAnswer: { "@type": "Answer", text: f.a },
   })),
 };
-
 // One patient story card — shared by the mobile carousel and the sm+ grid so
 // the two layouts can't drift apart.
 function StoryCard({ story }) {
@@ -234,6 +223,8 @@ function StoryCard({ story }) {
           src={story.image}
           alt={`${story.name}, ${story.treatment}`}
           className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+          loading="lazy"
+          decoding="async"
         />
       </div>
       <div className="absolute inset-0 bg-linear-to-t from-ink/80 via-ink/20 to-transparent" />
@@ -408,7 +399,8 @@ export default function Home() {
             </p>
           </FadeIn>
 
-          <div className="mt-14 grid gap-x-16 md:grid-cols-2">
+          {/* Mobile: the original numbered list (untouched) */}
+          <div className="mt-14 grid gap-x-16 md:hidden">
             {SERVICES.map((s, i) => (
               <FadeIn key={s.slug}>
                 <Link
@@ -419,7 +411,7 @@ export default function Home() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="flex flex-1 items-center justify-between gap-4">
-                    <span className="font-serif text-lg text-ink transition-colors group-hover:text-brand md:text-xl">
+                    <span className="font-serif text-lg text-ink transition-colors group-hover:text-brand">
                       {s.name}
                     </span>
                     <ArrowRight className="h-4 w-4 shrink-0 text-ink/30 transition-all group-hover:translate-x-1 group-hover:text-brand" />
@@ -428,12 +420,61 @@ export default function Home() {
               </FadeIn>
             ))}
           </div>
+
+          {/* md and up: photo cards */}
+          <div className="mt-14 hidden gap-6 md:grid md:grid-cols-2 lg:grid-cols-3">
+            {SERVICES.map((s) => (
+              <FadeIn key={s.slug}>
+                <Link
+                  to={`/services/${s.slug}`}
+                  className="group relative block overflow-hidden bg-mist"
+                >
+                  <div className="aspect-square">
+                    <img
+                      src={s.image}
+                      alt={s.name}
+                      className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-linear-to-t from-ink/85 via-ink/25 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
+                    <div>
+                      <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-gold">
+                        {s.category}
+                      </p>
+                      <h3 className="font-serif text-xl text-white lg:text-2xl">
+                        {s.name}
+                      </h3>
+                    </div>
+                    <ArrowRight className="mb-1 h-5 w-5 shrink-0 text-white/70 transition-all group-hover:translate-x-1 group-hover:text-white" />
+                  </div>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ───────── 3. A HOLISTIC OASIS (no top padding — Featured Services above provides the gap) ─────────
+      {/* ───────── 3. THE EXPERIENCE (full-bleed video — moved directly below Featured Services per client request) ───────── */}
+      <section className="relative h-[70svh] min-h-[440px] overflow-hidden md:h-[85svh]">
+        <video
+          src="/experience.mp4"
+          poster="/lounge-wide.avif"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="The MotionRx experience"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </section>
+
+      {/* ───────── 4. A HOLISTIC OASIS (follows the experience video) ─────────
           Hidden on mobile per client request; shown at md+ (tablet/desktop). */}
-      <section className="hidden bg-ivory px-6 pb-24 md:block md:pb-32 lg:px-12">
+      <section className="hidden bg-ivory px-6 py-24 md:block md:py-32 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
             <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
@@ -471,88 +512,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 4. THE MENU (no top padding — the oasis section above provides the gap) ───────── */}
-      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
-        <div className="mx-auto max-w-6xl">
-          <FadeIn>
-            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-              <div>
-                <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
-                  The Menu
-                </p>
-                <h2 className="max-w-xl font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
-                  Over ten treatments.
-                  <br />
-                  One personalized wellness ritual
-                </h2>
-              </div>
-              <p className="text-[11px] uppercase tracking-[0.25em] text-espresso/70 md:pb-2 md:text-right">
-                All treatments overseen
-                <br className="hidden md:block" /> by our medical director
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="mt-14 grid gap-10 md:grid-cols-3">
-            {menuCategories.map((c) => (
-              <FadeIn key={c.title}>
-                {/* Mobile: thumbnail beside the text. md and up: the original stacked card. */}
-                <Link to={c.to} className="group flex items-start gap-5 md:block">
-                  <div className="aspect-[4/5] w-28 shrink-0 overflow-hidden bg-mist sm:w-32 md:w-full">
-                    {c.video ? (
-                      <video
-                        src={c.video}
-                        poster={c.image}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
-                        aria-label={c.title}
-                        className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                      />
-                    ) : (
-                      <img
-                        src={c.image}
-                        alt={c.title}
-                        className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                      />
-                    )}
-                  </div>
-                  <div className="min-w-0 flex-1 md:mt-6">
-                    <h3 className="font-serif text-2xl text-ink">
-                      {c.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-espresso">
-                      {c.desc}
-                    </p>
-                    <span className="mt-4 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors group-hover:border-brand group-hover:text-brand">
-                      {c.linkLabel}
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                    </span>
-                  </div>
-                </Link>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ───────── 5. THE EXPERIENCE (full-bleed video, clean visual only) ───────── */}
-      <section className="relative h-[70svh] min-h-[440px] overflow-hidden md:h-[85svh]">
-        <video
-          src="/experience.mp4"
-          poster="/lounge-wide.avif"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-label="The MotionRx experience"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      </section>
-
       {/* ───────── 6. BENEFITS (the only white band, per PDF) ─────────
           Hidden on mobile per client request; shown at md+ (tablet/desktop). */}
       <section className="hidden bg-cream px-6 py-24 md:block md:py-32 lg:px-12">
@@ -570,6 +529,7 @@ export default function Home() {
             {benefits.map((b) => (
               <FadeIn key={b.title}>
                 <div className="border-t border-ink/10 pt-6">
+                  <b.icon className="mb-4 h-7 w-7 text-gold" strokeWidth={1.6} aria-hidden />
                   <h3 className="mb-2 font-serif text-lg font-medium text-ink">
                     {b.title}
                   </h3>
@@ -586,12 +546,14 @@ export default function Home() {
       {/* ───────── 7. THE CONSIDERED RITUAL ───────── */}
       <section className="bg-ivory">
         <div className="grid lg:grid-cols-2">
-          {/* mt gives mobile breathing room from the video above (Benefits is hidden there); md+ has Benefits in between. */}
-          <div className="relative mt-12 min-h-[320px] overflow-hidden md:mt-0 lg:min-h-full">
+          {/* Image hidden on mobile per client request; shown at md+ (tablet/desktop). */}
+          <div className="relative hidden min-h-80 overflow-hidden md:block lg:min-h-full">
             <img
               src="/ritual-lounge.avif"
               alt="The MotionRx lounge"
               className="absolute inset-0 h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="px-6 py-20 md:px-14 md:py-28 lg:px-16">
@@ -635,6 +597,8 @@ export default function Home() {
                 src="/dr-scott.avif"
                 alt="Dr. Courtney S. Scott, Medical Director"
                 className="h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </FadeIn>
@@ -644,8 +608,6 @@ export default function Home() {
                 Our Medical Director
               </p>
               <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
-                Care led by
-                <br />
                 Dr. Courtney S. Scott
               </h2>
               <p className="mt-7 max-w-md text-[15px] leading-relaxed text-espresso md:text-base">
@@ -723,22 +685,27 @@ export default function Home() {
           </FadeIn>
 
           <FadeIn>
-            <figure className="mt-12 border-t border-ink/10 pt-10">
+            <figure className="mt-8 border-t border-ink/10 pt-8">
               <blockquote className="max-w-3xl font-serif text-2xl leading-snug text-ink md:text-4xl">
                 &ldquo;A calm, clinical sanctuary where evidence-based care
                 meets the simple art of feeling well.&rdquo;
               </blockquote>
-              <figcaption className="mt-6 text-[10px] uppercase tracking-[0.35em] text-espresso/70">
+              <figcaption className="mt-5 text-[10px] uppercase tracking-[0.35em] text-espresso/70">
                 The Cali Post
               </figcaption>
-              <span className="mt-5 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70">
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-4 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors hover:border-brand hover:text-brand"
+              >
                 Read the Feature
-                <ArrowRight className="h-3.5 w-3.5" />
-              </span>
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+              </a>
             </figure>
           </FadeIn>
 
-          <div className="mt-14 grid gap-10 border-t border-ink/10 pt-10 md:grid-cols-2">
+          <div className="mt-8 grid gap-x-10 gap-y-8 border-t border-ink/10 pt-8 md:grid-cols-2">
             {pressCards.map((p) => (
               <FadeIn key={p.source}>
                 <div>
@@ -747,17 +714,23 @@ export default function Home() {
                     alt={`${p.source} logo`}
                     className="h-30 w-auto object-contain"
                     loading="lazy"
+                    decoding="async"
                   />
-                  <h3 className="mt-3 mb-3 font-serif text-xl text-ink">
+                  <h3 className="mt-3 mb-2 font-serif text-xl text-ink">
                     {p.source}
                   </h3>
                   <p className="text-sm leading-relaxed text-espresso">
                     &ldquo;{p.quote}&rdquo;
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70">
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group mt-4 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors hover:border-brand hover:text-brand"
+                  >
                     Read More
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </span>
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                  </a>
                 </div>
               </FadeIn>
             ))}

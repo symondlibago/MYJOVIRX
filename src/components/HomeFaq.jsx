@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     q: "Where are you located and is there parking?",
-    a: "Costa Mesa, with free on-site parking, serving all of Orange County. Telehealth is available statewide.",
+    a: "Costa Mesa, with free on-site parking. Telehealth is available statewide.",
   },
 ];
 

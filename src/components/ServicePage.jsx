@@ -71,28 +71,9 @@ export default function ServicePage() {
         </div>
       </section>
 
-      {/* ───────── 2. SERIF STATEMENT ───────── */}
-      <section className="bg-linen px-6 py-20 md:px-14 md:py-28 lg:px-16">
-        <div className="mx-auto max-w-5xl">
-          <FadeIn>
-            <h2 className="max-w-3xl font-serif text-2xl font-medium leading-snug text-ink md:text-4xl">
-              {service.statement}
-            </h2>
-          </FadeIn>
-          <div className="mt-10 grid gap-8 md:grid-cols-2 md:gap-14">
-            {service.overview.map((p, i) => (
-              <FadeIn key={i}>
-                <p className="text-sm leading-relaxed text-espresso md:text-[15px]">
-                  {p}
-                </p>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ───────── 3. IMAGE + HOW IT WORKS SPECS ───────── */}
-      <section className="grid bg-ivory lg:grid-cols-[1.15fr_1fr]">
+      {/* ───────── 2. IMAGE + HOW IT WORKS SPECS ─────────
+          50/50 split so its divider lines up vertically with the hero's. */}
+      <section className="grid bg-ivory lg:grid-cols-2">
         <div className="relative min-h-[320px] overflow-hidden lg:min-h-full">
           <img
             src={service.image2 || service.image}
