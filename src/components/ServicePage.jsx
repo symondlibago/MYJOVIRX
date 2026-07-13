@@ -72,16 +72,14 @@ export default function ServicePage() {
       </section>
 
       {/* ───────── 2. IMAGE + HOW IT WORKS SPECS ─────────
-          50/50 split so its divider lines up vertically with the hero's. */}
+          50/50 split so its divider lines up vertically with the hero's.
+          On mobile the text comes first (right after the hero photo); the
+          photo drops below it. Desktop keeps image-left / text-right. */}
       <section className="grid bg-ivory lg:grid-cols-2">
-        <div className="relative min-h-[320px] overflow-hidden lg:min-h-full">
-          <img
-            src={service.image2 || service.image}
-            alt={`${service.name} at MotionRx`}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        </div>
-        <div className="px-6 py-16 md:px-14 md:py-24 lg:px-16">
+        {/* Text is FIRST in the DOM, so on mobile it stacks right after the hero
+            photo. On desktop it's pinned to the right column via explicit grid
+            placement (not `order`, which wasn't reliably reordering). */}
+        <div className="px-6 py-16 md:px-14 md:py-24 lg:col-start-2 lg:row-start-1 lg:px-16">
           <FadeIn>
             <p className="mb-5 text-[10px] uppercase tracking-[0.35em] text-espresso/70">
               How it works
@@ -102,6 +100,14 @@ export default function ServicePage() {
               </FadeIn>
             ))}
           </div>
+        </div>
+        {/* Image SECOND → below the text on mobile; left column on desktop. */}
+        <div className="relative min-h-[320px] overflow-hidden lg:col-start-1 lg:row-start-1 lg:min-h-full">
+          <img
+            src={service.image2 || service.image}
+            alt={`${service.name} at MotionRx`}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
         </div>
       </section>
 
