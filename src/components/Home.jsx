@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import useEmblaCarousel from "embla-carousel-react";
 import {
   ArrowRight,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   HeartPulse,
@@ -164,14 +165,14 @@ const pressCards = [
   {
     source: "Irvine Weekly",
     logo: "/irvine.png",
-    url: "#", // TODO: replace with the real press-article URL
+    url: "https://irvineweekly.com/",
     quote:
       "Reframes the drip bar as something quieter and more considered — you leave genuinely restored.",
   },
   {
     source: "Locale OC",
     logo: "/calipost.png",
-    url: "#", // TODO: replace with the real press-article URL
+    url: "https://localemagazine.com/orange-county/",
     quote:
       "Costa Mesa' most refined take on IV wellness — minimal, medical, and unmistakably calm.",
   },
@@ -311,6 +312,9 @@ export default function Home() {
     return () => clearInterval(id);
   }, []);
 
+  // Mobile Featured Services: show 6 by default, "View More" reveals the rest.
+  const [showAllServices, setShowAllServices] = useState(false);
+
   return (
     <div className="min-h-screen bg-ivory text-ink">
       <IntroSplash />
@@ -399,9 +403,9 @@ export default function Home() {
             </p>
           </FadeIn>
 
-          {/* Mobile: the original numbered list (untouched) */}
+          {/* Mobile: numbered list — first 6 services, "View More" expands the rest */}
           <div className="mt-14 grid gap-x-16 md:hidden">
-            {SERVICES.map((s, i) => (
+            {(showAllServices ? SERVICES : SERVICES.slice(0, 6)).map((s, i) => (
               <FadeIn key={s.slug}>
                 <Link
                   to={`/services/${s.slug}`}
@@ -419,6 +423,16 @@ export default function Home() {
                 </Link>
               </FadeIn>
             ))}
+            <button
+              type="button"
+              onClick={() => setShowAllServices((v) => !v)}
+              className="group mx-auto mt-8 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors hover:border-brand hover:text-brand"
+            >
+              {showAllServices ? "View Less" : "View More"}
+              <ChevronDown
+                className={`h-3.5 w-3.5 transition-transform ${showAllServices ? "rotate-180" : ""}`}
+              />
+            </button>
           </div>
 
           {/* md and up: photo cards */}
@@ -694,7 +708,7 @@ export default function Home() {
                 The Cali Post
               </figcaption>
               <a
-                href="#"
+                href="https://calipost.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group mt-4 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors hover:border-brand hover:text-brand"
@@ -705,18 +719,18 @@ export default function Home() {
             </figure>
           </FadeIn>
 
-          <div className="mt-8 grid gap-x-10 gap-y-8 border-t border-ink/10 pt-8 md:grid-cols-2">
+          <div className="mt-8 grid gap-x-10 gap-y-6 border-t border-ink/10 pt-6 md:pt-8 md:grid-cols-2">
             {pressCards.map((p) => (
               <FadeIn key={p.source}>
                 <div>
                   <img
                     src={p.logo}
                     alt={`${p.source} logo`}
-                    className="h-30 w-auto object-contain"
+                    className="h-12 w-auto object-contain md:h-30"
                     loading="lazy"
                     decoding="async"
                   />
-                  <h3 className="mt-3 mb-2 font-serif text-xl text-ink">
+                  <h3 className="mt-2 mb-1 font-serif text-xl text-ink md:mt-3 md:mb-2">
                     {p.source}
                   </h3>
                   <p className="text-sm leading-relaxed text-espresso">
@@ -726,7 +740,7 @@ export default function Home() {
                     href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group mt-4 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors hover:border-brand hover:text-brand"
+                    className="group mt-3 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors hover:border-brand hover:text-brand"
                   >
                     Read More
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -791,8 +805,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 13. BEGIN (CTA, bottom padding only) ───────── */}
-      <section className="bg-ivory px-6 pb-28 text-center md:pb-36">
+      {/* ───────── 13. BEGIN (CTA, bottom padding only) ─────────
+          Hidden on mobile per client request (Jul 2026); shown at md+. */}
+      <section className="hidden bg-ivory px-6 text-center md:block md:pb-36">
         <div className="mx-auto max-w-2xl">
           <FadeIn>
             <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
