@@ -88,7 +88,7 @@ const FONTS = [
   {
     id: "fraunces",
     name: "Fraunces + Figtree",
-    note: "Warm telehealth",
+    note: "Calm blue",
     head: '"Fraunces", Georgia, serif',
     body: '"Figtree", sans-serif',
   },

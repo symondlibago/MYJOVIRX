@@ -32,6 +32,32 @@ export default function PatientResults() {
         </div>
       </section>
 
+      {/* FEATURED TESTIMONIAL VIDEO */}
+      <section className="px-6 pb-12 lg:px-12">
+        <div className="mx-auto max-w-6xl">
+          <FadeIn>
+            <video
+              src="/patient-results-desktop.mp4"
+              poster="/patient-results-desktop-poster.avif"
+              controls
+              playsInline
+              preload="metadata"
+              aria-label="MotionRx patient testimonial"
+              className="hidden w-full overflow-hidden rounded-2xl bg-mist md:block"
+            />
+            <video
+              src="/patient-results-mobile.mp4"
+              poster="/patient-results-mobile-poster.avif"
+              controls
+              playsInline
+              preload="metadata"
+              aria-label="MotionRx patient testimonial"
+              className="mx-auto w-full max-w-105 overflow-hidden rounded-2xl bg-mist md:hidden"
+            />
+          </FadeIn>
+        </div>
+      </section>
+
       <Testimonials />
 
       <section className="px-6 pb-16 lg:px-12">

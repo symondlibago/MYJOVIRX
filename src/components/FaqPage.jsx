@@ -8,7 +8,7 @@ export default function FaqPage() {
     <div className="min-h-screen bg-ivory">
       <Seo
         title="FAQ | MotionRx"
-        description="Answers to common questions about MotionRx services, consultations, pricing, and telehealth."
+        description="Answers to common questions about MotionRx services, consultations, pricing, and treatments."
         path="/faq"
       />
       <div className="pt-24 md:pt-28">

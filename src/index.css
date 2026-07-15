@@ -164,7 +164,7 @@ html.lenis body {
   --font-head-weight: 700;
 }
 
-/* ───── Palette 2 · Cool Blue (telehealth) ───── */
+/* ───── Palette 2 · Cool Blue ───── */
 :root[data-palette="blue"] {
   --color-brand: #3858D6;
   --color-brand-deep: #1E2A4A;

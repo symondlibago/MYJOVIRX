@@ -35,7 +35,6 @@ function App() {
           <Route path="/privacy" element={<LegalPage slug="privacy" />} />
           <Route path="/hipaa" element={<LegalPage slug="hipaa" />} />
           <Route path="/terms" element={<LegalPage slug="terms" />} />
-          <Route path="/telehealth-consent" element={<LegalPage slug="telehealth-consent" />} />
           <Route path="/disclaimer" element={<LegalPage slug="disclaimer" />} />
           <Route path="*" element={<Home />} />
         </Routes>

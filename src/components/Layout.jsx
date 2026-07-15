@@ -31,7 +31,6 @@ export default function Layout({ children }) {
     { name: "Privacy Policy", path: "/privacy" },
     { name: "HIPAA Notice", path: "/hipaa" },
     { name: "Terms of Service", path: "/terms" },
-    { name: "Telehealth Consent", path: "/telehealth-consent" },
     { name: "Medical Disclaimer", path: "/disclaimer" },
   ];
 
@@ -220,9 +219,6 @@ export default function Layout({ children }) {
                 </li>
               </ul>
 
-              <p className="mt-6 text-[11px] leading-relaxed text-ivory/35">
-                Telehealth available to patients located in California.
-              </p>
             </div>
           </div>
         </div>

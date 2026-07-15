@@ -188,65 +188,6 @@ export const legalDocs = {
     ],
   },
 
-  "telehealth-consent": {
-    title: "Telehealth Informed Consent",
-    updated: UPDATED,
-    intro:
-      "This consent explains the telehealth services offered by MotionRX, including the benefits, risks, and your rights. Please read it before your virtual visit.",
-    sections: [
-      {
-        heading: "What Is Telehealth",
-        body: [
-          "Telehealth uses secure electronic communications, such as video and messaging, to deliver care when you and your provider are in different locations. It may include evaluation, consultation, lab review, and prescribing where clinically appropriate.",
-        ],
-      },
-      {
-        heading: "Benefits",
-        list: [
-          "Convenient access to care without travel.",
-          "Faster scheduling and follow-up.",
-          "Continued coordination of your wellness plan.",
-        ],
-      },
-      {
-        heading: "Risks & Limitations",
-        list: [
-          "Technology may fail or be interrupted during a visit.",
-          "In some cases, information may be insufficient for the provider to make a clinical decision, and an in-person visit may be required.",
-          "Despite reasonable safeguards, electronic communications carry some privacy and security risk.",
-        ],
-      },
-      {
-        heading: "Your Rights",
-        body: [
-          "Your participation in telehealth is voluntary. You may withhold or withdraw consent at any time without affecting your right to future care, and you may request an in-person visit instead.",
-        ],
-      },
-      {
-        heading: "Privacy & Recording",
-        body: [
-          "We use platforms intended to protect your information consistent with applicable law. Telehealth visits are not recorded without your consent.",
-        ],
-      },
-      {
-        heading: "Emergencies",
-        body: [
-          "Telehealth is not for emergencies. If you are experiencing a medical emergency, call 911 or go to the nearest emergency room.",
-        ],
-      },
-      {
-        heading: "Consent",
-        body: [
-          "By proceeding with a telehealth visit, you acknowledge that you have read and understood this information and consent to receive care via telehealth.",
-        ],
-      },
-      {
-        heading: "Contact",
-        body: ["Questions about telehealth? Email us at " + EMAIL + "."],
-      },
-    ],
-  },
-
   disclaimer: {
     title: "Medical Disclaimer",
     updated: UPDATED,

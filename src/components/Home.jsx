@@ -201,7 +201,7 @@ const faqs = [
   },
   {
     q: "Where are you located and is there parking?",
-    a: "Costa Mesa, with free on-site parking. Telehealth is available statewide.",
+    a: "Costa Mesa, with free on-site parking.",
   },
 ];
 
@@ -563,7 +563,7 @@ export default function Home() {
           {/* Image hidden on mobile per client request; shown at md+ (tablet/desktop). */}
           <div className="relative hidden min-h-80 overflow-hidden md:block lg:min-h-full">
             <img
-              src="/ritual-lounge.avif"
+              src="/considered-ritual.avif"
               alt="The MotionRx lounge"
               className="absolute inset-0 h-full w-full object-cover"
               loading="lazy"

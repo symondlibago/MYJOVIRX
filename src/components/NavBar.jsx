@@ -292,7 +292,7 @@ export default function NavBar() {
               </div>
 
               <div className="pb-4 text-xs text-espresso tracking-widest uppercase">
-                Costa Mesa, CA · Telehealth &amp; In-Clinic
+                Costa Mesa, CA · By Appointment
               </div>
             </div>
           </motion.div>
