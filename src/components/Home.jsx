@@ -218,8 +218,8 @@ const faqJsonLd = {
 // "View All Services" reveals, so the two can't drift apart.
 function ServiceCard({ service }) {
   return (
-    <Link to={`/services/${service.slug}`} className="group flex gap-5">
-      <div className="aspect-square w-24 shrink-0 self-start overflow-hidden bg-mist lg:w-28">
+    <Link to={`/services/${service.slug}`} className="group flex h-full gap-5">
+      <div className="aspect-square w-32 shrink-0 self-start overflow-hidden bg-mist xl:w-36">
         <img
           src={service.image}
           alt={service.name}
@@ -228,14 +228,17 @@ function ServiceCard({ service }) {
           decoding="async"
         />
       </div>
-      <div className="flex-1">
+      <div className="flex flex-1 flex-col">
         <h3 className="font-serif text-lg italic leading-snug text-ink transition-colors group-hover:text-brand lg:text-xl">
           {service.name}
         </h3>
         <p className="mt-2 text-[13px] leading-relaxed text-espresso">
           {service.promise}
         </p>
-        <span className="mt-3 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[10px] uppercase tracking-[0.25em] text-ink/70 transition-colors group-hover:border-brand group-hover:text-brand">
+        {/* mt-auto pins Explore to the bottom so it lines up across a row
+            however many lines the description runs; self-start keeps the
+            underline the width of the label, not the whole column. */}
+        <span className="mt-auto inline-flex self-start items-center gap-2 border-b border-ink/20 pb-1 pt-4 text-[10px] uppercase tracking-[0.25em] text-ink/70 transition-colors group-hover:border-brand group-hover:text-brand">
           Explore
           <ArrowRight className="h-3 w-3 shrink-0 transition-transform group-hover:translate-x-0.5" />
         </span>
@@ -437,7 +440,7 @@ export default function Home() {
 
           {/* Six by default; "View All Services" reveals the rest in place,
               staggered so they cascade rather than snapping in together. */}
-          <div className="mt-14 grid gap-x-12 gap-y-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-y-14">
+          <div className="mt-14 grid gap-x-12 gap-y-12 md:grid-cols-2 xl:grid-cols-3 xl:gap-y-14">
             {SERVICES.slice(0, 6).map((s) => (
               <FadeIn key={s.slug}>
                 <ServiceCard service={s} />
