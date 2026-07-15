@@ -66,9 +66,9 @@ const pressCards = [
       "Reframes the drip bar as something quieter and more considered — you leave genuinely restored.",
   },
   {
-    source: "Locale OC",
+    source: "The Cali Post",
     quote:
-      "Laguna Hills' most refined take on IV wellness — minimal, medical, and unmistakably calm.",
+      "A calm, clinical sanctuary where evidence-based care meets the simple art of feeling well.",
   },
 ];
 
@@ -271,22 +271,6 @@ export default function Services() {
             <h2 className="font-serif text-3xl font-medium leading-[1.15] text-ink md:text-5xl">
               Featured in
             </h2>
-          </FadeIn>
-
-          <FadeIn>
-            <figure className="mt-12 border-t border-ink/10 pt-10">
-              <blockquote className="max-w-3xl font-serif text-2xl leading-snug text-ink md:text-4xl">
-                &ldquo;A calm, clinical sanctuary where evidence-based care
-                meets the simple art of feeling well.&rdquo;
-              </blockquote>
-              <figcaption className="mt-6 text-[10px] uppercase tracking-[0.35em] text-espresso/70">
-                The Cali Post
-              </figcaption>
-              <span className="mt-5 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70">
-                Read the Feature
-                <ArrowRight className="h-3.5 w-3.5" />
-              </span>
-            </figure>
           </FadeIn>
 
           <div className="mt-14 grid gap-10 border-t border-ink/10 pt-10 md:grid-cols-2">

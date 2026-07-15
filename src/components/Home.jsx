@@ -170,11 +170,11 @@ const pressCards = [
       "Reframes the drip bar as something quieter and more considered — you leave genuinely restored.",
   },
   {
-    source: "Locale OC",
+    source: "The Cali Post",
     logo: "/calipost.png",
-    url: "https://localemagazine.com/orange-county/",
+    url: "https://calipost.com/",
     quote:
-      "Costa Mesa' most refined take on IV wellness — minimal, medical, and unmistakably calm.",
+      "A calm, clinical sanctuary where evidence-based care meets the simple art of feeling well.",
   },
 ];
 
@@ -698,27 +698,6 @@ export default function Home() {
             </h2>
           </FadeIn>
 
-          <FadeIn>
-            <figure className="mt-8 border-t border-ink/10 pt-8">
-              <blockquote className="max-w-3xl font-serif text-2xl leading-snug text-ink md:text-4xl">
-                &ldquo;A calm, clinical sanctuary where evidence-based care
-                meets the simple art of feeling well.&rdquo;
-              </blockquote>
-              <figcaption className="mt-5 text-[10px] uppercase tracking-[0.35em] text-espresso/70">
-                The Cali Post
-              </figcaption>
-              <a
-                href="https://calipost.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group mt-4 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors hover:border-brand hover:text-brand"
-              >
-                Read the Feature
-                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            </figure>
-          </FadeIn>
-
           <div className="mt-8 grid gap-x-10 gap-y-6 border-t border-ink/10 pt-6 md:pt-8 md:grid-cols-2">
             {pressCards.map((p) => (
               <FadeIn key={p.source}>
@@ -752,8 +731,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── 12. FREQUENTLY ASKED (bottom padding only) ───────── */}
-      <section className="bg-ivory px-6 pb-24 md:pb-32 lg:px-12">
+      {/* ───────── 12. FREQUENTLY ASKED (bottom gutter matches the side gutters) ───────── */}
+      <section className="bg-ivory px-6 pb-6 lg:px-12 lg:pb-12">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -802,33 +781,6 @@ export default function Home() {
               </Accordion>
             </FadeIn>
           </div>
-        </div>
-      </section>
-
-      {/* ───────── 13. BEGIN (CTA, bottom padding only) ─────────
-          Hidden on mobile per client request (Jul 2026); shown at md+. */}
-      <section className="hidden bg-ivory px-6 text-center md:block md:pb-36">
-        <div className="mx-auto max-w-2xl">
-          <FadeIn>
-            <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-gold">
-              Begin
-            </p>
-            <h2 className="font-serif text-3xl font-medium leading-[1.2] text-ink md:text-5xl">
-              Replenish your body.
-              <br />
-              Restore your balance
-            </h2>
-            <div className="mt-10">
-              <a
-                href={BOOKING_URL}
-                onClick={handleBookingClick}
-                className="group inline-flex items-center gap-3 rounded-full bg-ink px-10 py-4 text-[11px] uppercase tracking-[0.25em] text-ivory transition-colors hover:bg-ink-warm"
-              >
-                Schedule Today
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            </div>
-          </FadeIn>
         </div>
       </section>
     </div>
