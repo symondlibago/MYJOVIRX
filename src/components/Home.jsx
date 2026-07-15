@@ -214,6 +214,36 @@ const faqJsonLd = {
     acceptedAnswer: { "@type": "Answer", text: f.a },
   })),
 };
+// One featured service card — shared by the always-visible six and the cards
+// "View All Services" reveals, so the two can't drift apart.
+function ServiceCard({ service }) {
+  return (
+    <Link to={`/services/${service.slug}`} className="group flex gap-5">
+      <div className="aspect-square w-24 shrink-0 self-start overflow-hidden bg-mist lg:w-28">
+        <img
+          src={service.image}
+          alt={service.name}
+          className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div className="flex-1">
+        <h3 className="font-serif text-lg italic leading-snug text-ink transition-colors group-hover:text-brand lg:text-xl">
+          {service.name}
+        </h3>
+        <p className="mt-2 text-[13px] leading-relaxed text-espresso">
+          {service.promise}
+        </p>
+        <span className="mt-3 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[10px] uppercase tracking-[0.25em] text-ink/70 transition-colors group-hover:border-brand group-hover:text-brand">
+          Explore
+          <ArrowRight className="h-3 w-3 shrink-0 transition-transform group-hover:translate-x-0.5" />
+        </span>
+      </div>
+    </Link>
+  );
+}
+
 // One patient story card — shared by the mobile carousel and the sm+ grid so
 // the two layouts can't drift apart.
 function StoryCard({ story }) {
@@ -312,7 +342,7 @@ export default function Home() {
     return () => clearInterval(id);
   }, []);
 
-  // Mobile Featured Services: show 6 by default, "View More" reveals the rest.
+  // Featured Services: six by default, "View All Services" reveals the rest.
   const [showAllServices, setShowAllServices] = useState(false);
 
   return (
@@ -405,50 +435,44 @@ export default function Home() {
             </p>
           </FadeIn>
 
-          {/* Thumbnail + copy cards, one list for every breakpoint. Mobile shows
-              the first 6 and "View More" reveals the rest; md and up shows all. */}
+          {/* Six by default; "View All Services" reveals the rest in place,
+              staggered so they cascade rather than snapping in together. */}
           <div className="mt-14 grid gap-x-12 gap-y-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-y-14">
-            {SERVICES.map((s, i) => (
-              <FadeIn
-                key={s.slug}
-                className={!showAllServices && i >= 6 ? "hidden md:block" : ""}
-              >
-                <Link to={`/services/${s.slug}`} className="group flex gap-5">
-                  <div className="aspect-square w-24 shrink-0 self-start overflow-hidden bg-mist lg:w-28">
-                    <img
-                      src={s.image}
-                      alt={s.name}
-                      className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-serif text-lg italic leading-snug text-ink transition-colors group-hover:text-brand lg:text-xl">
-                      {s.name}
-                    </h3>
-                    <p className="mt-2 text-[13px] leading-relaxed text-espresso">
-                      {s.promise}
-                    </p>
-                    <span className="mt-3 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[10px] uppercase tracking-[0.25em] text-ink/70 transition-colors group-hover:border-brand group-hover:text-brand">
-                      Explore
-                      <ArrowRight className="h-3 w-3 shrink-0 transition-transform group-hover:translate-x-0.5" />
-                    </span>
-                  </div>
-                </Link>
+            {SERVICES.slice(0, 6).map((s) => (
+              <FadeIn key={s.slug}>
+                <ServiceCard service={s} />
               </FadeIn>
             ))}
+
+            <AnimatePresence initial={false}>
+              {showAllServices &&
+                SERVICES.slice(6).map((s, i) => (
+                  <motion.div
+                    key={s.slug}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 12 }}
+                    transition={{
+                      duration: 0.55,
+                      delay: i * 0.08,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                  >
+                    <ServiceCard service={s} />
+                  </motion.div>
+                ))}
+            </AnimatePresence>
           </div>
 
-          <div className="mt-10 flex justify-center md:hidden">
+          <div className="mt-14 flex justify-center">
             <button
               type="button"
               onClick={() => setShowAllServices((v) => !v)}
-              className="group inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors hover:border-brand hover:text-brand"
+              className="group inline-flex items-center gap-3 rounded-full border border-ink/25 px-9 py-4 text-[11px] uppercase tracking-[0.25em] text-ink transition-colors hover:border-ink hover:bg-ink hover:text-ivory"
             >
-              {showAllServices ? "View Less" : "View More"}
+              {showAllServices ? "View Less" : "View All Services"}
               <ChevronDown
-                className={`h-3.5 w-3.5 transition-transform ${showAllServices ? "rotate-180" : ""}`}
+                className={`h-4 w-4 transition-transform duration-300 ${showAllServices ? "rotate-180" : ""}`}
               />
             </button>
           </div>
