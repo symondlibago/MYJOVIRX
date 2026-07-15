@@ -388,8 +388,10 @@ export default function Home() {
       </section>
 
       {/* ───────── 2. FEATURED SERVICES (full list — moved directly below the hero per client request, Jul 2026) ───────── */}
+      {/* max-w-7xl (not the 6xl the sections below use) so the card copy has room
+          to sit beside the thumbnail — matches the hero's width directly above. */}
       <section className="bg-ivory px-6 py-24 md:py-32 lg:px-12">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-7xl">
           <FadeIn>
             <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-gold">
               What We Offer
@@ -403,47 +405,16 @@ export default function Home() {
             </p>
           </FadeIn>
 
-          {/* Mobile: numbered list — first 6 services, "View More" expands the rest */}
-          <div className="mt-14 grid gap-x-16 md:hidden">
-            {(showAllServices ? SERVICES : SERVICES.slice(0, 6)).map((s, i) => (
-              <FadeIn key={s.slug}>
-                <Link
-                  to={`/services/${s.slug}`}
-                  className="group flex items-baseline gap-6 border-b border-ink/10 py-5"
-                >
-                  <span className="text-[11px] tabular-nums tracking-[0.2em] text-gold">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="flex flex-1 items-center justify-between gap-4">
-                    <span className="font-serif text-lg text-ink transition-colors group-hover:text-brand">
-                      {s.name}
-                    </span>
-                    <ArrowRight className="h-4 w-4 shrink-0 text-ink/30 transition-all group-hover:translate-x-1 group-hover:text-brand" />
-                  </span>
-                </Link>
-              </FadeIn>
-            ))}
-            <button
-              type="button"
-              onClick={() => setShowAllServices((v) => !v)}
-              className="group mx-auto mt-8 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors hover:border-brand hover:text-brand"
-            >
-              {showAllServices ? "View Less" : "View More"}
-              <ChevronDown
-                className={`h-3.5 w-3.5 transition-transform ${showAllServices ? "rotate-180" : ""}`}
-              />
-            </button>
-          </div>
-
-          {/* md and up: photo cards */}
-          <div className="mt-14 hidden gap-6 md:grid md:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((s) => (
-              <FadeIn key={s.slug}>
-                <Link
-                  to={`/services/${s.slug}`}
-                  className="group relative block overflow-hidden bg-mist"
-                >
-                  <div className="aspect-square">
+          {/* Thumbnail + copy cards, one list for every breakpoint. Mobile shows
+              the first 6 and "View More" reveals the rest; md and up shows all. */}
+          <div className="mt-14 grid gap-x-12 gap-y-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-y-14">
+            {SERVICES.map((s, i) => (
+              <FadeIn
+                key={s.slug}
+                className={!showAllServices && i >= 6 ? "hidden md:block" : ""}
+              >
+                <Link to={`/services/${s.slug}`} className="group flex gap-5">
+                  <div className="aspect-square w-24 shrink-0 self-start overflow-hidden bg-mist lg:w-28">
                     <img
                       src={s.image}
                       alt={s.name}
@@ -452,21 +423,34 @@ export default function Home() {
                       decoding="async"
                     />
                   </div>
-                  <div className="absolute inset-0 bg-linear-to-t from-ink/85 via-ink/25 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
-                    <div>
-                      <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-gold">
-                        {s.category}
-                      </p>
-                      <h3 className="font-serif text-xl text-white lg:text-2xl">
-                        {s.name}
-                      </h3>
-                    </div>
-                    <ArrowRight className="mb-1 h-5 w-5 shrink-0 text-white/70 transition-all group-hover:translate-x-1 group-hover:text-white" />
+                  <div className="flex-1">
+                    <h3 className="font-serif text-lg italic leading-snug text-ink transition-colors group-hover:text-brand lg:text-xl">
+                      {s.name}
+                    </h3>
+                    <p className="mt-2 text-[13px] leading-relaxed text-espresso">
+                      {s.promise}
+                    </p>
+                    <span className="mt-3 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[10px] uppercase tracking-[0.25em] text-ink/70 transition-colors group-hover:border-brand group-hover:text-brand">
+                      Explore
+                      <ArrowRight className="h-3 w-3 shrink-0 transition-transform group-hover:translate-x-0.5" />
+                    </span>
                   </div>
                 </Link>
               </FadeIn>
             ))}
+          </div>
+
+          <div className="mt-10 flex justify-center md:hidden">
+            <button
+              type="button"
+              onClick={() => setShowAllServices((v) => !v)}
+              className="group inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[11px] uppercase tracking-[0.25em] text-ink/70 transition-colors hover:border-brand hover:text-brand"
+            >
+              {showAllServices ? "View Less" : "View More"}
+              <ChevronDown
+                className={`h-3.5 w-3.5 transition-transform ${showAllServices ? "rotate-180" : ""}`}
+              />
+            </button>
           </div>
         </div>
       </section>
